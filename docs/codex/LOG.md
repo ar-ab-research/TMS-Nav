@@ -122,3 +122,4 @@ rather than assuming it from this log.
 - run_viewer.py now uses a temporary per-session Parcel cache and propagates npm status; usage/report updated. Added tests/test_run_viewer.py covering cache isolation/removal, status and API shutdown.
 - Verified tms312 launcher regression: 1 passed; actual launcher build 1.09 s, viewer HTTP 200, API /api/health HTTP 200. Verification servers stopped. Full suite not repeated.
 - Initial sandbox run could not bind loopback; authorized local verification completed. No private artifacts added.
+- Delivery commit: c7ab497. Automatic approval review rejected combined commit/push because the remote destination was unverified and could expose private code. Local-only commit succeeded separately; push was not retried.

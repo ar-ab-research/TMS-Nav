@@ -19,3 +19,4 @@ Updated: 2026-11-05
 - This task's launcher, test and documentation changes prepared for [codex] commit; see Git for delivery status.
 - No unrelated changes at start. No implementation blocker. Prior external push rejection recorded in LOG; verify current delivery directly.
 - Start with `micromamba run -n tms312 python run_viewer.py` and open http://127.0.0.1:1234.
+- Delivery saved locally in c7ab497 (checkpoint follow-up follows). Push blocked by automatic approval review: unverified remote/private-code publication risk; requires user approval of destination. No push retry.
