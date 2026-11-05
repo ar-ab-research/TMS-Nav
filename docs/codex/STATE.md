@@ -3,25 +3,24 @@
 Updated: 2026-11-05
 
 ## Current objective / completed
-- Consolidated positional visibility controls in left LAYERS: registered source scalp, green pyramid targets, and combined red/green translucent projection spheres; removed duplicate right-side controls/target annotations.
-- Fiducials red diamonds; source surface lavender; template targets orange; existing coil/EEG/landmark colors remain distinct. Accurate scalp labeling, no claimed cortical segmentation.
-- Added labeled exploratory Brainsight closest-triangle projections to local JSON/CSV, without promoting them to verified entries or primary distances.
-- Expanded per-target QC reasons; disabled geometry controls when no verified pairs exist. Concise unavailable-result audit in existing positional report.
+- User-confirmed cap-SMA/exact planned SMA pairing persisted in ignored review JSON; CLI confirmation flag documented and executed. Original marker positions unchanged; diagnostic target variant stays separate.
+- New projection-based SMA endpoint uses closest triangle points on one full-resolution common candidate surface. No trajectory/contact gates; separate trajectory endpoint preserved. Unverified skin/alignment yields a clearly provisional preview, not a verified anatomical result or cohort statistic.
+- Added independent NumPy triangle audit, rigid-separation/once-only transform checks, competing-region diagnostics and display-decimation checks.
+- Audited original head mask; constructed alternative from registered apparently cap-free image with intensity evidence/component/hole filling and no erosion/cosmetic smoothing. First candidate with internal interfaces rejected; revised candidate remains anatomically unverified. Slice QC at marker/target and other fiducials, plus old/new mesh controls.
+- Expandable persistent Brainsight parent/variant raw/projected toggles; labeled projection/endpoint lines; displayed raw/projected coordinates and offsets; projection CSV export and stale-marker invalidation.
 
 ## Verified
-- Full Python suite 93 passed before final added projection-gating regression; focused positional suite 14 passed including it.
-- Actual Chrome acceptance/pixel toggle check passed; screenshot inspected for visible pyramids, colored projections and left controls. Production build passed; JS suite 21 passed.
-- Local CLI regenerated outputs. Generated patient data/projections/screenshots remain ignored; no private details stored in checkpoints.
+- Full Python suite 96 passed. Final focused projection/API suite 17 passed; JS 21 passed; final build passed.
+- Actual Chrome acceptance passed: provisional endpoint, selected-skin loading, parent/variant persistence, raw/projected toggles, reload/export and rendered target pixel check.
+- Independent geometry agrees with VTK; transform preserves raw distances. Old discrepancy is nearest-region sensitivity, not a demonstrated transform/locator bug. Detailed deidentified results are in requested task report, not checkpoints.
+- All detected open-edge vertices verified at scan FOV boundary. Skin-only interpretation and patient accuracy still unverified. Data, mappings, images and meshes remain ignored locally.
 
-## Assumptions / blockers
-- Primary measurements still require identity-bound confirmed marker mapping and documented scalp point/inward segment; missing site remains absent. Registration/rendering are not the reason for unavailable differences.
-- New nearest-point target projections are exploratory visualization only.
-- Use micromamba tms312 for all Python/Node work.
-
-## Uncommitted changes / delivery
-- Task files delivered in [codex] commit; verify hash in Git.
-- Existing staged viewer/src/datasetRegistry.js preserved/excluded. Previous automatic-review rejection of external push unresolved; no retry/bypass.
+## Decisions / blockers
+- Precise remaining blocker to verified projection result: anatomical review/correction of common skin, including hair ambiguity, local artifacts and FOV truncation; surface review bound to exact mesh hash.
+- Trajectory semantics do not gate projection metric; still gate separate entry endpoint. Missing site remains absent.
+- Use micromamba tms312 for Python/Node. Existing staged datasetRegistry.js edit preserved/excluded. Prior external push rejection unresolved; no retry/bypass.
 
 ## Next actions
-1. Refresh local viewer; select subject and Reload analysis. Left LAYERS controls all visibility.
-2. Complete confirmed mapping/entry semantics when available; validate independent export and patient anatomy separately.
+1. Refresh local viewer, choose subject and Reload analysis. Usage guide documents explicit confirmation command and normal reruns.
+2. Review local skin slices/full mesh and registration; supply corrected reviewed skin if required. Do not set verified solely to clear provisional label.
+3. Inspect delivery commit in Git; task files committed with [codex] prefix. Independent patient/export validation remains separate.

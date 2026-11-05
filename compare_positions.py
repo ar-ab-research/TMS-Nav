@@ -10,6 +10,7 @@ from src.subject_coordinates import file_hash, load_native
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('manifest', type=Path, nargs='?')
+    parser.add_argument('--confirm-sma-marker', help='Explicitly confirm this saved marker as cap SMA paired to exact planned target SMA')
     parser.add_argument('--subject', help='Run a local subject; use reviewed comparison/manifest.json when present, otherwise produce input QC and cap projections')
     parser.add_argument('--out', type=Path)
     parser.add_argument('--validate-export', type=Path)
@@ -20,6 +21,19 @@ def main():
         from src.positional_subject import save_subject_report
         validate_id(args.subject)
         if args.manifest: parser.error('Use either --subject or a manifest')
+        if args.confirm_sma_marker:
+            from efield.brainsight import read_export
+            base=Path('saves/brainsight/restore')/args.subject
+            markers=json.loads((Path('saves/derivatives/subjects')/args.subject/'markers.json').read_text())
+            if args.confirm_sma_marker not in [m['name'] for m in markers['fiducials']]: parser.error('Marker not found')
+            if 'SMA' not in [t['Target Name'] for t in read_export(base/'exports/planned-targets.txt').targets]: parser.error('Exact planned SMA target missing')
+            images=list(base.glob('*.nii*'))
+            if len(images)!=1:parser.error('Expected one source anatomical MRI')
+            path=base/'comparison/review.json'
+            review=json.loads(path.read_text()) if path.exists() else {}
+            review.update(source_mri_sha256=file_hash(images[0]),marker_mri_sha256=markers['source_sha256'])
+            review.setdefault('mappings',{})['SMA']=dict(marker=args.confirm_sma_marker,brainsight='SMA',confirmed=True,evidence='Explicit user confirmation via --confirm-sma-marker; exact planned SMA target selected')
+            path.parent.mkdir(exist_ok=True);path.write_text(json.dumps(review,indent=2))
         candidate=Path('saves/brainsight/restore')/args.subject/'comparison/manifest.json'
         if candidate.exists():
             args.manifest=candidate
@@ -27,6 +41,8 @@ def main():
         else:
             result, output=save_subject_report(args.subject)
             print(f'Report: {output}\nStatus: {result["status"]}\nCap projections: {len(result["cap_points"])}')
+            if result.get('sma_projection'):
+                metric=result['sma_projection'];print(f"{metric['measurement']}: {metric.get('distance_mm', 'unavailable')} [{metric['qc']}]")
             for blocker in result['blockers']: print('- '+blocker)
             print('Open the viewer, select this subject, then click Reload analysis in the right sidebar.')
             return

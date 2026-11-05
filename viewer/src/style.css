@@ -1320,3 +1320,8 @@ input[type="range"] {
 .positional-panel input[type="file"] { width: 100%; font-size: 11px; margin-top: 6px; }
 .brainsight-point-label { background: #302237e8; border: 1px solid #ad5bba; border-radius: 4px; padding: 3px 6px; color: #ffbaff; font-size: 11px; }
 .brainsight-frame-label { background: #1c2029ee; border: 1px solid #515a6b; border-radius: 6px; padding: 6px 9px; color: #dce4f0; font-size: 12px; }
+#brainsight-layers details { margin: 5px 0 5px 12px; }
+#brainsight-layers summary { cursor: pointer; font-size: 12px; }
+.sma-projection-result { border: 1px solid #987a40; border-radius: 6px; padding: 10px; margin: 10px 0; }
+.sma-projection-result strong { color: #f2cf88; font-size: 16px; }
+.projection-line-label { background: #182029dd; color: #eee; padding: 2px 4px; border-radius: 3px; font-size: 10px; }

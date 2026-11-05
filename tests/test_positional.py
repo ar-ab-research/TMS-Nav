@@ -190,3 +190,33 @@ def test_exploratory_projection_never_becomes_entry():
                        dict(registration=reg,targets=[target]),review,{})
     assert rows[0]['qc']=='invalid' and 'distance_mm' not in rows[0]
     assert 'No documented scalp point or verified inward trajectory' in rows[0]['qc_issues']
+
+
+def test_sma_projection_endpoint_without_trajectory():
+    from src.positional import sma_projected_metric
+    mesh=pv.Cube(bounds=(-10,10,-10,10,-10,10)).triangulate()
+    markers=dict(subject='synthetic',fiducials=[dict(name='confirmed-cap',position=[0,0,12])])
+    targets=[dict(name='SMA',position=[3,4,12],position_source=[3,4,12]),dict(name='SMA Skin',position=[9,9,9])]
+    review=dict(source_mri_sha256='a'*64,marker_mri_sha256='b'*64,
+                mappings=dict(SMA=dict(marker='confirmed-cap',brainsight='SMA',confirmed=True,evidence='explicit user confirmation')))
+    reg=dict(source_sha256='a'*64,target_sha256='b'*64,numerical_qc='passed',verified=True)
+    surface=dict(verified=True,surface_sha256='c'*64)
+    r=sma_projected_metric(mesh,markers,targets,review,reg,surface)
+    assert r['distance_mm']==pytest.approx(5)
+    assert r['qc']=='verified' and r['brainsight_name']=='SMA'
+    assert sma_projected_metric(mesh,markers,targets[:1],review,reg,surface)['distance_mm']==pytest.approx(5)
+    assert r['eeg_projection_offset_mm']==2 and r['brainsight_projection_offset_mm']==2
+    assert r['eeg_raw']==[0,0,12] and r['brainsight_raw_cap']==[3,4,12]
+    assert sma_projected_metric(mesh,markers,targets,review,reg,dict(surface,verified=False))['qc']=='provisional'
+    review['mappings']['SMA']['confirmed']=False
+    assert sma_projected_metric(mesh,markers,targets,review,reg,surface)['qc']=='unavailable'
+
+
+def test_independent_triangle_projection_and_competing_regions():
+    from src.projection_audit import independent_project
+    mesh=pv.PolyData([[0.,0,0],[10,0,0],[0,10,0]],[3,0,1,2])
+    q=independent_project(mesh,[2,3,4]);assert np.allclose(q['position'],[2,3,0]);assert q['distance_mm']==4
+    q=independent_project(mesh,[-3,0,4]);assert np.allclose(q['position'],[0,0,0]);assert q['distance_mm']==5
+    cube=pv.Cube(bounds=(-10,10,-10,10,-10,10)).triangulate()
+    ambiguous=independent_project(cube,[0,0,0])
+    assert ambiguous['competing_region']['distance_gap_mm']==pytest.approx(0)

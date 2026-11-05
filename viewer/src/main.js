@@ -89,7 +89,7 @@ const arcGroup = new THREE.Group();
 const aim1Root = new THREE.Group();
 aim1Root.add(skullGroup, fiducialGroup, scalpGroup, coilGroup, targetGroup, landmarkGroup, mcGroup, eegGroup, arcGroup);
 scene.add(aim1Root);
-const resetPositional = positionalViewer(aim1Root, () => currentMarkers);
+const resetPositional = positionalViewer(aim1Root, () => currentMarkers, {onCommonSkin:()=>{scalpGroup.visible=false;document.getElementById('toggle-scalp').checked=false;layerState['toggle-scalp']=false;}});
 
 // which layers are on. choices survive a reload via localStorage, and on start the
 // same state is pushed onto both the checkbox and the layer, so the two cannot
@@ -209,6 +209,7 @@ const plyLoader = new PLYLoader();
 const landmarkEditor = createLandmarkEditor({
   onChange: (marker) => {
     showInfo(marker);
+    if(marker?.category==='fiducial'){currentMarkers=pointData();resetPositional();}
     if (currentIsTemplate) {
       eegStale = true; eegGroup.visible = false; arcGroup.visible = false;
       document.getElementById("eeg-status").textContent = "Template edits require rebuilding the MNI demo.";
@@ -244,6 +245,7 @@ review = createSubjectReview({
   getBaseline:()=>DATASETS[currentKey].markers,
   replaceMarkers:markers=>{
     currentMarkers=structuredClone(markers);
+    resetPositional();
     clearGroup(landmarkGroup);clearGroup(fiducialGroup);
     addLandmarks(currentMarkers.landmarks||[],[]);addFiducials(currentMarkers.fiducials||[]);
     landmarkEditor.load(currentKey,currentMarkers,[...landmarkGroup.children,...fiducialGroup.children],scalpGroup.children[0].geometry);
@@ -252,6 +254,7 @@ review = createSubjectReview({
   select:name=>{const mesh=[...landmarkGroup.children,...fiducialGroup.children].find(m=>m.userData.marker.name===name);if(mesh){landmarkEditor.select(mesh);showInfo(mesh.userData.marker);}},
   replaceFiducials:(fiducials,patch)=>{
     currentMarkers={...pointData(),...patch,fiducials};
+    resetPositional();
     clearGroup(fiducialGroup);addFiducials(fiducials);
     landmarkEditor.load(currentKey,currentMarkers,[...landmarkGroup.children,...fiducialGroup.children],scalpGroup.children[0].geometry);
   },

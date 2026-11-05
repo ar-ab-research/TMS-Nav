@@ -158,6 +158,10 @@ def make_server(port=8765, workspace=None):
             with workspace.lock:
                 entry = workspace.load(subject)
                 if self.command=='GET':
+                    if action=='common-skin.ply':
+                        return self.send(200,(workspace.derivatives/subject/'common-skin/common-skin.ply').read_bytes(),'application/octet-stream')
+                    if action=='skin-qc.png':
+                        return self.send(200,(workspace.derivatives/subject/'common-skin/skin-qc.png').read_bytes(),'image/png')
                     if action=='registration-qc.png':
                         return self.send(200,(workspace.derivatives/subject/'brainsight/registration/registration-qc.png').read_bytes(),'image/png')
                     if action=='brainsight-overlay.ply':

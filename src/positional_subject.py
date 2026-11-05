@@ -85,6 +85,23 @@ def subject_report(subject, root=Path('.')):
                           semantics={t['name']:dict(frame='source_MRI_RAS_mm',verified=False,evidence='') for t in brainsight['targets']})
             (base/'comparison').mkdir(exist_ok=True)
             (base/'comparison/review-template.json').write_text(json.dumps(template,indent=2))
+        from src.common_skin import build_common_skin
+        from src.positional import sma_projected_metric
+        mapping=review.get('mappings',{}).get('SMA',{})
+        confirmed=next((m for m in markers['fiducials'] if m['name']==mapping.get('marker')),None)
+        selected_skin=None
+        projection_metric=None
+        if confirmed is not None and mapping.get('confirmed') is True:
+            mesh,selected_skin=build_common_skin(images[0],marker_mri,matrix,mesh,brainsight['targets'],confirmed['position'],derivatives/'common-skin')
+            provenance['common_skin']=selected_skin
+            provenance['scalp_sha256']=selected_skin['surface_sha256']
+            for point in cap_points:
+                point['scalp'],point['projection_distance_mm']=project(mesh,point['raw'])
+            for target in brainsight['targets']:
+                q,offset=project(mesh,target['position'])
+                target['exploratory_scalp_projection'].update(position=q,distance_mm=offset,qc='diagnostic variant' if target['name']!='SMA' else 'projection endpoint, surface review required')
+                target['raw_offset_to_common_scalp_mm']=offset
+            projection_metric=sma_projected_metric(mesh,markers,brainsight['targets'],review,registration,selected_skin)
         from src.positional import reviewed_rows
         rows=reviewed_rows(subject,mesh,markers,brainsight,review,provenance)
     else:
@@ -95,7 +112,7 @@ def subject_report(subject, root=Path('.')):
     blockers=list(dict.fromkeys(r['reason'] for r in rows if r['qc']!='valid'))
     return dict(frame='native_RAS_mm',status='complete' if all(r['qc']=='valid' for r in rows) else 'needs_review',
                 rows=rows,summary=summarize(rows),cap_points=cap_points,project_inventory=inventory,
-                blockers=blockers,brainsight=brainsight)
+                blockers=blockers,brainsight=brainsight,sma_projection=locals().get('projection_metric'),common_skin=locals().get('selected_skin'))
 
 
 def save_subject_report(subject, root=Path('.')):
@@ -103,6 +120,12 @@ def save_subject_report(subject, root=Path('.')):
     result=subject_report(subject,root)
     output=Path(root)/'saves/derivatives/subjects'/subject/'positional'
     write_results(result['rows'],output)
+    if result.get('sma_projection'):
+        import csv
+        row=result['sma_projection']
+        with output.with_name('positional-projection.csv').open('w') as stream:
+            writer=csv.DictWriter(stream,fieldnames=list(row));writer.writeheader()
+            writer.writerow({k:json.dumps(v) if isinstance(v,(dict,list)) else v for k,v in row.items()})
     output.with_suffix('.json').write_text(json.dumps(result,indent=2,allow_nan=False))
     return result,output.with_suffix('.json')
 

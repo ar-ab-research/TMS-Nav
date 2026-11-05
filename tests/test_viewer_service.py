@@ -90,6 +90,10 @@ def test_http_volume_identity_and_restricted_access(workspace):
         (source_dir/'registration').mkdir(exist_ok=True)
         (source_dir/'registration/registration-qc.png').write_bytes(b'qc fixture')
         assert urlopen(base+'/api/subjects/review-test/registration-qc.png').read()==b'qc fixture'
+        skin_dir=work.derivatives/'review-test/common-skin';skin_dir.mkdir(exist_ok=True)
+        (skin_dir/'common-skin.ply').write_bytes(b'candidate mesh');(skin_dir/'skin-qc.png').write_bytes(b'skin qc')
+        assert urlopen(base+'/api/subjects/review-test/common-skin.ply').read()==b'candidate mesh'
+        assert urlopen(base+'/api/subjects/review-test/skin-qc.png').read()==b'skin qc'
         raw=urlopen(base+'/api/subjects/review-test/volume.nii').read()
         image=nib.Nifti1Image.from_bytes(raw)
         entry=work.load('review-test')

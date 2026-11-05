@@ -22,14 +22,18 @@
           <legend>layers</legend>
           <label><input type="checkbox" id="toggle-skull" checked /> skull (when available) <span class="swatch" style="background:#e9d7b3" aria-hidden="true"></span></label>
           <label><input type="checkbox" id="toggle-fiducials" checked /> MRI fiducials ◆ <span class="swatch" style="background:#ef5350" aria-hidden="true"></span> red</label>
+          <details id="brainsight-layers" open><summary><input type="checkbox" id="toggle-brainsight-parent" checked aria-label="Show Brainsight layers" /> Brainsight layers</summary>
           <label><input type="checkbox" id="toggle-brainsight-surface" checked /> Brainsight MRI surface (scalp) <span class="swatch" style="background:#b49cdb" aria-hidden="true"></span></label>
-          <label><input type="checkbox" id="toggle-brainsight-targets" checked /> Brainsight targets ▲ <span class="swatch" style="background:#43d17a" aria-hidden="true"></span></label>
+          <label><input type="checkbox" id="toggle-brainsight-targets" checked /> Raw Brainsight targets ▲ <span class="swatch" style="background:#43d17a" aria-hidden="true"></span></label>
+          <div id="brainsight-target-layers"></div></details>
+          <label><input type="checkbox" id="toggle-common-skin" checked /> Common skin candidate (provisional)</label>
+          <label><input type="checkbox" id="toggle-projection-lines" /> Raw → projection lines (labeled)</label>
           <label><input type="checkbox" id="toggle-scalp-projections" checked /> Scalp projections ● <span class="swatch" style="background:linear-gradient(90deg,#ef535080 50%,#43d17a80 50%)" aria-hidden="true"></span></label>
-          <div class="hint">Red: fiducials. Green: Brainsight. Faded dots: closest-triangle projections; Brainsight projections are exploratory.</div>
+          <div class="hint">Red: fiducials. Green: Brainsight. Faded dots: closest-triangle projections. SMA uses its confirmed pair; SMA Skin is diagnostic. Unreviewed surfaces give provisional results.</div>
           <label><input type="checkbox" id="toggle-scalp-entries" checked /> Verified scalp entries <span class="swatch" style="background:#43d17a" aria-hidden="true"></span></label>
           <label><input type="checkbox" id="toggle-comparison-lines" checked /> Comparison lines <span class="swatch" style="background:#fff" aria-hidden="true"></span></label>
           <div class="hint" id="subject-qc" role="status"></div>
-          <label><input type="checkbox" id="toggle-scalp" autocomplete="off" checked /> scalp <span class="swatch sw-scalp" aria-hidden="true"></span></label>
+          <label><input type="checkbox" id="toggle-scalp" autocomplete="off" checked /> Original cap surface (QC) <span class="swatch sw-scalp" aria-hidden="true"></span></label>
           <label><input type="checkbox" id="toggle-coil" autocomplete="off" checked /> coil <span class="swatch sw-coil" aria-hidden="true"></span></label>
           <label><input type="checkbox" id="toggle-targets" autocomplete="off" checked /> targets <span class="swatch sw-target" aria-hidden="true"></span></label>
           <label><input type="checkbox" id="toggle-landmarks" autocomplete="off" checked /> landmarks ■ yellow</label>

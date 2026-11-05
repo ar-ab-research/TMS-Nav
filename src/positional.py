@@ -226,3 +226,33 @@ def reviewed_rows(subject, mesh, markers, brainsight, review, provenance):
         except ValueError as error:row['reason']=str(error)
         rows.append(row)
     return rows
+
+
+def sma_projected_metric(mesh, markers, targets, review, registration, surface):
+    """Explicit projection endpoint; trajectory/contact semantics are irrelevant."""
+    row=dict(subject=markers.get('subject'),target='SMA',measurement='SMA scalp-projected localization difference (mm)',
+             qc='unavailable',method='independent closest points on common skin mesh triangle interiors',
+             surface=surface,registration=registration)
+    try:
+        mapping=review.get('mappings',{}).get('SMA',{})
+        if review.get('marker_mri_sha256')!=registration['target_sha256'] or review.get('source_mri_sha256')!=registration['source_sha256']:
+            raise ValueError('Confirmed mapping MRI identities mismatch')
+        if mapping.get('confirmed') is not True or not mapping.get('evidence') or mapping.get('brainsight')!='SMA':
+            raise ValueError('Explicit confirmed cap-SMA to exact Brainsight SMA mapping required')
+        marker=next((m for m in markers['fiducials'] if m['name']==mapping['marker']),None)
+        target=next((t for t in targets if t['name']=='SMA'),None)
+        if marker is None or target is None:raise ValueError('Confirmed marker or SMA target missing')
+        if registration.get('numerical_qc')!='passed':raise ValueError('Registration numerical QC failed')
+        if not surface.get('surface_sha256') or surface.get('status') in ('rejected','invalid'):raise ValueError('Common skin surface identity/quality is unresolved')
+        a,da=project(mesh,marker['position']);b,db=project(mesh,target['position'])
+        row.update(marker_name=marker['name'],brainsight_name='SMA',mapping=mapping,
+                   eeg_raw=marker['position'],brainsight_raw_source=target['position_source'],brainsight_raw_cap=target['position'],
+                   eeg_projected=a,brainsight_projected=b,eeg_projection_offset_mm=da,brainsight_projection_offset_mm=db,
+                   distance_mm=float(np.linalg.norm(np.array(a)-b)))
+        reviewed=surface.get('verified') is True and registration.get('verified') is True
+        warnings=[]
+        if not surface.get('verified'):warnings.append('Skin-only boundary requires anatomical review: hair/skin ambiguity, artifacts and FOV edges; provisional preview only')
+        if not registration.get('verified'):warnings.append('Registration anatomical review outstanding')
+        row.update(qc='verified' if reviewed else 'provisional',reason='; '.join(warnings))
+    except (ValueError,KeyError) as error:row['reason']=str(error)
+    return row

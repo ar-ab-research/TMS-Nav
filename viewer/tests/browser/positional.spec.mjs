@@ -14,6 +14,19 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   const panel=page.locator('#dist #aim1-metrics #positional-panel');
   await expect(panel).toHaveCount(1);
   await expect(panel.getByRole('status')).toContainText('comparisons available',{timeout:30000});
+  if(report.common_skin){
+    await expect(panel).toHaveAttribute('data-common-skin',report.common_skin.status);
+    await expect(panel.locator('.sma-projection-result')).toContainText('SMA scalp-projected localization difference (mm)');
+    await expect(panel.locator('.sma-projection-result')).toContainText('PROVISIONAL');
+    const parent=page.locator('#toggle-brainsight-parent');await parent.uncheck();
+    await expect(page.locator('#toggle-brainsight-targets')).toHaveAttribute('data-render-visible','false');await parent.check();
+    for(const name of ['SMA','SMA Skin']){
+      const raw=page.getByRole('checkbox',{name:name+' raw point',exact:true});
+      const projected=page.getByRole('checkbox',{name:name+' projected point',exact:true});
+      await raw.uncheck();await projected.uncheck();await raw.check();await projected.check();
+    }
+    await page.locator('#toggle-projection-lines').check();await page.locator('#toggle-projection-lines').uncheck();
+  }
   await expect(panel.locator('.positional-layer input')).toHaveCount(0);
   for(const id of ['toggle-brainsight-surface','toggle-brainsight-targets','toggle-scalp-projections']){
     const box=page.locator('#ui #'+id);await expect(box).toBeVisible();await expect(box).toBeEnabled();
@@ -39,9 +52,11 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   for(const point of report.cap_points||[])await expect(panel).toContainText(point.label);
   await page.locator('#toggle-scalp-projections').uncheck();
   await expect(page.locator('#toggle-scalp-projections')).toHaveAttribute('data-render-visible','false');
+  if(report.common_skin)await page.getByRole('checkbox',{name:'SMA Skin raw point',exact:true}).uncheck();
   await panel.getByRole('button',{name:'Reload analysis'}).click();
   await expect(panel.getByRole('status')).toContainText('comparisons available');
   await expect(page.locator('#toggle-scalp-projections')).not.toBeChecked();await page.locator('#toggle-scalp-projections').check();
+  if(report.common_skin){await expect(page.getByRole('checkbox',{name:'SMA Skin raw point',exact:true})).not.toBeChecked();await page.getByRole('checkbox',{name:'SMA Skin raw point',exact:true}).check();}
   const download=page.waitForEvent('download');await panel.getByRole('button',{name:'Export JSON'}).click();
   expect((await download).suggestedFilename()).toBe('positional.json');
   if(report.brainsight)await expect(panel).toHaveAttribute('data-brainsight-rendered',String(report.brainsight.targets.length));

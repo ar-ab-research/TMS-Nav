@@ -100,3 +100,11 @@ rather than assuming it from this log.
 - Exploratory target projections explicitly labeled/exported; test confirms they cannot produce primary measurements. Expanded QC issue lists expose all input blockers, not only first exception; missing targets remain explicit.
 - Verified real browser/pixel target-toggle check and inspected final screenshot. Build and JS 21 passed; full Python 93 passed before added regression, final focused 14 passed.
 - Regenerated local data only; existing staged registry unchanged/excluded. Updated concise positional report/guide. tms312 used throughout. Prior blocked push not retried.
+
+## 2026-11-05 — Confirmed pairing, projection endpoint and skin audit
+
+- Persisted explicit user-confirmed pairing locally without changing raw points. Added documented CLI confirmation flag and separate projection endpoint; retained trajectory endpoint/gates and diagnostic variant.
+- Provisional common-skin reconstruction from registered anatomical scan: no erosion/cosmetic smoothing, image-supported component/plane-hole filling. Rejected initial internal-interface candidate. Anatomical skin/hair/artifact review remains outstanding; no fabricated verification.
+- Independent exhaustive triangle math confirms locator behavior; rigid separation/transform-once checks pass. Original projection discrepancy reflects competing near-equal surface regions. Audited display decimation and FOV edges. Generated per-fiducial anatomical slices and before/after mesh QC locally.
+- Viewer shows provisional single-subject endpoint, raw/projected coordinates and offsets, separate trajectory results; expandable persistent parent/variant controls and labeled optional lines. Marker edits invalidate stale metrics. Added projection CSV and JSON provenance.
+- Verification: Python full 96 passed; final focused 17 passed; JS 21 passed; production build and actual Chrome acceptance/pixel checks passed. All runtime work in tms312. Private artifacts ignored, unrelated staged registry preserved; prior blocked push not retried.
