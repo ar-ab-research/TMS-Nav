@@ -19,6 +19,8 @@ micromamba run -n tms312 python run_viewer.py
 
 Open **http://127.0.0.1:1234**, select **r-02**, and click **Reload analysis**.
 
+The current surface/result has been accepted by the user after rendering and QC review; it now displays **REVIEWED**, while all QC plots and limitations remain. Acceptance is tied to the exact surface hash and does not establish independent clinical accuracy. New/changed unreviewed surfaces still display provisional status.
+
 ## Two separate endpoints
 
 | Endpoint | Definition | Gates |
@@ -46,7 +48,7 @@ Use **Original cap surface (QC)** and **Common skin candidate** toggles for befo
 
 ## Viewer controls
 
-Expand **Brainsight layers**: parent show/hide, surface/raw-target controls, then independent persistent **SMA** and **SMA Skin** enabled/raw/projected checkboxes. The projection layer controls both methods' translucent red/green dots. **Raw → projection lines** adds labeled lines. **Comparison lines** shows the separately labeled endpoint connection. Original fiducials are red diamonds; targets green pyramids. Current single-subject projection value, raw/source/cap coordinates, projected coordinates and offsets appear in the right panel; trajectory results remain separate below.
+Expand **Brainsight layers**: parent show/hide, surface/raw-target controls, then independent persistent **SMA** and **SMA Skin** enabled/raw/projected checkboxes. The projection layer controls both methods' translucent red/green dots. **Raw → projection lines** adds labeled lines. **Comparison lines** shows the separately labeled endpoint connection. Original fiducials are red diamonds; targets green spheres centered at raw target coordinates. Current single-subject projection value, raw/source/cap coordinates, projected coordinates and offsets appear in the right panel; trajectory results remain separate below.
 
 ## Exports and validation
 

@@ -3,24 +3,21 @@
 Updated: 2026-11-05
 
 ## Current objective / completed
-- User-confirmed cap-SMA/exact planned SMA pairing persisted in ignored review JSON; CLI confirmation flag documented and executed. Original marker positions unchanged; diagnostic target variant stays separate.
-- New projection-based SMA endpoint uses closest triangle points on one full-resolution common candidate surface. No trajectory/contact gates; separate trajectory endpoint preserved. Unverified skin/alignment yields a clearly provisional preview, not a verified anatomical result or cohort statistic.
-- Added independent NumPy triangle audit, rigid-separation/once-only transform checks, competing-region diagnostics and display-decimation checks.
-- Audited original head mask; constructed alternative from registered apparently cap-free image with intensity evidence/component/hole filling and no erosion/cosmetic smoothing. First candidate with internal interfaces rejected; revised candidate remains anatomically unverified. Slice QC at marker/target and other fiducials, plus old/new mesh controls.
-- Expandable persistent Brainsight parent/variant raw/projected toggles; labeled projection/endpoint lines; displayed raw/projected coordinates and offsets; projection CSV export and stale-marker invalidation.
+- User explicitly accepted current result after inspecting rendering/QC. Recorded exact-surface-hash-bound visual acceptance locally; GUI/export status now REVIEWED. Numerical result and all QC retained; independent clinical accuracy not implied.
+- Replaced Brainsight pyramids with spheres positioned directly at target MRI-world coordinates (sphere center, no offsets).
+- Removed legacy Aim 1 metrics/session-results subsection from right panel, retaining all newer positional, trajectory, surface, registration and review sections. Removed stale references in MRI review code.
+- Updated usage/report with acceptance scope and cleanup.
 
 ## Verified
-- Full Python suite 96 passed. Final focused projection/API suite 17 passed; JS 21 passed; final build passed.
-- Actual Chrome acceptance passed: provisional endpoint, selected-skin loading, parent/variant persistence, raw/projected toggles, reload/export and rendered target pixel check.
-- Independent geometry agrees with VTK; transform preserves raw distances. Old discrepancy is nearest-region sensitivity, not a demonstrated transform/locator bug. Detailed deidentified results are in requested task report, not checkpoints.
-- All detected open-edge vertices verified at scan FOV boundary. Skin-only interpretation and patient accuracy still unverified. Data, mappings, images and meshes remain ignored locally.
+- Current focused Python suite 16 passed, JS 21 passed, actual Chrome acceptance/pixel toggles passed, final production build passed. Browser screenshot inspected: reviewed badge, centered spheres, legacy block absent, QC retained, no browser errors.
+- Prior full suite 96 passed; not repeated for this focused cleanup.
+- Raw positions/geometry/metric unchanged; local report regenerated. Acceptance file and subject artifacts ignored. No private coordinates/results in checkpoints.
 
-## Decisions / blockers
-- Precise remaining blocker to verified projection result: anatomical review/correction of common skin, including hair ambiguity, local artifacts and FOV truncation; surface review bound to exact mesh hash.
-- Trajectory semantics do not gate projection metric; still gate separate entry endpoint. Missing site remains absent.
-- Use micromamba tms312 for Python/Node. Existing staged datasetRegistry.js edit preserved/excluded. Prior external push rejection unresolved; no retry/bypass.
+## Decisions / remaining limits
+- Acceptance scope is user visual QC, distinct from independent clinical/anatomical accuracy validation. Changed surface hashes still invalidate acceptance.
+- Separate trajectory endpoint still requires its documented semantics; missing site remains absent.
+- Use micromamba tms312. Prior external push rejection unresolved; no retry/bypass.
 
-## Next actions
-1. Refresh local viewer, choose subject and Reload analysis. Usage guide documents explicit confirmation command and normal reruns.
-2. Review local skin slices/full mesh and registration; supply corrected reviewed skin if required. Do not set verified solely to clear provisional label.
-3. Inspect delivery commit in Git; task files committed with [codex] prefix. Independent patient/export validation remains separate.
+## Uncommitted changes / next actions
+- Task changes delivered in [codex] commit; verify hash in Git. No unrelated changes present at task start.
+- Refresh local viewer and Reload analysis. Independent patient/export validation remains separate.

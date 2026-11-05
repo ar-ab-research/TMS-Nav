@@ -253,6 +253,7 @@ def sma_projected_metric(mesh, markers, targets, review, registration, surface):
         warnings=[]
         if not surface.get('verified'):warnings.append('Skin-only boundary requires anatomical review: hair/skin ambiguity, artifacts and FOV edges; provisional preview only')
         if not registration.get('verified'):warnings.append('Registration anatomical review outstanding')
-        row.update(qc='verified' if reviewed else 'provisional',reason='; '.join(warnings))
+        accepted=reviewed and surface.get('review',{}).get('scope')=='user_visual_qc_acceptance'
+        row.update(qc='reviewed' if accepted else 'verified' if reviewed else 'provisional',reason='User reviewed rendering and QC plots and accepted this result; independent clinical accuracy is not established.' if accepted else '; '.join(warnings))
     except (ValueError,KeyError) as error:row['reason']=str(error)
     return row

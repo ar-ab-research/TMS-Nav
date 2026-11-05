@@ -1,15 +1,20 @@
 # Aim 1 projection endpoint and surface audit
 
+## Latest cleanup and review acceptance
+
+- User inspected rendering/QC and accepted the result. Recorded acceptance against the exact surface hash, with scope **user visual QC acceptance**; current result displays **REVIEWED**. Independent clinical accuracy is not implied. QC plots, numerical result, coordinates and audit retained.
+- Raw Brainsight markers are now green spheres centered exactly at target MRI-world coordinates. Removed legacy Aim 1 Metrics/Brainsight results block; newer comparison/review sections remain.
+
 ## Implemented and confirmed
 
 - User-confirmed pairing saved locally: **manual-1 → exact Brainsight SMA**. SMA Skin remains diagnostic; raw marker/target coordinates unchanged.
 - Added **SMA scalp-projected localization difference (mm)**, independent of trajectory/contact semantics. Retained separate trajectory endpoint.
-- Rebuilt all cap/target projections on one candidate full-resolution common mesh. Unreviewed surface keeps the numerical preview explicitly **PROVISIONAL**; it is not a verified anatomical measurement.
+- Rebuilt all cap/target projections on one candidate full-resolution common mesh. An unreviewed surface keeps a numerical preview explicitly **PROVISIONAL**; it is not a verified anatomical measurement.
 - Expandable persistent parent/variant controls for SMA and SMA Skin, their raw/projected points, labeled projection lines and optional endpoint line. Old/candidate meshes available for QC. Marker edits invalidate displayed results.
 
 ## Single-subject projection preview
 
-**11.502175 mm — PROVISIONAL.** No cohort inference or cortical targeting-error claim.
+**11.502175 mm — USER-REVIEWED / ACCEPTED.** No cohort inference or cortical targeting-error claim.
 
 | Coordinate | x | y | z |
 |---|---:|---:|---:|
@@ -43,7 +48,7 @@ The existing cap mesh comes from a tissue/head mask with large-scale closing and
 
 Assessed the registered apparently cap-free anatomical image as an alternative. Selected candidate: image-supported tissue threshold, largest component, enclosed-plane hole filling, unsmoothed contour, no erosion/cosmetic boundary displacement. A first naive threshold candidate retained internal tissue interfaces and was rejected; the revised candidate suppresses them. Registration and boundary overlays were inspected at the SMA marker/target and other fiducials.
 
-The cranial region follows the visible outer tissue signal, but skin/hair ambiguity, local irregularities and **4040 FOV-related open edges** remain. The candidate is **not anatomically verified**. It is a defensible preview, not a completed skin reconstruction. The precise blocker to a verified endpoint is anatomical approval/correction of this skin-only surface (or a supplied reviewed skin segmentation), tied to the mesh hash. Independent patient registration accuracy also remains unvalidated.
+The cranial region follows the visible outer tissue signal, but skin/hair ambiguity, local irregularities and **4040 FOV-related open edges** remain. The surface was initially unreviewed. The user subsequently inspected the rendering/QC and accepted this exact surface/result; that visual-review acceptance is now bound to its mesh hash. Segmentation limitations remain documented, and independent anatomical/clinical accuracy and patient registration accuracy remain unvalidated.
 
 QC artifacts (ignored locally): `common-skin/skin-qc.png`, per-fiducial slice overlays, full/display before-after meshes, `common-skin/audit.json`, and registration QC. Trajectory endpoint still lacks documented entry semantics; F4 target remains absent.
 

@@ -108,3 +108,10 @@ rather than assuming it from this log.
 - Independent exhaustive triangle math confirms locator behavior; rigid separation/transform-once checks pass. Original projection discrepancy reflects competing near-equal surface regions. Audited display decimation and FOV edges. Generated per-fiducial anatomical slices and before/after mesh QC locally.
 - Viewer shows provisional single-subject endpoint, raw/projected coordinates and offsets, separate trajectory results; expandable persistent parent/variant controls and labeled optional lines. Marker edits invalidate stale metrics. Added projection CSV and JSON provenance.
 - Verification: Python full 96 passed; final focused 17 passed; JS 21 passed; production build and actual Chrome acceptance/pixel checks passed. All runtime work in tms312. Private artifacts ignored, unrelated staged registry preserved; prior blocked push not retried.
+
+## 2026-11-05 — Accepted visual QC and GUI cleanup
+
+- User accepted the result after reviewing rendering/QC. Saved acceptance against exact local surface hash, scoped to visual QC, and changed current result display/export to REVIEWED. Clinical accuracy remains a separate limitation; plots and numerical results retained.
+- Brainsight targets now spheres centered at raw MRI-world coordinates. Removed legacy Aim 1 metrics/results HTML and stale review-code references; newer comparison sections retained.
+- Verified focused Python 16 passed, JS 21 passed, actual Chrome acceptance/pixel checks passed, final build passed. An initial browser check found a stale removed-panel reference; corrected and rerun cleanly. Screenshot visually inspected.
+- Updated existing report/usage. All runtime work used tms312; private review/data artifacts ignored. Prior blocked push not retried.

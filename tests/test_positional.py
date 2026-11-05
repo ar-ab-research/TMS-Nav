@@ -205,6 +205,8 @@ def test_sma_projection_endpoint_without_trajectory():
     assert r['distance_mm']==pytest.approx(5)
     assert r['qc']=='verified' and r['brainsight_name']=='SMA'
     assert sma_projected_metric(mesh,markers,targets[:1],review,reg,surface)['distance_mm']==pytest.approx(5)
+    accepted=dict(surface,review=dict(scope='user_visual_qc_acceptance'))
+    assert sma_projected_metric(mesh,markers,targets,review,reg,accepted)['qc']=='reviewed'
     assert r['eeg_projection_offset_mm']==2 and r['brainsight_projection_offset_mm']==2
     assert r['eeg_raw']==[0,0,12] and r['brainsight_raw_cap']==[3,4,12]
     assert sma_projected_metric(mesh,markers,targets,review,reg,dict(surface,verified=False))['qc']=='provisional'

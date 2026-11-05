@@ -1072,12 +1072,11 @@ function setAim(n, { focus = false } = {}) {
   }
 }
 
-// inside aim 1 the right panel follows the view: the 3D head shows the statistics,
-// the anatomical MRI shows the cap marker review that is done on it
+// Cap marker review follows the anatomical MRI tab; positional results stay available.
 function syncAim1Panel() {
   const mri = !document.getElementById("mri-panel").hidden;
   document.getElementById("review-panel").hidden = !mri;
-  document.getElementById("metrics-panel").hidden = mri;
+
 }
 
 function bindAimTabs() {

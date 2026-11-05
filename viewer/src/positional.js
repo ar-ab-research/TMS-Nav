@@ -59,7 +59,7 @@ export function positionalViewer(root, getMarkers, hooks={}) {
   const input=make('input');input.type='file';input.accept='.json';input.setAttribute('aria-label','Import positional results JSON');imported.append(input);panel.append(imported);
   let payload=null,revision=0;
   function dot(group,p,color,opacity=1){if(!p)return;const mesh=new THREE.Mesh(new THREE.SphereGeometry(1.8),new THREE.MeshBasicMaterial({color,transparent:opacity<1,opacity,depthTest:false,depthWrite:false}));mesh.position.fromArray(p);mesh.renderOrder=12;group.add(mesh);}
-  function targetShape(position,name,group=sourceRaw){const mesh=new THREE.Mesh(new THREE.ConeGeometry(3.8,7,4),new THREE.MeshBasicMaterial({color:0x43d17a,depthTest:false,depthWrite:false,transparent:true,opacity:1}));mesh.rotation.x=Math.PI/2;mesh.position.fromArray(position);mesh.renderOrder=10;mesh.name='Brainsight: '+name;group.add(mesh);}
+  function targetShape(position,name,group=sourceRaw){const mesh=new THREE.Mesh(new THREE.SphereGeometry(3.8,24,16),new THREE.MeshBasicMaterial({color:0x43d17a,depthTest:false,depthWrite:false,transparent:true,opacity:1}));mesh.position.fromArray(position);mesh.renderOrder=10;mesh.name='Brainsight: '+name;group.add(mesh);}
   function line(group,a,b,color,label){if(!a||!b)return;group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(...a),new THREE.Vector3(...b)]),new THREE.LineBasicMaterial({color,depthTest:false})));if(label){const el=make('span',label,'projection-line-label');const obj=new CSS2DObject(el);obj.position.fromArray(a.map((v,i)=>(v+b[i])/2));group.add(obj);}}
   function dispose(group){for(const c of [...group.children]){c.traverse(n=>{n.geometry?.dispose();n.material?.dispose();n.element?.remove();});group.remove(c);}}
   function clear(){payload=null;variantGroups.clear();document.getElementById('brainsight-target-layers').replaceChildren();results.replaceChildren();panel.removeAttribute('data-brainsight-rendered');panel.removeAttribute('data-overlay-frame');for(const group of Object.values(groups))dispose(group);for(const box of controls)box.disabled=true;}
@@ -121,7 +121,7 @@ export function positionalViewer(root, getMarkers, hooks={}) {
         const v=variant(t.name);targetShape(t.position,t.name,v.raw);
         if(t.exploratory_scalp_projection){assertPoint(t.exploratory_scalp_projection.position);dot(v.projected,t.exploratory_scalp_projection.position,0x43d17a,.45);line(v.lines,t.position,t.exploratory_scalp_projection.position,0x43d17a,t.name+' → skin');}
       }
-      panel.dataset.brainsightShape='pyramid';
+      panel.dataset.brainsightShape='sphere';
       panel.dataset.scalpProjections=String((data.cap_points||[]).length+bs.targets.filter(t=>t.exploratory_scalp_projection).length);
       const ticket=revision;
       new PLYLoader().load(`/api/subjects/${encodeURIComponent(markers.subject)}/brainsight-overlay.ply`,geometry=>{
@@ -133,11 +133,11 @@ export function positionalViewer(root, getMarkers, hooks={}) {
       },undefined,()=>{if(ticket===revision)status.textContent+=' · Brainsight scalp load failed';});
     }
     if(data.common_skin){
-      const skin=data.common_skin;const detail=make('details');detail.open=true;detail.append(make('summary','Common skin QC · '+skin.status));
+      const skin=data.common_skin;document.getElementById('common-skin-label').textContent=skin.verified?'Common skin (reviewed)':'Common skin candidate (provisional)';const detail=make('details');detail.open=true;detail.append(make('summary','Common skin QC · '+skin.status.replaceAll('_',' ')));
       const link=make('a','Open anatomical boundary QC');link.href=`/api/subjects/${encodeURIComponent(markers.subject)}/skin-qc.png`;link.target='_blank';detail.append(link);
       const audit=skin.selected_audit,old=skin.old_surface_audit;
       if(Number.isFinite(audit.raw_source_separation_mm))detail.append(table(['SMA vs SMA Skin','Separation mm'],[['Raw source',audit.raw_source_separation_mm],['Raw registered',audit.raw_cap_separation_mm],['Old mesh projected',old.projected_separation_mm],['Selected mesh projected',audit.projected_separation_mm]].map(([k,v])=>[k,v.toFixed(6)])));
-      detail.append(make('p','Provisional cap-free intensity boundary, without erosion or cosmetic smoothing. Review skin/hair ambiguity, FOV edges, registration and competing surface regions.','hint'));results.append(detail);
+      detail.append(make('p',skin.verified?'User-reviewed common skin surface. Original QC views and recorded segmentation/registration limitations are retained.':'Provisional cap-free intensity boundary, without erosion or cosmetic smoothing. Review skin/hair ambiguity, FOV edges, registration and competing surface regions.','hint'));results.append(detail);
       const ticket=revision;new PLYLoader().load(`/api/subjects/${encodeURIComponent(markers.subject)}/common-skin.ply`,geometry=>{if(ticket!==revision){geometry.dispose();return;}geometry.computeVertexNormals();commonHead.add(new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0xc5cbd0,side:THREE.DoubleSide,transparent:true,opacity:.75})));hooks.onCommonSkin?.();if(!saved['common-skin-first-view']){saved['common-skin-first-view']=true;const box=document.getElementById('toggle-brainsight-surface');box.checked=false;box.dispatchEvent(new Event('change'));}panel.dataset.commonSkin=skin.status;});
     }
     applyVisibility();

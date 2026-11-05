@@ -65,7 +65,7 @@ def build_common_skin(source, cap, matrix, old_mesh, targets, marker, output):
     review_path=output/'surface-review.json'
     review=json.loads(review_path.read_text()) if review_path.exists() else {}
     if review.get('surface_sha256')==data['surface_sha256'] and review.get('verified') is True and review.get('evidence'):
-        data.update(verified=True,status='anatomically_reviewed',review=review)
+        data.update(verified=True,status='user_accepted_visual_qc' if review.get('scope')=='user_visual_qc_acceptance' else 'anatomically_reviewed',review=review)
     else:data.update(verified=False,status='provisional_requires_anatomical_review')
     (output/'audit.json').write_text(json.dumps(data,indent=2))
     return mesh,data
@@ -98,5 +98,5 @@ def qc_slices(source,cap,matrix,old,new,targets,marker,path,marker_label="Confir
                 # Label includes off-plane distance so crosshairs never imply an exact slice hit.
                 ax.annotate(f'{label} ({xyz[axis]-index:+.1f} vox)',(xyz[remaining[0]],xyz[remaining[1]]),fontsize=6,color=color)
             ax.set_title(('Cap MRI' if row<2 else 'Source MRI')+f' axis {axis}, slice {index}');ax.set_xlim(center[remaining[0]]-70,center[remaining[0]]+70);ax.set_ylim(center[remaining[1]]-60,center[remaining[1]]+60)
-    axes[0,0].legend(fontsize=7);fig.suptitle('Before/after boundary QC: orange old mask, green unsmoothed cap-free intensity boundary. Provisional, review required.')
+    axes[0,0].legend(fontsize=7);fig.suptitle('Before/after boundary QC: orange old mask, green unsmoothed cap-free intensity boundary. Current review status is recorded in the report.')
     fig.tight_layout();fig.savefig(path,dpi=140);plt.close(fig)

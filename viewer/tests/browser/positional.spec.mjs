@@ -13,11 +13,13 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   await expect(page.locator('#stage')).toHaveAttribute('data-subject','r-02');
   const panel=page.locator('#dist #aim1-metrics #positional-panel');
   await expect(panel).toHaveCount(1);
+  await expect(page.locator('#metrics-panel')).toHaveCount(0);
+  await expect(page.getByText('No Brainsight data yet.',{exact:false})).toHaveCount(0);
   await expect(panel.getByRole('status')).toContainText('comparisons available',{timeout:30000});
   if(report.common_skin){
     await expect(panel).toHaveAttribute('data-common-skin',report.common_skin.status);
     await expect(panel.locator('.sma-projection-result')).toContainText('SMA scalp-projected localization difference (mm)');
-    await expect(panel.locator('.sma-projection-result')).toContainText('PROVISIONAL');
+    await expect(panel.locator('.sma-projection-result')).toContainText(report.sma_projection.qc.toUpperCase());
     const parent=page.locator('#toggle-brainsight-parent');await parent.uncheck();
     await expect(page.locator('#toggle-brainsight-targets')).toHaveAttribute('data-render-visible','false');await parent.check();
     for(const name of ['SMA','SMA Skin']){
@@ -36,7 +38,7 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   if(report.brainsight){
     await expect(panel).toHaveAttribute('data-brainsight-rendered',String(report.brainsight.targets.length));
     await expect(page.locator('[data-bs-target]')).toHaveCount(0);
-    await expect(panel).toHaveAttribute('data-brainsight-shape','pyramid');
+    await expect(panel).toHaveAttribute('data-brainsight-shape','sphere');
     await expect(panel).toHaveAttribute('data-scalp-projections',String(report.cap_points.length+report.brainsight.targets.length));
     await expect(panel).toContainText('Imported Brainsight targets');
     await expect(panel).toContainText('Registered overlay in cap MRI RAS mm');
