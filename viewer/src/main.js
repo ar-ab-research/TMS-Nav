@@ -20,7 +20,7 @@ let review = null, currentMarkers = null, currentKey = "";
 
 const SCALP_COLOR = 0xcccccc;
 const COIL_COLOR = 0x1f77b4;
-const TARGET_COLOR = 0x111111;
+const TARGET_COLOR = 0xff9f43;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x15171c);
@@ -451,7 +451,7 @@ function addEeg(markers) {
 
 function addFiducials(markers) {
   for (const marker of markers) {
-    const mesh = new THREE.Mesh(unitDiamond, new THREE.MeshStandardMaterial({color: 0xef75c6}));
+    const mesh = new THREE.Mesh(unitDiamond, new THREE.MeshStandardMaterial({color: 0xef5350}));
     mesh.position.fromArray(marker.position); mesh.scale.setScalar(3.5);
     mesh.userData.marker = marker; fiducialGroup.add(mesh);
     addLabel(mesh, marker.anatomical_label || marker.label);
@@ -494,7 +494,7 @@ function setCoilOpacity(v) {
 }
 
 function addTargets(targets) {
-  // small black dots at the protocol markers, size driven by the slider. an
+  // Orange dots at the protocol markers, size driven by the slider. an
   // optional marker, cz, is drawn see-through and says so on its label
   for (const t of targets) {
     const mesh = new THREE.Mesh(

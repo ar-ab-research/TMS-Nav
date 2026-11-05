@@ -14,32 +14,46 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   const panel=page.locator('#dist #aim1-metrics #positional-panel');
   await expect(panel).toHaveCount(1);
   await expect(panel.getByRole('status')).toContainText('comparisons available',{timeout:30000});
-  await expect(panel.locator('.positional-layer input')).toHaveCount(6);
+  await expect(panel.locator('.positional-layer input')).toHaveCount(0);
+  for(const id of ['toggle-brainsight-surface','toggle-brainsight-targets','toggle-scalp-projections']){
+    const box=page.locator('#ui #'+id);await expect(box).toBeVisible();await expect(box).toBeEnabled();
+    await box.uncheck();await expect(box).toHaveAttribute('data-render-visible','false');
+    await box.check();await expect(box).toHaveAttribute('data-render-visible','true');
+  }
   if(report.brainsight){
     await expect(panel).toHaveAttribute('data-brainsight-rendered',String(report.brainsight.targets.length));
-    for(const t of report.brainsight.targets){
-      await expect(page.locator('[data-bs-target]').filter({hasText:t.name+' · raw'})).toBeVisible();
-    }
+    await expect(page.locator('[data-bs-target]')).toHaveCount(0);
+    await expect(panel).toHaveAttribute('data-brainsight-shape','pyramid');
+    await expect(panel).toHaveAttribute('data-scalp-projections',String(report.cap_points.length+report.brainsight.targets.length));
     await expect(panel).toContainText('Imported Brainsight targets');
     await expect(panel).toContainText('Registered overlay in cap MRI RAS mm');
     await expect(panel).toHaveAttribute('data-overlay-frame','cap_MRI_RAS_mm');
     await expect(panel).toContainText('Scalp-entry localization difference (mm)');
     await panel.getByText('Registration QC', {exact:false}).click();
     await expect.poll(()=>panel.locator('img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
-    const surface=panel.locator('label').filter({hasText:'Registered Brainsight surface'}).locator('input');
+    const surface=page.locator('#toggle-brainsight-surface');
     await surface.uncheck();await expect(surface).not.toBeChecked();await surface.check();
   }
   await expect(panel.getByRole('button',{name:'Reload analysis'})).toHaveCSS('background-color','rgb(42, 48, 60)');
   await expect(panel).toContainText('Cap projections');
   for(const point of report.cap_points||[])await expect(panel).toContainText(point.label);
-  await panel.locator('.positional-layer input').first().uncheck();
-  await expect(panel.locator('.positional-layer input').first()).not.toBeChecked();
+  await page.locator('#toggle-scalp-projections').uncheck();
+  await expect(page.locator('#toggle-scalp-projections')).toHaveAttribute('data-render-visible','false');
   await panel.getByRole('button',{name:'Reload analysis'}).click();
   await expect(panel.getByRole('status')).toContainText('comparisons available');
+  await expect(page.locator('#toggle-scalp-projections')).not.toBeChecked();await page.locator('#toggle-scalp-projections').check();
   const download=page.waitForEvent('download');await panel.getByRole('button',{name:'Export JSON'}).click();
   expect((await download).suggestedFilename()).toBe('positional.json');
   if(report.brainsight)await expect(panel).toHaveAttribute('data-brainsight-rendered',String(report.brainsight.targets.length));
   await panel.scrollIntoViewIfNeeded();
-  await page.screenshot({path:'test-results/positional-local.png'});
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const beforeTargets=await page.locator('#c').screenshot();
+  await page.locator('#toggle-brainsight-targets').uncheck();
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const withoutTargets=await page.locator('#c').screenshot();
+  expect(beforeTargets.equals(withoutTargets)).toBe(false);
+  await page.locator('#toggle-brainsight-targets').check();
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  await page.screenshot({path:'test-results/positional-layers.png'});
   expect(errors).toEqual([]);
 });

@@ -191,6 +191,19 @@ def reviewed_rows(subject, mesh, markers, brainsight, review, provenance):
                  measurement='scalp-entry localization difference (mm)',provenance=provenance)
         candidates=[t for t in brainsight['targets'] if t['internal_target']==site]
         row['brainsight_candidates']=candidates
+        issues=[]
+        if not candidates:issues.append('Missing planned target for '+site)
+        if candidates:
+            if not identities:issues.append('No review bound to both MRI identities')
+            if not reg.get('verified'):issues.append('Registration anatomical review is not confirmed')
+            mapping=review.get('mappings',{}).get(site,{})
+            if mapping.get('confirmed') is not True or not mapping.get('evidence'):
+                issues.append('Cap marker-to-target mapping is unconfirmed')
+            if not any(sem.get('verified') is True and sem.get('evidence') and
+                       (sem.get('documented_scalp_point') or ('outside' in sem and 'inside' in sem))
+                       for name,sem in review.get('semantics',{}).items() if name in [t['name'] for t in candidates]):
+                issues.append('No documented scalp point or verified inward trajectory')
+        row['qc_issues']=issues
         try:
             if not candidates:raise ValueError('Missing planned target for '+site)
             if not identities:raise ValueError('Review matching both MRI hashes and confirmed marker mapping required')

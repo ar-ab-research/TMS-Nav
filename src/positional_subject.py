@@ -69,7 +69,8 @@ def subject_report(subject, root=Path('.')):
             target['position']=apply_affine(matrix,target['position_source']).tolist()
             if target.get('orientation_export') is not None:
                 target['orientation_cap']=(matrix[:3,:3]@np.array(target['orientation_export'])).tolist()
-            _,offset=project(mesh,target['position'])
+            projected,offset=project(mesh,target['position'])
+            target['exploratory_scalp_projection']=dict(position=projected,distance_mm=offset,method='closest scalp triangle; exploratory only',qc='not a verified scalp-entry point')
             target['raw_offset_to_common_scalp_mm']=offset
             target['point_semantics']='unresolved: export has coordinates/orientation but no scalp-contact designation'
             target['scalp_point_qc']='off_common_scalp' if offset>.1 else 'near_scalp_semantics_still_unverified'

@@ -11,9 +11,9 @@ Open **http://127.0.0.1:1234**, select **r-02**, and click **Reload analysis**. 
 
 ## Display and measurements
 
-Brainsight scalp and raw targets overlay the cap MRI in **cap MRI RAS world millimeters**, with no viewer offsets. The cap scalp is the common measurement surface. Six independent toggles control original cap points, projected cap points, raw Brainsight points/trajectories, verified Brainsight scalp points, comparison lines and the registered source surface. The latter is a translucent display overlay only.
+Brainsight scalp and raw targets overlay the cap MRI in **cap MRI RAS world millimeters**, with no viewer offsets. The cap scalp is the common measurement surface. Use the existing left **LAYERS** panel: MRI fiducials (red diamonds), Brainsight targets (green pyramids), Brainsight MRI surface (lavender scalp), one **Scalp projections** toggle (translucent red/green dots for both methods), verified entries and comparison lines. Choices persist across reloads. The latter is a translucent display overlay only.
 
-**Imported Brainsight targets** shows **scalp-entry localization difference (mm)** for valid confirmed pairs, or **Unavailable**. This is not cortical targeting error. Raw-target offsets to scalp are **QC only**, never substitute entry points.
+**Imported Brainsight targets** shows **scalp-entry localization difference (mm)** for valid confirmed pairs, or **Unavailable**. This is not cortical targeting error. Raw-target offsets to scalp and the new Brainsight closest-triangle projections are **exploratory/QC only**, never substitute entry points. The registered extracted surface is scalp, not a cortical brain mesh.
 
 The supplied export contains SMA and SMA Skin, automatically assigned to internal SMA with variants preserved. F4/right DLPFC is absent. “SMA Skin” is approximately 30.5 mm off the common scalp after registration. Its name does not verify scalp contact. Export columns contain position/orientation but no documented scalp-entry designation or unambiguous inward planned segment. Primary distances also require confirmed cap-marker identities; proximity/order do not establish identity.
 

@@ -1,27 +1,26 @@
-# Aim 1 registered-overlay implementation report
+# Aim 1 layers and unavailable-result audit
 
-## Implemented
+## Changes
 
-- Persisted `tms312` runtime requirement in AGENTS.md; all Python/Node work for this task used that environment.
-- Added deterministic source-to-cap rigid MRI registration, explicit LPS/RAS and direction conversion, inverse/determinant checks, hash-bound cache and before/after anatomical QC montage.
-- Inspected actual anatomical QC: brain boundaries, midline and ventricles align across nine registered views. Recorded technical agent-review evidence locally; independent patient/clinical accuracy remains unvalidated.
-- Removed side-by-side layout and display offsets. Source surface/points are transformed physically into cap MRI RAS mm; common cap mesh remains the measurement surface. Added independently toggleable translucent registered surface.
-- Preserved raw target positions/orientations and transformed copies. Export has no documented scalp-entry designation or inward planned segment; a named Skin target is not accepted on name alone. Raw distance-to-scalp diagnostics do not substitute a scalp entry.
-- Added confirmed marker mapping, MRI identity, registration-review and semantic gates. Source-frame verified segment endpoints are transformed into cap frame before direction/intersection checks. Missing sites remain explicit and excluded.
-- Top imported-target table and exports use **scalp-entry localization difference (mm)**. Valid measurements retain compatibility distance fields and add `scalp_entry_localization_difference_mm`. Unresolved measurements remain unavailable.
-- Added sidebar registration QC images and local review-template generation; updated existing usage guide.
+- Added Brainsight MRI surface, Brainsight targets and one combined scalp-projection control to the existing left **LAYERS** panel. Removed duplicate right-side layer controls; choices persist across reloads.
+- Brainsight targets are green pyramids; MRI fiducials are red diamonds. Closest-triangle projections use translucent matching green/red spheres. Source MRI surface is lavender; template targets orange; existing coil blue, EEG cyan and landmarks yellow remain distinct.
+- Source extraction is labeled **scalp**, not cortical brain: no validated cortical segmentation was supplied.
+- Added Brainsight target projections as explicitly **exploratory** display data. They never become verified entry points or enable primary distances. Raw coordinates remain unchanged.
+- Disabled verified-entry/line controls when no valid pairs exist. Expanded QC diagnostics so the table lists every known blocker instead of only the first exception.
 
-## Verification
+## Why fields are unavailable
 
-- Full Python suite: **93 passed**. Final positional suite: **13 passed**; endpoint test passed after adding registered-surface/QC resources.
-- JS suite: **21 passed**. Production viewer build passed.
-- Actual Chrome acceptance passed: registered target overlay, six independent controls, source-surface toggle, QC image loading, reload and export. Inspected actual screenshot; single overlaid head, no layout translation.
-- Known-distance, nonidentity registration direction, LPS/RAS, transformed trajectory, missing-target, unconfirmed-mapping and false Skin/scalp-contact tests passed.
-- Generated registration files, reports, images and templates remain ignored locally. Unrelated staged registry edit preserved.
+| Field | Verified cause | Required resolution |
+|---|---|---|
+| SMA / SMA Skin localization difference | No identity-bound `comparison/review.json`; cap marker mapping unconfirmed; no documented planned scalp point or verified inward segment. Skin-named raw target is off the common scalp. | Confirm exact cap/target mapping and supply documented scalp/trajectory semantics. A name or exploratory projection is insufficient. |
+| Right DLPFC / F4 difference | Export contains no corresponding planned target. | Supply the actual target; do not reuse SMA. |
+| Derived entries and comparison lines | No valid primary pairs, so no derived geometry exists. | Resolve the above inputs. |
 
-## Unresolved
+Registration and imported raw-target rendering succeeded; they are not causing these unavailable results. Invalid pairs remain excluded from summaries.
 
-- Supplied planned entry semantics and cap-marker identities are not confirmed. Skin-named raw position is off the common scalp. Primary distances therefore remain unavailable; no exploratory projection was substituted.
-- Missing planned site requires its actual target, not another site's target.
-- Independent export validation and patient anatomical/registration validation remain pending.
-- Prior external push rejection remains unresolved; no retry/bypass attempted.
+## Validation
+
+- Actual local report regenerated; raw/registered points and exploratory projection data retained locally.
+- Positional suite: 14 passed, including proof that exploratory projection cannot enable a primary measurement. Full suite: 93 passed before adding that regression.
+- Production build passed. Actual Chrome LAYERS visibility/persistence, pyramid geometry, projection count and canvas-pixel toggle check passed; final screenshot inspected. JS suite: 21 passed.
+- Private data/reports/screenshots ignored; unrelated staged registry change preserved. Prior blocked push not retried.

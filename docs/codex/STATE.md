@@ -1,26 +1,27 @@
 # Codex state
 
-Updated: 2026-11-04
+Updated: 2026-11-05
 
-## Objective / completed
-- Registered Brainsight source MRI to cap MRI; removed side-by-side layout and viewer translations. Surfaces/raw points overlay in cap RAS mm with independent controls.
-- Added rigid registration/QC module, hash-bound cache and technical anatomical-review evidence locally. Primary measurements use common cap scalp only.
-- Confirmed mapping/registration/semantic gates; verified segment transforms/intersections; explicit missing sites. Skin name never establishes entry semantics.
-- Sidebar and export measurement label: scalp-entry localization difference (mm). QC image and review template available locally.
-- Persisted user requirement: Python and Node/npm work must use micromamba tms312 (also in AGENTS.md).
+## Current objective / completed
+- Consolidated positional visibility controls in left LAYERS: registered source scalp, green pyramid targets, and combined red/green translucent projection spheres; removed duplicate right-side controls/target annotations.
+- Fiducials red diamonds; source surface lavender; template targets orange; existing coil/EEG/landmark colors remain distinct. Accurate scalp labeling, no claimed cortical segmentation.
+- Added labeled exploratory Brainsight closest-triangle projections to local JSON/CSV, without promoting them to verified entries or primary distances.
+- Expanded per-target QC reasons; disabled geometry controls when no verified pairs exist. Concise unavailable-result audit in existing positional report.
 
 ## Verified
-- Full Python suite 93 passed; final focused suite 13 passed; updated API endpoint test passed.
-- JS 21 passed; production build and actual Chrome overlay/QC/toggle/reload/export acceptance passed. Visually inspected registration and single-head overlay.
-- Technical registration alignment reviewed; independent patient accuracy unvalidated. No private data/coordinates in checkpoints; generated artifacts ignored.
+- Full Python suite 93 passed before final added projection-gating regression; focused positional suite 14 passed including it.
+- Actual Chrome acceptance/pixel toggle check passed; screenshot inspected for visible pyramids, colored projections and left controls. Production build passed; JS suite 21 passed.
+- Local CLI regenerated outputs. Generated patient data/projections/screenshots remain ignored; no private details stored in checkpoints.
 
-## Decisions / blockers
-- Primary distances unavailable until exact cap marker mappings and planned scalp/trajectory semantics are confirmed; missing target remains absent.
-- Never substitute raw nearest-point projection for an unverified Brainsight entry. Separate numerical agreement from anatomical accuracy.
-- Existing staged viewer/src/datasetRegistry.js unrelated edit remains preserved and excluded.
-- Prior automatic-review rejection of external push remains unresolved; do not bypass/retry without authorization resolution.
+## Assumptions / blockers
+- Primary measurements still require identity-bound confirmed marker mapping and documented scalp point/inward segment; missing site remains absent. Registration/rendering are not the reason for unavailable differences.
+- New nearest-point target projections are exploratory visualization only.
+- Use micromamba tms312 for all Python/Node work.
+
+## Uncommitted changes / delivery
+- Task files delivered in [codex] commit; verify hash in Git.
+- Existing staged viewer/src/datasetRegistry.js preserved/excluded. Previous automatic-review rejection of external push unresolved; no retry/bypass.
 
 ## Next actions
-1. Complete local review template with identity-bound confirmed mapping and documented entry semantics when available; rerun --subject and Reload analysis.
-2. Validate coordinates against independent export and review registration/anatomy independently.
-3. Inspect delivery commit in Git; all task files committed with [codex] prefix.
+1. Refresh local viewer; select subject and Reload analysis. Left LAYERS controls all visibility.
+2. Complete confirmed mapping/entry semantics when available; validate independent export and patient anatomy separately.

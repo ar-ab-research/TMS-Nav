@@ -176,3 +176,17 @@ def test_name_does_not_establish_scalp_entry():
                 semantics={'SMA Skin':dict(frame='cap_MRI_RAS_mm',documented_scalp_point=True,verified=True,evidence='synthetic claim')})
     rows=reviewed_rows('s',mesh,markers,bs,review,{})
     assert rows[0]['qc']=='invalid' and 'off scalp' in rows[0]['reason']
+
+
+def test_exploratory_projection_never_becomes_entry():
+    from src.positional import reviewed_rows
+    mesh=pv.Cube(bounds=(-10,10,-10,10,-10,10)).triangulate()
+    reg=dict(verified=True,source_sha256='a'*64,target_sha256='b'*64,matrix=np.eye(4).tolist())
+    target=dict(name='SMA Skin',internal_target='SMA',position=[0,0,0],
+                exploratory_scalp_projection=dict(position=[0,0,10],method='exploratory only'))
+    review=dict(source_mri_sha256='a'*64,marker_mri_sha256='b'*64,
+                mappings=dict(SMA=dict(marker='cap',brainsight='SMA Skin',confirmed=True,evidence='synthetic')))
+    rows=reviewed_rows('s',mesh,dict(fiducials=[dict(name='cap',position=[0,0,12])]),
+                       dict(registration=reg,targets=[target]),review,{})
+    assert rows[0]['qc']=='invalid' and 'distance_mm' not in rows[0]
+    assert 'No documented scalp point or verified inward trajectory' in rows[0]['qc_issues']

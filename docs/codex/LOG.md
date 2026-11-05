@@ -93,3 +93,10 @@ rather than assuming it from this log.
 - Confirmed mapping/semantic gates and transformed segment intersection path implemented. Export metadata does not establish scalp contact or an inward trajectory; unresolved primary differences remain unavailable, never snapped/projected as a substitute.
 - Persisted tms312 runtime requirement. Generated data/QC/review artifacts ignored; unrelated staged registry preserved; prior blocked push not retried.
 - Verified: full Python 93 passed; final positional 13 passed; updated endpoint test passed; JS 21 passed; production build passed; actual Chrome overlay/toggle/QC/reload/export acceptance passed and screenshot inspected.
+
+## 2026-11-05 — Unified LAYERS and unavailable-result audit
+
+- Moved positional controls into existing LAYERS. Added green pyramid targets, red fiducials, single translucent red/green projection layer and lavender source scalp; removed annotation-only target display and duplicate right controls.
+- Exploratory target projections explicitly labeled/exported; test confirms they cannot produce primary measurements. Expanded QC issue lists expose all input blockers, not only first exception; missing targets remain explicit.
+- Verified real browser/pixel target-toggle check and inspected final screenshot. Build and JS 21 passed; full Python 93 passed before added regression, final focused 14 passed.
+- Regenerated local data only; existing staged registry unchanged/excluded. Updated concise positional report/guide. tms312 used throughout. Prior blocked push not retried.

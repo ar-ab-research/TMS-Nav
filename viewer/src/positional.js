@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import {PLYLoader} from 'three/examples/jsm/loaders/PLYLoader.js';
-import {CSS2DObject} from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 // Numerical coordinates are native MRI RAS mm; camera/display transforms never enter distances.
 export function positionalViewer(root, getMarkers) {
   const make=(tag,text,className)=>{const el=document.createElement(tag);if(text)el.textContent=text;if(className)el.className=className;return el;};
@@ -11,24 +10,31 @@ export function positionalViewer(root, getMarkers) {
   const reload=make('button','Reload analysis');reload.type='button';toolbar.append(reload);panel.append(toolbar);
   const status=make('p',null,'hint');status.setAttribute('role','status');panel.append(status);
   const results=make('div');panel.append(results);
-  const layers=make('details');layers.open=true;layers.append(make('summary','Comparison layers'));panel.append(layers);
   const sourceHead=new THREE.Group();root.add(sourceHead);
   const sourceRaw=new THREE.Group();root.add(sourceRaw);
   const groups={};
-  for(const [name,color] of [['Original cap markers','#ffaa00'],['Projected cap points','#00ffff'],['Raw Brainsight / trajectories','#ff00ff'],['Brainsight scalp points','#00ff00'],['Comparison lines','#ffffff'],['Registered Brainsight surface','#91a4bc']]) {
-    const group=new THREE.Group();groups[name]=group;root.add(group);
-    const label=make('label',null,'positional-layer'),box=make('input');box.type='checkbox';box.checked=true;
-    box.onchange=()=>{group.visible=box.checked;if(name==='Raw Brainsight / trajectories')sourceRaw.visible=box.checked;if(name==='Registered Brainsight surface')sourceHead.visible=box.checked;};
-    const swatch=make('span',null,'positional-swatch');swatch.style.background=color;
-    label.append(box,swatch,document.createTextNode(name));layers.append(label);
+  const controls=[];
+  let saved={};try{saved=JSON.parse(localStorage.getItem('positional-layers-v2')||'{}');}catch{}
+  for(const [name,id,group] of [
+    ['Projected cap points','toggle-scalp-projections',new THREE.Group()],
+    ['Raw Brainsight / trajectories','toggle-brainsight-targets',sourceRaw],
+    ['Brainsight scalp points','toggle-scalp-entries',new THREE.Group()],
+    ['Comparison lines','toggle-comparison-lines',new THREE.Group()],
+    ['Registered Brainsight surface','toggle-brainsight-surface',sourceHead]]){
+    groups[name]=group;if(group!==sourceRaw&&group!==sourceHead)root.add(group);
+    const box=document.getElementById(id);box.checked=saved[id]??true;
+    const apply=()=>{group.visible=box.checked;box.dataset.renderVisible=String(group.visible);};
+    box.addEventListener('change',()=>{saved[id]=box.checked;localStorage.setItem('positional-layers-v2',JSON.stringify(saved));apply();});
+    apply();controls.push(box);
   }
   const imported=make('details');imported.append(make('summary','Import results JSON'));
   const input=make('input');input.type='file';input.accept='.json';input.setAttribute('aria-label','Import positional results JSON');imported.append(input);panel.append(imported);
   let payload=null,revision=0;
-  function dot(group,p,color){if(!p)return;const mesh=new THREE.Mesh(new THREE.SphereGeometry(2),new THREE.MeshBasicMaterial({color}));mesh.position.fromArray(p);group.add(mesh);}
+  function dot(group,p,color,opacity=1){if(!p)return;const mesh=new THREE.Mesh(new THREE.SphereGeometry(1.8),new THREE.MeshBasicMaterial({color,transparent:opacity<1,opacity,depthTest:false,depthWrite:false}));mesh.position.fromArray(p);mesh.renderOrder=12;group.add(mesh);}
+  function targetShape(position,name){const mesh=new THREE.Mesh(new THREE.ConeGeometry(3.8,7,4),new THREE.MeshBasicMaterial({color:0x43d17a,depthTest:false,depthWrite:false,transparent:true,opacity:1}));mesh.rotation.x=Math.PI/2;mesh.position.fromArray(position);mesh.renderOrder=10;mesh.name='Brainsight: '+name;sourceRaw.add(mesh);}
   function line(group,a,b,color){if(!a||!b)return;group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(...a),new THREE.Vector3(...b)]),new THREE.LineBasicMaterial({color})));}
   function dispose(group){for(const c of [...group.children]){c.traverse(n=>{n.geometry?.dispose();n.material?.dispose();n.element?.remove();});group.remove(c);}}
-  function clear(){payload=null;results.replaceChildren();dispose(sourceRaw);for(const c of [...sourceHead.children]){c.geometry?.dispose();c.material?.dispose();sourceHead.remove(c);}panel.removeAttribute('data-brainsight-rendered');for(const g of Object.values(groups)){for(const c of [...g.children]){c.geometry?.dispose();c.material?.dispose();g.remove(c);}}}
+  function clear(){payload=null;results.replaceChildren();panel.removeAttribute('data-brainsight-rendered');panel.removeAttribute('data-overlay-frame');for(const group of Object.values(groups))dispose(group);for(const box of controls)box.disabled=true;}
   function table(headers,rows){const t=make('table',null,'agree positional-table');const head=make('thead'),tr=make('tr');for(const h of headers)tr.append(make('th',h));head.append(tr);t.append(head);const body=make('tbody');for(const row of rows){const tr=make('tr');for(const value of row)tr.append(make('td',String(value)));body.append(tr);}t.append(body);return t;}
   function assertPoint(p){if(!Array.isArray(p)||p.length!==3||p.some(v=>typeof v!=='number'||!Number.isFinite(v)))throw Error('Invalid result coordinates');}
   function checkMarker(name,p,markers){assertPoint(p);const marker=markers.fiducials?.find(m=>m.name===name);if(!marker||marker.position.some((v,i)=>Math.abs(v-p[i])>1e-6))throw Error('Cap markers changed; rerun analysis before rendering.');}
@@ -46,18 +52,20 @@ export function positionalViewer(root, getMarkers) {
     }
     for(const p of data.cap_points||[]){checkMarker(p.name,p.raw,markers);assertPoint(p.scalp);}
     for(const r of rows){
-      dot(groups['Original cap markers'],r.eeg_raw,0xffaa00);dot(groups['Projected cap points'],r.eeg_scalp,0x00ffff);
-      dot(groups['Raw Brainsight / trajectories'],r.brainsight_raw,0xff00ff);
-      line(groups['Raw Brainsight / trajectories'],r.trajectory?.outside,r.trajectory?.inside,0xff00ff);
-      if(r.qc==='valid'){dot(groups['Brainsight scalp points'],r.brainsight_scalp,0x00ff00);line(groups['Comparison lines'],r.eeg_scalp,r.brainsight_scalp,0xffffff);}
+      if(!(data.cap_points||[]).some(p=>p.name===r.marker_name))dot(groups['Projected cap points'],r.eeg_scalp,0xef5350,.45);
+      if(!data.brainsight&&r.brainsight_raw)targetShape(r.brainsight_raw,r.brainsight_name);
+
+      line(groups['Raw Brainsight / trajectories'],r.trajectory?.outside,r.trajectory?.inside,0x43d17a);
+      if(r.qc==='valid'){dot(groups['Brainsight scalp points'],r.brainsight_scalp,0x43d17a);line(groups['Comparison lines'],r.eeg_scalp,r.brainsight_scalp,0xffffff);}
     }
-    for(const p of data.cap_points||[]){dot(groups['Original cap markers'],p.raw,0xffaa00);dot(groups['Projected cap points'],p.scalp,0x00ffff);}
+    for(const p of data.cap_points||[])dot(groups['Projected cap points'],p.scalp,0xef5350,.45);
     const valid=rows.filter(r=>r.qc==='valid').length;
     status.textContent=`${markers.subject} · ${valid}/${rows.length} comparisons available`;
-    results.append(table(['Target / cap','Scalp-entry localization difference (mm)'],rows.map(r=>[`${r.target==='right_DLPFC'?'Right DLPFC':r.target} / ${r.cap_label}`,r.qc==='valid'?r.distance_mm.toFixed(3)+' mm':'Unavailable'])));
+    results.append(table(['Target / cap','Scalp-entry localization difference (mm)'],rows.map(r=>[`${r.target==='right_DLPFC'?'Right DLPFC':r.target} / ${r.cap_label}`,r.qc==='valid'?r.distance_mm.toFixed(3)+' mm':'Unavailable: '+(r.qc_issues?.join('; ')||r.reason)])));
     if(data.project_inventory?.planned_names?.length)results.append(make('p','Project targets: '+data.project_inventory.planned_names.join(', '),'hint'));
     const blockers=data.blockers||[...new Set(rows.filter(r=>r.qc!=='valid').map(r=>r.reason))];
     if(blockers.length){const detail=make('details');detail.open=true;detail.append(make('summary','Required inputs'));const list=make('ul');for(const reason of blockers)list.append(make('li',reason));detail.append(list);results.append(detail);}
+    results.append(make('p','Scalp projection layer: red fiducials and green Brainsight points. Brainsight closest-triangle projections are exploratory and do not enable primary comparisons.','hint'));
     if(data.cap_points?.length){const detail=make('details');detail.open=true;detail.append(make('summary','Cap projections · mm'));detail.append(table(['Marker','Offset to scalp'],data.cap_points.map(p=>[p.label,p.projection_distance_mm.toFixed(3)])));results.append(detail);}
     for(const r of rows.filter(r=>r.qc==='valid'))results.append(make('p',`${r.cap_label}: ${r.method}`,'hint'));
     if(valid){const summary=make('details');summary.append(make('summary','Across-subject summary · mm'));const fmt=v=>Number.isFinite(v)?v.toFixed(3):'—';summary.append(table(['Target','n','Mean','SD','Median','IQR'],Object.entries(data.summary||{}).map(([k,v])=>[k,v.n,fmt(v.mean),fmt(v.SD),fmt(v.median),fmt(v.IQR)])));results.append(summary);}
@@ -65,21 +73,29 @@ export function positionalViewer(root, getMarkers) {
       const bs=data.brainsight;
       if(bs.frame!=='cap_MRI_RAS_mm'||bs.marker_mri_sha256!==markers.source_sha256||bs.registration?.numerical_qc!=='passed')throw Error('Registered cap MRI frame unresolved');
       const detail=make('details');detail.open=true;detail.append(make('summary','Imported Brainsight targets'));
-      detail.append(table(['Export name','Internal site','Scalp-entry localization difference (mm)'],bs.targets.map(t=>{const r=rows.find(r=>r.brainsight_name===t.name&&r.qc==='valid');return [t.name,t.internal_target||'Unassigned',r?r.distance_mm.toFixed(3):'Unavailable'];})));
+      detail.append(table(['Export name','Internal site','Scalp-entry localization difference (mm)'],bs.targets.map(t=>{const r=rows.find(r=>r.brainsight_name===t.name&&r.qc==='valid');return [t.name,t.internal_target||'Unassigned',r?r.distance_mm.toFixed(3):'Unavailable — see QC reasons below'];})));
       detail.append(make('p','Raw target offset to common scalp (QC only): '+bs.targets.map(t=>`${t.name}: ${t.raw_offset_to_common_scalp_mm.toFixed(2)} mm`).join('; '),'hint'));
       detail.append(make('p','Registered overlay in cap MRI RAS mm. Raw target positions are preserved; a raw-point offset is not the scalp-entry localization difference.','hint'));
       const qc=make('details');qc.append(make('summary','Registration QC · '+bs.registration.anatomical_qc.replaceAll('_',' ')));const qcImage=make('img');qcImage.src=`/api/subjects/${encodeURIComponent(markers.subject)}/registration-qc.png`;qcImage.alt='Source-to-cap MRI registration: before and after orthogonal overlays';qcImage.style.width='100%';const qcLink=make('a','Open full QC views');qcLink.href=qcImage.src;qcLink.target='_blank';qcLink.rel='noopener';qc.append(qcLink,qcImage);detail.append(qc);
       results.prepend(detail);
-      for(const t of bs.targets){assertPoint(t.position);dot(sourceRaw,t.position,0xff00ff);const point=sourceRaw.children.at(-1);point.material.depthTest=false;point.renderOrder=10;const label=make('span',t.name+' · raw','brainsight-point-label');label.dataset.bsTarget=t.name;const object=new CSS2DObject(label);object.position.fromArray(t.position);object.position.z+=t.name.toLowerCase().includes('skin')?-9:9;sourceRaw.add(object);}
+      for(const t of bs.targets){
+        assertPoint(t.position);
+        targetShape(t.position,t.name);
+        if(t.exploratory_scalp_projection){assertPoint(t.exploratory_scalp_projection.position);dot(groups['Projected cap points'],t.exploratory_scalp_projection.position,0x43d17a,.45);}
+      }
+      panel.dataset.brainsightShape='pyramid';
+      panel.dataset.scalpProjections=String((data.cap_points||[]).length+bs.targets.filter(t=>t.exploratory_scalp_projection).length);
       const ticket=revision;
       new PLYLoader().load(`/api/subjects/${encodeURIComponent(markers.subject)}/brainsight-overlay.ply`,geometry=>{
         if(ticket!==revision){geometry.dispose();return;}geometry.computeVertexNormals();
-        const overlay=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0x91a4bc,transparent:true,opacity:.16,side:THREE.FrontSide,roughness:.85,depthWrite:false,depthTest:false}));overlay.renderOrder=1;sourceHead.add(overlay);
+        const overlay=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0xb49cdb,transparent:true,opacity:.16,side:THREE.FrontSide,roughness:.85,depthWrite:false,depthTest:false}));overlay.renderOrder=1;sourceHead.add(overlay);
         panel.dataset.brainsightRendered=String(bs.targets.length);
         status.textContent+=` · ${bs.targets.length} Brainsight targets rendered`;
         panel.dataset.overlayFrame='cap_MRI_RAS_mm';
       },undefined,()=>{if(ticket===revision)status.textContent+=' · Brainsight scalp load failed';});
     }
+    for(const box of controls)box.disabled=false;
+    for(const id of ['toggle-scalp-entries','toggle-comparison-lines']){const box=document.getElementById(id);box.disabled=valid===0;box.title=valid?'':'No verified comparison points are available';}
     payload=data;
   }
   async function load(){const ticket=++revision;clear();const markers=getMarkers();if(!markers?.source_sha256){status.textContent='Select an individual subject to load positional analysis.';return;}status.textContent='Loading saved analysis…';try{const response=await fetch(`/api/subjects/${encodeURIComponent(markers.subject)}/positional`);if(ticket!==revision)return;if(!response.ok)throw Error('Could not load analysis');const data=await response.json();if(ticket!==revision)return;render(data);}catch(e){if(ticket!==revision)return;clear();status.textContent=`${e.message}. Run python compare_positions.py --subject ${markers.subject}, then python run_viewer.py.`;}}
