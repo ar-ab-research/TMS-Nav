@@ -115,3 +115,10 @@ rather than assuming it from this log.
 - Brainsight targets now spheres centered at raw MRI-world coordinates. Removed legacy Aim 1 metrics/results HTML and stale review-code references; newer comparison sections retained.
 - Verified focused Python 16 passed, JS 21 passed, actual Chrome acceptance/pixel checks passed, final build passed. An initial browser check found a stale removed-panel reference; corrected and rerun cleanly. Screenshot visually inspected.
 - Updated existing report/usage. All runtime work used tms312; private review/data artifacts ignored. Prior blocked push not retried.
+
+## 2026-11-05 — Viewer launcher cache repair
+
+- Clean main_ab at task start. Reproduced actual Parcel failure resolving obsolete ./sources.js; no current source import exists. Fresh cache built successfully.
+- run_viewer.py now uses a temporary per-session Parcel cache and propagates npm status; usage/report updated. Added tests/test_run_viewer.py covering cache isolation/removal, status and API shutdown.
+- Verified tms312 launcher regression: 1 passed; actual launcher build 1.09 s, viewer HTTP 200, API /api/health HTTP 200. Verification servers stopped. Full suite not repeated.
+- Initial sandbox run could not bind loopback; authorized local verification completed. No private artifacts added.

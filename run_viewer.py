@@ -3,6 +3,7 @@
 import argparse
 from pathlib import Path
 import subprocess
+import tempfile
 import threading
 from src.viewer_service import make_server
 from src.subject_ingest import DERIVATIVE_ROOT, VIEWER_ROOT, _export_viewer
@@ -24,8 +25,18 @@ def main():
         if args.api_only:
             threading.Event().wait()
         else:
-            process=subprocess.Popen(['npm','run','dev','--','--host','127.0.0.1'],cwd=Path(__file__).parent/'viewer')
-            process.wait()
+            # Parcel's persisted graph can retain imports from older checkouts.
+            # Keep caching within this session without reusing that stale graph.
+            with tempfile.TemporaryDirectory(prefix='tms-viewer-parcel-') as cache:
+                process=subprocess.Popen(
+                    ['npm','run','dev','--','--host','127.0.0.1','--cache-dir',cache],
+                    cwd=Path(__file__).resolve().parent/'viewer')
+                try:
+                    return process.wait()
+                finally:
+                    if process.poll() is None:
+                        process.terminate()
+                        process.wait(timeout=10)
     except KeyboardInterrupt: pass
     finally:
         if process and process.poll() is None:
@@ -33,4 +44,4 @@ def main():
         server.shutdown(); server.server_close()
 
 
-if __name__=='__main__': main()
+if __name__=='__main__': raise SystemExit(main())
