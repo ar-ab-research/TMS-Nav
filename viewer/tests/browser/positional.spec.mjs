@@ -15,6 +15,14 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   await expect(panel).toHaveCount(1);
   await expect(panel.getByRole('status')).toContainText('comparisons available',{timeout:30000});
   await expect(panel.locator('.positional-layer input')).toHaveCount(5);
+  if(report.brainsight){
+    await expect(panel).toHaveAttribute('data-brainsight-rendered',String(report.brainsight.targets.length));
+    for(const t of report.brainsight.targets){
+      await expect(page.locator('[data-bs-target]').filter({hasText:t.name+' · raw'})).toBeVisible();
+    }
+    await expect(panel).toContainText('Imported Brainsight targets');
+    await expect(panel).toContainText('Display spacing is not an anatomical distance');
+  }
   await expect(panel.getByRole('button',{name:'Reload analysis'})).toHaveCSS('background-color','rgb(42, 48, 60)');
   await expect(panel).toContainText('Cap projections');
   for(const point of report.cap_points||[])await expect(panel).toContainText(point.label);
@@ -24,6 +32,7 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   await expect(panel.getByRole('status')).toContainText('comparisons available');
   const download=page.waitForEvent('download');await panel.getByRole('button',{name:'Export JSON'}).click();
   expect((await download).suggestedFilename()).toBe('positional.json');
+  if(report.brainsight)await expect(panel).toHaveAttribute('data-brainsight-rendered',String(report.brainsight.targets.length));
   await panel.scrollIntoViewIfNeeded();
   await page.screenshot({path:'test-results/positional-local.png'});
   expect(errors).toEqual([]);

@@ -158,6 +158,8 @@ def make_server(port=8765, workspace=None):
             with workspace.lock:
                 entry = workspace.load(subject)
                 if self.command=='GET':
+                    if action=='brainsight-scalp.ply':
+                        return self.send(200,(workspace.derivatives/subject/'brainsight/scalp.ply').read_bytes(),'application/octet-stream')
                     if action=='positional':
                         report=workspace.derivatives/subject/'positional.json'
                         if not report.exists():

@@ -51,25 +51,34 @@ def subject_report(subject, root=Path('.')):
     projects=sorted(base.glob('*.bsproj')); images=sorted(base.glob('*.nii*'))
     inventory=project_inventory(projects[0]) if len(projects)==1 else dict(planned_names=[])
     blockers=[]
-    if not list((base/'exports').glob('*.txt')):
-        blockers.append('Planned-target text export missing. Export Targets from Brainsight into exports/.')
+    brainsight=None
+    exports=sorted((base/'exports').glob('*.txt'))
+    if not exports:
+        blockers.append('Planned-target text export missing.')
+    elif len(exports)!=1 or len(images)!=1:
+        blockers.append('Expected one planned-target export and one project anatomical image.')
     else:
-        blockers.append('Text export found: complete comparison/manifest.json with reviewed frame and trajectory evidence, then run the manifest command.')
-    blockers.append('SMA/F4 mapping missing: assign exact saved marker names; marker order is not a label.')
-    if not any('dlpfc' in str(n).lower() or str(n).lower()=='f4' for n in inventory['planned_names']):
-        blockers.append('No explicitly named right-DLPFC/F4 planned target found in project inventory; confirm or supply that target.')
-    if len(images)==1:
-        _,_,meta=load_native(images[0]);source_hash=file_hash(images[0])
-        provenance['context']['source_mri_sha256']=source_hash
-        inventory['source_mri_shape']=meta['shape']
-        if source_hash!=markers['source_sha256']:
-            blockers.append('Brainsight anatomy and marker MRI differ: a reviewed source-to-marker MRI registration is required.')
-    blockers.append('Planned scalp point or inward trajectory semantics must be verified before comparing.')
+        brainsight=source_targets(exports[0], images[0], projects[0] if len(projects)==1 else None,
+                                  derivatives/'brainsight')
+        inventory['planned_names']=[t['name'] for t in brainsight['targets']]
+        provenance['context']['source_mri_sha256']=brainsight['source_mri_sha256']
+        if brainsight['source_mri_sha256']!=markers['source_sha256']:
+            blockers.append('Different MRIs: Brainsight is rendered on its own anatomy beside the cap MRI. Cross-MRI distance requires verified registration.')
+    blockers.append('Cap-to-SMA/F4 marker mapping and planned scalp-point/trajectory semantics require review before primary distances.')
+    if brainsight and not any(t['internal_target']=='right_DLPFC' for t in brainsight['targets']):
+        blockers.append('F4/right DLPFC absent from export; no target is substituted.')
     rows=[dict(subject=subject,target=site,cap_label='F4' if site=='right_DLPFC' else 'SMA',
                method='closest scalp triangle / planned scalp entry',qc='invalid',reason='; '.join(blockers),
                provenance=provenance) for site in ('SMA','right_DLPFC')]
+    for row in rows:
+        assigned=[t for t in (brainsight or {}).get('targets',[]) if t['internal_target']==row['target']]
+        row['brainsight_assignment']='named_target' if assigned else 'missing_target'
+        row['brainsight_source_positions']=assigned
+        row['brainsight_source_frame']='source_MRI_RAS_mm'
+        if not assigned:
+            row['reason']='No planned Brainsight target assigned to this site.'
     return dict(frame='native_RAS_mm',status='needs_inputs',rows=rows,summary=summarize(rows),
-                cap_points=cap_points,project_inventory=inventory,blockers=blockers)
+                cap_points=cap_points,project_inventory=inventory,blockers=blockers,brainsight=brainsight)
 
 
 def save_subject_report(subject, root=Path('.')):
@@ -79,3 +88,42 @@ def save_subject_report(subject, root=Path('.')):
     write_results(result['rows'],output)
     output.with_suffix('.json').write_text(json.dumps(result,indent=2,allow_nan=False))
     return result,output.with_suffix('.json')
+
+
+def assign_target(name):
+    """Conservative named-site assignment; preserve variants, never use order or proximity."""
+    import re
+    words=re.sub(r'[^a-z0-9]+',' ',name.lower()).strip().split()
+    if 'sma' in words:
+        return 'SMA'
+    if 'f4' in words or ('right' in words and 'dlpfc' in words):
+        return 'right_DLPFC'
+    return None
+
+
+def source_targets(export, anatomical, project_path, output):
+    """Targets and scalp in the *source* MRI frame, no cross-MRI overlay/measurement."""
+    from efield.brainsight import read_export
+    from src.positional import read_targets
+    from src.head_surface import scalp_surface
+    from src.export_web import web_mesh
+    volume,affine,meta=load_native(anatomical)
+    source_hash=file_hash(anatomical)
+    coord=read_export(export).coord_sys
+    context=dict(coordinate_system=coord,source_mri_sha256=source_hash,marker_mri_sha256=source_hash,
+                 nifti_qform_code=meta['qform_code'],nifti_sform_code=meta['sform_code'],qform_sform_agree=True,
+                 frame_evidence='Supplied project anatomical NIfTI; coded matching native forms validated by load_native; source-only display')
+    imported=read_targets(project_path or export,context,export if project_path else None)
+    for target in imported['targets']:
+        target['internal_target']=assign_target(target['name'])
+        target['mapping_method']='explicit name tokens; variant preserved' if target['internal_target'] else 'unassigned name'
+    output=Path(output);output.mkdir(parents=True,exist_ok=True)
+    stamp=output/'surface.json';mesh_path=output/'scalp.ply'
+    key=dict(source_mri_sha256=source_hash,method='scalp_surface_v1')
+    if not (stamp.exists() and mesh_path.exists() and json.loads(stamp.read_text())==key):
+        mesh=scalp_surface(volume,affine)
+        web_mesh(mesh).save(mesh_path)
+        stamp.write_text(json.dumps(key))
+    return dict(frame='source_MRI_RAS_mm',source_mri_sha256=source_hash,
+                display='separate source anatomy; no cross-MRI registration applied',
+                targets=imported['targets'],provenance=imported['provenance'])

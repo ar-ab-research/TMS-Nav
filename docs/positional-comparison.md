@@ -15,13 +15,13 @@ Output files:
 - `saves/derivatives/subjects/r-02/positional.json`
 - `saves/derivatives/subjects/r-02/positional.csv`
 
-The command works with the files currently supplied: it projects the four saved cap markers onto the full scalp mesh and renders those real points. **SMA/F4 distances are currently unavailable**, for the specific reasons below. The report shows these reasons instead of inventing measurements.
+The command imports the supplied planned-target export, extracts the Brainsight anatomical scalp, and renders **SMA** and **SMA Skin** beside the cap MRI. Both names map automatically to internal **SMA**, with the variant retained. **F4 is absent**, so it is not substituted. Four original cap points and their scalp projections remain visible on the cap MRI. The two heads use separate labeled coordinate frames; their screen spacing is only layout. Primary distances remain unavailable until registration and marker/scalp semantics are reviewed.
 
 ## What the supplied files still need
 
 | Item | Current finding | Required action |
 |---|---|---|
-| Planned target coordinates | `.bsproj` is present; its coordinates are undocumented binary objects. Brainsight is not installed here. | In Brainsight, export planned **Targets** to `saves/brainsight/restore/r-02/exports/planned-targets.txt`. Choose **NIfTI:Q:xxx** for Brainsight ≥2.5.3, **NIfTI:Aligned** for older versions. Include position, orientation and maximum decimal precision. |
+| Planned target coordinates | Export imported successfully; both targets rendered in source MRI coordinates. | No further export needed for this rendering. |
 | Marker mapping | Four saved points are named `manual-1` through `manual-4`, without anatomical labels. | Identify the SMA marker and F4 marker explicitly. No marker-order or SMA=Cz inference. |
 | Right DLPFC | Project inventory lists SMA and SMA Skin, with no explicitly named right-DLPFC/F4 target. | Supply that planned target, or identify its exact name in a corrected project/export. |
 | MRI registration | Project anatomy differs from the MRI used for the saved cap markers. | Supply/review a source-to-marker MRI registration in RAS millimeters. Header coordinates alone do not prove alignment. |
@@ -46,7 +46,7 @@ python compare_positions.py path/to/manifest.json --out saves/derivatives/subjec
 
 ## Viewer and interpretation
 
-Five independent toggles show raw cap points, projected cap points, raw Brainsight targets/trajectories, Brainsight scalp points, and comparison lines. Tables show each target's separation and cap projection offset in millimeters. Export buttons save JSON/CSV, including provenance and QC. Marker or subject changes require rerunning analysis; mismatched saved marker coordinates are rejected.
+Five independent toggles show raw cap points, projected cap points, raw Brainsight targets/trajectories, verified Brainsight scalp points, and valid comparison lines. Source-native raw targets are labeled explicitly; their orientations are retained without inventing trajectories. Tables show each target's separation and cap projection offset in millimeters. Export buttons save JSON/CSV, including provenance and QC. Marker or subject changes require rerunning analysis; mismatched saved marker coordinates are rejected.
 
 The gray surface is **scalp**, not skull. Cap projection uses triangle interiors, not nearest vertices. Primary distance is `||cap_scalp − Brainsight_scalp||₂` in native MRI-world mm, independent of camera/display transforms. Unverified pairs are excluded from summaries. Each target has its own n, mean, sample SD, median and IQR; no equivalence or coil-angle claim follows from these points.
 
@@ -64,7 +64,9 @@ The gray surface is **scalp**, not skull. Cap projection uses triangle interiors
 
 ## Support boundaries and references
 
-Python dependencies: existing `numpy`, `pyvista`, `nibabel`; viewer: Node/npm and `npm ci` in `viewer/`. Adapter API: `src.positional.read_targets(project, context, export=...)`; text format versions **12/14**, explicit millimeters, documented NIfTI frames. Planned Targets remain separate from recorded Samples. Raw names, source/version, orientation and provenance are preserved. Unknown frames, conflicting coded qform/sform, invalid units and missing registration are rejected.
+Python dependencies: existing `numpy`, `pyvista`, `nibabel`; viewer: Node/npm and `npm ci` in `viewer/`. Adapter API: `src.positional.read_targets(project, context, export=...)`; text format versions **12/14**, explicit millimeters, documented NIfTI frames. Legacy `NIfTI:Scanner` is supported only with coded scanner qform and agreeing scanner sform (or absent sform); [Rogue documents its rename to NIfTI:Q:Scanner](https://www.rogue-research.com/blog/page/3/). Planned Targets remain separate from recorded Samples. Raw names, source/version, orientation and provenance are preserved. Unknown frames, conflicting coded qform/sform, invalid units and missing registration are rejected.
+
+Target-name mapping uses exact site tokens: SMA (including named variants) → SMA; F4 or right DLPFC → right_DLPFC; unmatched names stay unassigned. Cap markers are never assigned by this name rule.
 
 Direct `.bsproj` coordinate extraction/network retrieval is unavailable. The read-only SQLite inventory reads names only; it never decodes coordinate blobs. Rogue Research documents a TCP interface and vendor-provided examples, but the complete project-opening/retrieval protocol was not obtained. Request version-matched protocol/examples before extending direct support; no endpoints are guessed.
 

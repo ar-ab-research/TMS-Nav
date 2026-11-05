@@ -82,6 +82,9 @@ def test_http_volume_identity_and_restricted_access(workspace):
         report=dict(frame='native_RAS_mm',rows=[],summary={})
         (work.derivatives/'review-test/positional.json').write_text(json.dumps(report))
         assert json.load(urlopen(base+'/api/subjects/review-test/positional'))==report
+        source_dir=work.derivatives/'review-test/brainsight';source_dir.mkdir(exist_ok=True)
+        (source_dir/'scalp.ply').write_bytes(b'ply\nsynthetic geometry resource')
+        assert urlopen(base+'/api/subjects/review-test/brainsight-scalp.ply').read()==b'ply\nsynthetic geometry resource'
         raw=urlopen(base+'/api/subjects/review-test/volume.nii').read()
         image=nib.Nifti1Image.from_bytes(raw)
         entry=work.load('review-test')

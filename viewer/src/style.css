@@ -1318,3 +1318,5 @@ input[type="range"] {
 .positional-table td, .positional-table th { padding: 7px 4px; border-bottom: 1px solid #30343d; }
 .positional-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
 .positional-panel input[type="file"] { width: 100%; font-size: 11px; margin-top: 6px; }
+.brainsight-point-label { background: #302237e8; border: 1px solid #ad5bba; border-radius: 4px; padding: 3px 6px; color: #ffbaff; font-size: 11px; }
+.brainsight-frame-label { background: #1c2029ee; border: 1px solid #515a6b; border-radius: 6px; padding: 6px 9px; color: #dce4f0; font-size: 12px; }

@@ -40,7 +40,9 @@ def read_targets(entry, context, export=None):
         raise ValueError('Supported text format versions: 12, 14')
     if ex.coord_sys != context['coordinate_system']:
         raise ValueError('Export frame differs from verified context')
-    if not (ex.coord_sys == 'NIfTI:Aligned' or ex.coord_sys.startswith('NIfTI:Q:')):
+    legacy_scanner = (ex.coord_sys == 'NIfTI:Scanner' and context.get('nifti_qform_code') == 1
+                      and context.get('nifti_sform_code') in (0, 1) and context.get('qform_sform_agree') is True)
+    if not (ex.coord_sys == 'NIfTI:Aligned' or ex.coord_sys.startswith('NIfTI:Q:') or legacy_scanner):
         raise ValueError('Use documented NIfTI Aligned/Q export; internal Brainsight space unresolved')
     if not any('Units: millimetres' in h for h in ex.header):
         raise ValueError('Export must explicitly declare millimetres')

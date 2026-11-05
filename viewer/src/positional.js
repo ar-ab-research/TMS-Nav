@@ -1,6 +1,8 @@
 import * as THREE from 'three';
+import {PLYLoader} from 'three/examples/jsm/loaders/PLYLoader.js';
+import {CSS2DObject} from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 // Numerical coordinates are native MRI RAS mm; camera/display transforms never enter distances.
-export function positionalViewer(root, getMarkers) {
+export function positionalViewer(root, getMarkers, hooks={}) {
   const make=(tag,text,className)=>{const el=document.createElement(tag);if(text)el.textContent=text;if(className)el.className=className;return el;};
   const panel=make('section',null,'positional-panel');panel.id='positional-panel';
   panel.append(make('h2','Aim 1 positional scalp comparison'));
@@ -10,11 +12,14 @@ export function positionalViewer(root, getMarkers) {
   const status=make('p',null,'hint');status.setAttribute('role','status');panel.append(status);
   const results=make('div');panel.append(results);
   const layers=make('details');layers.open=true;layers.append(make('summary','Comparison layers'));panel.append(layers);
+  const sourceHead=new THREE.Group();sourceHead.position.x=260;root.add(sourceHead);
+  const sourceRaw=new THREE.Group();sourceHead.add(sourceRaw);
+  const captions=new THREE.Group();root.add(captions);
   const groups={};
   for(const [name,color] of [['Original cap markers','#ffaa00'],['Projected cap points','#00ffff'],['Raw Brainsight / trajectories','#ff00ff'],['Brainsight scalp points','#00ff00'],['Comparison lines','#ffffff']]) {
     const group=new THREE.Group();groups[name]=group;root.add(group);
     const label=make('label',null,'positional-layer'),box=make('input');box.type='checkbox';box.checked=true;
-    box.onchange=()=>{group.visible=box.checked;};
+    box.onchange=()=>{group.visible=box.checked;if(name==='Raw Brainsight / trajectories')sourceRaw.visible=box.checked;};
     const swatch=make('span',null,'positional-swatch');swatch.style.background=color;
     label.append(box,swatch,document.createTextNode(name));layers.append(label);
   }
@@ -23,7 +28,8 @@ export function positionalViewer(root, getMarkers) {
   let payload=null,revision=0;
   function dot(group,p,color){if(!p)return;const mesh=new THREE.Mesh(new THREE.SphereGeometry(2),new THREE.MeshBasicMaterial({color}));mesh.position.fromArray(p);group.add(mesh);}
   function line(group,a,b,color){if(!a||!b)return;group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(...a),new THREE.Vector3(...b)]),new THREE.LineBasicMaterial({color})));}
-  function clear(){payload=null;results.replaceChildren();for(const g of Object.values(groups)){for(const c of [...g.children]){c.geometry?.dispose();c.material?.dispose();g.remove(c);}}}
+  function dispose(group){for(const c of [...group.children]){c.traverse(n=>{n.geometry?.dispose();n.material?.dispose();n.element?.remove();});group.remove(c);}}
+  function clear(){payload=null;results.replaceChildren();dispose(sourceRaw);for(const c of [...sourceHead.children])if(c!==sourceRaw){c.geometry?.dispose();c.material?.dispose();sourceHead.remove(c);}dispose(captions);panel.removeAttribute('data-brainsight-rendered');for(const g of Object.values(groups)){for(const c of [...g.children]){c.geometry?.dispose();c.material?.dispose();g.remove(c);}}}
   function table(headers,rows){const t=make('table',null,'agree positional-table');const head=make('thead'),tr=make('tr');for(const h of headers)tr.append(make('th',h));head.append(tr);t.append(head);const body=make('tbody');for(const row of rows){const tr=make('tr');for(const value of row)tr.append(make('td',String(value)));body.append(tr);}t.append(body);return t;}
   function assertPoint(p){if(!Array.isArray(p)||p.length!==3||p.some(v=>typeof v!=='number'||!Number.isFinite(v)))throw Error('Invalid result coordinates');}
   function checkMarker(name,p,markers){assertPoint(p);const marker=markers.fiducials?.find(m=>m.name===name);if(!marker||marker.position.some((v,i)=>Math.abs(v-p[i])>1e-6))throw Error('Cap markers changed; rerun analysis before rendering.');}
@@ -56,6 +62,25 @@ export function positionalViewer(root, getMarkers) {
     if(data.cap_points?.length){const detail=make('details');detail.open=true;detail.append(make('summary','Cap projections · mm'));detail.append(table(['Marker','Offset to scalp'],data.cap_points.map(p=>[p.label,p.projection_distance_mm.toFixed(3)])));results.append(detail);}
     for(const r of rows.filter(r=>r.qc==='valid'))results.append(make('p',`${r.cap_label}: ${r.method}`,'hint'));
     if(valid){const summary=make('details');summary.append(make('summary','Across-subject summary · mm'));const fmt=v=>Number.isFinite(v)?v.toFixed(3):'—';summary.append(table(['Target','n','Mean','SD','Median','IQR'],Object.entries(data.summary||{}).map(([k,v])=>[k,v.n,fmt(v.mean),fmt(v.SD),fmt(v.median),fmt(v.IQR)])));results.append(summary);}
+    if(data.brainsight){
+      const bs=data.brainsight;
+      if(bs.frame!=='source_MRI_RAS_mm'||bs.source_mri_sha256!==bs.provenance?.context?.source_mri_sha256)throw Error('Source MRI frame mismatch');
+      const detail=make('details');detail.open=true;detail.append(make('summary','Imported Brainsight targets'));
+      detail.append(table(['Export name','Internal site'],bs.targets.map(t=>[t.name,t.internal_target||'Unassigned'])));
+      detail.append(make('p','Shown on the separate Brainsight MRI scalp beside the cap MRI. Display spacing is not an anatomical distance.','hint'));
+      results.prepend(detail);
+      for(const t of bs.targets){assertPoint(t.position);dot(sourceRaw,t.position,0xff00ff);const point=sourceRaw.children.at(-1);point.material.depthTest=false;point.renderOrder=10;const label=make('span',t.name+' · raw','brainsight-point-label');label.dataset.bsTarget=t.name;const object=new CSS2DObject(label);object.position.fromArray(t.position);object.position.z+=t.name.toLowerCase().includes('skin')?-9:9;sourceRaw.add(object);}
+      function caption(text,position){const label=make('span',text,'brainsight-frame-label');const object=new CSS2DObject(label);object.position.fromArray(position);captions.add(object);}
+      caption('Cap MRI · native frame',[0,0,115]);caption('Brainsight MRI · source frame',[260,0,115]);
+      const ticket=revision;
+      new PLYLoader().load(`/api/subjects/${encodeURIComponent(markers.subject)}/brainsight-scalp.ply`,geometry=>{
+        if(ticket!==revision){geometry.dispose();return;}geometry.computeVertexNormals();
+        sourceHead.add(new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0x91a4bc,transparent:true,opacity:.55,side:THREE.DoubleSide,roughness:.85})));
+        panel.dataset.brainsightRendered=String(bs.targets.length);
+        status.textContent+=` · ${bs.targets.length} Brainsight targets rendered`;
+        geometry.computeBoundingBox();const box=geometry.boundingBox.clone();box.translate(sourceHead.position);hooks.frameSource?.(box);
+      },undefined,()=>{if(ticket===revision)status.textContent+=' · Brainsight scalp load failed';});
+    }
     payload=data;
   }
   async function load(){const ticket=++revision;clear();const markers=getMarkers();if(!markers?.source_sha256){status.textContent='Select an individual subject to load positional analysis.';return;}status.textContent='Loading saved analysis…';try{const response=await fetch(`/api/subjects/${encodeURIComponent(markers.subject)}/positional`);if(ticket!==revision)return;if(!response.ok)throw Error('Could not load analysis');const data=await response.json();if(ticket!==revision)return;render(data);}catch(e){if(ticket!==revision)return;clear();status.textContent=`${e.message}. Run python compare_positions.py --subject ${markers.subject}, then python run_viewer.py.`;}}

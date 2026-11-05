@@ -108,3 +108,25 @@ def test_subject_input_qc_preserves_raw_markers(tmp_path):
     assert all(r['qc']=='invalid' and 'distance_mm' not in r for r in result['rows'])
     assert path.exists() and path.with_suffix('.csv').exists()
     assert json.loads((output/'markers.json').read_text())==markers
+
+
+def test_autonomous_named_target_assignment():
+    from src.positional_subject import assign_target
+    assert assign_target('SMA')=='SMA'
+    assert assign_target('SMA Skin')=='SMA'
+    assert assign_target('Right DLPFC')=='right_DLPFC'
+    assert assign_target('F4')=='right_DLPFC'
+    assert assign_target('left DLPFC') is None
+    assert assign_target('unknown') is None
+    assert assign_target('preSMA') is None
+
+
+def test_legacy_scanner_requires_validated_native_header(tmp_path):
+    from efield.poses import CoilPose
+    p=write_fixture(tmp_path/'scanner.txt',[],coord_sys='NIfTI:Scanner',
+                    targets=[CoilPose([1,2,3],[0,1,0],[0,0,1],name='SMA Skin')])
+    ctx=dict(coordinate_system='NIfTI:Scanner',source_mri_sha256='a'*64,marker_mri_sha256='a'*64,
+             frame_evidence='coded scanner forms agree',nifti_qform_code=1,nifti_sform_code=1,qform_sform_agree=True)
+    assert read_targets(p,ctx)['targets'][0]['position']==[1,2,3]
+    with pytest.raises(ValueError):read_targets(p,dict(ctx,qform_sform_agree=False))
+    with pytest.raises(ValueError):read_targets(p,dict(ctx,nifti_qform_code=2))

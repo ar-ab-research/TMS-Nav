@@ -2,29 +2,26 @@
 
 Updated: 2026-11-04
 
-## Current objective
-- Sidebar integration and simplified CLI-to-viewer positional workflow delivered; individualized target measurements await explicit data evidence.
-
-## Completed
-- Positional component moved below existing right-sidebar content with matching dark controls/tables; automatic local API report loading, reload and exports.
-- `compare_positions.py --subject SUBJECT` generates actual cap projections/input-QC or runs reviewed comparison manifest. Preparation fills known paths/hashes; preserves originals/review fields.
-- Read-only project schema/name inventory only; no undocumented coordinate blob interpretation.
-- Local supplied-input report generated and rendered in actual browser. Usage guide simplified; positional report updated.
+## Objective / completed work
+- Supplied planned-target export now imports and renders on its source MRI scalp beside cap MRI in existing HTML viewer; autonomous conservative site-name mapping added.
+- Legacy scanner-frame exports accepted only with verified scanner header codes; names/orientations/source positions/provenance retained.
+- Extracted/cached source-native scalp; labeled independent frames and raw points. No invented common-frame overlay or cross-MRI distance.
+- CLI regenerated real local outputs. Local API/viewer started on 8765/1234 without overwriting registry.
 
 ## Verified
-- Full Python suite: 88 passed; final native-marker guard verified by focused suite (8 passed). JS: 21 passed. Final production build passed.
-- Local browser acceptance passed, including dark-style assertion, automatic sidebar results, toggles, reload, download and no exceptions.
-- Generated subject reports, manifests and screenshots are ignored and uncommitted. No patient details in checkpoint documents.
+- Actual Chrome acceptance passed: imported labels visible, source scalp loaded, count matches import; reload, toggles, export, no exceptions.
+- Full Python suite: 90 passed; positional tests: 10 passed. Chrome acceptance and production build passed.
+- Data, derivatives and screenshots remain ignored. No private coordinates/subject details in checkpoints.
 
-## Decisions / assumptions
-- User authorized local supplied subject files. Different anatomical images require verified registration; marker ordering and approximate proximity do not establish labels.
-- Licensed Brainsight unavailable; project export and documented scalp/trajectory semantics required for measurements. QC/projection reports never claim completed target-distance analysis.
+## Decisions
+- User authorized autonomous Brainsight-name-to-site mapping; preserve variants, leave unmatched names unassigned and missing target absent. Does not establish cap marker identity or scalp semantics.
+- Distinct MRI frames displayed separately until verified registration; display separation never becomes a measurement.
 
 ## Uncommitted changes
-- This task's code/tests/docs delivered in [codex] commit; verify hash with git log.
-- Existing unrelated viewer/src/datasetRegistry.js remains uncommitted, untouched by task edits.
+- Task implementation/tests/docs delivered in [codex] commit; verify hash in Git.
+- Pre-existing staged viewer/src/datasetRegistry.js remains excluded and unchanged.
 
-## Blockers / next actions
-1. Obtain planned Targets text export, explicit SMA/F4 marker mappings, required planned target(s), verified registration and scalp-point/trajectory evidence. Complete local pending manifest, save as manifest.json, rerun --subject.
-2. Inspect numerical agreement with independent export separately from anatomical accuracy.
-3. Previous push rejected by automatic review: external destination/payload publication requires approval. Do not retry/bypass without resolving authorization.
+## Blockers / next steps
+1. Review cap marker identities and planned scalp/trajectory semantics; verify source-to-marker registration for primary positional comparisons.
+2. Acquire missing site target when available; validate numerical import independently of anatomy/registration accuracy.
+3. Prior push rejected by automatic review: destination/payload publication approval unresolved. No retry or bypass.

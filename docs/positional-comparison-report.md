@@ -1,25 +1,24 @@
 # Positional comparison delivery report
 
-## Latest changes
+## Latest delivery
 
-- Moved the positional component below the existing right-sidebar content, within the Aim 1 tab. Reused dark controls, typography, separators and tables; removed floating bottom-left panel and raw JSON summary display.
-- `python compare_positions.py --subject SUBJECT` now produces a local report from supplied inputs, or runs a reviewed `comparison/manifest.json` when available. The viewer automatically fetches it through the existing local API; Reload analysis refreshes it without file import.
-- Actual local subject report generated: original cap points preserved, closest-triangle projections rendered, missing comparisons explicitly unavailable. No synthetic targets substituted.
-- Read-only SQLite inventory identifies target names without decoding undocumented coordinate blobs. Inspection established concrete missing export/label/target/registration/trajectory evidence. No licensed Brainsight installation was found.
-- Preparation fills known local paths/hashes while preserving review fields and explicit mappings. Supplied originals untouched; all reports/manifests/screenshots remain ignored local artifacts.
-- Rewrote usage guide around two commands, output locations, viewer behavior and concrete remaining inputs.
+- Supplied planned-target text export now imports automatically through the subject CLI. Legacy `NIfTI:Scanner` support is gated on validated scanner qform/sform metadata, with raw positions/orientations and full source provenance preserved.
+- Automatically maps named SMA variants to internal SMA and F4/right-DLPFC names to right_DLPFC; keeps unmatched names unassigned and missing sites absent. Does not infer cap-marker identities or invent a replacement target.
+- Extracts and caches scalp from the supplied Brainsight anatomical MRI. Renders imported raw targets on that source-native anatomy beside the existing cap anatomy, with separate frame captions. Display translation is only layout and never used for measurements.
+- Right sidebar shows imported target names/site assignments and rendered count. Source target labels, raw-target toggle, cap projection controls, reload and exports remain functional. Source positions also appear in CSV with explicit source-frame fields.
+- Different-MRI primary distances remain blocked until verified registration and reviewed marker/scalp semantics are available. No scalp-contact meaning is inferred from the name “Skin”.
 
 ## Verification
 
-- Full Python suite: **88 passed** before final native-marker guard; focused suite rerun after that guard: **8 passed**.
-- JavaScript: **21 passed**.
-- Viewer production build passed.
-- Actual local subject Playwright acceptance test passed: automatic sidebar loading, report/marker rows, five toggles, reload, JSON download, no browser exceptions. Final dark-style assertion rerun passed.
-- Playwright's default downloaded Chromium was absent; used installed Chrome via `PLAYWRIGHT_CHANNEL=chrome`. Optional local acceptance test skips when private input/report files are absent.
+- Actual local CLI regenerated JSON/CSV and source scalp successfully.
+- Actual Chrome browser acceptance passed: both imported target labels visible, source scalp loaded, sidebar rendered-count equals imported target count; toggles, reload and JSON export passed without browser exceptions.
+- Positional suite: 10 passed, including autonomous site-name mapping and gated legacy scanner support. Full Python suite: **90 passed**.
+- Production viewer build passed; private generated outputs and browser screenshot remain ignored locally.
+- Local API/viewer started for inspection on ports 8765/1234 without regenerating or staging the user's dataset registry.
 
 ## Remaining
 
-- Full individualized distances require the planned-target export, explicit marker mappings, correct planned targets and reviewed source-to-marker MRI registration/trajectory semantics. Current report is an input-QC/projection result, not a completed target-distance measurement.
-- Direct .bsproj coordinate retrieval and anatomical/registration validation remain unavailable/unvalidated as described in the usage guide.
-- Pre-existing datasetRegistry.js edit preserved and excluded from delivery.
-- Previous external push remains blocked by automatic review pending destination/payload publication approval; no retry or bypass in this task.
+- Primary cross-MRI distances require verified registration and cap-marker/scalp-point semantics; missing planned target cannot yield a comparison.
+- Anatomical/registration accuracy and independent-export validation remain unvalidated.
+- Unrelated staged datasetRegistry.js edit preserved and excluded from delivery.
+- Prior automatic-review rejection of external push remains unresolved; no push retry/bypass attempted.

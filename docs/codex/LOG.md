@@ -76,3 +76,12 @@ rather than assuming it from this log.
 - Simplified docs/positional-comparison.md; updated report. Private outputs/screenshots ignored. Unrelated registry edit preserved. Prior rejected push not retried.
 
 - Final checks: positional suite 8 passed after native-frame/unique-marker guards; actual local browser acceptance passed including dark-button style; final production build and git diff --check passed.
+
+## 2026-11-04 — Supplied export rendered
+
+- Imported newly supplied target export and added conservative autonomous site-name assignment with variant preservation and missing-site exclusion.
+- Verified legacy scanner header codes; generated source-native scalp and rendered raw targets beside cap MRI with explicit independent frames. No undocumented trajectory interpretation or unverified cross-MRI overlay.
+- Actual CLI and Chrome acceptance passed: target labels visible, source scalp loaded, rendered count correct, reload/toggles/export pass. Positional suite 10 passed; production build passed. Full suite result follows.
+- Local API/viewer started (8765/1234) without registry regeneration. Existing staged registry edit preserved. Private artifacts ignored; prior blocked push not retried.
+
+- Final full Python suite: **90 passed** (2 existing PyVista deprecation warnings). Browser and production build passed. Primary distances remain deliberately unavailable pending registration and semantics review.
