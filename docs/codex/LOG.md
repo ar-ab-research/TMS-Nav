@@ -54,3 +54,13 @@ rather than assuming it from this log.
 - Main and fetched origin/main matched at base **07fe146** before the `[codex]` delivery commit. Verify final commit/push directly; see Git history for the resulting task hash.
 
 - Final synthetic visual QC isolated a non-preserved WebGL/MSAA reset capture artifact. MRI now retains complete frames without MSAA; a browser pixel check covers both halves of the sagittal phantom after reset.
+
+## 2026-11-04 — Aim 1 positional comparison
+
+- Implemented src/positional.py, compare_positions.py, viewer/src/positional.js, preparation/demo scripts and positional guide/report. Gray outer mesh verified as scalp in extraction and viewer code. Preserved unrelated datasetRegistry.js modification.
+- Planned Targets only; text fallback records project/source/version/frame provenance; unresolved MRI identities/registration or trajectory semantics fail closed. Explicit SMA and right DLPFC/F4 mappings required.
+- Public Rogue network/manual and SimNIBS material investigated; vendor protocol/examples and licensed runtime still needed to verify direct project/metadata retrieval. No guessed transport commands or binary parsing.
+- Verified new tests (5), JS (21), production build and synthetic 5 mm demo. Initial full Python suite: 84 passed, HTTP socket test sandbox-blocked; authorized rerun pending. Patient anatomical/registration accuracy and new browser overlay interaction remain unvalidated.
+- Generated only ignored local preparation/output artifacts. Supplied originals preserved. Usage and exact remaining inputs documented in docs/positional-comparison.md.
+
+- Final verification: authorized full Python suite **85 passed**; subsequent nonidentity target-import/Samples-separation regression included in **6 positional tests passed**. Final viewer build passed.

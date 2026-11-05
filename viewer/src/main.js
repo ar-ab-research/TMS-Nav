@@ -1,3 +1,4 @@
+import { positionalViewer } from "./positional.js";
 // tms-nav viewer. loads the scalp, drops the 5 stimulation targets and the eeg
 // landmarks on the head, plus one demo coil on the side. all in RAS mm with z up.
 // same vanilla three.js setup as fmriviz
@@ -88,6 +89,7 @@ const arcGroup = new THREE.Group();
 const aim1Root = new THREE.Group();
 aim1Root.add(skullGroup, fiducialGroup, scalpGroup, coilGroup, targetGroup, landmarkGroup, mcGroup, eegGroup, arcGroup);
 scene.add(aim1Root);
+const resetPositional = positionalViewer(aim1Root, () => currentMarkers);
 
 // which layers are on. choices survive a reload via localStorage, and on start the
 // same state is pushed onto both the checkbox and the layer, so the two cannot
@@ -331,6 +333,7 @@ async function loadDataset(key) {
      "Landmarks require confirmation. Cyan spheres: estimated EEG. Click points for coordinates and confidence."].join(" · ");
   const markers = structuredClone(ds.markers);
   currentMarkers = markers;
+  resetPositional();
   document.getElementById("toggle-fiducials").closest("label").hidden=template;
   currentCoordinateLabel = markers.coordinate_frame?.template || "Subject RAS";
   addScalp(scalpGeo);
