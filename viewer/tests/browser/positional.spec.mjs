@@ -1,0 +1,30 @@
+import {test,expect} from '@playwright/test';
+import {existsSync,readFileSync} from 'node:fs';
+
+// Optional local acceptance test: never checks in subject fixtures or screenshots.
+const reportPath='../saves/derivatives/subjects/r-02/positional.json';
+test('local r-02 CLI report loads automatically in existing right sidebar',async({page})=>{
+  test.skip(!existsSync(reportPath),'Run python compare_positions.py --subject r-02 with local data first');
+  const report=JSON.parse(readFileSync(reportPath,'utf8'));
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto('/');
+  await expect(page.locator('#stage')).toHaveAttribute('data-subject','MNI152');
+  await page.locator('#subject-select').selectOption('r-02');
+  await expect(page.locator('#stage')).toHaveAttribute('data-subject','r-02');
+  const panel=page.locator('#dist #aim1-metrics #positional-panel');
+  await expect(panel).toHaveCount(1);
+  await expect(panel.getByRole('status')).toContainText('comparisons available',{timeout:30000});
+  await expect(panel.locator('.positional-layer input')).toHaveCount(5);
+  await expect(panel.getByRole('button',{name:'Reload analysis'})).toHaveCSS('background-color','rgb(42, 48, 60)');
+  await expect(panel).toContainText('Cap projections');
+  for(const point of report.cap_points||[])await expect(panel).toContainText(point.label);
+  await panel.locator('.positional-layer input').first().uncheck();
+  await expect(panel.locator('.positional-layer input').first()).not.toBeChecked();
+  await panel.getByRole('button',{name:'Reload analysis'}).click();
+  await expect(panel.getByRole('status')).toContainText('comparisons available');
+  const download=page.waitForEvent('download');await panel.getByRole('button',{name:'Export JSON'}).click();
+  expect((await download).suggestedFilename()).toBe('positional.json');
+  await panel.scrollIntoViewIfNeeded();
+  await page.screenshot({path:'test-results/positional-local.png'});
+  expect(errors).toEqual([]);
+});

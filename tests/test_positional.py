@@ -72,3 +72,39 @@ def test_target_registration_and_samples_separate(tmp_path):
     assert data['targets'][0]['position']==[8,21,33]
     assert data['targets'][0]['raw_export_position']==[1,2,3]
     assert data['targets'][0]['orientation_export'] is not None
+
+
+def test_project_inventory_does_not_decode_coordinates(tmp_path):
+    import sqlite3
+    from src.positional_subject import project_inventory
+    path=tmp_path/'project.bsproj'
+    with sqlite3.connect(path) as db:
+        db.execute('CREATE TABLE ZTARGETNODE(ZNAME TEXT, ZISLEAF INTEGER, ZPOSITION BLOB)')
+        db.executemany('INSERT INTO ZTARGETNODE VALUES (?,?,?)',[('planned',1,b'not coordinates'),('folder',0,b'')])
+    before=path.read_bytes()
+    result=project_inventory(path)
+    assert result['planned_names']==['planned']
+    assert 'export' in result['coordinate_support']
+    assert path.read_bytes()==before
+
+
+def test_subject_input_qc_preserves_raw_markers(tmp_path):
+    import json
+    from src.synthetic_subject import make_phantom
+    from src.subject_coordinates import file_hash
+    from src.positional_subject import save_subject_report
+    source,_=make_phantom(tmp_path/'inputs')
+    output=tmp_path/'saves/derivatives/subjects/test'
+    output.mkdir(parents=True)
+    mesh=pv.Cube(bounds=(-10,10,-10,10,-10,10)).triangulate();mesh.save(output/'scalp.vtp')
+    markers=dict(space='RAS_mm',source_sha256=file_hash(source),fiducials=[dict(name='unassigned',label='unassigned',position=[0,0,12])])
+    (output/'markers.json').write_text(json.dumps(markers))
+    (output/'manifest.json').write_text(json.dumps(dict(input_paths=dict(anatomical=str(source)))))
+    result,path=save_subject_report('test',tmp_path)
+    assert result['status']=='needs_inputs'
+    assert result['cap_points'][0]['raw']==[0,0,12]
+    assert result['cap_points'][0]['scalp']==[0,0,10]
+    assert result['cap_points'][0]['projection_distance_mm']==2
+    assert all(r['qc']=='invalid' and 'distance_mm' not in r for r in result['rows'])
+    assert path.exists() and path.with_suffix('.csv').exists()
+    assert json.loads((output/'markers.json').read_text())==markers

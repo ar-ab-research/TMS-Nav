@@ -158,6 +158,11 @@ def make_server(port=8765, workspace=None):
             with workspace.lock:
                 entry = workspace.load(subject)
                 if self.command=='GET':
+                    if action=='positional':
+                        report=workspace.derivatives/subject/'positional.json'
+                        if not report.exists():
+                            return self.send(200,dict(status='not_run',subject=subject))
+                        return self.send(200,json.loads(report.read_text()))
                     if action=='meta':
                         return self.send(200, dict(**entry['metadata'],
                             intensity_range=np.percentile(entry['volume'], [1,99.8]).tolist(),

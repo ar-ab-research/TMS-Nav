@@ -9,11 +9,28 @@ from src.subject_coordinates import file_hash, load_native
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('manifest', type=Path)
-    parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('manifest', type=Path, nargs='?')
+    parser.add_argument('--subject', help='Run a local subject; use reviewed comparison/manifest.json when present, otherwise produce input QC and cap projections')
+    parser.add_argument('--out', type=Path)
     parser.add_argument('--validate-export', type=Path)
     parser.add_argument('--decimals', type=int, default=4)
     args=parser.parse_args()
+    if args.subject:
+        from src.subject_ingest import validate_id
+        from src.positional_subject import save_subject_report
+        validate_id(args.subject)
+        if args.manifest: parser.error('Use either --subject or a manifest')
+        candidate=Path('saves/brainsight/restore')/args.subject/'comparison/manifest.json'
+        if candidate.exists():
+            args.manifest=candidate
+            args.out=args.out or Path('saves/derivatives/subjects')/args.subject/'positional'
+        else:
+            result, output=save_subject_report(args.subject)
+            print(f'Report: {output}\nStatus: {result["status"]}\nCap projections: {len(result["cap_points"])}')
+            for blocker in result['blockers']: print('- '+blocker)
+            print('Open the viewer, select this subject, then click Reload analysis in the right sidebar.')
+            return
+    if not args.manifest or not args.out: parser.error('Supply --subject, or MANIFEST --out OUTPUT')
     config=json.loads(args.manifest.read_text())
     def path(p): return args.manifest.parent / p
     rows=[]
@@ -41,5 +58,7 @@ def main():
             other=read_targets(args.validate_export,context)
             print(json.dumps(validate_exports(imported,other,args.decimals)))
     write_results(rows,args.out)
+    print(f'Results: {args.out.with_suffix(".json")}')
+    print('Open viewer, select subject, and click Reload analysis.')
 
 if __name__=='__main__': main()

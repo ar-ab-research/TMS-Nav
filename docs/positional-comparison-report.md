@@ -1,23 +1,25 @@
-# Positional component implementation report
+# Positional comparison delivery report
 
-- Implemented strict planned-target text adapter with `.bsproj` entry/fallback distinction, preserved source fields/orientations, MRI identity and registration gates.
-- Implemented triangle projection, verified directed segment/scalp intersection, explicit mappings, raw-position retention, Euclidean mm comparisons, invalid-pair QC, per-target summaries and CSV/JSON.
-- Added existing-viewer overlays with five independent toggles, subject/MRI/marker checks, distance/method/QC display and exports.
-- Confirmed gray mesh is scalp (`src/head_surface.py:scalp_surface`); skull is separate and never used by the comparison CLI.
-- Added CLI, synthetic numerical demo, and local supplied-input preparation. Originals preserved; no subject data tracked.
-- Documentation: `docs/positional-comparison.md` contains installation, API/CLI, formats, network capability investigation, settings and validation procedure.
+## Latest changes
 
-## Verified
+- Moved the positional component below the existing right-sidebar content, within the Aim 1 tab. Reused dark controls, typography, separators and tables; removed floating bottom-left panel and raw JSON summary display.
+- `python compare_positions.py --subject SUBJECT` now produces a local report from supplied inputs, or runs a reviewed `comparison/manifest.json` when available. The viewer automatically fetches it through the existing local API; Reload analysis refreshes it without file import.
+- Actual local subject report generated: original cap points preserved, closest-triangle projections rendered, missing comparisons explicitly unavailable. No synthetic targets substituted.
+- Read-only SQLite inventory identifies target names without decoding undocumented coordinate blobs. Inspection established concrete missing export/label/target/registration/trajectory evidence. No licensed Brainsight installation was found.
+- Preparation fills known local paths/hashes while preserving review fields and explicit mappings. Supplied originals untouched; all reports/manifests/screenshots remain ignored local artifacts.
+- Rewrote usage guide around two commands, output locations, viewer behavior and concrete remaining inputs.
 
-- New positional tests: 6 passed (geometry, coordinate transforms/units/flips, intersections, invalid pairs, adapter gates, export precision and outputs).
-- Synthetic demo generated two 5 mm comparisons; local input preparation generated a pending manifest successfully.
-- Existing JS suite: 21 passed. Production viewer build passed.
-- Full Python run: 85 passed after loopback authorization; subsequent added adapter regression verified with positional suite (6 passed).
+## Verification
 
-## Unvalidated / remaining limitations
+- Full Python suite: **88 passed** before final native-marker guard; focused suite rerun after that guard: **8 passed**.
+- JavaScript: **21 passed**.
+- Viewer production build passed.
+- Actual local subject Playwright acceptance test passed: automatic sidebar loading, report/marker rows, five toggles, reload, JSON download, no browser exceptions. Final dark-style assertion rerun passed.
+- Playwright's default downloaded Chromium was absent; used installed Chrome via `PLAYWRIGHT_CHANNEL=chrome`. Optional local acceptance test skips when private input/report files are absent.
 
-- Direct binary/network extraction is unavailable; no undocumented binary fields or endpoints guessed. Vendor protocol/examples and licensed Brainsight access are needed to verify supported direct-project operations. Public material confirms TCP functionality, not every requested retrieval capability.
-- Supplied project cannot yield a valid individualized comparison without export, mappings and frame/trajectory evidence. Local pending manifest deliberately fails until resolved.
-- Viewer controls built successfully; new overlay flow has not received an automated browser interaction test.
-- Numerical import agreement is distinct from anatomical or registration accuracy. Independent same-project export and patient review remain pending.
-- Existing unrelated `viewer/src/datasetRegistry.js` modification preserved and excluded from commit.
+## Remaining
+
+- Full individualized distances require the planned-target export, explicit marker mappings, correct planned targets and reviewed source-to-marker MRI registration/trajectory semantics. Current report is an input-QC/projection result, not a completed target-distance measurement.
+- Direct .bsproj coordinate retrieval and anatomical/registration validation remain unavailable/unvalidated as described in the usage guide.
+- Pre-existing datasetRegistry.js edit preserved and excluded from delivery.
+- Previous external push remains blocked by automatic review pending destination/payload publication approval; no retry or bypass in this task.

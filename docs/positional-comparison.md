@@ -1,55 +1,71 @@
-# Aim 1 positional comparison
+# Run the positional analysis
 
-## Installation and quick start
-
-Use the existing Python environment (`numpy`, `pyvista`, `nibabel`, `pytest`) and viewer Node dependencies. From repository root:
+From the repository root, using the existing `tms312` environment:
 
 ```sh
-python -m scripts.positional_demo
-python -m scripts.prepare_positional
-python compare_positions.py saves/brainsight/restore/r-02/comparison/manifest.pending.json --out saves/brainsight/restore/r-02/comparison/results
+export PATH="$HOME/micromamba/envs/tms312/bin:$PATH"
+python compare_positions.py --subject r-02
 python run_viewer.py
 ```
 
-The first command produces a synthetic 5 mm geometry example. The second inventories the supplied r-02 project/image, creates local `exports/`, `comparison/`, `validation/` folders, and writes a **pending** manifest. Originals remain in place. Complete the manifest before the third command: it intentionally rejects unresolved inputs. No individualized result is possible until targets, mappings and coordinate/trajectory evidence are supplied. Do not treat the synthetic targets as MNI or individualized locations.
+Open **http://127.0.0.1:1234**, select **r-02**, and scroll down the **right sidebar** to **Aim 1 positional scalp comparison**. Results load automatically. After rerunning analysis, click **Reload analysis**. No manual JSON import is needed.
 
-## Import support
+Output files:
 
-`src.positional.read_targets(entry, context, export=None)` uses `.bsproj` as intended entry. Direct binary extraction and direct network project retrieval are **unavailable**. Pass an independent planned-target text export with the project entry. This mode is explicitly recorded as `target-text-export-fallback`. Text format versions 12 and 14 are accepted, with explicit millimetre units and NIfTI:Aligned or NIfTI:Q:* frames matching reviewed context. Other formats fail closed. Targets retain names, original columns, orientation matrix, header/source/version/hash and export positions; Samples are excluded and counted. Orientation remains in export axes and is never interpreted as a planned trajectory automatically.
+- `saves/derivatives/subjects/r-02/positional.json`
+- `saves/derivatives/subjects/r-02/positional.csv`
 
-Sources investigated:
+The command works with the files currently supplied: it projects the four saved cap markers onto the full scalp mesh and renders those real points. **SMA/F4 distances are currently unavailable**, for the specific reasons below. The report shows these reasons instead of inventing measurements.
 
-- [Rogue downloads and current manuals](https://www.rogue-research.com/downloads/).
-- [Official 2.5.6 release](https://www.rogue-research.com/fr/2025/02/brainsight-2-5-6-released/): TCP server and vendor-provided protocol/Python examples; macOS 10.14 minimum, 10.15 for full network functionality.
-- [NIBS manual chapter 18](https://www.rogue-research.com/wp-content/uploads/Brainsight-NIBS-2.5.11.pdf): request/response or streaming; examples available from vendor. No public complete command schema was obtained in this investigation. Opening a project, retrieving all planned targets/trajectories, coordinate metadata and anatomical references remain unverified capabilities. No endpoints are invented. Obtain the version-matched protocol and examples from Rogue Research before implementing transport. Release notes also describe a coordinate-system response bug fixed in 2.5.8: do not trust earlier network responses without independent validation.
-- [SimNIBS documented export workflow](https://simnibs.github.io/simnibs/build/html/documentation/neuronavigation/brainsight.html): planned Targets and recorded Samples differ. Export NIfTI:Aligned for Brainsight ≤2.5.2, NIfTI:Q:xxx for ≥2.5.3, using the same individual anatomical NIfTI.
+## What the supplied files still need
 
-## Manifest and coordinate contract
+| Item | Current finding | Required action |
+|---|---|---|
+| Planned target coordinates | `.bsproj` is present; its coordinates are undocumented binary objects. Brainsight is not installed here. | In Brainsight, export planned **Targets** to `saves/brainsight/restore/r-02/exports/planned-targets.txt`. Choose **NIfTI:Q:xxx** for Brainsight ≥2.5.3, **NIfTI:Aligned** for older versions. Include position, orientation and maximum decimal precision. |
+| Marker mapping | Four saved points are named `manual-1` through `manual-4`, without anatomical labels. | Identify the SMA marker and F4 marker explicitly. No marker-order or SMA=Cz inference. |
+| Right DLPFC | Project inventory lists SMA and SMA Skin, with no explicitly named right-DLPFC/F4 target. | Supply that planned target, or identify its exact name in a corrected project/export. |
+| MRI registration | Project anatomy differs from the MRI used for the saved cap markers. | Supply/review a source-to-marker MRI registration in RAS millimeters. Header coordinates alone do not prove alignment. |
+| Scalp entry | Planned-point/trajectory meaning is not verified. | Confirm the documented scalp point or an inward segment crossing scalp once. |
 
-Use generated manifest paths relative to its directory. Supply the full-resolution native scalp VTP, its SHA256, and review evidence; never use skull or a display-decimated surface for measurement. Saved marker JSON must identify the marker MRI via `source_sha256`. Use original `fiducials` positions, with exact unique names. Explicitly assign SMA and right_DLPFC to marker names and planned target names; right_DLPFC is paired with cap F4. There is no SMA=Cz rule and no ordering inference. Review the physical marker-to-cap label relationship yourself.
+## When those inputs are available
 
-`context` requires exact `coordinate_system`, `source_mri_sha256`, `marker_mri_sha256`, and `frame_evidence` describing verification in Brainsight and the NIfTI header. CLI loads both MRI headers using existing strict native loader: explicit spatial units, coded qform/sform, reject conflicting forms, template codes or sheared grids. Q coordinates must match the reviewed anatomical world frame. Different MRI hashes require `registration` with `verified:true`, `evidence`, matching `source_sha256`/`target_sha256`, and `matrix`: source RAS mm → marker RAS mm. This is registration evidence, not just a numerical inverse check.
+Complete the existing local `saves/brainsight/restore/r-02/comparison/manifest.pending.json`, then save it as **manifest.json** in the same folder. The same `--subject r-02` command will then run the full comparison and save results to the same viewer location.
 
-API `normalize` separately supports voxel indices via explicit voxel-to-RAS-mm affine, LPS/RAS and mm/meters/microns. Export units are fixed to documented millimeters. Mesh, markers and normalized targets must all share marker MRI RAS mm. Neither MNI coordinates nor viewer camera rotations/scaling enter the distance formula.
+The manifest requires:
 
-`semantics` maps exact target names to either:
+- Exact project/export, marker MRI, source MRI, saved marker JSON and **full-resolution scalp** paths; paths are relative to the manifest. Use SHA256 identities for both MRIs and scalp.
+- Explicit `mappings.SMA` and `mappings.right_DLPFC`, each with exact `marker` and `brainsight` names. The latter is the cap **F4** comparison.
+- `context.coordinate_system` matching the export, both MRI hashes, and `frame_evidence`. Different MRIs additionally need `context.registration`: `verified: true`, `evidence`, matching `source_sha256`/`target_sha256`, and a 4×4 `matrix` mapping source RAS mm to marker RAS mm.
+- Reviewed scalp evidence and `semantics` keyed by exact target name. Either a verified documented scalp point, or verified `outside`/`inside` trajectory endpoints **already in marker MRI RAS mm**, with evidence. Do not derive an axis from undocumented matrix columns.
 
-```json
-{"outside":[0,0,100],"inside":[0,0,0],"verified":true,"evidence":"Documented planned segment, endpoints transformed into marker MRI RAS mm; direction verified in Brainsight"}
+The lower-level command is also available:
+
+```sh
+python compare_positions.py path/to/manifest.json --out saves/derivatives/subjects/r-02/positional
 ```
 
-or `{"documented_scalp_point":true,"verified":true,"evidence":"Source documentation and independent anatomical verification"}`. Numbers above illustrate syntax only. Trajectory endpoints must be derived from documented project semantics, not guessed from matrix columns. They are supplied in the destination marker MRI frame. The segment must start outside, end inside a closed scalp and have one unique intersection. Open meshes, missing/reversed/ambiguous intersections are invalid. A documented scalp point must lie within 0.1 mm of the comparison mesh. Missing trajectory evidence keeps the raw target and disables the primary comparison; no exploratory substitution is performed.
+## Viewer and interpretation
 
-## Measurements and viewer
+Five independent toggles show raw cap points, projected cap points, raw Brainsight targets/trajectories, Brainsight scalp points, and comparison lines. Tables show each target's separation and cap projection offset in millimeters. Export buttons save JSON/CSV, including provenance and QC. Marker or subject changes require rerunning analysis; mismatched saved marker coordinates are rejected.
 
-`compare` projects raw cap points to closest **triangle points**, retaining projection distance and originals. Distance is `norm(eeg_scalp - brainsight_scalp)` in MRI-world mm. Each subject/target gets a QC status and exclusion reason. JSON and CSV include nested provenance and coordinates (nested CSV values are JSON). Summary uses one observation per subject/target, sample SD (undefined for n=1), median and linear-percentile IQR. Invalid pairs are excluded with reasons. No equivalence test or coil angles are calculated from markers.
+The gray surface is **scalp**, not skull. Cap projection uses triangle interiors, not nearest vertices. Primary distance is `||cap_scalp − Brainsight_scalp||₂` in native MRI-world mm, independent of camera/display transforms. Unverified pairs are excluded from summaries. Each target has its own n, mean, sample SD, median and IQR; no equivalence or coil-angle claim follows from these points.
 
-In the existing HTML viewer select the matching subject, open **Aim 1 positional scalp comparison**, and load results JSON. MRI identity must match. Independent toggles control original cap markers, projected points, raw targets/trajectories, derived scalp points and comparison lines. The panel labels SMA/F4, methods, distances, QC and separate target summaries; buttons export JSON/CSV. Switching subjects clears overlays. Reload results after editing/reviewing markers; stale results must not be used for validation.
+## Validate before interpreting patient results
 
-## Patient validation
+1. Check target/marker labels, left/right, scalp segmentation, trajectory entry and registration in anatomical views.
+2. Obtain a second independent export from the same project. With the actual export precision (example: four decimals):
 
-1. Open the supplied `.bsproj` in licensed Brainsight on macOS; confirm anatomical image identity and version. Export **planned Targets**, with full coordinate and orientation columns, documented NIfTI coordinate settings, and maximum available decimal precision. Save under `exports/planned-targets.txt`; Samples never replace Targets.
-2. Identify each marker and target explicitly. Verify scalp segmentation including defacing/caps/holes and marker artifacts. Record registration evidence if MRIs differ. Resolve qform/sform ambiguity before importing.
-3. Verify target position semantics and inward trajectory in orthogonal anatomical views. Supply documented segment endpoints or scalp-contact evidence in the marker MRI frame. Check each computed scalp intersection visually.
-4. Obtain a second independent export from the same project and compare with `--validate-export path --decimals 4` (use the actual lesser decimal precision). The report gives maximum Euclidean discrepancy, tolerance `sqrt(3)*10^-decimals` mm for two rounded exports, and pass/fail. Both exports must have identical unique target names and verified frames. For anisotropic registration scaling, propagate precision through the transform or compare in the original source frame; the simple tolerance assumes metric-preserving transforms.
-5. Verify imported points against Brainsight crosshairs, known physical offsets, left/right and superior/inferior landmarks. Numerical agreement establishes import consistency only; it does not establish anatomical or registration accuracy. Record both separately. Retain exports and QC locally; never commit subject data.
+   ```sh
+   python compare_positions.py --subject r-02 --validate-export path/to/independent.txt --decimals 4
+   ```
+
+   The report prints maximum coordinate discrepancy and a rounding tolerance of `sqrt(3) × 10^-decimals` mm. This assumes metric-preserving registration; compare in source coordinates or propagate precision for scaled transforms.
+3. Record numerical agreement separately from anatomical/registration accuracy. No patient validation is claimed yet.
+
+## Support boundaries and references
+
+Python dependencies: existing `numpy`, `pyvista`, `nibabel`; viewer: Node/npm and `npm ci` in `viewer/`. Adapter API: `src.positional.read_targets(project, context, export=...)`; text format versions **12/14**, explicit millimeters, documented NIfTI frames. Planned Targets remain separate from recorded Samples. Raw names, source/version, orientation and provenance are preserved. Unknown frames, conflicting coded qform/sform, invalid units and missing registration are rejected.
+
+Direct `.bsproj` coordinate extraction/network retrieval is unavailable. The read-only SQLite inventory reads names only; it never decodes coordinate blobs. Rogue Research documents a TCP interface and vendor-provided examples, but the complete project-opening/retrieval protocol was not obtained. Request version-matched protocol/examples before extending direct support; no endpoints are guessed.
+
+References: [Rogue downloads/manuals](https://www.rogue-research.com/downloads/), [official network announcement](https://www.rogue-research.com/fr/2025/02/brainsight-2-5-6-released/), [documented SimNIBS export settings](https://simnibs.github.io/simnibs/build/html/documentation/neuronavigation/brainsight.html).

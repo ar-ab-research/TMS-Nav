@@ -77,6 +77,11 @@ def test_http_volume_identity_and_restricted_access(workspace):
     thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
     base=f'http://127.0.0.1:{server.server_port}'
     try:
+        missing=json.load(urlopen(base+'/api/subjects/review-test/positional'))
+        assert missing['status']=='not_run'
+        report=dict(frame='native_RAS_mm',rows=[],summary={})
+        (work.derivatives/'review-test/positional.json').write_text(json.dumps(report))
+        assert json.load(urlopen(base+'/api/subjects/review-test/positional'))==report
         raw=urlopen(base+'/api/subjects/review-test/volume.nii').read()
         image=nib.Nifti1Image.from_bytes(raw)
         entry=work.load('review-test')

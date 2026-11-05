@@ -66,3 +66,13 @@ rather than assuming it from this log.
 - Final verification: authorized full Python suite **85 passed**; subsequent nonidentity target-import/Samples-separation regression included in **6 positional tests passed**. Final viewer build passed.
 
 - Implementation committed as 37e8dcc. Push to origin/main_ab rejected by automatic approval review because external destination/payload publication authorization was considered insufficient; no bypass attempted. Existing registry edit remains uncommitted.
+
+## 2026-11-04 — Sidebar integration and local CLI-to-viewer flow
+
+- Moved positional component into existing right Aim 1 sidebar with dark controls and tables. Added local report API and automatic loading/reload.
+- Implemented --subject runner: actual cap triangle projections and explicit missing-data QC; reviewed manifests retain full comparison path. Filled known pending-manifest paths/hashes locally without inferring labels or registration.
+- Read-only project inventory verified unresolved export/target/label/frame evidence; no binary coordinates decoded and no synthetic measurements substituted. Supplied files explicitly authorized by current user.
+- Verified Python 88 passed, JS 21 passed, production build passed. Actual local browser workflow passed using installed Chrome; default Playwright Chromium absent. Final native-marker guard/style checks recorded below.
+- Simplified docs/positional-comparison.md; updated report. Private outputs/screenshots ignored. Unrelated registry edit preserved. Prior rejected push not retried.
+
+- Final checks: positional suite 8 passed after native-frame/unique-marker guards; actual local browser acceptance passed including dark-button style; final production build and git diff --check passed.
