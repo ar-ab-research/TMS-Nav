@@ -1,73 +1,61 @@
-# Run the positional analysis
+# Aim 1: registered scalp-entry comparison
 
-From the repository root, using the existing `tms312` environment:
-
-```sh
-export PATH="$HOME/micromamba/envs/tms312/bin:$PATH"
-python compare_positions.py --subject r-02
-python run_viewer.py
-```
-
-Open **http://127.0.0.1:1234**, select **r-02**, and scroll down the **right sidebar** to **Aim 1 positional scalp comparison**. Results load automatically. After rerunning analysis, click **Reload analysis**. No manual JSON import is needed.
-
-Output files:
-
-- `saves/derivatives/subjects/r-02/positional.json`
-- `saves/derivatives/subjects/r-02/positional.csv`
-
-The command imports the supplied planned-target export, extracts the Brainsight anatomical scalp, and renders **SMA** and **SMA Skin** beside the cap MRI. Both names map automatically to internal **SMA**, with the variant retained. **F4 is absent**, so it is not substituted. Four original cap points and their scalp projections remain visible on the cap MRI. The two heads use separate labeled coordinate frames; their screen spacing is only layout. Primary distances remain unavailable until registration and marker/scalp semantics are reviewed.
-
-## What the supplied files still need
-
-| Item | Current finding | Required action |
-|---|---|---|
-| Planned target coordinates | Export imported successfully; both targets rendered in source MRI coordinates. | No further export needed for this rendering. |
-| Marker mapping | Four saved points are named `manual-1` through `manual-4`, without anatomical labels. | Identify the SMA marker and F4 marker explicitly. No marker-order or SMA=Cz inference. |
-| Right DLPFC | Project inventory lists SMA and SMA Skin, with no explicitly named right-DLPFC/F4 target. | Supply that planned target, or identify its exact name in a corrected project/export. |
-| MRI registration | Project anatomy differs from the MRI used for the saved cap markers. | Supply/review a source-to-marker MRI registration in RAS millimeters. Header coordinates alone do not prove alignment. |
-| Scalp entry | Planned-point/trajectory meaning is not verified. | Confirm the documented scalp point or an inward segment crossing scalp once. |
-
-## When those inputs are available
-
-Complete the existing local `saves/brainsight/restore/r-02/comparison/manifest.pending.json`, then save it as **manifest.json** in the same folder. The same `--subject r-02` command will then run the full comparison and save results to the same viewer location.
-
-The manifest requires:
-
-- Exact project/export, marker MRI, source MRI, saved marker JSON and **full-resolution scalp** paths; paths are relative to the manifest. Use SHA256 identities for both MRIs and scalp.
-- Explicit `mappings.SMA` and `mappings.right_DLPFC`, each with exact `marker` and `brainsight` names. The latter is the cap **F4** comparison.
-- `context.coordinate_system` matching the export, both MRI hashes, and `frame_evidence`. Different MRIs additionally need `context.registration`: `verified: true`, `evidence`, matching `source_sha256`/`target_sha256`, and a 4×4 `matrix` mapping source RAS mm to marker RAS mm.
-- Reviewed scalp evidence and `semantics` keyed by exact target name. Either a verified documented scalp point, or verified `outside`/`inside` trajectory endpoints **already in marker MRI RAS mm**, with evidence. Do not derive an axis from undocumented matrix columns.
-
-The lower-level command is also available:
+Always use **micromamba tms312**. From the repository root:
 
 ```sh
-python compare_positions.py path/to/manifest.json --out saves/derivatives/subjects/r-02/positional
+micromamba run -n tms312 python compare_positions.py --subject r-02
+micromamba run -n tms312 python run_viewer.py
 ```
 
-## Viewer and interpretation
+Open **http://127.0.0.1:1234**, select **r-02**, and click **Reload analysis**. The first run registers the MRIs; later runs use a hash-bound cache.
 
-Five independent toggles show raw cap points, projected cap points, raw Brainsight targets/trajectories, verified Brainsight scalp points, and valid comparison lines. Source-native raw targets are labeled explicitly; their orientations are retained without inventing trajectories. Tables show each target's separation and cap projection offset in millimeters. Export buttons save JSON/CSV, including provenance and QC. Marker or subject changes require rerunning analysis; mismatched saved marker coordinates are rejected.
+## Display and measurements
 
-The gray surface is **scalp**, not skull. Cap projection uses triangle interiors, not nearest vertices. Primary distance is `||cap_scalp − Brainsight_scalp||₂` in native MRI-world mm, independent of camera/display transforms. Unverified pairs are excluded from summaries. Each target has its own n, mean, sample SD, median and IQR; no equivalence or coil-angle claim follows from these points.
+Brainsight scalp and raw targets overlay the cap MRI in **cap MRI RAS world millimeters**, with no viewer offsets. The cap scalp is the common measurement surface. Six independent toggles control original cap points, projected cap points, raw Brainsight points/trajectories, verified Brainsight scalp points, comparison lines and the registered source surface. The latter is a translucent display overlay only.
 
-## Validate before interpreting patient results
+**Imported Brainsight targets** shows **scalp-entry localization difference (mm)** for valid confirmed pairs, or **Unavailable**. This is not cortical targeting error. Raw-target offsets to scalp are **QC only**, never substitute entry points.
 
-1. Check target/marker labels, left/right, scalp segmentation, trajectory entry and registration in anatomical views.
-2. Obtain a second independent export from the same project. With the actual export precision (example: four decimals):
+The supplied export contains SMA and SMA Skin, automatically assigned to internal SMA with variants preserved. F4/right DLPFC is absent. “SMA Skin” is approximately 30.5 mm off the common scalp after registration. Its name does not verify scalp contact. Export columns contain position/orientation but no documented scalp-entry designation or unambiguous inward planned segment. Primary distances also require confirmed cap-marker identities; proximity/order do not establish identity.
 
-   ```sh
-   python compare_positions.py --subject r-02 --validate-export path/to/independent.txt --decimals 4
-   ```
+## Registration QC
 
-   The report prints maximum coordinate discrepancy and a rounding tolerance of `sqrt(3) × 10^-decimals` mm. This assumes metric-preserving registration; compare in source coordinates or propagate precision for scaled transforms.
-3. Record numerical agreement separately from anatomical/registration accuracy. No patient validation is claimed yet.
+Rigid, six-degree-of-freedom registration uses SimpleITK Mattes mutual information, seed 1729, one thread, 4/2/1 resolution levels. Cap MRI is fixed; source MRI is moving. SimpleITK's resampling transform maps **cap LPS → source LPS**. Invert and conjugate by the RAS/LPS flip to obtain **source RAS → cap RAS** for points/surfaces/verified segment endpoints. Rotate orientation columns without inventing trajectory meaning.
 
-## Support boundaries and references
+Expand **Registration QC** in the sidebar. Local files under `saves/derivatives/subjects/r-02/brainsight/registration/`:
 
-Python dependencies: existing `numpy`, `pyvista`, `nibabel`; viewer: Node/npm and `npm ci` in `viewer/`. Adapter API: `src.positional.read_targets(project, context, export=...)`; text format versions **12/14**, explicit millimeters, documented NIfTI frames. Legacy `NIfTI:Scanner` is supported only with coded scanner qform and agreeing scanner sform (or absent sform); [Rogue documents its rename to NIfTI:Q:Scanner](https://www.rogue-research.com/blog/page/3/). Planned Targets remain separate from recorded Samples. Raw names, source/version, orientation and provenance are preserved. Unknown frames, conflicting coded qform/sform, invalid units and missing registration are rejected.
+| File | Meaning |
+|---|---|
+| `registration.json` | MRI hashes, source-to-cap RAS matrix/inverse, numerical checks and anatomical-review evidence |
+| `cap_to_source_LPS.tfm` | Fixed-to-moving resampling transform |
+| `source_in_cap.nii.gz` | Registered source image on cap grid |
+| `registration-qc.png` | Nine orthogonal before/after overlays: cap magenta, source green |
 
-Target-name mapping uses exact site tokens: SMA (including named variants) → SMA; F4 or right DLPFC → right_DLPFC; unmatched names stay unassigned. Cap markers are never assigned by this name rule.
+Inspect ventricles, brain outline, midline, scalp and defacing differences. The local registration passed numerical and agent visual technical review; independent patient accuracy remains unvalidated. New registrations default to `verified: false`: estimated overlays are labeled and cannot yield primary measurements until reviewed. Numerical invertibility alone does not establish alignment.
 
-Direct `.bsproj` coordinate extraction/network retrieval is unavailable. The read-only SQLite inventory reads names only; it never decodes coordinate blobs. Rogue Research documents a TCP interface and vendor-provided examples, but the complete project-opening/retrieval protocol was not obtained. Request version-matched protocol/examples before extending direct support; no endpoints are guessed.
+## Confirming a measurement
 
-References: [Rogue downloads/manuals](https://www.rogue-research.com/downloads/), [official network announcement](https://www.rogue-research.com/fr/2025/02/brainsight-2-5-6-released/), [documented SimNIBS export settings](https://simnibs.github.io/simnibs/build/html/documentation/neuronavigation/brainsight.html).
+The CLI creates `saves/brainsight/restore/r-02/comparison/review-template.json`. Complete it and save as **review.json**:
+
+1. Retain matching source/marker MRI hashes.
+2. For each available site, set exact `marker`/`brainsight` names, `confirmed: true`, and confirmation `evidence`. Do not replace a missing target with another site's target.
+3. Supply selected-target `semantics`: explicit `frame` (`source_MRI_RAS_mm` or `cap_MRI_RAS_mm`), `verified: true`, documentation `evidence`, and either `documented_scalp_point: true` or documented inward `outside`/`inside` xyz endpoints. An orientation matrix alone is insufficient.
+4. Inspect registration QC. Only then record `verified: true` and `evidence` in the hash-bound registration JSON. Changed inputs reset the gate.
+5. Rerun the same CLI command and Reload analysis.
+
+Documented scalp points must be within 0.1 mm of the common mesh or are rejected. Trajectories must start outside, end inside a closed scalp and intersect once; missing/reversed/ambiguous intersections are rejected. Cap projections use closest triangle interiors, retaining originals and projection offsets. Brainsight nearest-point substitution is prohibited.
+
+## Outputs and validation
+
+`positional.json`/`.csv` in `saves/derivatives/subjects/r-02/` retain raw/transformed coordinates, confirmed mappings, registration/semantic evidence, methods, QC/exclusions and measurement label. Valid pairs include `scalp_entry_localization_difference_mm`; `distance_mm` remains compatible with existing summaries. Each target separately reports n, mean, sample SD, median and IQR, excluding invalid pairs. Viewer Export buttons provide the report.
+
+An independent same-project export can be compared through the reviewed-manifest API:
+
+```sh
+micromamba run -n tms312 python compare_positions.py path/to/manifest.json --out results --validate-export independent.txt --decimals 4
+```
+
+Use actual export precision. Maximum discrepancy is compared with `sqrt(3) × 10^-decimals` mm for rigid transforms. Numerical import agreement and anatomical/registration accuracy are distinct.
+
+API modules: `src.positional`, `src.brainsight_registration`, `src.positional_subject`. Text versions 12/14, explicit millimeters and validated NIfTI frames (including header-gated legacy Scanner) are supported. Targets remain separate from Samples. Unknown frames/units, conflicting qform/sform and stale MRI identities fail closed. Direct `.bsproj` binary coordinate extraction remains unsupported.
+
+References: [Rogue manuals](https://www.rogue-research.com/downloads/), [legacy Scanner rename](https://www.rogue-research.com/blog/page/3/), [SimNIBS export guidance](https://simnibs.github.io/simnibs/build/html/documentation/neuronavigation/brainsight.html).

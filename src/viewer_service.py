@@ -158,6 +158,10 @@ def make_server(port=8765, workspace=None):
             with workspace.lock:
                 entry = workspace.load(subject)
                 if self.command=='GET':
+                    if action=='registration-qc.png':
+                        return self.send(200,(workspace.derivatives/subject/'brainsight/registration/registration-qc.png').read_bytes(),'image/png')
+                    if action=='brainsight-overlay.ply':
+                        return self.send(200,(workspace.derivatives/subject/'brainsight/registered-scalp.ply').read_bytes(),'application/octet-stream')
                     if action=='brainsight-scalp.ply':
                         return self.send(200,(workspace.derivatives/subject/'brainsight/scalp.ply').read_bytes(),'application/octet-stream')
                     if action=='positional':

@@ -31,7 +31,7 @@ def test_intersections():
 def test_pair_exports(tmp_path):
     mesh=pv.Cube(bounds=(-10,10,-10,10,-10,10)).triangulate()
     imported=dict(provenance={},targets=[dict(name='planned',position=[0,0,0])])
-    mappings={s:dict(marker='cap',brainsight='planned') for s in ['SMA','right_DLPFC']}
+    mappings={s:dict(marker='cap',brainsight='planned',confirmed=True,evidence='synthetic identity') for s in ['SMA','right_DLPFC']}
     sem={'planned':dict(outside=[3,4,20],inside=[3,4,0],verified=True,evidence='synthetic')}
     rows=compare('synthetic',mesh,{'cap':[0,0,12]},imported,mappings,sem)
     assert all(r['distance_mm']==pytest.approx(5) for r in rows)
@@ -101,7 +101,7 @@ def test_subject_input_qc_preserves_raw_markers(tmp_path):
     (output/'markers.json').write_text(json.dumps(markers))
     (output/'manifest.json').write_text(json.dumps(dict(input_paths=dict(anatomical=str(source)))))
     result,path=save_subject_report('test',tmp_path)
-    assert result['status']=='needs_inputs'
+    assert result['status']=='needs_review'
     assert result['cap_points'][0]['raw']==[0,0,12]
     assert result['cap_points'][0]['scalp']==[0,0,10]
     assert result['cap_points'][0]['projection_distance_mm']==2
@@ -130,3 +130,49 @@ def test_legacy_scanner_requires_validated_native_header(tmp_path):
     assert read_targets(p,ctx)['targets'][0]['position']==[1,2,3]
     with pytest.raises(ValueError):read_targets(p,dict(ctx,qform_sform_agree=False))
     with pytest.raises(ValueError):read_targets(p,dict(ctx,nifti_qform_code=2))
+
+
+def test_registration_direction_and_lps_ras():
+    import SimpleITK as sitk
+    from src.brainsight_registration import ras_source_to_cap
+    from src.subject_coordinates import RAS_LPS, apply_affine
+    t=sitk.Euler3DTransform();t.SetRotation(.1,-.2,.3);t.SetTranslation((12.,-7.,4.))
+    matrix=ras_source_to_cap(t)
+    cap_ras=np.array([20.,30.,40.]);cap_lps=apply_affine(RAS_LPS,cap_ras)
+    source_lps=np.array(t.TransformPoint(tuple(cap_lps)))
+    assert np.allclose(apply_affine(matrix,apply_affine(RAS_LPS,source_lps)),cap_ras)
+    assert not np.allclose(apply_affine(np.linalg.inv(matrix),apply_affine(RAS_LPS,source_lps)),cap_ras)
+
+
+def test_reviewed_distance_and_missing_target():
+    from src.positional import reviewed_rows
+    mesh=pv.Cube(bounds=(-10,10,-10,10,-10,10)).triangulate()
+    matrix=np.eye(4);matrix[0,3]=10
+    reg=dict(verified=True,source_sha256='a'*64,target_sha256='b'*64,matrix=matrix.tolist())
+    bs=dict(registration=reg,targets=[dict(name='planned',internal_target='SMA',position=[3,4,0])])
+    markers=dict(fiducials=[dict(name='cap',position=[0,0,12])])
+    review=dict(source_mri_sha256='a'*64,marker_mri_sha256='b'*64,
+                mappings=dict(SMA=dict(marker='cap',brainsight='planned',confirmed=True,evidence='synthetic confirmation')),
+                semantics={'planned':dict(frame='source_MRI_RAS_mm',outside=[-7,4,20],inside=[-7,4,0],verified=True,evidence='synthetic inward segment')})
+    rows=reviewed_rows('s',mesh,markers,bs,review,{})
+    assert rows[0]['scalp_entry_localization_difference_mm']==pytest.approx(5)
+    assert rows[0]['measurement']=='scalp-entry localization difference (mm)'
+    assert rows[1]['qc']=='invalid' and 'Missing planned target' in rows[1]['reason']
+    review['mappings']['SMA']['confirmed']=False
+    assert reviewed_rows('s',mesh,markers,bs,review,{})[0]['qc']=='invalid'
+    review['mappings']['SMA']['confirmed']=True
+    bs['registration']['verified']=False
+    assert reviewed_rows('s',mesh,markers,bs,review,{})[0]['qc']=='invalid'
+
+
+def test_name_does_not_establish_scalp_entry():
+    from src.positional import reviewed_rows
+    mesh=pv.Cube(bounds=(-10,10,-10,10,-10,10)).triangulate()
+    reg=dict(verified=True,source_sha256='a'*64,target_sha256='b'*64,matrix=np.eye(4).tolist())
+    bs=dict(registration=reg,targets=[dict(name='SMA Skin',internal_target='SMA',position=[0,0,0])])
+    markers=dict(fiducials=[dict(name='cap',position=[0,0,12])])
+    review=dict(source_mri_sha256='a'*64,marker_mri_sha256='b'*64,
+                mappings=dict(SMA=dict(marker='cap',brainsight='SMA Skin',confirmed=True,evidence='synthetic')),
+                semantics={'SMA Skin':dict(frame='cap_MRI_RAS_mm',documented_scalp_point=True,verified=True,evidence='synthetic claim')})
+    rows=reviewed_rows('s',mesh,markers,bs,review,{})
+    assert rows[0]['qc']=='invalid' and 'off scalp' in rows[0]['reason']

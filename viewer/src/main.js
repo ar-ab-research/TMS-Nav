@@ -89,14 +89,7 @@ const arcGroup = new THREE.Group();
 const aim1Root = new THREE.Group();
 aim1Root.add(skullGroup, fiducialGroup, scalpGroup, coilGroup, targetGroup, landmarkGroup, mcGroup, eegGroup, arcGroup);
 scene.add(aim1Root);
-const resetPositional = positionalViewer(aim1Root, () => currentMarkers, {
-  frameSource: box => {
-    const geo=scalpGroup.children[0]?.geometry;if(!geo)return;
-    geo.computeBoundingBox();box.union(geo.boundingBox);
-    const bounds=new THREE.BufferGeometry().setFromPoints([box.min,box.max]);
-    frameCamera(bounds);bounds.dispose();
-  },
-});
+const resetPositional = positionalViewer(aim1Root, () => currentMarkers);
 
 // which layers are on. choices survive a reload via localStorage, and on start the
 // same state is pushed onto both the checkbox and the layer, so the two cannot

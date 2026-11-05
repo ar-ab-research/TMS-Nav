@@ -14,14 +14,20 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   const panel=page.locator('#dist #aim1-metrics #positional-panel');
   await expect(panel).toHaveCount(1);
   await expect(panel.getByRole('status')).toContainText('comparisons available',{timeout:30000});
-  await expect(panel.locator('.positional-layer input')).toHaveCount(5);
+  await expect(panel.locator('.positional-layer input')).toHaveCount(6);
   if(report.brainsight){
     await expect(panel).toHaveAttribute('data-brainsight-rendered',String(report.brainsight.targets.length));
     for(const t of report.brainsight.targets){
       await expect(page.locator('[data-bs-target]').filter({hasText:t.name+' · raw'})).toBeVisible();
     }
     await expect(panel).toContainText('Imported Brainsight targets');
-    await expect(panel).toContainText('Display spacing is not an anatomical distance');
+    await expect(panel).toContainText('Registered overlay in cap MRI RAS mm');
+    await expect(panel).toHaveAttribute('data-overlay-frame','cap_MRI_RAS_mm');
+    await expect(panel).toContainText('Scalp-entry localization difference (mm)');
+    await panel.getByText('Registration QC', {exact:false}).click();
+    await expect.poll(()=>panel.locator('img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
+    const surface=panel.locator('label').filter({hasText:'Registered Brainsight surface'}).locator('input');
+    await surface.uncheck();await expect(surface).not.toBeChecked();await surface.check();
   }
   await expect(panel.getByRole('button',{name:'Reload analysis'})).toHaveCSS('background-color','rgb(42, 48, 60)');
   await expect(panel).toContainText('Cap projections');

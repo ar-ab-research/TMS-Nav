@@ -2,26 +2,25 @@
 
 Updated: 2026-11-04
 
-## Objective / completed work
-- Supplied planned-target export now imports and renders on its source MRI scalp beside cap MRI in existing HTML viewer; autonomous conservative site-name mapping added.
-- Legacy scanner-frame exports accepted only with verified scanner header codes; names/orientations/source positions/provenance retained.
-- Extracted/cached source-native scalp; labeled independent frames and raw points. No invented common-frame overlay or cross-MRI distance.
-- CLI regenerated real local outputs. Local API/viewer started on 8765/1234 without overwriting registry.
+## Objective / completed
+- Registered Brainsight source MRI to cap MRI; removed side-by-side layout and viewer translations. Surfaces/raw points overlay in cap RAS mm with independent controls.
+- Added rigid registration/QC module, hash-bound cache and technical anatomical-review evidence locally. Primary measurements use common cap scalp only.
+- Confirmed mapping/registration/semantic gates; verified segment transforms/intersections; explicit missing sites. Skin name never establishes entry semantics.
+- Sidebar and export measurement label: scalp-entry localization difference (mm). QC image and review template available locally.
+- Persisted user requirement: Python and Node/npm work must use micromamba tms312 (also in AGENTS.md).
 
 ## Verified
-- Actual Chrome acceptance passed: imported labels visible, source scalp loaded, count matches import; reload, toggles, export, no exceptions.
-- Full Python suite: 90 passed; positional tests: 10 passed. Chrome acceptance and production build passed.
-- Data, derivatives and screenshots remain ignored. No private coordinates/subject details in checkpoints.
+- Full Python suite 93 passed; final focused suite 13 passed; updated API endpoint test passed.
+- JS 21 passed; production build and actual Chrome overlay/QC/toggle/reload/export acceptance passed. Visually inspected registration and single-head overlay.
+- Technical registration alignment reviewed; independent patient accuracy unvalidated. No private data/coordinates in checkpoints; generated artifacts ignored.
 
-## Decisions
-- User authorized autonomous Brainsight-name-to-site mapping; preserve variants, leave unmatched names unassigned and missing target absent. Does not establish cap marker identity or scalp semantics.
-- Distinct MRI frames displayed separately until verified registration; display separation never becomes a measurement.
+## Decisions / blockers
+- Primary distances unavailable until exact cap marker mappings and planned scalp/trajectory semantics are confirmed; missing target remains absent.
+- Never substitute raw nearest-point projection for an unverified Brainsight entry. Separate numerical agreement from anatomical accuracy.
+- Existing staged viewer/src/datasetRegistry.js unrelated edit remains preserved and excluded.
+- Prior automatic-review rejection of external push remains unresolved; do not bypass/retry without authorization resolution.
 
-## Uncommitted changes
-- Task implementation/tests/docs delivered in [codex] commit; verify hash in Git.
-- Pre-existing staged viewer/src/datasetRegistry.js remains excluded and unchanged.
-
-## Blockers / next steps
-1. Review cap marker identities and planned scalp/trajectory semantics; verify source-to-marker registration for primary positional comparisons.
-2. Acquire missing site target when available; validate numerical import independently of anatomy/registration accuracy.
-3. Prior push rejected by automatic review: destination/payload publication approval unresolved. No retry or bypass.
+## Next actions
+1. Complete local review template with identity-bound confirmed mapping and documented entry semantics when available; rerun --subject and Reload analysis.
+2. Validate coordinates against independent export and review registration/anatomy independently.
+3. Inspect delivery commit in Git; all task files committed with [codex] prefix.

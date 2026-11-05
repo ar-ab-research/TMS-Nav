@@ -85,6 +85,11 @@ def test_http_volume_identity_and_restricted_access(workspace):
         source_dir=work.derivatives/'review-test/brainsight';source_dir.mkdir(exist_ok=True)
         (source_dir/'scalp.ply').write_bytes(b'ply\nsynthetic geometry resource')
         assert urlopen(base+'/api/subjects/review-test/brainsight-scalp.ply').read()==b'ply\nsynthetic geometry resource'
+        (source_dir/'registered-scalp.ply').write_bytes(b'ply\nregistered geometry')
+        assert urlopen(base+'/api/subjects/review-test/brainsight-overlay.ply').read()==b'ply\nregistered geometry'
+        (source_dir/'registration').mkdir(exist_ok=True)
+        (source_dir/'registration/registration-qc.png').write_bytes(b'qc fixture')
+        assert urlopen(base+'/api/subjects/review-test/registration-qc.png').read()==b'qc fixture'
         raw=urlopen(base+'/api/subjects/review-test/volume.nii').read()
         image=nib.Nifti1Image.from_bytes(raw)
         entry=work.load('review-test')

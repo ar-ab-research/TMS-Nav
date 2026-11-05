@@ -1,24 +1,27 @@
-# Positional comparison delivery report
+# Aim 1 registered-overlay implementation report
 
-## Latest delivery
+## Implemented
 
-- Supplied planned-target text export now imports automatically through the subject CLI. Legacy `NIfTI:Scanner` support is gated on validated scanner qform/sform metadata, with raw positions/orientations and full source provenance preserved.
-- Automatically maps named SMA variants to internal SMA and F4/right-DLPFC names to right_DLPFC; keeps unmatched names unassigned and missing sites absent. Does not infer cap-marker identities or invent a replacement target.
-- Extracts and caches scalp from the supplied Brainsight anatomical MRI. Renders imported raw targets on that source-native anatomy beside the existing cap anatomy, with separate frame captions. Display translation is only layout and never used for measurements.
-- Right sidebar shows imported target names/site assignments and rendered count. Source target labels, raw-target toggle, cap projection controls, reload and exports remain functional. Source positions also appear in CSV with explicit source-frame fields.
-- Different-MRI primary distances remain blocked until verified registration and reviewed marker/scalp semantics are available. No scalp-contact meaning is inferred from the name “Skin”.
+- Persisted `tms312` runtime requirement in AGENTS.md; all Python/Node work for this task used that environment.
+- Added deterministic source-to-cap rigid MRI registration, explicit LPS/RAS and direction conversion, inverse/determinant checks, hash-bound cache and before/after anatomical QC montage.
+- Inspected actual anatomical QC: brain boundaries, midline and ventricles align across nine registered views. Recorded technical agent-review evidence locally; independent patient/clinical accuracy remains unvalidated.
+- Removed side-by-side layout and display offsets. Source surface/points are transformed physically into cap MRI RAS mm; common cap mesh remains the measurement surface. Added independently toggleable translucent registered surface.
+- Preserved raw target positions/orientations and transformed copies. Export has no documented scalp-entry designation or inward planned segment; a named Skin target is not accepted on name alone. Raw distance-to-scalp diagnostics do not substitute a scalp entry.
+- Added confirmed marker mapping, MRI identity, registration-review and semantic gates. Source-frame verified segment endpoints are transformed into cap frame before direction/intersection checks. Missing sites remain explicit and excluded.
+- Top imported-target table and exports use **scalp-entry localization difference (mm)**. Valid measurements retain compatibility distance fields and add `scalp_entry_localization_difference_mm`. Unresolved measurements remain unavailable.
+- Added sidebar registration QC images and local review-template generation; updated existing usage guide.
 
 ## Verification
 
-- Actual local CLI regenerated JSON/CSV and source scalp successfully.
-- Actual Chrome browser acceptance passed: both imported target labels visible, source scalp loaded, sidebar rendered-count equals imported target count; toggles, reload and JSON export passed without browser exceptions.
-- Positional suite: 10 passed, including autonomous site-name mapping and gated legacy scanner support. Full Python suite: **90 passed**.
-- Production viewer build passed; private generated outputs and browser screenshot remain ignored locally.
-- Local API/viewer started for inspection on ports 8765/1234 without regenerating or staging the user's dataset registry.
+- Full Python suite: **93 passed**. Final positional suite: **13 passed**; endpoint test passed after adding registered-surface/QC resources.
+- JS suite: **21 passed**. Production viewer build passed.
+- Actual Chrome acceptance passed: registered target overlay, six independent controls, source-surface toggle, QC image loading, reload and export. Inspected actual screenshot; single overlaid head, no layout translation.
+- Known-distance, nonidentity registration direction, LPS/RAS, transformed trajectory, missing-target, unconfirmed-mapping and false Skin/scalp-contact tests passed.
+- Generated registration files, reports, images and templates remain ignored locally. Unrelated staged registry edit preserved.
 
-## Remaining
+## Unresolved
 
-- Primary cross-MRI distances require verified registration and cap-marker/scalp-point semantics; missing planned target cannot yield a comparison.
-- Anatomical/registration accuracy and independent-export validation remain unvalidated.
-- Unrelated staged datasetRegistry.js edit preserved and excluded from delivery.
-- Prior automatic-review rejection of external push remains unresolved; no push retry/bypass attempted.
+- Supplied planned entry semantics and cap-marker identities are not confirmed. Skin-named raw position is off the common scalp. Primary distances therefore remain unavailable; no exploratory projection was substituted.
+- Missing planned site requires its actual target, not another site's target.
+- Independent export validation and patient anatomical/registration validation remain pending.
+- Prior external push rejection remains unresolved; no retry/bypass attempted.

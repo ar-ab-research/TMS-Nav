@@ -116,11 +116,14 @@ def compare(subject, mesh, markers, imported, mappings, semantics):
     for site, mapping in mappings.items():
         row = dict(subject=subject, target=site, cap_label='F4' if site=='right_DLPFC' else 'SMA',
                    method='closest scalp triangle / verified trajectory entry', qc='invalid',
+                   measurement='scalp-entry localization difference (mm)',
                    provenance=imported['provenance'])
         try:
+            if mapping.get('confirmed') is not True or not mapping.get('evidence'):
+                raise ValueError('Confirmed marker-to-target mapping with evidence required')
             marker = markers[mapping['marker']]
             target = next(t for t in imported['targets'] if t['name']==mapping['brainsight'])
-            row.update(marker_name=mapping['marker'], brainsight_name=target['name'],
+            row.update(mapping=mapping, marker_name=mapping['marker'], brainsight_name=target['name'],
                        eeg_raw=vector(marker).tolist(), brainsight_raw=target['position'], target_source=target)
             row['eeg_scalp'], row['projection_distance_mm'] = project(mesh, marker)
             semantic = semantics.get(target['name'], {})
@@ -133,6 +136,7 @@ def compare(subject, mesh, markers, imported, mappings, semantics):
                 row['trajectory'] = semantic
                 row['brainsight_scalp'] = entry_point(mesh, semantic)
             row.update(distance_mm=float(np.linalg.norm(np.array(row['eeg_scalp'])-row['brainsight_scalp'])), qc='valid')
+            row['scalp_entry_localization_difference_mm']=row['distance_mm']
         except (KeyError, ValueError, StopIteration) as error:
             row['reason'] = str(error) or 'Mapped target missing'
         rows.append(row)
@@ -174,3 +178,38 @@ def validate_exports(a, b, decimals):
     maximum=max(float(np.linalg.norm(a[k]-b[k])) for k in a)
     return dict(maximum_discrepancy_mm=maximum,tolerance_mm=tolerance,passed=maximum<=tolerance,
                 interpretation='Numerical agreement only; anatomical and registration accuracy unvalidated')
+
+
+def reviewed_rows(subject, mesh, markers, brainsight, review, provenance):
+    """Gate primary measurements independently from registered raw visualization."""
+    rows=[]
+    reg=brainsight['registration']
+    identities=(review.get('source_mri_sha256')==reg['source_sha256'] and
+                review.get('marker_mri_sha256')==reg['target_sha256'])
+    for site in ('SMA','right_DLPFC'):
+        row=dict(subject=subject,target=site,cap_label='F4' if site=='right_DLPFC' else 'SMA',qc='invalid',
+                 measurement='scalp-entry localization difference (mm)',provenance=provenance)
+        candidates=[t for t in brainsight['targets'] if t['internal_target']==site]
+        row['brainsight_candidates']=candidates
+        try:
+            if not candidates:raise ValueError('Missing planned target for '+site)
+            if not identities:raise ValueError('Review matching both MRI hashes and confirmed marker mapping required')
+            if not reg.get('verified'):raise ValueError('Registration anatomical alignment review required')
+            mapping=review.get('mappings',{}).get(site,{})
+            if mapping.get('confirmed') is not True or not mapping.get('evidence'):
+                raise ValueError('Confirmed marker-to-target mapping with evidence required')
+            selected=next((t for t in candidates if t['name']==mapping.get('brainsight')),None)
+            if selected is None:raise ValueError('Explicit planned target variant selection required')
+            semantic=dict(review.get('semantics',{}).get(selected['name'],{}))
+            if semantic.get('frame')=='source_MRI_RAS_mm':
+                for k in ('outside','inside'):
+                    if k in semantic:semantic[k]=apply_affine(reg['matrix'],vector(semantic[k])).tolist()
+            elif semantic.get('frame')!='cap_MRI_RAS_mm':
+                raise ValueError('Scalp/trajectory semantics require explicit source or cap MRI frame')
+            maps={s:dict(mapping) if s==site else {} for s in ('SMA','right_DLPFC')}
+            imported=dict(targets=[selected],provenance=provenance)
+            computed=compare(subject,mesh,{m['name']:m['position'] for m in markers['fiducials']},imported,maps,{selected['name']:semantic})
+            row.update(next(r for r in computed if r['target']==site))
+        except ValueError as error:row['reason']=str(error)
+        rows.append(row)
+    return rows

@@ -85,3 +85,11 @@ rather than assuming it from this log.
 - Local API/viewer started (8765/1234) without registry regeneration. Existing staged registry edit preserved. Private artifacts ignored; prior blocked push not retried.
 
 - Final full Python suite: **90 passed** (2 existing PyVista deprecation warnings). Browser and production build passed. Primary distances remain deliberately unavailable pending registration and semantics review.
+
+## 2026-11-04 — Registered common-frame overlay and measurement gates
+
+- Added src/brainsight_registration.py: rigid source-to-cap MI registration, explicit fixed-to-moving LPS inversion/conjugation, numerical QC and anatomical QC montage. Visually inspected technical alignment locally; patient accuracy remains unvalidated.
+- Replaced side-by-side display with registered physical overlay. Six controls include source surface; sidebar QC resource and measurement table label added.
+- Confirmed mapping/semantic gates and transformed segment intersection path implemented. Export metadata does not establish scalp contact or an inward trajectory; unresolved primary differences remain unavailable, never snapped/projected as a substitute.
+- Persisted tms312 runtime requirement. Generated data/QC/review artifacts ignored; unrelated staged registry preserved; prior blocked push not retried.
+- Verified: full Python 93 passed; final positional 13 passed; updated endpoint test passed; JS 21 passed; production build passed; actual Chrome overlay/toggle/QC/reload/export acceptance passed and screenshot inspected.
