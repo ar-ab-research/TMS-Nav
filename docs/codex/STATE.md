@@ -27,4 +27,4 @@ Updated: 2026-11-04
 1. Obtain planned-target text export from supplied project, exact marker/target mappings, image-frame and trajectory evidence; complete local pending manifest.
 2. Run CLI, inspect in viewer, compare independent export with precision-based tolerance; validate anatomy/registration separately.
 3. Obtain vendor network schema/examples and licensed Brainsight to establish direct project retrieval support.
-4. Add automated browser test for new overlay interaction. Verify final commit/push via Git history.
+4. Add automated browser test for new overlay interaction. Implementation commit: 37e8dcc. Push to origin/main_ab rejected by automatic review: external destination/payload publication authorization needs confirmation.

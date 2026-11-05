@@ -64,3 +64,5 @@ rather than assuming it from this log.
 - Generated only ignored local preparation/output artifacts. Supplied originals preserved. Usage and exact remaining inputs documented in docs/positional-comparison.md.
 
 - Final verification: authorized full Python suite **85 passed**; subsequent nonidentity target-import/Samples-separation regression included in **6 positional tests passed**. Final viewer build passed.
+
+- Implementation committed as 37e8dcc. Push to origin/main_ab rejected by automatic approval review because external destination/payload publication authorization was considered insufficient; no bypass attempted. Existing registry edit remains uncommitted.
