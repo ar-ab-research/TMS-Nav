@@ -1,0 +1,5021 @@
+[
+  {
+    "config": {
+      "head_radius": 0.09,
+      "coil_x": 0.1,
+      "coil_radius": 0.05,
+      "frequency": 3000.0,
+      "peak_current": 5000.0,
+      "conductivity": 0.2,
+      "density": 1000.0,
+      "duty": 0.002,
+      "sar_budget": 2.0,
+      "target_y": 0.03,
+      "segments": 256
+    },
+    "grid_step_m": 0.006,
+    "voxel_count": 14147,
+    "best": {
+      "phase_deg": 0,
+      "target_V_m": 2.9327922633959562,
+      "half_target_volume_cm3": 3011.904,
+      "equivalent_sphere_diameter_cm": 17.917641146395187,
+      "target_to_max": 0.15705085976363314,
+      "max_sar_W_kg": 6.974482085417633e-05,
+      "target_at_sar_budget_V_m": 496.6384253407741,
+      "max_field_V_m": 18.674156052440004,
+      "sqrt_half_target_area_cm": 15.05988047761336,
+      "current_per_coil_for_12_V_m_A": 20458.31910730849,
+      "current_per_coil_for_100_V_m_A": 170485.99256090407
+    },
+    "central_field_V_m": 5.039570276693768e-15,
+    "same_frequency_sweep": [
+      {
+        "phase_deg": 0,
+        "target_V_m": 2.9327922633959562,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15705085976363314,
+        "max_sar_W_kg": 6.974482085417633e-05,
+        "target_at_sar_budget_V_m": 496.6384253407741,
+        "max_field_V_m": 18.674156052440004,
+        "sqrt_half_target_area_cm": 15.05988047761336,
+        "current_per_coil_for_12_V_m_A": 20458.31910730849,
+        "current_per_coil_for_100_V_m_A": 170485.99256090407
+      },
+      {
+        "phase_deg": 1,
+        "target_V_m": 2.932680591653144,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15704547246539505,
+        "max_sar_W_kg": 6.974429439669596e-05,
+        "target_at_sar_budget_V_m": 496.62138920790704
+      },
+      {
+        "phase_deg": 2,
+        "target_V_m": 2.932345584928943,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.157029310614981,
+        "max_sar_W_kg": 6.974271518461892e-05,
+        "target_at_sar_budget_V_m": 496.57028094939585
+      },
+      {
+        "phase_deg": 3,
+        "target_V_m": 2.931787268735411,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15700237434547054,
+        "max_sar_W_kg": 6.974008369898853e-05,
+        "target_at_sar_budget_V_m": 496.48510098607454
+      },
+      {
+        "phase_deg": 4,
+        "target_V_m": 2.93100568559049,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15696466387925753,
+        "max_sar_W_kg": 6.973640074138075e-05,
+        "target_at_sar_budget_V_m": 496.3658500212146
+      },
+      {
+        "phase_deg": 5,
+        "target_V_m": 2.930000895014761,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15691617952894185,
+        "max_sar_W_kg": 6.97316674336602e-05,
+        "target_at_sar_budget_V_m": 496.21252904334347
+      },
+      {
+        "phase_deg": 6,
+        "target_V_m": 2.9287729735269172,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.156856921698578,
+        "max_sar_W_kg": 6.972588521763822e-05,
+        "target_at_sar_budget_V_m": 496.02513933019395
+      },
+      {
+        "phase_deg": 7,
+        "target_V_m": 2.9273220146379333,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15678689088527967,
+        "max_sar_W_kg": 6.971905585463383e-05,
+        "target_at_sar_budget_V_m": 495.8036824537771
+      },
+      {
+        "phase_deg": 8,
+        "target_V_m": 2.9256481288439473,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15670608768118016,
+        "max_sar_W_kg": 6.97111814249372e-05,
+        "target_at_sar_budget_V_m": 495.5481602865833
+      },
+      {
+        "phase_deg": 9,
+        "target_V_m": 2.9237514436178427,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15661451277574917,
+        "max_sar_W_kg": 6.970226432717583e-05,
+        "target_at_sar_budget_V_m": 495.25857500890675
+      },
+      {
+        "phase_deg": 10,
+        "target_V_m": 2.9216321033995416,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15651216695846348,
+        "max_sar_W_kg": 6.969230727758415e-05,
+        "target_at_sar_budget_V_m": 494.9349291172926
+      },
+      {
+        "phase_deg": 11,
+        "target_V_m": 2.9192902695850087,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15639905112183408,
+        "max_sar_W_kg": 6.968131330917583e-05,
+        "target_at_sar_budget_V_m": 494.57722543410824
+      },
+      {
+        "phase_deg": 12,
+        "target_V_m": 2.916726120513955,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1562751662647856,
+        "max_sar_W_kg": 6.966928577082027e-05,
+        "target_at_sar_budget_V_m": 494.18546711823063
+      },
+      {
+        "phase_deg": 13,
+        "target_V_m": 2.9139398514562593,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15614051349639063,
+        "max_sar_W_kg": 6.965622832622209e-05,
+        "target_at_sar_budget_V_m": 493.75965767685534
+      },
+      {
+        "phase_deg": 14,
+        "target_V_m": 2.910931674597099,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15599509403995623,
+        "max_sar_W_kg": 6.964214495280541e-05,
+        "target_at_sar_budget_V_m": 493.29980097841906
+      },
+      {
+        "phase_deg": 15,
+        "target_V_m": 2.9077018190207875,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15583890923746227,
+        "max_sar_W_kg": 6.962703994050219e-05,
+        "target_at_sar_budget_V_m": 492.8059012666346
+      },
+      {
+        "phase_deg": 16,
+        "target_V_m": 2.904250530693332,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15567196055435115,
+        "max_sar_W_kg": 6.961091789044556e-05,
+        "target_at_sar_budget_V_m": 492.2779631756378
+      },
+      {
+        "phase_deg": 17,
+        "target_V_m": 2.9005780724437016,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15549424958466782,
+        "max_sar_W_kg": 6.959378371356808e-05,
+        "target_at_sar_budget_V_m": 491.7159917462413
+      },
+      {
+        "phase_deg": 18,
+        "target_V_m": 2.89668472394381,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15530577805654827,
+        "max_sar_W_kg": 6.957564262910603e-05,
+        "target_at_sar_budget_V_m": 491.11999244329115
+      },
+      {
+        "phase_deg": 19,
+        "target_V_m": 2.892570781687219,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15510654783805666,
+        "max_sar_W_kg": 6.955650016300953e-05,
+        "target_at_sar_budget_V_m": 490.4899711741246
+      },
+      {
+        "phase_deg": 20,
+        "target_V_m": 2.8882365589665597,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15489656094336893,
+        "max_sar_W_kg": 6.953636214625911e-05,
+        "target_at_sar_budget_V_m": 489.8259343081254
+      },
+      {
+        "phase_deg": 21,
+        "target_V_m": 2.883682385849672,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15467581953930157,
+        "max_sar_W_kg": 6.951523471308977e-05,
+        "target_at_sar_budget_V_m": 489.1278886973691
+      },
+      {
+        "phase_deg": 22,
+        "target_V_m": 2.878908609154472,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15444432595218502,
+        "max_sar_W_kg": 6.949312429912234e-05,
+        "target_at_sar_budget_V_m": 488.39584169835814
+      },
+      {
+        "phase_deg": 23,
+        "target_V_m": 2.8739155924225366,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15420208267507882,
+        "max_sar_W_kg": 6.947003763940311e-05,
+        "target_at_sar_budget_V_m": 487.6298011948392
+      },
+      {
+        "phase_deg": 24,
+        "target_V_m": 2.868703715891422,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1539490923753284,
+        "max_sar_W_kg": 6.94459817663523e-05,
+        "target_at_sar_budget_V_m": 486.8297756216992
+      },
+      {
+        "phase_deg": 25,
+        "target_V_m": 2.863273376465704,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15368535790246038,
+        "max_sar_W_kg": 6.942096400762179e-05,
+        "target_at_sar_budget_V_m": 485.9957739899322
+      },
+      {
+        "phase_deg": 26,
+        "target_V_m": 2.857624987686754,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15341088229641545,
+        "max_sar_W_kg": 6.93949919838633e-05,
+        "target_at_sar_budget_V_m": 485.1278059126752
+      },
+      {
+        "phase_deg": 27,
+        "target_V_m": 2.851758979701248,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15312566879611675,
+        "max_sar_W_kg": 6.936807360640684e-05,
+        "target_at_sar_budget_V_m": 484.2258816323023
+      },
+      {
+        "phase_deg": 28,
+        "target_V_m": 2.8456757992284034,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1528297208483709,
+        "max_sar_W_kg": 6.934021707485097e-05,
+        "target_at_sar_budget_V_m": 483.290012048573
+      },
+      {
+        "phase_deg": 29,
+        "target_V_m": 2.8393759095259647,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15252304211710077,
+        "max_sar_W_kg": 6.931143087456507e-05,
+        "target_at_sar_budget_V_m": 482.32020874782853
+      },
+      {
+        "phase_deg": 30,
+        "target_V_m": 2.832859790354926,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1522056364929066,
+        "max_sar_W_kg": 6.928172377410452e-05,
+        "target_at_sar_budget_V_m": 481.31648403322765
+      },
+      {
+        "phase_deg": 31,
+        "target_V_m": 2.826127937942988,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15187750810295295,
+        "max_sar_W_kg": 6.925110482254e-05,
+        "target_at_sar_budget_V_m": 480.27885095601016
+      },
+      {
+        "phase_deg": 32,
+        "target_V_m": 2.8191808649467776,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15153866132117996,
+        "max_sar_W_kg": 6.921958334670075e-05,
+        "target_at_sar_budget_V_m": 479.20732334778944
+      },
+      {
+        "phase_deg": 33,
+        "target_V_m": 2.812019100412799,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15118910077883477,
+        "max_sar_W_kg": 6.918716894833362e-05,
+        "target_at_sar_budget_V_m": 478.1019158538549
+      },
+      {
+        "phase_deg": 34,
+        "target_V_m": 2.804643189737148,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15082883137532102,
+        "max_sar_W_kg": 6.91538715011784e-05,
+        "target_at_sar_budget_V_m": 476.96264396748114
+      },
+      {
+        "phase_deg": 35,
+        "target_V_m": 2.797053694623982,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.15045785828936323,
+        "max_sar_W_kg": 6.911970114796e-05,
+        "target_at_sar_budget_V_m": 475.78952406523314
+      },
+      {
+        "phase_deg": 36,
+        "target_V_m": 2.7892511930427366,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1500761869904824,
+        "max_sar_W_kg": 6.908466829729911e-05,
+        "target_at_sar_budget_V_m": 474.5825734432548
+      },
+      {
+        "phase_deg": 37,
+        "target_V_m": 2.7812362791841156,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14968382325077992,
+        "max_sar_W_kg": 6.904878362054133e-05,
+        "target_at_sar_budget_V_m": 473.3418103545336
+      },
+      {
+        "phase_deg": 38,
+        "target_V_m": 2.773009563414841,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14928077315702598,
+        "max_sar_W_kg": 6.901205804850689e-05,
+        "target_at_sar_budget_V_m": 472.0672540471267
+      },
+      {
+        "phase_deg": 39,
+        "target_V_m": 2.764571672231169,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14886704312304844,
+        "max_sar_W_kg": 6.897450276816072e-05,
+        "target_at_sar_budget_V_m": 470.75892480333886
+      },
+      {
+        "phase_deg": 40,
+        "target_V_m": 2.7559232482111824,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14844263990241877,
+        "max_sar_W_kg": 6.893612921920511e-05,
+        "target_at_sar_budget_V_m": 469.4168439798381
+      },
+      {
+        "phase_deg": 41,
+        "target_V_m": 2.7470649499658535,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14800757060143024,
+        "max_sar_W_kg": 6.889694909059476e-05,
+        "target_at_sar_budget_V_m": 468.04103404869693
+      },
+      {
+        "phase_deg": 42,
+        "target_V_m": 2.7379974520888903,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14756184269236466,
+        "max_sar_W_kg": 6.885697431697638e-05,
+        "target_at_sar_budget_V_m": 466.6315186393454
+      },
+      {
+        "phase_deg": 43,
+        "target_V_m": 2.7287214451053625,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14710546402704258,
+        "max_sar_W_kg": 6.881621707505324e-05,
+        "target_at_sar_budget_V_m": 465.1883225814199
+      },
+      {
+        "phase_deg": 44,
+        "target_V_m": 2.7192376354191152,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14663844285065217,
+        "max_sar_W_kg": 6.877468977987614e-05,
+        "target_at_sar_budget_V_m": 463.711471948495
+      },
+      {
+        "phase_deg": 45,
+        "target_V_m": 2.7095467452589745,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1461607878158526,
+        "max_sar_W_kg": 6.87324050810614e-05,
+        "target_at_sar_budget_V_m": 462.20099410268125
+      },
+      {
+        "phase_deg": 46,
+        "target_V_m": 2.699649512623745,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14567250799714535,
+        "max_sar_W_kg": 6.868937585893789e-05,
+        "target_at_sar_budget_V_m": 460.6569177400723
+      },
+      {
+        "phase_deg": 47,
+        "target_V_m": 2.689546691226012,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1451736129055093,
+        "max_sar_W_kg": 6.864561522062358e-05,
+        "target_at_sar_budget_V_m": 459.079272937024
+      },
+      {
+        "phase_deg": 48,
+        "target_V_m": 2.6792390504347376,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14466411250329325,
+        "max_sar_W_kg": 6.860113649603277e-05,
+        "target_at_sar_budget_V_m": 457.46809119724935
+      },
+      {
+        "phase_deg": 49,
+        "target_V_m": 2.668727375216678,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14414401721935993,
+        "max_sar_W_kg": 6.855595323381583e-05,
+        "target_at_sar_budget_V_m": 455.82340549970803
+      },
+      {
+        "phase_deg": 50,
+        "target_V_m": 2.658012466076597,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14361333796447548,
+        "max_sar_W_kg": 6.851007919723214e-05,
+        "target_at_sar_budget_V_m": 454.14525034727217
+      },
+      {
+        "phase_deg": 51,
+        "target_V_m": 2.64709513899631,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14307208614693817,
+        "max_sar_W_kg": 6.846352835995767e-05,
+        "target_at_sar_budget_V_m": 452.4336618161484
+      },
+      {
+        "phase_deg": 52,
+        "target_V_m": 2.635976225372544,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1425202736884396,
+        "max_sar_W_kg": 6.841631490182837e-05,
+        "target_at_sar_budget_V_m": 450.68867760603575
+      },
+      {
+        "phase_deg": 53,
+        "target_V_m": 2.624656571953618,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1419579130401508,
+        "max_sar_W_kg": 6.836845320452097e-05,
+        "target_at_sar_budget_V_m": 448.9103370909943
+      },
+      {
+        "phase_deg": 54,
+        "target_V_m": 2.613137040774967,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14138501719902738,
+        "max_sar_W_kg": 6.831995784717206e-05,
+        "target_at_sar_budget_V_m": 447.09868137100636
+      },
+      {
+        "phase_deg": 55,
+        "target_V_m": 2.6014185090934894,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.1408015997243246,
+        "max_sar_W_kg": 6.827084360193737e-05,
+        "target_at_sar_budget_V_m": 445.25375332420185
+      },
+      {
+        "phase_deg": 56,
+        "target_V_m": 2.5895018693207437,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.14020767475431625,
+        "max_sar_W_kg": 6.822112542949169e-05,
+        "target_at_sar_budget_V_m": 443.3755976597283
+      },
+      {
+        "phase_deg": 57,
+        "target_V_m": 2.5773880289549846,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.13960325702320797,
+        "max_sar_W_kg": 6.817081847447203e-05,
+        "target_at_sar_budget_V_m": 441.464260971235
+      },
+      {
+        "phase_deg": 58,
+        "target_V_m": 2.565077910512057,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.13898836187823754,
+        "max_sar_W_kg": 6.811993806086419e-05,
+        "target_at_sar_budget_V_m": 439.519791790949
+      },
+      {
+        "phase_deg": 59,
+        "target_V_m": 2.552572451455141,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.13836300529695295,
+        "max_sar_W_kg": 6.806849968733513e-05,
+        "target_at_sar_budget_V_m": 437.5422406443134
+      },
+      {
+        "phase_deg": 60,
+        "target_V_m": 2.539872604123361,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.13772720390466003,
+        "max_sar_W_kg": 6.801651902251157e-05,
+        "target_at_sar_budget_V_m": 435.53166010516156
+      },
+      {
+        "phase_deg": 61,
+        "target_V_m": 2.52697933565926,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.1370809749920294,
+        "max_sar_W_kg": 6.79640119002077e-05,
+        "target_at_sar_budget_V_m": 433.4881048513949
+      },
+      {
+        "phase_deg": 62,
+        "target_V_m": 2.51389362793515,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.13642433653285455,
+        "max_sar_W_kg": 6.791099431460155e-05,
+        "target_at_sar_budget_V_m": 431.41163172113886
+      },
+      {
+        "phase_deg": 63,
+        "target_V_m": 2.500616477478338,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.13575730720194995,
+        "max_sar_W_kg": 6.785748241536332e-05,
+        "target_at_sar_budget_V_m": 429.30229976934214
+      },
+      {
+        "phase_deg": 64,
+        "target_V_m": 2.487148895395236,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.1350799063931798,
+        "max_sar_W_kg": 6.780349250273591e-05,
+        "target_at_sar_budget_V_m": 427.16017032478834
+      },
+      {
+        "phase_deg": 65,
+        "target_V_m": 2.473491907294361,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.13439215423760706,
+        "max_sar_W_kg": 6.774904102256966e-05,
+        "target_at_sar_budget_V_m": 424.98530704748794
+      },
+      {
+        "phase_deg": 66,
+        "target_V_m": 2.459646553208232,
+        "half_target_volume_cm3": 3015.36,
+        "equivalent_sphere_diameter_cm": 17.92449170762333,
+        "target_to_max": 0.13369407162175123,
+        "max_sar_W_kg": 6.769414456131299e-05,
+        "target_at_sar_budget_V_m": 422.7777759864151
+      },
+      {
+        "phase_deg": 67,
+        "target_V_m": 2.4456138875141678,
+        "half_target_volume_cm3": 3015.36,
+        "equivalent_sphere_diameter_cm": 17.92449170762333,
+        "target_to_max": 0.13298568020594503,
+        "max_sar_W_kg": 6.763881984095975e-05,
+        "target_at_sar_budget_V_m": 420.5376456375562
+      },
+      {
+        "phase_deg": 68,
+        "target_V_m": 2.43139497885399,
+        "half_target_volume_cm3": 3015.36,
+        "equivalent_sphere_diameter_cm": 17.92449170762333,
+        "target_to_max": 0.13226700244277736,
+        "max_sar_W_kg": 6.758308371395564e-05,
+        "target_at_sar_budget_V_m": 418.2649870022313
+      },
+      {
+        "phase_deg": 69,
+        "target_V_m": 2.416990910052644,
+        "half_target_volume_cm3": 3015.36,
+        "equivalent_sphere_diameter_cm": 17.92449170762333,
+        "target_to_max": 0.1315380615956114,
+        "max_sar_W_kg": 6.752695315806497e-05,
+        "target_at_sar_budget_V_m": 415.95987364565417
+      },
+      {
+        "phase_deg": 70,
+        "target_V_m": 2.402402778035737,
+        "half_target_volume_cm3": 3015.36,
+        "equivalent_sphere_diameter_cm": 17.92449170762333,
+        "target_to_max": 0.1307988817571661,
+        "max_sar_W_kg": 6.747044527119885e-05,
+        "target_at_sar_budget_V_m": 413.6223817556917
+      },
+      {
+        "phase_deg": 71,
+        "target_V_m": 2.3876316937460014,
+        "half_target_volume_cm3": 3015.36,
+        "equivalent_sphere_diameter_cm": 17.92449170762333,
+        "target_to_max": 0.1300494878681485,
+        "max_sar_W_kg": 6.741357726620687e-05,
+        "target_at_sar_budget_V_m": 411.25259020178464
+      },
+      {
+        "phase_deg": 72,
+        "target_V_m": 2.3726787820586956,
+        "half_target_volume_cm3": 3015.36,
+        "equivalent_sphere_diameter_cm": 17.92449170762333,
+        "target_to_max": 0.12928990573592355,
+        "max_sar_W_kg": 6.735636646563432e-05,
+        "target_at_sar_budget_V_m": 408.8505805939866
+      },
+      {
+        "phase_deg": 73,
+        "target_V_m": 2.3575451816959365,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12852016205320962,
+        "max_sar_W_kg": 6.72988302964453e-05,
+        "target_at_sar_budget_V_m": 406.4164373420847
+      },
+      {
+        "phase_deg": 74,
+        "target_V_m": 2.342232045139984,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12774028441678564,
+        "max_sar_W_kg": 6.724098628471435e-05,
+        "target_at_sar_budget_V_m": 403.95024771475613
+      },
+      {
+        "phase_deg": 75,
+        "target_V_m": 2.326740538545474,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12695030134619667,
+        "max_sar_W_kg": 6.718285205028763e-05,
+        "target_at_sar_budget_V_m": 401.4521018987215
+      },
+      {
+        "phase_deg": 76,
+        "target_V_m": 2.311071841650611,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12615024230244312,
+        "max_sar_W_kg": 6.712444530141623e-05,
+        "target_at_sar_budget_V_m": 398.92209305784394
+      },
+      {
+        "phase_deg": 77,
+        "target_V_m": 2.2952271476873287,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12534013770664096,
+        "max_sar_W_kg": 6.706578382936166e-05,
+        "target_at_sar_budget_V_m": 396.360317392139
+      },
+      {
+        "phase_deg": 78,
+        "target_V_m": 2.2792076632904164,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12452001895863686,
+        "max_sar_W_kg": 6.70068855029765e-05,
+        "target_at_sar_budget_V_m": 393.7668741966404
+      },
+      {
+        "phase_deg": 79,
+        "target_V_m": 2.263014608405633,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12368991845556424,
+        "max_sar_W_kg": 6.694776826326161e-05,
+        "target_at_sar_budget_V_m": 391.1418659200793
+      },
+      {
+        "phase_deg": 80,
+        "target_V_m": 2.2466492161968024,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12284986961032508,
+        "max_sar_W_kg": 6.688845011790082e-05,
+        "target_at_sar_budget_V_m": 388.4853982233293
+      },
+      {
+        "phase_deg": 81,
+        "target_V_m": 2.2301127329519024,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12199990686998168,
+        "max_sar_W_kg": 6.682894913577587e-05,
+        "target_at_sar_budget_V_m": 385.7975800375658
+      },
+      {
+        "phase_deg": 82,
+        "target_V_m": 2.2134064179881556,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12114006573404296,
+        "max_sar_W_kg": 6.676928344146233e-05,
+        "target_at_sar_budget_V_m": 383.078523622093
+      },
+      {
+        "phase_deg": 83,
+        "target_V_m": 2.1965315435561275,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.12027038277262965,
+        "max_sar_W_kg": 6.670947120970862e-05,
+        "target_at_sar_budget_V_m": 380.32834462178664
+      },
+      {
+        "phase_deg": 84,
+        "target_V_m": 2.1794893947428395,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11939089564450132,
+        "max_sar_W_kg": 6.664953065989999e-05,
+        "target_at_sar_budget_V_m": 377.5471621241008
+      },
+      {
+        "phase_deg": 85,
+        "target_V_m": 2.1622812693739064,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11850164311492965,
+        "max_sar_W_kg": 6.658948005050859e-05,
+        "target_at_sar_budget_V_m": 374.73509871558804
+      },
+      {
+        "phase_deg": 86,
+        "target_V_m": 2.1449084779146976,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11760266507340034,
+        "max_sar_W_kg": 6.652933767353169e-05,
+        "target_at_sar_budget_V_m": 371.89228053787804
+      },
+      {
+        "phase_deg": 87,
+        "target_V_m": 2.127372343370545,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11669400255112768,
+        "max_sar_W_kg": 6.646912184892002e-05,
+        "target_at_sar_budget_V_m": 369.0188373430629
+      },
+      {
+        "phase_deg": 88,
+        "target_V_m": 2.1096742011859884,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11577569773836358,
+        "max_sar_W_kg": 6.640885091899704e-05,
+        "target_at_sar_budget_V_m": 366.11490254843386
+      },
+      {
+        "phase_deg": 89,
+        "target_V_m": 2.0918153991430746,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11484779400148426,
+        "max_sar_W_kg": 6.634854324287182e-05,
+        "target_at_sar_budget_V_m": 363.18061329051363
+      },
+      {
+        "phase_deg": 90,
+        "target_V_m": 2.0737972972587237,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.1139103358998369,
+        "max_sar_W_kg": 6.628821719084682e-05,
+        "target_at_sar_budget_V_m": 360.21611047833034
+      },
+      {
+        "phase_deg": 91,
+        "target_V_m": 2.055621267681154,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11296336920232825,
+        "max_sar_W_kg": 6.622789113882177e-05,
+        "target_at_sar_budget_V_m": 357.2215388458754
+      },
+      {
+        "phase_deg": 92,
+        "target_V_m": 2.0372886945853894,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11200694090373717,
+        "max_sar_W_kg": 6.616758346269659e-05,
+        "target_at_sar_budget_V_m": 354.1970470036878
+      },
+      {
+        "phase_deg": 93,
+        "target_V_m": 2.018800974067848,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11104109924073328,
+        "max_sar_W_kg": 6.61073125327736e-05,
+        "target_at_sar_budget_V_m": 351.14278748951085
+      },
+      {
+        "phase_deg": 94,
+        "target_V_m": 2.0001595140400257,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.11006589370758338,
+        "max_sar_W_kg": 6.60470967081619e-05,
+        "target_at_sar_budget_V_m": 348.05891681795833
+      },
+      {
+        "phase_deg": 95,
+        "target_V_m": 1.981365734121276,
+        "half_target_volume_cm3": 3017.088,
+        "equivalent_sphere_diameter_cm": 17.927915025450574,
+        "target_to_max": 0.1090813750715265,
+        "max_sar_W_kg": 6.598695433118507e-05,
+        "target_at_sar_budget_V_m": 344.9455955291362
+      },
+      {
+        "phase_deg": 96,
+        "target_V_m": 1.9624210655307042,
+        "half_target_volume_cm3": 3018.8160000000003,
+        "equivalent_sphere_diameter_cm": 17.931337036418483,
+        "target_to_max": 0.10808759538780044,
+        "max_sar_W_kg": 6.592690372179365e-05,
+        "target_at_sar_budget_V_m": 341.80298823616005
+      },
+      {
+        "phase_deg": 97,
+        "target_V_m": 1.9433269509781705,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.1070846080142995,
+        "max_sar_W_kg": 6.586696317198501e-05,
+        "target_at_sar_budget_V_m": 338.6312636715071
+      },
+      {
+        "phase_deg": 98,
+        "target_V_m": 1.9240848445544232,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.106072467625846,
+        "max_sar_W_kg": 6.580715094023136e-05,
+        "target_at_sar_budget_V_m": 335.43059473214646
+      },
+      {
+        "phase_deg": 99,
+        "target_V_m": 1.9046962116203658,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.10505123022805658,
+        "max_sar_W_kg": 6.574748524591778e-05,
+        "target_at_sar_budget_V_m": 332.2011585233884
+      },
+      {
+        "phase_deg": 100,
+        "target_V_m": 1.885162528695462,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.10402095317078351,
+        "max_sar_W_kg": 6.568798426379282e-05,
+        "target_at_sar_budget_V_m": 328.94313640138984
+      },
+      {
+        "phase_deg": 101,
+        "target_V_m": 1.8654852833452948,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.10298169516111393,
+        "max_sar_W_kg": 6.562866611843202e-05,
+        "target_at_sar_budget_V_m": 325.6567140142606
+      },
+      {
+        "phase_deg": 102,
+        "target_V_m": 1.845665974068281,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.10193351627590634,
+        "max_sar_W_kg": 6.55695488787171e-05,
+        "target_at_sar_budget_V_m": 322.3420813417085
+      },
+      {
+        "phase_deg": 103,
+        "target_V_m": 1.8257061101815555,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.10087647797384713,
+        "max_sar_W_kg": 6.551065055233196e-05,
+        "target_at_sar_budget_V_m": 318.9994327331644
+      },
+      {
+        "phase_deg": 104,
+        "target_V_m": 1.805607211706031,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.09981064310700753,
+        "max_sar_W_kg": 6.545198908027738e-05,
+        "target_at_sar_budget_V_m": 315.62896694432897
+      },
+      {
+        "phase_deg": 105,
+        "target_V_m": 1.7853708092506424,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.09873607593188251,
+        "max_sar_W_kg": 6.539358233140597e-05,
+        "target_at_sar_budget_V_m": 312.2308871720809
+      },
+      {
+        "phase_deg": 106,
+        "target_V_m": 1.7649984438957855,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.0976528421198933,
+        "max_sar_W_kg": 6.533544809697932e-05,
+        "target_at_sar_budget_V_m": 308.8054010876883
+      },
+      {
+        "phase_deg": 107,
+        "target_V_m": 1.7444916670759565,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.09656100876733492,
+        "max_sar_W_kg": 6.527760408524829e-05,
+        "target_at_sar_budget_V_m": 305.3527208682662
+      },
+      {
+        "phase_deg": 108,
+        "target_V_m": 1.7238520404616056,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.09546064440475055,
+        "max_sar_W_kg": 6.522006791605932e-05,
+        "target_at_sar_budget_V_m": 301.87306322642024
+      },
+      {
+        "phase_deg": 109,
+        "target_V_m": 1.7030811358402087,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.0943518190057147,
+        "max_sar_W_kg": 6.516285711548678e-05,
+        "target_at_sar_budget_V_m": 298.36664943802185
+      },
+      {
+        "phase_deg": 110,
+        "target_V_m": 1.6821805349965713,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.09323460399500695,
+        "max_sar_W_kg": 6.510598911049482e-05,
+        "target_at_sar_budget_V_m": 294.833705368056
+      },
+      {
+        "phase_deg": 111,
+        "target_V_m": 1.6611518295923668,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.09210907225615927,
+        "max_sar_W_kg": 6.504948122362865e-05,
+        "target_at_sar_budget_V_m": 291.2744614944875
+      },
+      {
+        "phase_deg": 112,
+        "target_V_m": 1.6399966210449282,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.09097529813835895,
+        "max_sar_W_kg": 6.499335066773798e-05,
+        "target_at_sar_budget_V_m": 287.6891529300904
+      },
+      {
+        "phase_deg": 113,
+        "target_V_m": 1.6187165204052916,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.0898333574626902,
+        "max_sar_W_kg": 6.49376145407339e-05,
+        "target_at_sar_budget_V_m": 284.07801944218556
+      },
+      {
+        "phase_deg": 114,
+        "target_V_m": 1.5973131482355107,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.08868332752769786,
+        "max_sar_W_kg": 6.488228982038065e-05,
+        "target_at_sar_budget_V_m": 280.44130547023445
+      },
+      {
+        "phase_deg": 115,
+        "target_V_m": 1.5757881344852425,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.08752528711425658,
+        "max_sar_W_kg": 6.482739335912395e-05,
+        "target_at_sar_budget_V_m": 276.77926014123693
+      },
+      {
+        "phase_deg": 116,
+        "target_V_m": 1.5541431183676209,
+        "half_target_volume_cm3": 3020.544,
+        "equivalent_sphere_diameter_cm": 17.934757741773577,
+        "target_to_max": 0.08635931648972923,
+        "max_sar_W_kg": 6.477294187895773e-05,
+        "target_at_sar_budget_V_m": 273.0921372828815
+      },
+      {
+        "phase_deg": 117,
+        "target_V_m": 1.5323797482344264,
+        "half_target_volume_cm3": 3022.272,
+        "equivalent_sphere_diameter_cm": 17.938177142760487,
+        "target_to_max": 0.08518549741139951,
+        "max_sar_W_kg": 6.471895196633028e-05,
+        "target_at_sar_budget_V_m": 269.3801954344
+      },
+      {
+        "phase_deg": 118,
+        "target_V_m": 1.5104996814505538,
+        "half_target_volume_cm3": 3022.272,
+        "equivalent_sphere_diameter_cm": 17.938177142760487,
+        "target_to_max": 0.08400391312916257,
+        "max_sar_W_kg": 6.466544006709208e-05,
+        "target_at_sar_budget_V_m": 265.64369785507597
+      },
+      {
+        "phase_deg": 119,
+        "target_V_m": 1.488504584267802,
+        "half_target_volume_cm3": 3022.272,
+        "equivalent_sphere_diameter_cm": 17.938177142760487,
+        "target_to_max": 0.0828146483874601,
+        "max_sar_W_kg": 6.461242248148595e-05,
+        "target_at_sar_budget_V_m": 261.8829125303643
+      },
+      {
+        "phase_deg": 120,
+        "target_V_m": 1.4663961316979783,
+        "half_target_volume_cm3": 3022.272,
+        "equivalent_sphere_diameter_cm": 17.938177142760487,
+        "target_to_max": 0.08161778942644426,
+        "max_sar_W_kg": 6.455991535918204e-05,
+        "target_at_sar_budget_V_m": 258.09811217557166
+      },
+      {
+        "phase_deg": 121,
+        "target_V_m": 1.444176007385342,
+        "half_target_volume_cm3": 3025.728,
+        "equivalent_sphere_diameter_cm": 17.945012036598783,
+        "target_to_max": 0.0804134239823578,
+        "max_sar_W_kg": 6.450793469435854e-05,
+        "target_at_sar_budget_V_m": 254.2895742370583
+      },
+      {
+        "phase_deg": 122,
+        "target_V_m": 1.421845903478389,
+        "half_target_volume_cm3": 3025.728,
+        "equivalent_sphere_diameter_cm": 17.945012036598783,
+        "target_to_max": 0.07920164128711678,
+        "max_sar_W_kg": 6.445649632082943e-05,
+        "target_at_sar_budget_V_m": 250.4575808909189
+      },
+      {
+        "phase_deg": 123,
+        "target_V_m": 1.3994075205009853,
+        "half_target_volume_cm3": 3025.728,
+        "equivalent_sphere_diameter_cm": 17.945012036598783,
+        "target_to_max": 0.0779825320670827,
+        "max_sar_W_kg": 6.440561590722162e-05,
+        "target_at_sar_budget_V_m": 246.60241903909986
+      },
+      {
+        "phase_deg": 124,
+        "target_V_m": 1.3768625672228694,
+        "half_target_volume_cm3": 3025.728,
+        "equivalent_sphere_diameter_cm": 17.945012036598783,
+        "target_to_max": 0.07675618854101335,
+        "max_sar_W_kg": 6.435530895220197e-05,
+        "target_at_sar_budget_V_m": 242.72438030291866
+      },
+      {
+        "phase_deg": 125,
+        "target_V_m": 1.354212760529519,
+        "half_target_volume_cm3": 3029.1839999999997,
+        "equivalent_sphere_diameter_cm": 17.951841727852504,
+        "target_to_max": 0.07552270441717947,
+        "max_sar_W_kg": 6.430559077975628e-05,
+        "target_at_sar_budget_V_m": 238.82376101394644
+      },
+      {
+        "phase_deg": 126,
+        "target_V_m": 1.3314598252914067,
+        "half_target_volume_cm3": 3029.1839999999997,
+        "equivalent_sphere_diameter_cm": 17.951841727852504,
+        "target_to_max": 0.07428217488963754,
+        "max_sar_W_kg": 6.425647653452158e-05,
+        "target_at_sar_budget_V_m": 234.90086220222133
+      },
+      {
+        "phase_deg": 127,
+        "target_V_m": 1.3086054942326417,
+        "half_target_volume_cm3": 3029.1839999999997,
+        "equivalent_sphere_diameter_cm": 17.951841727852504,
+        "target_to_max": 0.07303469663364834,
+        "max_sar_W_kg": 6.42079811771727e-05,
+        "target_at_sar_budget_V_m": 230.9559895817609
+      },
+      {
+        "phase_deg": 128,
+        "target_V_m": 1.2856515077990194,
+        "half_target_volume_cm3": 3029.1839999999997,
+        "equivalent_sphere_diameter_cm": 17.951841727852504,
+        "target_to_max": 0.07178036780023203,
+        "max_sar_W_kg": 6.416011947986526e-05,
+        "target_at_sar_budget_V_m": 226.98945353334344
+      },
+      {
+        "phase_deg": 129,
+        "target_V_m": 1.2625996140254756,
+        "half_target_volume_cm3": 3029.1839999999997,
+        "equivalent_sphere_diameter_cm": 17.951841727852504,
+        "target_to_max": 0.07051928800985076,
+        "max_sar_W_kg": 6.411290602173597e-05,
+        "target_at_sar_budget_V_m": 223.00156908453087
+      },
+      {
+        "phase_deg": 130,
+        "target_V_m": 1.2394515684029705,
+        "half_target_volume_cm3": 3029.1839999999997,
+        "equivalent_sphere_diameter_cm": 17.951841727852504,
+        "target_to_max": 0.06925155834521186,
+        "max_sar_W_kg": 6.406635518446149e-05,
+        "target_at_sar_budget_V_m": 218.9926558869106
+      },
+      {
+        "phase_deg": 131,
+        "target_V_m": 1.2162091337448002,
+        "half_target_volume_cm3": 3029.1839999999997,
+        "equivalent_sphere_diameter_cm": 17.951841727852504,
+        "target_to_max": 0.06797728134318393,
+        "max_sar_W_kg": 6.40204811478778e-05,
+        "target_at_sar_budget_V_m": 214.9630381905313
+      },
+      {
+        "phase_deg": 132,
+        "target_V_m": 1.1928740800523492,
+        "half_target_volume_cm3": 3030.9120000000003,
+        "equivalent_sphere_diameter_cm": 17.955254625601626,
+        "target_to_max": 0.06669656098581953,
+        "max_sar_W_kg": 6.397529788566086e-05,
+        "target_at_sar_budget_V_m": 210.91304481551495
+      },
+      {
+        "phase_deg": 133,
+        "target_V_m": 1.169448184380303,
+        "half_target_volume_cm3": 3030.9120000000003,
+        "equivalent_sphere_diameter_cm": 17.955254625601626,
+        "target_to_max": 0.06540950269048001,
+        "max_sar_W_kg": 6.393081916107005e-05,
+        "target_at_sar_budget_V_m": 206.84300912082847
+      },
+      {
+        "phase_deg": 134,
+        "target_V_m": 1.1459332307013135,
+        "half_target_volume_cm3": 3030.9120000000003,
+        "equivalent_sphere_diameter_cm": 17.955254625601626,
+        "target_to_max": 0.06411621329905699,
+        "max_sar_W_kg": 6.388705852275573e-05,
+        "target_at_sar_budget_V_m": 202.75326897019863
+      },
+      {
+        "phase_deg": 135,
+        "target_V_m": 1.122331009770145,
+        "half_target_volume_cm3": 3030.9120000000003,
+        "equivalent_sphere_diameter_cm": 17.955254625601626,
+        "target_to_max": 0.06281680106628743,
+        "max_sar_W_kg": 6.384402930063223e-05,
+        "target_at_sar_budget_V_m": 198.64416669516194
+      },
+      {
+        "phase_deg": 136,
+        "target_V_m": 1.0986433189873013,
+        "half_target_volume_cm3": 3030.9120000000003,
+        "equivalent_sphere_diameter_cm": 17.955254625601626,
+        "target_to_max": 0.061511375647159645,
+        "max_sar_W_kg": 6.380174460181748e-05,
+        "target_at_sar_budget_V_m": 194.5160490552382
+      },
+      {
+        "phase_deg": 137,
+        "target_V_m": 1.0748719622621465,
+        "half_target_volume_cm3": 3030.9120000000003,
+        "equivalent_sphere_diameter_cm": 17.955254625601626,
+        "target_to_max": 0.06020004808340832,
+        "max_sar_W_kg": 6.376021730664039e-05,
+        "target_at_sar_budget_V_m": 190.36926719522438
+      },
+      {
+        "phase_deg": 138,
+        "target_V_m": 1.0510187498755295,
+        "half_target_volume_cm3": 3030.9120000000003,
+        "equivalent_sphere_diameter_cm": 17.955254625601626,
+        "target_to_max": 0.05888293078909773,
+        "max_sar_W_kg": 6.371946006471724e-05,
+        "target_at_sar_budget_V_m": 186.20417659960458
+      },
+      {
+        "phase_deg": 139,
+        "target_V_m": 1.0270854983419242,
+        "half_target_volume_cm3": 3032.64,
+        "equivalent_sphere_diameter_cm": 17.958666226410614,
+        "target_to_max": 0.05756013753529326,
+        "max_sar_W_kg": 6.367948529109888e-05,
+        "target_at_sar_budget_V_m": 182.0211370440773
+      },
+      {
+        "phase_deg": 140,
+        "target_V_m": 1.0030740302710976,
+        "half_target_volume_cm3": 3032.64,
+        "equivalent_sphere_diameter_cm": 17.958666226410614,
+        "target_to_max": 0.056231783433822936,
+        "max_sar_W_kg": 6.364030516248853e-05,
+        "target_at_sar_budget_V_m": 177.82051254420463
+      },
+      {
+        "phase_deg": 141,
+        "target_V_m": 0.9789861742293062,
+        "half_target_volume_cm3": 3032.64,
+        "equivalent_sphere_diameter_cm": 17.958666226410614,
+        "target_to_max": 0.054897984920129865,
+        "max_sar_W_kg": 6.360193161353288e-05,
+        "target_at_sar_budget_V_m": 173.60267130118723
+      },
+      {
+        "phase_deg": 142,
+        "target_V_m": 0.9548237646000489,
+        "half_target_volume_cm3": 3032.64,
+        "equivalent_sphere_diameter_cm": 17.958666226410614,
+        "target_to_max": 0.0535588597352201,
+        "max_sar_W_kg": 6.356437633318676e-05,
+        "target_at_sar_budget_V_m": 169.36798564477823
+      },
+      {
+        "phase_deg": 143,
+        "target_V_m": 0.9305886414443661,
+        "half_target_volume_cm3": 3032.64,
+        "equivalent_sphere_diameter_cm": 17.958666226410614,
+        "target_to_max": 0.05221452690670894,
+        "max_sar_W_kg": 6.35276507611523e-05,
+        "target_at_sar_budget_V_m": 165.11683197334642
+      },
+      {
+        "phase_deg": 144,
+        "target_V_m": 0.9062826503607178,
+        "half_target_volume_cm3": 3032.64,
+        "equivalent_sphere_diameter_cm": 17.958666226410614,
+        "target_to_max": 0.05086510672897167,
+        "max_sar_W_kg": 6.349176608439452e-05,
+        "target_at_sar_budget_V_m": 160.8495906911074
+      },
+      {
+        "phase_deg": 145,
+        "target_V_m": 0.8819076423444274,
+        "half_target_volume_cm3": 3034.368,
+        "equivalent_sphere_diameter_cm": 17.9620765315109,
+        "target_to_max": 0.04951072074240403,
+        "max_sar_W_kg": 6.34567332337336e-05,
+        "target_at_sar_budget_V_m": 156.56664614253947
+      },
+      {
+        "phase_deg": 146,
+        "target_V_m": 0.8574654736467294,
+        "half_target_volume_cm3": 3034.368,
+        "equivalent_sphere_diameter_cm": 17.9620765315109,
+        "target_to_max": 0.048151491711800845,
+        "max_sar_W_kg": 6.342256288051523e-05,
+        "target_at_sar_budget_V_m": 152.2683865440107
+      },
+      {
+        "phase_deg": 147,
+        "target_V_m": 0.8329580056334003,
+        "half_target_volume_cm3": 3034.368,
+        "equivalent_sphere_diameter_cm": 17.9620765315109,
+        "target_to_max": 0.04678754360385952,
+        "max_sar_W_kg": 6.338926543336001e-05,
+        "target_at_sar_budget_V_m": 147.9552039126389
+      },
+      {
+        "phase_deg": 148,
+        "target_V_m": 0.8083871046430136,
+        "half_target_volume_cm3": 3034.368,
+        "equivalent_sphere_diameter_cm": 17.9620765315109,
+        "target_to_max": 0.045419001563819325,
+        "max_sar_W_kg": 6.335685103499288e-05,
+        "target_at_sar_budget_V_m": 143.62749399241852
+      },
+      {
+        "phase_deg": 149,
+        "target_V_m": 0.783754641844811,
+        "half_target_volume_cm3": 3034.368,
+        "equivalent_sphere_diameter_cm": 17.9620765315109,
+        "target_to_max": 0.04404599189124564,
+        "max_sar_W_kg": 6.332532955915362e-05,
+        "target_at_sar_budget_V_m": 139.28565617764366
+      },
+      {
+        "phase_deg": 150,
+        "target_V_m": 0.7590624930962019,
+        "half_target_volume_cm3": 3034.368,
+        "equivalent_sphere_diameter_cm": 17.9620765315109,
+        "target_to_max": 0.042668642014970885,
+        "max_sar_W_kg": 6.329471060758908e-05,
+        "target_at_sar_budget_V_m": 134.9300934336643
+      },
+      {
+        "phase_deg": 151,
+        "target_V_m": 0.7343125387999141,
+        "half_target_volume_cm3": 3034.368,
+        "equivalent_sphere_diameter_cm": 17.9620765315109,
+        "target_to_max": 0.041287080467204994,
+        "max_sar_W_kg": 6.32650035071286e-05,
+        "target_at_sar_budget_V_m": 130.5612122150166
+      },
+      {
+        "phase_deg": 152,
+        "target_V_m": 0.7095066637607896,
+        "half_target_volume_cm3": 3034.368,
+        "equivalent_sphere_diameter_cm": 17.9620765315109,
+        "target_to_max": 0.03990143685682816,
+        "max_sar_W_kg": 6.323621730684266e-05,
+        "target_at_sar_budget_V_m": 126.1794223809669
+      },
+      {
+        "phase_deg": 153,
+        "target_V_m": 0.6846467570422535,
+        "half_target_volume_cm3": 3036.096,
+        "equivalent_sphere_diameter_cm": 17.96548554213204,
+        "target_to_max": 0.03851184184188098,
+        "max_sar_W_kg": 6.32083607752868e-05,
+        "target_at_sar_budget_V_m": 121.78513710851807
+      },
+      {
+        "phase_deg": 154,
+        "target_V_m": 0.6597347118224504,
+        "half_target_volume_cm3": 3037.824,
+        "equivalent_sphere_diameter_cm": 17.968893259501733,
+        "target_to_max": 0.037118427101266976,
+        "max_sar_W_kg": 6.318144239783035e-05,
+        "target_at_sar_budget_V_m": 117.37877280292508
+      },
+      {
+        "phase_deg": 155,
+        "target_V_m": 0.6347724252500758,
+        "half_target_volume_cm3": 3039.552,
+        "equivalent_sphere_diameter_cm": 17.9722996848458,
+        "target_to_max": 0.03572132530568468,
+        "max_sar_W_kg": 6.315547037407183e-05,
+        "target_at_sar_budget_V_m": 112.96074900577406
+      },
+      {
+        "phase_deg": 156,
+        "target_V_m": 0.609761798299897,
+        "half_target_volume_cm3": 3039.552,
+        "equivalent_sphere_diameter_cm": 17.9722996848458,
+        "target_to_max": 0.034320670087805816,
+        "max_sar_W_kg": 6.313045261534135e-05,
+        "target_at_sar_budget_V_m": 108.53148830067745
+      },
+      {
+        "phase_deg": 157,
+        "target_V_m": 0.5847047356279883,
+        "half_target_volume_cm3": 3039.552,
+        "equivalent_sphere_diameter_cm": 17.9722996848458,
+        "target_to_max": 0.032916596011719174,
+        "max_sar_W_kg": 6.310639674229051e-05,
+        "target_at_sar_budget_V_m": 104.0914162166471
+      },
+      {
+        "phase_deg": 158,
+        "target_V_m": 0.5596031454266858,
+        "half_target_volume_cm3": 3039.552,
+        "equivalent_sphere_diameter_cm": 17.9722996848458,
+        "target_to_max": 0.03150923854165886,
+        "max_sar_W_kg": 6.308331008257124e-05,
+        "target_at_sar_budget_V_m": 99.6409611292043
+      },
+      {
+        "phase_deg": 159,
+        "target_V_m": 0.5344589392792666,
+        "half_target_volume_cm3": 3039.552,
+        "equivalent_sphere_diameter_cm": 17.9722996848458,
+        "target_to_max": 0.030098734010037303,
+        "max_sar_W_kg": 6.306119966860385e-05,
+        "target_at_sar_budget_V_m": 95.18055415929118
+      },
+      {
+        "phase_deg": 160,
+        "target_V_m": 0.5092740320143802,
+        "half_target_volume_cm3": 3039.552,
+        "equivalent_sphere_diameter_cm": 17.9722996848458,
+        "target_to_max": 0.028685219584805213,
+        "max_sar_W_kg": 6.304007223543453e-05,
+        "target_at_sar_budget_V_m": 90.710629070054
+      },
+      {
+        "phase_deg": 161,
+        "target_V_m": 0.48405034156022037,
+        "half_target_volume_cm3": 3039.552,
+        "equivalent_sphere_diameter_cm": 17.9722996848458,
+        "target_to_max": 0.0272688332361593,
+        "max_sar_W_kg": 6.301993421868413e-05,
+        "target_at_sar_budget_V_m": 86.23162216156356
+      },
+      {
+        "phase_deg": 162,
+        "target_V_m": 0.4587897887984744,
+        "half_target_volume_cm3": 3039.552,
+        "equivalent_sphere_diameter_cm": 17.9722996848458,
+        "target_to_max": 0.025849713702622443,
+        "max_sar_W_kg": 6.300079175258756e-05,
+        "target_at_sar_budget_V_m": 81.74397216355139
+      },
+      {
+        "phase_deg": 163,
+        "target_V_m": 0.43349429741803397,
+        "half_target_volume_cm3": 3039.552,
+        "equivalent_sphere_diameter_cm": 17.9722996848458,
+        "target_to_max": 0.024428000456518682,
+        "max_sar_W_kg": 6.298265066812557e-05,
+        "target_at_sar_budget_V_m": 77.248120126232
+      },
+      {
+        "phase_deg": 164,
+        "target_V_m": 0.4081657937685043,
+        "half_target_volume_cm3": 3041.2799999999997,
+        "equivalent_sphere_diameter_cm": 17.975704819388223,
+        "target_to_max": 0.023003833668869367,
+        "max_sar_W_kg": 6.296551649124808e-05,
+        "target_at_sar_budget_V_m": 72.74450930929481
+      },
+      {
+        "phase_deg": 165,
+        "target_V_m": 0.38280620671350113,
+        "half_target_volume_cm3": 3041.2799999999997,
+        "equivalent_sphere_diameter_cm": 17.975704819388223,
+        "target_to_max": 0.021577354173734565,
+        "max_sar_W_kg": 6.294939444119143e-05,
+        "target_at_sar_budget_V_m": 68.23358506914175
+      },
+      {
+        "phase_deg": 166,
+        "target_V_m": 0.3574174674837615,
+        "half_target_volume_cm3": 3041.2799999999997,
+        "equivalent_sphere_diameter_cm": 17.975704819388223,
+        "target_to_max": 0.020148703432027223,
+        "max_sar_W_kg": 6.293428942888824e-05,
+        "target_at_sar_budget_V_m": 63.71579474445764
+      },
+      {
+        "phase_deg": 167,
+        "target_V_m": 0.33200150953007573,
+        "half_target_volume_cm3": 3041.2799999999997,
+        "equivalent_sphere_diameter_cm": 17.975704819388223,
+        "target_to_max": 0.018718023494826666,
+        "max_sar_W_kg": 6.292020605547157e-05,
+        "target_at_sar_budget_V_m": 59.19158754019721
+      },
+      {
+        "phase_deg": 168,
+        "target_V_m": 0.30656026837604244,
+        "half_target_volume_cm3": 3043.008,
+        "equivalent_sphere_diameter_cm": 17.97910866435112,
+        "target_to_max": 0.017285456966218856,
+        "max_sar_W_kg": 6.290714861087338e-05,
+        "target_at_sar_budget_V_m": 54.66141441007577
+      },
+      {
+        "phase_deg": 169,
+        "target_V_m": 0.28109568147067665,
+        "half_target_volume_cm3": 3043.008,
+        "equivalent_sphere_diameter_cm": 17.97910866435112,
+        "target_to_max": 0.015851146965692776,
+        "max_sar_W_kg": 6.289512107251779e-05,
+        "target_at_sar_budget_V_m": 50.12572793765605
+      },
+      {
+        "phase_deg": 170,
+        "target_V_m": 0.25560968804086,
+        "half_target_volume_cm3": 3043.008,
+        "equivalent_sphere_diameter_cm": 17.97910866435112,
+        "target_to_max": 0.014415237090120827,
+        "max_sar_W_kg": 6.288412710410952e-05,
+        "target_at_sar_budget_V_m": 45.58498221611973
+      },
+      {
+        "phase_deg": 171,
+        "target_V_m": 0.23010422894366656,
+        "half_target_volume_cm3": 3043.008,
+        "equivalent_sphere_diameter_cm": 17.97910866435112,
+        "target_to_max": 0.012977871375354092,
+        "max_sar_W_kg": 6.28741700545178e-05,
+        "target_at_sar_budget_V_m": 41.03963272682092
+      },
+      {
+        "phase_deg": 172,
+        "target_V_m": 0.20458124651855367,
+        "half_target_volume_cm3": 3043.008,
+        "equivalent_sphere_diameter_cm": 17.97910866435112,
+        "target_to_max": 0.011539194257461369,
+        "max_sar_W_kg": 6.286525295675648e-05,
+        "target_at_sar_budget_V_m": 36.49013621671333
+      },
+      {
+        "phase_deg": 173,
+        "target_V_m": 0.1790426844394505,
+        "half_target_volume_cm3": 3044.7360000000003,
+        "equivalent_sphere_diameter_cm": 17.982511220954756,
+        "target_to_max": 0.010099350533644014,
+        "max_sar_W_kg": 6.285737852705978e-05,
+        "target_at_sar_budget_V_m": 31.936950574752068
+      },
+      {
+        "phase_deg": 174,
+        "target_V_m": 0.15349048756673536,
+        "half_target_volume_cm3": 3044.7360000000003,
+        "equivalent_sphere_diameter_cm": 17.982511220954756,
+        "target_to_max": 0.008658485322856395,
+        "max_sar_W_kg": 6.285054916405543e-05,
+        "target_at_sar_budget_V_m": 27.38053470736458
+      },
+      {
+        "phase_deg": 175,
+        "target_V_m": 0.12792660179912876,
+        "half_target_volume_cm3": 3044.7360000000003,
+        "equivalent_sphere_diameter_cm": 17.982511220954756,
+        "target_to_max": 0.007216744026164624,
+        "max_sar_W_kg": 6.284476694803345e-05,
+        "target_at_sar_budget_V_m": 22.821348413093997
+      },
+      {
+        "phase_deg": 176,
+        "target_V_m": 0.10235297392550786,
+        "half_target_volume_cm3": 3044.7360000000003,
+        "equivalent_sphere_diameter_cm": 17.982511220954756,
+        "target_to_max": 0.0057742722868750155,
+        "max_sar_W_kg": 6.284003364031285e-05,
+        "target_at_sar_budget_V_m": 18.25985225651424
+      },
+      {
+        "phase_deg": 177,
+        "target_V_m": 0.07677155147664622,
+        "half_target_volume_cm3": 3044.7360000000003,
+        "equivalent_sphere_diameter_cm": 17.982511220954756,
+        "target_to_max": 0.004331215950464229,
+        "max_sar_W_kg": 6.283635068270509e-05,
+        "target_at_sar_budget_V_m": 13.696507441517983
+      },
+      {
+        "phase_deg": 178,
+        "target_V_m": 0.05118428257690712,
+        "half_target_volume_cm3": 3044.7360000000003,
+        "equivalent_sphere_diameter_cm": 17.982511220954756,
+        "target_to_max": 0.0028877210243445943,
+        "max_sar_W_kg": 6.28337191970747e-05,
+        "target_at_sar_budget_V_m": 9.13177568408346
+      },
+      {
+        "phase_deg": 179,
+        "target_V_m": 0.025593115795881142,
+        "half_target_volume_cm3": 3044.7360000000003,
+        "equivalent_sphere_diameter_cm": 17.982511220954756,
+        "target_to_max": 0.0014439336374962094,
+        "max_sar_W_kg": 6.283213998499763e-05,
+        "target_at_sar_budget_V_m": 4.566119084619929
+      }
+    ],
+    "heating_examples": {
+      "rf_balanced_envelope_12_sigma1_sar_W_kg": 0.036,
+      "lf_peak_100_pulsed_sar_W_kg": 0.002,
+      "lf_peak_12_pulsed_sar_W_kg": 2.8800000000000002e-05
+    },
+    "ti": {
+      "target_envelope_V_m": 2.9327922633959562,
+      "sqrt_half_target_area_cm": 11.3525327570547,
+      "current_per_coil_for_12_V_m_A": 20458.31910730849,
+      "current_per_coil_for_100_V_m_A": 170485.99256090407,
+      "half_target_volume_cm3": 2260.2239999999997,
+      "equivalent_sphere_diameter_cm": 16.282370019831006,
+      "target_to_max": 0.5869602498288732,
+      "max_continuous_sar_W_kg": 0.033144108595423404,
+      "target_at_sar_budget_V_m": 22.78206717996738
+    }
+  },
+  {
+    "config": {
+      "head_radius": 0.09,
+      "coil_x": 0.1,
+      "coil_radius": 0.05,
+      "frequency": 3000.0,
+      "peak_current": 5000.0,
+      "conductivity": 0.2,
+      "density": 1000.0,
+      "duty": 0.002,
+      "sar_budget": 2.0,
+      "target_y": 0.03,
+      "segments": 256
+    },
+    "grid_step_m": 0.004,
+    "voxel_count": 47600,
+    "best": {
+      "phase_deg": 0,
+      "target_V_m": 2.9327922633959562,
+      "half_target_volume_cm3": 3002.88,
+      "equivalent_sphere_diameter_cm": 17.899728828888765,
+      "target_to_max": 0.1535002538283877,
+      "max_sar_W_kg": 7.300866440255742e-05,
+      "target_at_sar_budget_V_m": 485.4104235116861,
+      "max_field_V_m": 19.106106929795693,
+      "sqrt_half_target_area_cm": 14.966629547095767,
+      "current_per_coil_for_12_V_m_A": 20458.31910730849,
+      "current_per_coil_for_100_V_m_A": 170485.99256090407
+    },
+    "central_field_V_m": 5.039570276693768e-15,
+    "same_frequency_sweep": [
+      {
+        "phase_deg": 0,
+        "target_V_m": 2.9327922633959562,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.1535002538283877,
+        "max_sar_W_kg": 7.300866440255742e-05,
+        "target_at_sar_budget_V_m": 485.4104235116861,
+        "max_field_V_m": 19.106106929795693,
+        "sqrt_half_target_area_cm": 14.966629547095767,
+        "current_per_coil_for_12_V_m_A": 20458.31910730849,
+        "current_per_coil_for_100_V_m_A": 170485.99256090407
+      },
+      {
+        "phase_deg": 1,
+        "target_V_m": 2.932680591653144,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15349487011000604,
+        "max_sar_W_kg": 7.300822576493145e-05,
+        "target_at_sar_budget_V_m": 485.3933986993192
+      },
+      {
+        "phase_deg": 2,
+        "target_V_m": 2.932345584928943,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15347871907376232,
+        "max_sar_W_kg": 7.300690998566692e-05,
+        "target_at_sar_budget_V_m": 485.342324638217
+      },
+      {
+        "phase_deg": 3,
+        "target_V_m": 2.931787268735411,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15345180107650758,
+        "max_sar_W_kg": 7.300471746556291e-05,
+        "target_at_sar_budget_V_m": 485.2572024568419
+      },
+      {
+        "phase_deg": 4,
+        "target_V_m": 2.93100568559049,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15341411671348265,
+        "max_sar_W_kg": 7.300164887248224e-05,
+        "target_at_sar_budget_V_m": 485.1380340375106
+      },
+      {
+        "phase_deg": 5,
+        "target_V_m": 2.930000895014761,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.1533656668190514,
+        "max_sar_W_kg": 7.299770514114817e-05,
+        "target_at_sar_budget_V_m": 484.98482201871315
+      },
+      {
+        "phase_deg": 6,
+        "target_V_m": 2.9287729735269172,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15330645246772756,
+        "max_sar_W_kg": 7.299288747285941e-05,
+        "target_at_sar_budget_V_m": 484.79756979836026
+      },
+      {
+        "phase_deg": 7,
+        "target_V_m": 2.9273220146379333,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15323647497549356,
+        "max_sar_W_kg": 7.298719733512438e-05,
+        "target_at_sar_budget_V_m": 484.5762815379542
+      },
+      {
+        "phase_deg": 8,
+        "target_V_m": 2.9256481288439473,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15315573590141238,
+        "max_sar_W_kg": 7.298063646121419e-05,
+        "target_at_sar_budget_V_m": 484.32096216768446
+      },
+      {
+        "phase_deg": 9,
+        "target_V_m": 2.9237514436178427,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.1530642370495304,
+        "max_sar_W_kg": 7.29732068496346e-05,
+        "target_at_sar_budget_V_m": 484.0316173924471
+      },
+      {
+        "phase_deg": 10,
+        "target_V_m": 2.9216321033995416,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.1529619804710721,
+        "max_sar_W_kg": 7.29649107635172e-05,
+        "target_at_sar_budget_V_m": 483.7082536987832
+      },
+      {
+        "phase_deg": 11,
+        "target_V_m": 2.9192902695850087,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.1528489684669247,
+        "max_sar_W_kg": 7.295575072993027e-05,
+        "target_at_sar_budget_V_m": 483.35087836273703
+      },
+      {
+        "phase_deg": 12,
+        "target_V_m": 2.916726120513955,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15272520359041244,
+        "max_sar_W_kg": 7.294572953910872e-05,
+        "target_at_sar_budget_V_m": 482.9594994586287
+      },
+      {
+        "phase_deg": 13,
+        "target_V_m": 2.9139398514562593,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.1525906886503596,
+        "max_sar_W_kg": 7.293485024360437e-05,
+        "target_at_sar_budget_V_m": 482.5341258687409
+      },
+      {
+        "phase_deg": 14,
+        "target_V_m": 2.910931674597099,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.1524454267144414,
+        "max_sar_W_kg": 7.292311615735602e-05,
+        "target_at_sar_budget_V_m": 482.07476729391385
+      },
+      {
+        "phase_deg": 15,
+        "target_V_m": 2.9077018190207875,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15228942111282068,
+        "max_sar_W_kg": 7.291053085468003e-05,
+        "target_at_sar_budget_V_m": 481.58143426504756
+      },
+      {
+        "phase_deg": 16,
+        "target_V_m": 2.904250530693332,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.1521226754420708,
+        "max_sar_W_kg": 7.289709816918151e-05,
+        "target_at_sar_budget_V_m": 481.0541381555054
+      },
+      {
+        "phase_deg": 17,
+        "target_V_m": 2.9005780724437016,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15194519356938188,
+        "max_sar_W_kg": 7.288282219258654e-05,
+        "target_at_sar_budget_V_m": 480.49289119441636
+      },
+      {
+        "phase_deg": 18,
+        "target_V_m": 2.89668472394381,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15175697963704948,
+        "max_sar_W_kg": 7.28677072734959e-05,
+        "target_at_sar_budget_V_m": 479.8977064808692
+      },
+      {
+        "phase_deg": 19,
+        "target_V_m": 2.892570781687219,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15155803806724466,
+        "max_sar_W_kg": 7.285175801606047e-05,
+        "target_at_sar_budget_V_m": 479.26859799899654
+      },
+      {
+        "phase_deg": 20,
+        "target_V_m": 2.8882365589665597,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.151348373567063,
+        "max_sar_W_kg": 7.283497927857842e-05,
+        "target_at_sar_budget_V_m": 478.6055806339417
+      },
+      {
+        "phase_deg": 21,
+        "target_V_m": 2.883682385849672,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.1511279911338512,
+        "max_sar_W_kg": 7.281737617201581e-05,
+        "target_at_sar_budget_V_m": 477.90867018870244
+      },
+      {
+        "phase_deg": 22,
+        "target_V_m": 2.878908609154472,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15089689606080936,
+        "max_sar_W_kg": 7.279895405844939e-05,
+        "target_at_sar_budget_V_m": 477.1778834018474
+      },
+      {
+        "phase_deg": 23,
+        "target_V_m": 2.8739155924225366,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15065509394286672,
+        "max_sar_W_kg": 7.277971854943342e-05,
+        "target_at_sar_budget_V_m": 476.413237966096
+      },
+      {
+        "phase_deg": 24,
+        "target_V_m": 2.868703715891422,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15040259068282902,
+        "max_sar_W_kg": 7.275967550429035e-05,
+        "target_at_sar_budget_V_m": 475.614752547759
+      },
+      {
+        "phase_deg": 25,
+        "target_V_m": 2.863273376465704,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.15013939249779507,
+        "max_sar_W_kg": 7.273883102832579e-05,
+        "target_at_sar_budget_V_m": 474.78244680702926
+      },
+      {
+        "phase_deg": 26,
+        "target_V_m": 2.857624987686754,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.14986550592584003,
+        "max_sar_W_kg": 7.271719147096909e-05,
+        "target_at_sar_budget_V_m": 473.9163414191157
+      },
+      {
+        "phase_deg": 27,
+        "target_V_m": 2.851758979701248,
+        "half_target_volume_cm3": 3002.88,
+        "equivalent_sphere_diameter_cm": 17.899728828888765,
+        "target_to_max": 0.14958093783296328,
+        "max_sar_W_kg": 7.269476342383904e-05,
+        "target_at_sar_budget_V_m": 473.01645809621493
+      },
+      {
+        "phase_deg": 28,
+        "target_V_m": 2.8456757992284034,
+        "half_target_volume_cm3": 3004.416,
+        "equivalent_sphere_diameter_cm": 17.90278026584336,
+        "target_to_max": 0.14928569542029774,
+        "max_sar_W_kg": 7.267155371873605e-05,
+        "target_at_sar_budget_V_m": 472.08281961030843
+      },
+      {
+        "phase_deg": 29,
+        "target_V_m": 2.8393759095259647,
+        "half_target_volume_cm3": 3005.44,
+        "equivalent_sphere_diameter_cm": 17.90481397939781,
+        "target_to_max": 0.14897978623157826,
+        "max_sar_W_kg": 7.264756942556118e-05,
+        "target_at_sar_budget_V_m": 471.1154498167806
+      },
+      {
+        "phase_deg": 30,
+        "target_V_m": 2.832859790354926,
+        "half_target_volume_cm3": 3005.44,
+        "equivalent_sphere_diameter_cm": 17.90481397939781,
+        "target_to_max": 0.14866321816086656,
+        "max_sar_W_kg": 7.262281785016243e-05,
+        "target_at_sar_budget_V_m": 470.11437367884645
+      },
+      {
+        "phase_deg": 31,
+        "target_V_m": 2.826127937942988,
+        "half_target_volume_cm3": 3005.44,
+        "equivalent_sphere_diameter_cm": 17.90481397939781,
+        "target_to_max": 0.14833599946052808,
+        "max_sar_W_kg": 7.259730653210945e-05,
+        "target_at_sar_budget_V_m": 469.07961729277673
+      },
+      {
+        "phase_deg": 32,
+        "target_V_m": 2.8191808649467776,
+        "half_target_volume_cm3": 3005.44,
+        "equivalent_sphere_diameter_cm": 17.90481397939781,
+        "target_to_max": 0.14799813874946005,
+        "max_sar_W_kg": 7.257104324239683e-05,
+        "target_at_sar_budget_V_m": 468.01120791391764
+      },
+      {
+        "phase_deg": 33,
+        "target_V_m": 2.812019100412799,
+        "half_target_volume_cm3": 3005.44,
+        "equivalent_sphere_diameter_cm": 17.90481397939781,
+        "target_to_max": 0.14764964502156483,
+        "max_sar_W_kg": 7.25440359810771e-05,
+        "target_at_sar_budget_V_m": 466.90917398348586
+      },
+      {
+        "phase_deg": 34,
+        "target_V_m": 2.804643189737148,
+        "half_target_volume_cm3": 3005.44,
+        "equivalent_sphere_diameter_cm": 17.90481397939781,
+        "target_to_max": 0.1472905276544675,
+        "max_sar_W_kg": 7.251629297482361e-05,
+        "target_at_sar_budget_V_m": 465.77354515613547
+      },
+      {
+        "phase_deg": 35,
+        "target_V_m": 2.797053694623982,
+        "half_target_volume_cm3": 3005.952,
+        "equivalent_sphere_diameter_cm": 17.905830662948883,
+        "target_to_max": 0.14692079641847214,
+        "max_sar_W_kg": 7.248782267442487e-05,
+        "target_at_sar_budget_V_m": 464.60435232828087
+      },
+      {
+        "phase_deg": 36,
+        "target_V_m": 2.7892511930427366,
+        "half_target_volume_cm3": 3005.952,
+        "equivalent_sphere_diameter_cm": 17.905830662948883,
+        "target_to_max": 0.14654046148575417,
+        "max_sar_W_kg": 7.245863375221014e-05,
+        "target_at_sar_budget_V_m": 463.40162766716526
+      },
+      {
+        "phase_deg": 37,
+        "target_V_m": 2.7812362791841156,
+        "half_target_volume_cm3": 3005.952,
+        "equivalent_sphere_diameter_cm": 17.905830662948883,
+        "target_to_max": 0.14614953343978443,
+        "max_sar_W_kg": 7.24287350994079e-05,
+        "target_at_sar_budget_V_m": 462.16540464066185
+      },
+      {
+        "phase_deg": 38,
+        "target_V_m": 2.773009563414841,
+        "half_target_volume_cm3": 3005.952,
+        "equivalent_sphere_diameter_cm": 17.905830662948883,
+        "target_to_max": 0.1457480232849811,
+        "max_sar_W_kg": 7.239813582343748e-05,
+        "target_at_sar_budget_V_m": 460.89571804779644
+      },
+      {
+        "phase_deg": 39,
+        "target_V_m": 2.764571672231169,
+        "half_target_volume_cm3": 3005.952,
+        "equivalent_sphere_diameter_cm": 17.905830662948883,
+        "target_to_max": 0.14533594245658504,
+        "max_sar_W_kg": 7.236684524513464e-05,
+        "target_at_sar_budget_V_m": 459.59260404997593
+      },
+      {
+        "phase_deg": 40,
+        "target_V_m": 2.7559232482111824,
+        "half_target_volume_cm3": 3005.952,
+        "equivalent_sphere_diameter_cm": 17.905830662948883,
+        "target_to_max": 0.1449133028307543,
+        "max_sar_W_kg": 7.233487289591278e-05,
+        "target_at_sar_budget_V_m": 458.25610020290947
+      },
+      {
+        "phase_deg": 41,
+        "target_V_m": 2.7470649499658535,
+        "half_target_volume_cm3": 3005.952,
+        "equivalent_sphere_diameter_cm": 17.905830662948883,
+        "target_to_max": 0.1444801167348733,
+        "max_sar_W_kg": 7.230222851485912e-05,
+        "target_at_sar_budget_V_m": 456.8862454892095
+      },
+      {
+        "phase_deg": 42,
+        "target_V_m": 2.7379974520888903,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.14403639695807177,
+        "max_sar_W_kg": 7.226892204576837e-05,
+        "target_at_sar_budget_V_m": 455.4830803516551
+      },
+      {
+        "phase_deg": 43,
+        "target_V_m": 2.7287214451053625,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.14358215676194866,
+        "max_sar_W_kg": 7.223496363411371e-05,
+        "target_at_sar_budget_V_m": 454.04664672710436
+      },
+      {
+        "phase_deg": 44,
+        "target_V_m": 2.7192376354191152,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.1431174098914959,
+        "max_sar_W_kg": 7.220036362395626e-05,
+        "target_at_sar_budget_V_m": 452.57698808103845
+      },
+      {
+        "phase_deg": 45,
+        "target_V_m": 2.7095467452589745,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.14264217058621717,
+        "max_sar_W_kg": 7.216513255479423e-05,
+        "target_at_sar_budget_V_m": 451.07414944272165
+      },
+      {
+        "phase_deg": 46,
+        "target_V_m": 2.699649512623745,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.1421564535914352,
+        "max_sar_W_kg": 7.212928115835266e-05,
+        "target_at_sar_budget_V_m": 449.5381774409586
+      },
+      {
+        "phase_deg": 47,
+        "target_V_m": 2.689546691226012,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.14166027416978347,
+        "max_sar_W_kg": 7.20928203553142e-05,
+        "target_at_sar_budget_V_m": 447.96912034043396
+      },
+      {
+        "phase_deg": 48,
+        "target_V_m": 2.6792390504347376,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.1411536481128751,
+        "max_sar_W_kg": 7.205576125199266e-05,
+        "target_at_sar_budget_V_m": 446.3670280786134
+      },
+      {
+        "phase_deg": 49,
+        "target_V_m": 2.668727375216678,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.1406365917531442,
+        "max_sar_W_kg": 7.201811513694986e-05,
+        "target_at_sar_budget_V_m": 444.73195230318845
+      },
+      {
+        "phase_deg": 50,
+        "target_V_m": 2.658012466076597,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.1401091219758523,
+        "max_sar_W_kg": 7.197989347755718e-05,
+        "target_at_sar_budget_V_m": 443.0639464100442
+      },
+      {
+        "phase_deg": 51,
+        "target_V_m": 2.64709513899631,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.13957125623125455,
+        "max_sar_W_kg": 7.194110791650231e-05,
+        "target_at_sar_budget_V_m": 441.3630655817329
+      },
+      {
+        "phase_deg": 52,
+        "target_V_m": 2.635976225372544,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.13902301254691868,
+        "max_sar_W_kg": 7.19017702682429e-05,
+        "target_at_sar_budget_V_m": 439.6293668264292
+      },
+      {
+        "phase_deg": 53,
+        "target_V_m": 2.624656571953618,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.1384644095401898,
+        "max_sar_W_kg": 7.186189251540759e-05,
+        "target_at_sar_budget_V_m": 437.8629090173476
+      },
+      {
+        "phase_deg": 54,
+        "target_V_m": 2.613137040774967,
+        "half_target_volume_cm3": 3006.976,
+        "equivalent_sphere_diameter_cm": 17.9078636837626,
+        "target_to_max": 0.1378954664307944,
+        "max_sar_W_kg": 7.182148680514631e-05,
+        "target_at_sar_budget_V_m": 436.0637529325998
+      },
+      {
+        "phase_deg": 55,
+        "target_V_m": 2.6014185090934894,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.13731620305357653,
+        "max_sar_W_kg": 7.178056544542977e-05,
+        "target_at_sar_budget_V_m": 434.23196129547
+      },
+      {
+        "phase_deg": 56,
+        "target_V_m": 2.5895018693207437,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.1367266398713583,
+        "max_sar_W_kg": 7.173914090130058e-05,
+        "target_at_sar_budget_V_m": 432.3675988150836
+      },
+      {
+        "phase_deg": 57,
+        "target_V_m": 2.5773880289549846,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.1361267979879177,
+        "max_sar_W_kg": 7.169722579107615e-05,
+        "target_at_sar_budget_V_m": 430.47073222744604
+      },
+      {
+        "phase_deg": 58,
+        "target_V_m": 2.565077910512057,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.13551669916107564,
+        "max_sar_W_kg": 7.16548328825051e-05,
+        "target_at_sar_budget_V_m": 428.54143033682845
+      },
+      {
+        "phase_deg": 59,
+        "target_V_m": 2.552572451455141,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.13489636581588457,
+        "max_sar_W_kg": 7.161197508887803e-05,
+        "target_at_sar_budget_V_m": 426.57976405747326
+      },
+      {
+        "phase_deg": 60,
+        "target_V_m": 2.539872604123361,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.13426582105791027,
+        "max_sar_W_kg": 7.15686654650941e-05,
+        "target_at_sar_budget_V_m": 424.5858064555947
+      },
+      {
+        "phase_deg": 61,
+        "target_V_m": 2.52697933565926,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.13362508868659842,
+        "max_sar_W_kg": 7.152491720368423e-05,
+        "target_at_sar_budget_V_m": 422.55963279164854
+      },
+      {
+        "phase_deg": 62,
+        "target_V_m": 2.51389362793515,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.13297419320871803,
+        "max_sar_W_kg": 7.148074363079262e-05,
+        "target_at_sar_budget_V_m": 420.5013205628428
+      },
+      {
+        "phase_deg": 63,
+        "target_V_m": 2.500616477478338,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.1323131598518718,
+        "max_sar_W_kg": 7.143615820211754e-05,
+        "target_at_sar_budget_V_m": 418.4109495458619
+      },
+      {
+        "phase_deg": 64,
+        "target_V_m": 2.487148895395236,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.13164201457806574,
+        "max_sar_W_kg": 7.139117449881246e-05,
+        "target_at_sar_budget_V_m": 416.28860183977736
+      },
+      {
+        "phase_deg": 65,
+        "target_V_m": 2.473491907294361,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.13096078409732784,
+        "max_sar_W_kg": 7.134580622334918e-05,
+        "target_at_sar_budget_V_m": 414.13436190911415
+      },
+      {
+        "phase_deg": 66,
+        "target_V_m": 2.459646553208232,
+        "half_target_volume_cm3": 3007.488,
+        "equivalent_sphere_diameter_cm": 17.908880021090763,
+        "target_to_max": 0.13026949588136721,
+        "max_sar_W_kg": 7.130006719534388e-05,
+        "target_at_sar_budget_V_m": 411.9483166270442
+      },
+      {
+        "phase_deg": 67,
+        "target_V_m": 2.4456138875141678,
+        "half_target_volume_cm3": 3008.512,
+        "equivalent_sphere_diameter_cm": 17.910912349753364,
+        "target_to_max": 0.12956817817726363,
+        "max_sar_W_kg": 7.125397134734756e-05,
+        "target_at_sar_budget_V_m": 409.73055531867686
+      },
+      {
+        "phase_deg": 68,
+        "target_V_m": 2.43139497885399,
+        "half_target_volume_cm3": 3008.512,
+        "equivalent_sphere_diameter_cm": 17.910912349753364,
+        "target_to_max": 0.12885686002117758,
+        "max_sar_W_kg": 7.12075327206021e-05,
+        "target_at_sar_budget_V_m": 407.4811698044138
+      },
+      {
+        "phase_deg": 69,
+        "target_V_m": 2.416990910052644,
+        "half_target_volume_cm3": 3008.512,
+        "equivalent_sphere_diameter_cm": 17.910912349753364,
+        "target_to_max": 0.12813557125207192,
+        "max_sar_W_kg": 7.116076546076304e-05,
+        "target_at_sar_budget_V_m": 405.2002544433406
+      },
+      {
+        "phase_deg": 70,
+        "target_V_m": 2.402402778035737,
+        "half_target_volume_cm3": 3008.512,
+        "equivalent_sphere_diameter_cm": 17.910912349753364,
+        "target_to_max": 0.12740434252543326,
+        "max_sar_W_kg": 7.111368381359079e-05,
+        "target_at_sar_budget_V_m": 402.88790617661783
+      },
+      {
+        "phase_deg": 71,
+        "target_V_m": 2.3876316937460014,
+        "half_target_volume_cm3": 3008.512,
+        "equivalent_sphere_diameter_cm": 17.910912349753364,
+        "target_to_max": 0.12666320532698436,
+        "max_sar_W_kg": 7.106630212061118e-05,
+        "target_at_sar_budget_V_m": 400.544224570843
+      },
+      {
+        "phase_deg": 72,
+        "target_V_m": 2.3726787820586956,
+        "half_target_volume_cm3": 3008.512,
+        "equivalent_sphere_diameter_cm": 17.910912349753364,
+        "target_to_max": 0.1259121919863761,
+        "max_sar_W_kg": 7.101863481474683e-05,
+        "target_at_sar_budget_V_m": 398.1693118613491
+      },
+      {
+        "phase_deg": 73,
+        "target_V_m": 2.3575451816959365,
+        "half_target_volume_cm3": 3009.0240000000003,
+        "equivalent_sphere_diameter_cm": 17.911928341153224,
+        "target_to_max": 0.1251513356908483,
+        "max_sar_W_kg": 7.097069641592092e-05,
+        "target_at_sar_budget_V_m": 395.76327299540316
+      },
+      {
+        "phase_deg": 74,
+        "target_V_m": 2.342232045139984,
+        "half_target_volume_cm3": 3009.536,
+        "equivalent_sphere_diameter_cm": 17.912944217309054,
+        "target_to_max": 0.12438067049884896,
+        "max_sar_W_kg": 7.092250152663416e-05,
+        "target_at_sar_budget_V_m": 393.3262156752742
+      },
+      {
+        "phase_deg": 75,
+        "target_V_m": 2.326740538545474,
+        "half_target_volume_cm3": 3009.536,
+        "equivalent_sphere_diameter_cm": 17.912944217309054,
+        "target_to_max": 0.1236002313536006,
+        "max_sar_W_kg": 7.087406482751658e-05,
+        "target_at_sar_budget_V_m": 390.85825040113446
+      },
+      {
+        "phase_deg": 76,
+        "target_V_m": 2.311071841650611,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.12281005409660188,
+        "max_sar_W_kg": 7.082540107285603e-05,
+        "target_at_sar_budget_V_m": 388.3594905137543
+      },
+      {
+        "phase_deg": 77,
+        "target_V_m": 2.2952271476873287,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.12201017548105432,
+        "max_sar_W_kg": 7.07765250861036e-05,
+        "target_at_sar_budget_V_m": 385.8300522369618
+      },
+      {
+        "phase_deg": 78,
+        "target_V_m": 2.2792076632904164,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.12120063318520109,
+        "max_sar_W_kg": 7.072745175535833e-05,
+        "target_at_sar_budget_V_m": 383.27005471982375
+      },
+      {
+        "phase_deg": 79,
+        "target_V_m": 2.263014608405633,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.12038146582556733,
+        "max_sar_W_kg": 7.067819602883211e-05,
+        "target_at_sar_budget_V_m": 380.6796200785148
+      },
+      {
+        "phase_deg": 80,
+        "target_V_m": 2.2466492161968024,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.1195527129700892,
+        "max_sar_W_kg": 7.062877291029638e-05,
+        "target_at_sar_budget_V_m": 378.05887343783553
+      },
+      {
+        "phase_deg": 81,
+        "target_V_m": 2.2301127329519024,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.11871441515111993,
+        "max_sar_W_kg": 7.057919745451193e-05,
+        "target_at_sar_budget_V_m": 375.4079429723411
+      },
+      {
+        "phase_deg": 82,
+        "target_V_m": 2.2134064179881556,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.11786661387830122,
+        "max_sar_W_kg": 7.052948476264271e-05,
+        "target_at_sar_budget_V_m": 372.7269599470442
+      },
+      {
+        "phase_deg": 83,
+        "target_V_m": 2.1965315435561275,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.11700935165128626,
+        "max_sar_W_kg": 7.047964997765628e-05,
+        "target_at_sar_budget_V_m": 370.0160587576486
+      },
+      {
+        "phase_deg": 84,
+        "target_V_m": 2.1794893947428395,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.1161426719723036,
+        "max_sar_W_kg": 7.0429708279711e-05,
+        "target_at_sar_budget_V_m": 367.27537697027975
+      },
+      {
+        "phase_deg": 85,
+        "target_V_m": 2.1622812693739064,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.1152666193585482,
+        "max_sar_W_kg": 7.037967488153167e-05,
+        "target_at_sar_budget_V_m": 364.5050553606691
+      },
+      {
+        "phase_deg": 86,
+        "target_V_m": 2.1449084779146976,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.11438123935438674,
+        "max_sar_W_kg": 7.032956502377623e-05,
+        "target_at_sar_budget_V_m": 361.7052379527494
+      },
+      {
+        "phase_deg": 87,
+        "target_V_m": 2.127372343370545,
+        "half_target_volume_cm3": 3010.5600000000004,
+        "equivalent_sphere_diameter_cm": 17.91497562401929,
+        "target_to_max": 0.11348657854336584,
+        "max_sar_W_kg": 7.02793939703927e-05,
+        "target_at_sar_budget_V_m": 358.8760720566299
+      },
+      {
+        "phase_deg": 88,
+        "target_V_m": 2.1096742011859884,
+        "half_target_volume_cm3": 3012.096,
+        "equivalent_sphere_diameter_cm": 17.91802187057078,
+        "target_to_max": 0.11258268456000868,
+        "max_sar_W_kg": 7.022917700396996e-05,
+        "target_at_sar_budget_V_m": 356.01770830589896
+      },
+      {
+        "phase_deg": 89,
+        "target_V_m": 2.0918153991430746,
+        "half_target_volume_cm3": 3013.1200000000003,
+        "equivalent_sphere_diameter_cm": 17.92005212630971,
+        "target_to_max": 0.11166960610138799,
+        "max_sar_W_kg": 7.01789294210825e-05,
+        "target_at_sar_budget_V_m": 353.1303006942218
+      },
+      {
+        "phase_deg": 90,
+        "target_V_m": 2.0737972972587237,
+        "half_target_volume_cm3": 3013.1200000000003,
+        "equivalent_sphere_diameter_cm": 17.92005212630971,
+        "target_to_max": 0.11074739293846246,
+        "max_sar_W_kg": 7.012866652763077e-05,
+        "target_at_sar_budget_V_m": 350.2140066111891
+      },
+      {
+        "phase_deg": 91,
+        "target_V_m": 2.055621267681154,
+        "half_target_volume_cm3": 3013.1200000000003,
+        "equivalent_sphere_diameter_cm": 17.92005212630971,
+        "target_to_max": 0.10981609592716265,
+        "max_sar_W_kg": 7.007840363417903e-05,
+        "target_at_sar_budget_V_m": 347.26898687737423
+      },
+      {
+        "phase_deg": 92,
+        "target_V_m": 2.0372886945853894,
+        "half_target_volume_cm3": 3013.1200000000003,
+        "equivalent_sphere_diameter_cm": 17.92005212630971,
+        "target_to_max": 0.1088757670192143,
+        "max_sar_W_kg": 7.002815605129156e-05,
+        "target_at_sar_budget_V_m": 344.29540577855863
+      },
+      {
+        "phase_deg": 93,
+        "target_V_m": 2.018800974067848,
+        "half_target_volume_cm3": 3013.1200000000003,
+        "equivalent_sphere_diameter_cm": 17.92005212630971,
+        "target_to_max": 0.10792645927268506,
+        "max_sar_W_kg": 6.997793908486884e-05,
+        "target_at_sar_budget_V_m": 341.2934310990844
+      },
+      {
+        "phase_deg": 94,
+        "target_V_m": 2.0001595140400257,
+        "half_target_volume_cm3": 3013.1200000000003,
+        "equivalent_sphere_diameter_cm": 17.92005212630971,
+        "target_to_max": 0.10696822686224208,
+        "max_sar_W_kg": 6.992776803148532e-05,
+        "target_at_sar_budget_V_m": 338.2632341542913
+      },
+      {
+        "phase_deg": 95,
+        "target_V_m": 1.981365734121276,
+        "half_target_volume_cm3": 3013.1200000000003,
+        "equivalent_sphere_diameter_cm": 17.92005212630971,
+        "target_to_max": 0.10600112508910671,
+        "max_sar_W_kg": 6.987765817372987e-05,
+        "target_at_sar_budget_V_m": 335.20498982199604
+      },
+      {
+        "phase_deg": 96,
+        "target_V_m": 1.9624210655307042,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.10502521039069358,
+        "max_sar_W_kg": 6.982762477555057e-05,
+        "target_at_sar_budget_V_m": 332.1188765729743
+      },
+      {
+        "phase_deg": 97,
+        "target_V_m": 1.9433269509781705,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.10404054034992034,
+        "max_sar_W_kg": 6.977768307760528e-05,
+        "target_at_sar_budget_V_m": 329.0050765003999
+      },
+      {
+        "phase_deg": 98,
+        "target_V_m": 1.9240848445544232,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.10304717370417558,
+        "max_sar_W_kg": 6.972784829261883e-05,
+        "target_at_sar_budget_V_m": 325.8637753482049
+      },
+      {
+        "phase_deg": 99,
+        "target_V_m": 1.9046962116203658,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.10204517035393106,
+        "max_sar_W_kg": 6.967813560074964e-05,
+        "target_at_sar_budget_V_m": 322.6951625383128
+      },
+      {
+        "phase_deg": 100,
+        "target_V_m": 1.885162528695462,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.101034591370986,
+        "max_sar_W_kg": 6.962856014496514e-05,
+        "target_at_sar_budget_V_m": 319.4994311967099
+      },
+      {
+        "phase_deg": 101,
+        "target_V_m": 1.8654852833452948,
+        "half_target_volume_cm3": 3015.1680000000006,
+        "equivalent_sphere_diameter_cm": 17.92411125825132,
+        "target_to_max": 0.1000154990063296,
+        "max_sar_W_kg": 6.957913702642946e-05,
+        "target_at_sar_budget_V_m": 316.2767781783088
+      },
+      {
+        "phase_deg": 102,
+        "target_V_m": 1.845665974068281,
+        "half_target_volume_cm3": 3015.1680000000006,
+        "equivalent_sphere_diameter_cm": 17.92411125825132,
+        "target_to_max": 0.09898795669760964,
+        "max_sar_W_kg": 6.952988129990323e-05,
+        "target_at_sar_budget_V_m": 313.0274040905658
+      },
+      {
+        "phase_deg": 103,
+        "target_V_m": 1.8257061101815555,
+        "half_target_volume_cm3": 3015.1680000000006,
+        "equivalent_sphere_diameter_cm": 17.92411125825132,
+        "target_to_max": 0.09795202907619371,
+        "max_sar_W_kg": 6.948080796915793e-05,
+        "target_at_sar_budget_V_m": 309.75151331581094
+      },
+      {
+        "phase_deg": 104,
+        "target_V_m": 1.805607211706031,
+        "half_target_volume_cm3": 3015.1680000000006,
+        "equivalent_sphere_diameter_cm": 17.92411125825132,
+        "target_to_max": 0.09690778197381107,
+        "max_sar_W_kg": 6.94319319824055e-05,
+        "target_at_sar_budget_V_m": 306.44931403225075
+      },
+      {
+        "phase_deg": 105,
+        "target_V_m": 1.7853708092506424,
+        "half_target_volume_cm3": 3016.192,
+        "equivalent_sphere_diameter_cm": 17.926140134974546,
+        "target_to_max": 0.09585528242876183,
+        "max_sar_W_kg": 6.9383268227745e-05,
+        "target_at_sar_budget_V_m": 303.1210182336041
+      },
+      {
+        "phase_deg": 106,
+        "target_V_m": 1.7649984438957855,
+        "half_target_volume_cm3": 3016.192,
+        "equivalent_sphere_diameter_cm": 17.926140134974546,
+        "target_to_max": 0.09479459869168187,
+        "max_sar_W_kg": 6.933483152862745e-05,
+        "target_at_sar_budget_V_m": 299.76684174733225
+      },
+      {
+        "phase_deg": 107,
+        "target_V_m": 1.7444916670759565,
+        "half_target_volume_cm3": 3016.192,
+        "equivalent_sphere_diameter_cm": 17.926140134974546,
+        "target_to_max": 0.09372580023085045,
+        "max_sar_W_kg": 6.928663663934062e-05,
+        "target_at_sar_budget_V_m": 296.3870042514227
+      },
+      {
+        "phase_deg": 108,
+        "target_V_m": 1.7238520404616056,
+        "half_target_volume_cm3": 3016.192,
+        "equivalent_sphere_diameter_cm": 17.926140134974546,
+        "target_to_max": 0.0926489577370291,
+        "max_sar_W_kg": 6.923869824051473e-05,
+        "target_at_sar_budget_V_m": 292.98172928969143
+      },
+      {
+        "phase_deg": 109,
+        "target_V_m": 1.7030811358402087,
+        "half_target_volume_cm3": 3016.192,
+        "equivalent_sphere_diameter_cm": 17.926140134974546,
+        "target_to_max": 0.09156414312781977,
+        "max_sar_W_kg": 6.919103093465036e-05,
+        "target_at_sar_budget_V_m": 289.5512442855645
+      },
+      {
+        "phase_deg": 110,
+        "target_V_m": 1.6821805349965713,
+        "half_target_volume_cm3": 3016.192,
+        "equivalent_sphere_diameter_cm": 17.926140134974546,
+        "target_to_max": 0.09047142955153038,
+        "max_sar_W_kg": 6.914364924167073e-05,
+        "target_at_sar_budget_V_m": 286.0957805543019
+      },
+      {
+        "phase_deg": 111,
+        "target_V_m": 1.6611518295923668,
+        "half_target_volume_cm3": 3016.192,
+        "equivalent_sphere_diameter_cm": 17.926140134974546,
+        "target_to_max": 0.08937089139053667,
+        "max_sar_W_kg": 6.909656759449848e-05,
+        "target_at_sar_budget_V_m": 282.61557331362866
+      },
+      {
+        "phase_deg": 112,
+        "target_V_m": 1.6399966210449282,
+        "half_target_volume_cm3": 3016.704,
+        "equivalent_sphere_diameter_cm": 17.92715440113802,
+        "target_to_max": 0.08826260426412902,
+        "max_sar_W_kg": 6.904980033465946e-05,
+        "target_at_sar_budget_V_m": 279.11086169273756
+      },
+      {
+        "phase_deg": 113,
+        "target_V_m": 1.6187165204052916,
+        "half_target_volume_cm3": 3017.216,
+        "equivalent_sphere_diameter_cm": 17.92816855254603,
+        "target_to_max": 0.08714664503083369,
+        "max_sar_W_kg": 6.900336170791398e-05,
+        "target_at_sar_budget_V_m": 275.58188873962905
+      },
+      {
+        "phase_deg": 114,
+        "target_V_m": 1.5973131482355107,
+        "half_target_volume_cm3": 3017.216,
+        "equivalent_sphere_diameter_cm": 17.92816855254603,
+        "target_to_max": 0.08602309179019728,
+        "max_sar_W_kg": 6.895726585991768e-05,
+        "target_at_sar_budget_V_m": 272.02890142675477
+      },
+      {
+        "phase_deg": 115,
+        "target_V_m": 1.5757881344852425,
+        "half_target_volume_cm3": 3017.216,
+        "equivalent_sphere_diameter_cm": 17.92816855254603,
+        "target_to_max": 0.0848920238840249,
+        "max_sar_W_kg": 6.891152683191238e-05,
+        "target_at_sar_budget_V_m": 268.45215065493244
+      },
+      {
+        "phase_deg": 116,
+        "target_V_m": 1.5541431183676209,
+        "half_target_volume_cm3": 3018.2400000000002,
+        "equivalent_sphere_diameter_cm": 17.930196511225454,
+        "target_to_max": 0.08375352189706148,
+        "max_sar_W_kg": 6.886615855644907e-05,
+        "target_at_sar_budget_V_m": 264.8518912555007
+      },
+      {
+        "phase_deg": 117,
+        "target_V_m": 1.5323797482344264,
+        "half_target_volume_cm3": 3018.2400000000002,
+        "equivalent_sphere_diameter_cm": 17.930196511225454,
+        "target_to_max": 0.08260766765710706,
+        "max_sar_W_kg": 6.8821174853144e-05,
+        "target_at_sar_budget_V_m": 261.2283819906836
+      },
+      {
+        "phase_deg": 118,
+        "target_V_m": 1.5104996814505538,
+        "half_target_volume_cm3": 3019.264,
+        "equivalent_sphere_diameter_cm": 17.932224011272275,
+        "target_to_max": 0.08145454423455639,
+        "max_sar_W_kg": 6.877658942446892e-05,
+        "target_at_sar_budget_V_m": 257.58188555213474
+      },
+      {
+        "phase_deg": 119,
+        "target_V_m": 1.488504584267802,
+        "half_target_volume_cm3": 3019.264,
+        "equivalent_sphere_diameter_cm": 17.932224011272275,
+        "target_to_max": 0.08029423594135447,
+        "max_sar_W_kg": 6.873241585157733e-05,
+        "target_at_sar_budget_V_m": 253.91266855763422
+      },
+      {
+        "phase_deg": 120,
+        "target_V_m": 1.4663961316979783,
+        "half_target_volume_cm3": 3019.264,
+        "equivalent_sphere_diameter_cm": 17.932224011272275,
+        "target_to_max": 0.079126828329359,
+        "max_sar_W_kg": 6.868866759016744e-05,
+        "target_at_sar_budget_V_m": 250.22100154591038
+      },
+      {
+        "phase_deg": 121,
+        "target_V_m": 1.444176007385342,
+        "half_target_volume_cm3": 3020.8,
+        "equivalent_sphere_diameter_cm": 17.935264401973342,
+        "target_to_max": 0.077952408188102,
+        "max_sar_W_kg": 6.864535796638354e-05,
+        "target_at_sar_budget_V_m": 246.50715896956154
+      },
+      {
+        "phase_deg": 122,
+        "target_V_m": 1.421845903478389,
+        "half_target_volume_cm3": 3020.8,
+        "equivalent_sphere_diameter_cm": 17.935264401973342,
+        "target_to_max": 0.07677106354194324,
+        "max_sar_W_kg": 6.860250017275648e-05,
+        "target_at_sar_budget_V_m": 242.77141918605417
+      },
+      {
+        "phase_deg": 123,
+        "target_V_m": 1.3994075205009853,
+        "half_target_volume_cm3": 3020.8,
+        "equivalent_sphere_diameter_cm": 17.935264401973342,
+        "target_to_max": 0.07558288364660733,
+        "max_sar_W_kg": 6.856010726418539e-05,
+        "target_at_sar_budget_V_m": 239.01406444677227
+      },
+      {
+        "phase_deg": 124,
+        "target_V_m": 1.3768625672228694,
+        "half_target_volume_cm3": 3020.8,
+        "equivalent_sphere_diameter_cm": 17.935264401973342,
+        "target_to_max": 0.07438795898509895,
+        "max_sar_W_kg": 6.851819215396098e-05,
+        "target_at_sar_budget_V_m": 235.23538088410004
+      },
+      {
+        "phase_deg": 125,
+        "target_V_m": 1.354212760529519,
+        "half_target_volume_cm3": 3020.8,
+        "equivalent_sphere_diameter_cm": 17.935264401973342,
+        "target_to_max": 0.07318638126298896,
+        "max_sar_W_kg": 6.847676760983175e-05,
+        "target_at_sar_budget_V_m": 231.43565849651563
+      },
+      {
+        "phase_deg": 126,
+        "target_V_m": 1.3314598252914067,
+        "half_target_volume_cm3": 3020.8,
+        "equivalent_sphere_diameter_cm": 17.935264401973342,
+        "target_to_max": 0.0719782434030662,
+        "max_sar_W_kg": 6.843584625011523e-05,
+        "target_at_sar_budget_V_m": 227.61519113167827
+      },
+      {
+        "phase_deg": 127,
+        "target_V_m": 1.3086054942326417,
+        "half_target_volume_cm3": 3021.3120000000004,
+        "equivalent_sphere_diameter_cm": 17.936277636504734,
+        "target_to_max": 0.07076363953934951,
+        "max_sar_W_kg": 6.839544053985394e-05,
+        "target_at_sar_budget_V_m": 223.7742764674928
+      },
+      {
+        "phase_deg": 128,
+        "target_V_m": 1.2856515077990194,
+        "half_target_volume_cm3": 3021.3120000000004,
+        "equivalent_sphere_diameter_cm": 17.936277636504734,
+        "target_to_max": 0.06954266501045533,
+        "max_sar_W_kg": 6.835556278701868e-05,
+        "target_at_sar_budget_V_m": 219.91321599113616
+      },
+      {
+        "phase_deg": 129,
+        "target_V_m": 1.2625996140254756,
+        "half_target_volume_cm3": 3022.8480000000004,
+        "equivalent_sphere_diameter_cm": 17.939316653444713,
+        "target_to_max": 0.06831541635231637,
+        "max_sar_W_kg": 6.831622513875924e-05,
+        "target_at_sar_budget_V_m": 216.03231497603167
+      },
+      {
+        "phase_deg": 130,
+        "target_V_m": 1.2394515684029705,
+        "half_target_volume_cm3": 3022.8480000000004,
+        "equivalent_sphere_diameter_cm": 17.939316653444713,
+        "target_to_max": 0.06708199129024825,
+        "max_sar_W_kg": 6.827743957770438e-05,
+        "target_at_sar_budget_V_m": 212.13188245676184
+      },
+      {
+        "phase_deg": 131,
+        "target_V_m": 1.2162091337448002,
+        "half_target_volume_cm3": 3022.8480000000004,
+        "equivalent_sphere_diameter_cm": 17.939316653444713,
+        "target_to_max": 0.06584248873036064,
+        "max_sar_W_kg": 6.823921791831171e-05,
+        "target_at_sar_budget_V_m": 208.2122312019077
+      },
+      {
+        "phase_deg": 132,
+        "target_V_m": 1.1928740800523492,
+        "half_target_volume_cm3": 3022.8480000000004,
+        "equivalent_sphere_diameter_cm": 17.939316653444713,
+        "target_to_max": 0.0645970087503102,
+        "max_sar_W_kg": 6.820157180326891e-05,
+        "target_at_sar_budget_V_m": 204.27367768480724
+      },
+      {
+        "phase_deg": 133,
+        "target_V_m": 1.169448184380303,
+        "half_target_volume_cm3": 3022.8480000000004,
+        "equivalent_sphere_diameter_cm": 17.939316653444713,
+        "target_to_max": 0.0633456525893942,
+        "max_sar_W_kg": 6.816451269994731e-05,
+        "target_at_sar_budget_V_m": 200.3165420522285
+      },
+      {
+        "phase_deg": 134,
+        "target_V_m": 1.1459332307013135,
+        "half_target_volume_cm3": 3022.8480000000004,
+        "equivalent_sphere_diameter_cm": 17.939316653444713,
+        "target_to_max": 0.06208852263798228,
+        "max_sar_W_kg": 6.812805189690888e-05,
+        "target_at_sar_budget_V_m": 196.34114809095004
+      },
+      {
+        "phase_deg": 135,
+        "target_V_m": 1.122331009770145,
+        "half_target_volume_cm3": 3022.8480000000004,
+        "equivalent_sphere_diameter_cm": 17.939316653444713,
+        "target_to_max": 0.06082572242628709,
+        "max_sar_W_kg": 6.809220050046733e-05,
+        "target_at_sar_budget_V_m": 192.34782319225042
+      },
+      {
+        "phase_deg": 136,
+        "target_V_m": 1.0986433189873013,
+        "half_target_volume_cm3": 3024.384,
+        "equivalent_sphere_diameter_cm": 17.9423546410817,
+        "target_to_max": 0.05955735661247228,
+        "max_sar_W_kg": 6.805696943130532e-05,
+        "target_at_sar_budget_V_m": 188.3368983143026
+      },
+      {
+        "phase_deg": 137,
+        "target_V_m": 1.0748719622621465,
+        "half_target_volume_cm3": 3025.4080000000004,
+        "equivalent_sphere_diameter_cm": 17.94437939476825,
+        "target_to_max": 0.05828353097009958,
+        "max_sar_W_kg": 6.802236942114785e-05,
+        "target_at_sar_budget_V_m": 184.30870794247778
+      },
+      {
+        "phase_deg": 138,
+        "target_V_m": 1.0510187498755295,
+        "half_target_volume_cm3": 3026.4320000000002,
+        "equivalent_sphere_diameter_cm": 17.946403691631808,
+        "target_to_max": 0.05700435237491525,
+        "max_sar_W_kg": 6.798841100949316e-05,
+        "target_at_sar_budget_V_m": 180.2635900475608
+      },
+      {
+        "phase_deg": 139,
+        "target_V_m": 1.0270854983419242,
+        "half_target_volume_cm3": 3026.944,
+        "equivalent_sphere_diameter_cm": 17.94741566883547,
+        "target_to_max": 0.05571992879097837,
+        "max_sar_W_kg": 6.795510454040244e-05,
+        "target_at_sar_budget_V_m": 176.20188604188377
+      },
+      {
+        "phase_deg": 140,
+        "target_V_m": 1.0030740302710976,
+        "half_target_volume_cm3": 3026.944,
+        "equivalent_sphere_diameter_cm": 17.94741566883547,
+        "target_to_max": 0.05443036925613321,
+        "max_sar_W_kg": 6.792246015934878e-05,
+        "target_at_sar_budget_V_m": 172.12394073338578
+      },
+      {
+        "phase_deg": 141,
+        "target_V_m": 0.9789861742293062,
+        "half_target_volume_cm3": 3026.944,
+        "equivalent_sphere_diameter_cm": 17.94741566883547,
+        "target_to_max": 0.05313578386682848,
+        "max_sar_W_kg": 6.789048781012688e-05,
+        "target_at_sar_budget_V_m": 168.0301022776071
+      },
+      {
+        "phase_deg": 142,
+        "target_V_m": 0.9548237646000489,
+        "half_target_volume_cm3": 3027.456,
+        "equivalent_sphere_diameter_cm": 17.94842753192995,
+        "target_to_max": 0.0518362837622881,
+        "max_sar_W_kg": 6.785919723182407e-05,
+        "target_at_sar_budget_V_m": 163.92072212763253
+      },
+      {
+        "phase_deg": 143,
+        "target_V_m": 0.9305886414443661,
+        "half_target_volume_cm3": 3027.456,
+        "equivalent_sphere_diameter_cm": 17.94842753192995,
+        "target_to_max": 0.05053198110803685,
+        "max_sar_W_kg": 6.782859795585362e-05,
+        "target_at_sar_budget_V_m": 159.7961549819955
+      },
+      {
+        "phase_deg": 144,
+        "target_V_m": 0.9062826503607178,
+        "half_target_volume_cm3": 3027.456,
+        "equivalent_sphere_diameter_cm": 17.94842753192995,
+        "target_to_max": 0.049222989078787305,
+        "max_sar_W_kg": 6.779869930305138e-05,
+        "target_at_sar_budget_V_m": 155.6567587305612
+      },
+      {
+        "phase_deg": 145,
+        "target_V_m": 0.8819076423444274,
+        "half_target_volume_cm3": 3027.456,
+        "equivalent_sphere_diameter_cm": 17.94842753192995,
+        "target_to_max": 0.04790942184069248,
+        "max_sar_W_kg": 6.776951038083671e-05,
+        "target_at_sar_budget_V_m": 151.50289439840486
+      },
+      {
+        "phase_deg": 146,
+        "target_V_m": 0.8574654736467294,
+        "half_target_volume_cm3": 3028.48,
+        "equivalent_sphere_diameter_cm": 17.95045091592003,
+        "target_to_max": 0.04659139453297229,
+        "max_sar_W_kg": 6.774104008043792e-05,
+        "target_at_sar_budget_V_m": 147.33492608770945
+      },
+      {
+        "phase_deg": 147,
+        "target_V_m": 0.8329580056334003,
+        "half_target_volume_cm3": 3028.48,
+        "equivalent_sphere_diameter_cm": 17.95045091592003,
+        "target_to_max": 0.04526902324891899,
+        "max_sar_W_kg": 6.771329707418447e-05,
+        "target_at_sar_budget_V_m": 143.15322091769949
+      },
+      {
+        "phase_deg": 148,
+        "target_V_m": 0.8083871046430136,
+        "half_target_volume_cm3": 3028.992,
+        "equivalent_sphere_diameter_cm": 17.951462436879904,
+        "target_to_max": 0.04394242501629158,
+        "max_sar_W_kg": 6.768628981286468e-05,
+        "target_at_sar_budget_V_m": 138.95814896264298
+      },
+      {
+        "phase_deg": 149,
+        "target_V_m": 0.783754641844811,
+        "half_target_volume_cm3": 3029.5040000000004,
+        "equivalent_sphere_diameter_cm": 17.95247384385916,
+        "target_to_max": 0.042611717777106095,
+        "max_sar_W_kg": 6.766002652315211e-05,
+        "target_at_sar_budget_V_m": 134.75008318794238
+      },
+      {
+        "phase_deg": 150,
+        "target_V_m": 0.7590624930962019,
+        "half_target_volume_cm3": 3030.5280000000002,
+        "equivalent_sphere_diameter_cm": 17.954496316004235,
+        "target_to_max": 0.04127702036683148,
+        "max_sar_W_kg": 6.763451520509913e-05,
+        "target_at_sar_budget_V_m": 130.52939938434636
+      },
+      {
+        "phase_deg": 151,
+        "target_V_m": 0.7343125387999141,
+        "half_target_volume_cm3": 3030.5280000000002,
+        "equivalent_sphere_diameter_cm": 17.954496316004235,
+        "target_to_max": 0.03993845249300121,
+        "max_sar_W_kg": 6.760976362970036e-05,
+        "target_at_sar_budget_V_m": 126.29647610031384
+      },
+      {
+        "phase_deg": 152,
+        "target_V_m": 0.7095066637607896,
+        "half_target_volume_cm3": 3031.04,
+        "equivalent_sphere_diameter_cm": 17.955507381234213,
+        "target_to_max": 0.038596134713250456,
+        "max_sar_W_kg": 6.758577933652547e-05,
+        "target_at_sar_budget_V_m": 122.05169457256122
+      },
+      {
+        "phase_deg": 153,
+        "target_V_m": 0.6846467570422535,
+        "half_target_volume_cm3": 3032.0640000000003,
+        "equivalent_sphere_diameter_cm": 17.957529170169355,
+        "target_to_max": 0.037250188412790715,
+        "max_sar_W_kg": 6.756256963142252e-05,
+        "target_at_sar_budget_V_m": 117.7954386548311
+      },
+      {
+        "phase_deg": 154,
+        "target_V_m": 0.6597347118224504,
+        "half_target_volume_cm3": 3032.0640000000003,
+        "equivalent_sphere_diameter_cm": 17.957529170169355,
+        "target_to_max": 0.03590073578133294,
+        "max_sar_W_kg": 6.754014158429247e-05,
+        "target_at_sar_budget_V_m": 113.52809474491676
+      },
+      {
+        "phase_deg": 155,
+        "target_V_m": 0.6347724252500758,
+        "half_target_volume_cm3": 3033.088,
+        "equivalent_sphere_diameter_cm": 17.959550503951643,
+        "target_to_max": 0.034547899789472335,
+        "max_sar_W_kg": 6.751850202693577e-05,
+        "target_at_sar_budget_V_m": 109.2500517099842
+      },
+      {
+        "phase_deg": 156,
+        "target_V_m": 0.609761798299897,
+        "half_target_volume_cm3": 3033.088,
+        "equivalent_sphere_diameter_cm": 17.959550503951643,
+        "target_to_max": 0.03319180416454703,
+        "max_sar_W_kg": 6.749765755097121e-05,
+        "target_at_sar_budget_V_m": 104.96170081023084
+      },
+      {
+        "phase_deg": 157,
+        "target_V_m": 0.5847047356279883,
+        "half_target_volume_cm3": 3033.6,
+        "equivalent_sphere_diameter_cm": 17.9605610002405,
+        "target_to_max": 0.03183257336598518,
+        "max_sar_W_kg": 6.74776145058281e-05,
+        "target_at_sar_budget_V_m": 100.6634356209259
+      },
+      {
+        "phase_deg": 158,
+        "target_V_m": 0.5596031454266858,
+        "half_target_volume_cm3": 3033.6,
+        "equivalent_sphere_diameter_cm": 17.9605610002405,
+        "target_to_max": 0.03047033256015419,
+        "max_sar_W_kg": 6.745837899681214e-05,
+        "target_at_sar_budget_V_m": 96.35565195287677
+      },
+      {
+        "phase_deg": 159,
+        "target_V_m": 0.5344589392792666,
+        "half_target_volume_cm3": 3034.112,
+        "equivalent_sphere_diameter_cm": 17.961571382837153,
+        "target_to_max": 0.029105207594726755,
+        "max_sar_W_kg": 6.743995688324575e-05,
+        "target_at_sar_budget_V_m": 92.03874777136745
+      },
+      {
+        "phase_deg": 160,
+        "target_V_m": 0.5092740320143802,
+        "half_target_volume_cm3": 3035.648,
+        "equivalent_sphere_diameter_cm": 17.96460184879357,
+        "target_to_max": 0.027737324972580035,
+        "max_sar_W_kg": 6.742235377668313e-05,
+        "target_at_sar_budget_V_m": 87.71312311362034
+      },
+      {
+        "phase_deg": 161,
+        "target_V_m": 0.48405034156022037,
+        "half_target_volume_cm3": 3035.648,
+        "equivalent_sphere_diameter_cm": 17.96460184879357,
+        "target_to_max": 0.02636681182524266,
+        "max_sar_W_kg": 6.74055750392011e-05,
+        "target_at_sar_budget_V_m": 83.37918000482831
+      },
+      {
+        "phase_deg": 162,
+        "target_V_m": 0.4587897887984744,
+        "half_target_volume_cm3": 3035.648,
+        "equivalent_sphere_diameter_cm": 17.96460184879357,
+        "target_to_max": 0.024993795885907517,
+        "max_sar_W_kg": 6.738962578176563e-05,
+        "target_at_sar_budget_V_m": 79.03732237281368
+      },
+      {
+        "phase_deg": 163,
+        "target_V_m": 0.43349429741803397,
+        "half_target_volume_cm3": 3036.672,
+        "equivalent_sphere_diameter_cm": 17.96662159155597,
+        "target_to_max": 0.023618405462025954,
+        "max_sar_W_kg": 6.737451086267501e-05,
+        "target_at_sar_budget_V_m": 74.6879559613635
+      },
+      {
+        "phase_deg": 164,
+        "target_V_m": 0.4081657937685043,
+        "half_target_volume_cm3": 3037.184,
+        "equivalent_sphere_diameter_cm": 17.967631292670358,
+        "target_to_max": 0.022240769407502275,
+        "max_sar_W_kg": 6.736023488608006e-05,
+        "target_at_sar_budget_V_m": 70.33148824230076
+      },
+      {
+        "phase_deg": 165,
+        "target_V_m": 0.38280620671350113,
+        "half_target_volume_cm3": 3037.184,
+        "equivalent_sphere_diameter_cm": 17.967631292670358,
+        "target_to_max": 0.020861017094505524,
+        "max_sar_W_kg": 6.734680220058153e-05,
+        "target_at_sar_budget_V_m": 65.96832832634549
+      },
+      {
+        "phase_deg": 166,
+        "target_V_m": 0.3574174674837615,
+        "half_target_volume_cm3": 3038.208,
+        "equivalent_sphere_diameter_cm": 17.969650354524937,
+        "target_to_max": 0.01947927838491776,
+        "max_sar_W_kg": 6.73342168979055e-05,
+        "target_at_sar_budget_V_m": 61.59888687282623
+      },
+      {
+        "phase_deg": 167,
+        "target_V_m": 0.33200150953007573,
+        "half_target_volume_cm3": 3038.7200000000003,
+        "equivalent_sphere_diameter_cm": 17.970659715328864,
+        "target_to_max": 0.018095683601437672,
+        "max_sar_W_kg": 6.732248281165717e-05,
+        "target_at_sar_budget_V_m": 57.22357599830163
+      },
+      {
+        "phase_deg": 168,
+        "target_V_m": 0.30656026837604244,
+        "half_target_volume_cm3": 3039.2320000000004,
+        "equivalent_sphere_diameter_cm": 17.971668962759683,
+        "target_to_max": 0.016710363498358423,
+        "max_sar_W_kg": 6.731160351615283e-05,
+        "target_at_sar_budget_V_m": 52.84280918415196
+      },
+      {
+        "phase_deg": 169,
+        "target_V_m": 0.28109568147067665,
+        "half_target_volume_cm3": 3039.2320000000004,
+        "equivalent_sphere_diameter_cm": 17.971668962759683,
+        "target_to_max": 0.015323449232040525,
+        "max_sar_W_kg": 6.730158232533133e-05,
+        "target_at_sar_budget_V_m": 48.45700118320605
+      },
+      {
+        "phase_deg": 170,
+        "target_V_m": 0.25560968804086,
+        "half_target_volume_cm3": 3039.744,
+        "equivalent_sphere_diameter_cm": 17.97267809684922,
+        "target_to_max": 0.013935072331098725,
+        "max_sar_W_kg": 6.729242229174433e-05,
+        "target_at_sar_budget_V_m": 44.066567925464
+      },
+      {
+        "phase_deg": 171,
+        "target_V_m": 0.23010422894366656,
+        "half_target_volume_cm3": 3039.744,
+        "equivalent_sphere_diameter_cm": 17.97267809684922,
+        "target_to_max": 0.012545364666324641,
+        "max_sar_W_kg": 6.728412620562698e-05,
+        "target_at_sar_budget_V_m": 39.67192642298415
+      },
+      {
+        "phase_deg": 172,
+        "target_V_m": 0.20458124651855367,
+        "half_target_volume_cm3": 3042.304,
+        "equivalent_sphere_diameter_cm": 17.97772206829074,
+        "target_to_max": 0.011154458420364947,
+        "max_sar_W_kg": 6.727669659404733e-05,
+        "target_at_sar_budget_V_m": 35.273494673997135
+      },
+      {
+        "phase_deg": 173,
+        "target_V_m": 0.1790426844394505,
+        "half_target_volume_cm3": 3042.304,
+        "equivalent_sphere_diameter_cm": 17.97772206829074,
+        "target_to_max": 0.009762486057177248,
+        "max_sar_W_kg": 6.727013572013718e-05,
+        "target_at_sar_budget_V_m": 30.871691566316894
+      },
+      {
+        "phase_deg": 174,
+        "target_V_m": 0.15349048756673536,
+        "half_target_volume_cm3": 3042.304,
+        "equivalent_sphere_diameter_cm": 17.97772206829074,
+        "target_to_max": 0.008369580291284243,
+        "max_sar_W_kg": 6.726444558240216e-05,
+        "target_at_sar_budget_V_m": 26.46693678011372
+      },
+      {
+        "phase_deg": 175,
+        "target_V_m": 0.12792660179912876,
+        "half_target_volume_cm3": 3043.84,
+        "equivalent_sphere_diameter_cm": 17.98074709309431,
+        "target_to_max": 0.00697587405684855,
+        "max_sar_W_kg": 6.725962791411339e-05,
+        "target_at_sar_budget_V_m": 22.059650690120332
+      },
+      {
+        "phase_deg": 176,
+        "target_V_m": 0.10235297392550786,
+        "half_target_volume_cm3": 3044.3520000000003,
+        "equivalent_sphere_diameter_cm": 17.98175520854232,
+        "target_to_max": 0.0055815004765899625,
+        "max_sar_W_kg": 6.725568418277928e-05,
+        "target_at_sar_budget_V_m": 17.650254267339598
+      },
+      {
+        "phase_deg": 177,
+        "target_V_m": 0.07677155147664622,
+        "half_target_volume_cm3": 3044.864,
+        "equivalent_sphere_diameter_cm": 17.98276321096657,
+        "target_to_max": 0.004186592830566819,
+        "max_sar_W_kg": 6.725261558969861e-05,
+        "target_at_sar_budget_V_m": 13.239168980322551
+      },
+      {
+        "phase_deg": 178,
+        "target_V_m": 0.05118428257690712,
+        "half_target_volume_cm3": 3045.888,
+        "equivalent_sphere_diameter_cm": 17.984778876870465,
+        "target_to_max": 0.002791284524844753,
+        "max_sar_W_kg": 6.725042306959461e-05,
+        "target_at_sar_budget_V_m": 8.82681669609027
+      },
+      {
+        "phase_deg": 179,
+        "target_V_m": 0.025593115795881142,
+        "half_target_volume_cm3": 3046.4000000000005,
+        "equivalent_sphere_diameter_cm": 17.98578654041341,
+        "target_to_max": 0.001395709060074146,
+        "max_sar_W_kg": 6.724910729033006e-05,
+        "target_at_sar_budget_V_m": 4.413619580767078
+      }
+    ],
+    "heating_examples": {
+      "rf_balanced_envelope_12_sigma1_sar_W_kg": 0.036,
+      "lf_peak_100_pulsed_sar_W_kg": 0.002,
+      "lf_peak_12_pulsed_sar_W_kg": 2.8800000000000002e-05
+    },
+    "ti": {
+      "target_envelope_V_m": 2.9327922633959562,
+      "sqrt_half_target_area_cm": 11.285388783732706,
+      "current_per_coil_for_12_V_m_A": 20458.31910730849,
+      "current_per_coil_for_100_V_m_A": 170485.99256090407,
+      "half_target_volume_cm3": 2246.1440000000002,
+      "equivalent_sphere_diameter_cm": 16.24848938504135,
+      "target_to_max": 0.6078170402173915,
+      "max_continuous_sar_W_kg": 0.03506433326381538,
+      "target_at_sar_budget_V_m": 22.149478587692496
+    }
+  },
+  {
+    "config": {
+      "head_radius": 0.09,
+      "coil_x": 0.1,
+      "coil_radius": 0.05,
+      "frequency": 3000.0,
+      "peak_current": 5000.0,
+      "conductivity": 0.2,
+      "density": 1000.0,
+      "duty": 0.002,
+      "sar_budget": 2.0,
+      "target_y": 0.03,
+      "segments": 256
+    },
+    "grid_step_m": 0.003,
+    "voxel_count": 113081,
+    "best": {
+      "phase_deg": 0,
+      "target_V_m": 2.9327922633959562,
+      "half_target_volume_cm3": 3008.448,
+      "equivalent_sphere_diameter_cm": 17.910785342723656,
+      "target_to_max": 0.15076226756096867,
+      "max_sar_W_kg": 7.568455779616012e-05,
+      "target_at_sar_budget_V_m": 476.7521507043792,
+      "max_field_V_m": 19.45309201594442,
+      "sqrt_half_target_area_cm": 15.011995203836165,
+      "current_per_coil_for_12_V_m_A": 20458.31910730849,
+      "current_per_coil_for_100_V_m_A": 170485.99256090407
+    },
+    "central_field_V_m": 5.039570276693768e-15,
+    "same_frequency_sweep": [
+      {
+        "phase_deg": 0,
+        "target_V_m": 2.9327922633959562,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.15076226756096867,
+        "max_sar_W_kg": 7.568455779616012e-05,
+        "target_at_sar_budget_V_m": 476.7521507043792,
+        "max_field_V_m": 19.45309201594442,
+        "sqrt_half_target_area_cm": 15.011995203836165,
+        "current_per_coil_for_12_V_m_A": 20458.31910730849,
+        "current_per_coil_for_100_V_m_A": 170485.99256090407
+      },
+      {
+        "phase_deg": 1,
+        "target_V_m": 2.932680591653144,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.1507570035385871,
+        "max_sar_W_kg": 7.568407931922479e-05,
+        "target_at_sar_budget_V_m": 476.7355044039992
+      },
+      {
+        "phase_deg": 2,
+        "target_V_m": 2.932345584928943,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.15074121157282624,
+        "max_sar_W_kg": 7.568264403416748e-05,
+        "target_at_sar_budget_V_m": 476.6855658234636
+      },
+      {
+        "phase_deg": 3,
+        "target_V_m": 2.931787268735411,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.15071489196798846,
+        "max_sar_W_kg": 7.568025237818994e-05,
+        "target_at_sar_budget_V_m": 476.6023359250606
+      },
+      {
+        "phase_deg": 4,
+        "target_V_m": 2.93100568559049,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.15067804523174474,
+        "max_sar_W_kg": 7.567690507981379e-05,
+        "target_at_sar_budget_V_m": 476.485816314187
+      },
+      {
+        "phase_deg": 5,
+        "target_V_m": 2.930000895014761,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.15063067207588593,
+        "max_sar_W_kg": 7.567260315865845e-05,
+        "target_at_sar_budget_V_m": 476.336009241723
+      },
+      {
+        "phase_deg": 6,
+        "target_V_m": 2.9287729735269172,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.1505727734173734,
+        "max_sar_W_kg": 7.566734792513082e-05,
+        "target_at_sar_budget_V_m": 476.15291760735505
+      },
+      {
+        "phase_deg": 7,
+        "target_V_m": 2.9273220146379333,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.15050435037968968,
+        "max_sar_W_kg": 7.5661140980026e-05,
+        "target_at_sar_budget_V_m": 475.9365449638469
+      },
+      {
+        "phase_deg": 8,
+        "target_V_m": 2.9256481288439473,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.15042540429448864,
+        "max_sar_W_kg": 7.565398421403955e-05,
+        "target_at_sar_budget_V_m": 475.68689552225794
+      },
+      {
+        "phase_deg": 9,
+        "target_V_m": 2.9237514436178427,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.15033593670354403,
+        "max_sar_W_kg": 7.564587980719168e-05,
+        "target_at_sar_budget_V_m": 475.40397415810486
+      },
+      {
+        "phase_deg": 10,
+        "target_V_m": 2.9216321033995416,
+        "half_target_volume_cm3": 3008.448,
+        "equivalent_sphere_diameter_cm": 17.910785342723656,
+        "target_to_max": 0.15023594936099663,
+        "max_sar_W_kg": 7.563683022816328e-05,
+        "target_at_sar_budget_V_m": 475.08778641846754
+      },
+      {
+        "phase_deg": 11,
+        "target_V_m": 2.9192902695850087,
+        "half_target_volume_cm3": 3008.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.911213984230166,
+        "target_to_max": 0.15012544423589888,
+        "max_sar_W_kg": 7.562683823354377e-05,
+        "target_at_sar_budget_V_m": 474.7383385300368
+      },
+      {
+        "phase_deg": 12,
+        "target_V_m": 2.916726120513955,
+        "half_target_volume_cm3": 3008.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.911213984230166,
+        "target_to_max": 0.15000442351505627,
+        "max_sar_W_kg": 7.561590686699148e-05,
+        "target_at_sar_budget_V_m": 474.35563740809874
+      },
+      {
+        "phase_deg": 13,
+        "target_V_m": 2.9139398514562593,
+        "half_target_volume_cm3": 3008.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.911213984230166,
+        "target_to_max": 0.14987288960616463,
+        "max_sar_W_kg": 7.56040394583066e-05,
+        "target_at_sar_budget_V_m": 473.93969066645616
+      },
+      {
+        "phase_deg": 14,
+        "target_V_m": 2.910931674597099,
+        "half_target_volume_cm3": 3008.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.911213984230166,
+        "target_to_max": 0.14973084514124285,
+        "max_sar_W_kg": 7.559123962241673e-05,
+        "target_at_sar_budget_V_m": 473.4905066282833
+      },
+      {
+        "phase_deg": 15,
+        "target_V_m": 2.9077018190207875,
+        "half_target_volume_cm3": 3008.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.911213984230166,
+        "target_to_max": 0.14957829298035868,
+        "max_sar_W_kg": 7.557751125827593e-05,
+        "target_at_sar_budget_V_m": 473.008094337909
+      },
+      {
+        "phase_deg": 16,
+        "target_V_m": 2.904250530693332,
+        "half_target_volume_cm3": 3008.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.911213984230166,
+        "target_to_max": 0.14941523621564834,
+        "max_sar_W_kg": 7.55628585476769e-05,
+        "target_at_sar_budget_V_m": 472.49246357352604
+      },
+      {
+        "phase_deg": 17,
+        "target_V_m": 2.9005780724437016,
+        "half_target_volume_cm3": 3008.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.911213984230166,
+        "target_to_max": 0.14924167817562686,
+        "max_sar_W_kg": 7.554728595397716e-05,
+        "target_at_sar_budget_V_m": 471.9436248608236
+      },
+      {
+        "phase_deg": 18,
+        "target_V_m": 2.89668472394381,
+        "half_target_volume_cm3": 3008.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.911213984230166,
+        "target_to_max": 0.14905762242978898,
+        "max_sar_W_kg": 7.553079822073969e-05,
+        "target_at_sar_budget_V_m": 471.36158948753484
+      },
+      {
+        "phase_deg": 19,
+        "target_V_m": 2.892570781687219,
+        "half_target_volume_cm3": 3008.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.911213984230166,
+        "target_to_max": 0.14886307279349878,
+        "max_sar_W_kg": 7.551340037028772e-05,
+        "target_at_sar_budget_V_m": 470.7463695189005
+      },
+      {
+        "phase_deg": 20,
+        "target_V_m": 2.8882365589665597,
+        "half_target_volume_cm3": 3008.88,
+        "equivalent_sphere_diameter_cm": 17.911642605221626,
+        "target_to_max": 0.14865803333316632,
+        "max_sar_W_kg": 7.549509770217508e-05,
+        "target_at_sar_budget_V_m": 470.0979778140381
+      },
+      {
+        "phase_deg": 21,
+        "target_V_m": 2.883682385849672,
+        "half_target_volume_cm3": 3008.88,
+        "equivalent_sphere_diameter_cm": 17.911642605221626,
+        "target_to_max": 0.14844250837170989,
+        "max_sar_W_kg": 7.547589579157169e-05,
+        "target_at_sar_budget_V_m": 469.4164280432157
+      },
+      {
+        "phase_deg": 22,
+        "target_V_m": 2.878908609154472,
+        "half_target_volume_cm3": 3008.88,
+        "equivalent_sphere_diameter_cm": 17.911642605221626,
+        "target_to_max": 0.14821650249430193,
+        "max_sar_W_kg": 7.545580048756557e-05,
+        "target_at_sar_budget_V_m": 468.70173470602185
+      },
+      {
+        "phase_deg": 23,
+        "target_V_m": 2.8739155924225366,
+        "half_target_volume_cm3": 3008.88,
+        "equivalent_sphere_diameter_cm": 17.911642605221626,
+        "target_to_max": 0.14798002055439669,
+        "max_sar_W_kg": 7.543481791138104e-05,
+        "target_at_sar_budget_V_m": 467.9539131504262
+      },
+      {
+        "phase_deg": 24,
+        "target_V_m": 2.868703715891422,
+        "half_target_volume_cm3": 3009.312,
+        "equivalent_sphere_diameter_cm": 17.912499785669205,
+        "target_to_max": 0.147733067680038,
+        "max_sar_W_kg": 7.541295445451397e-05,
+        "target_at_sar_budget_V_m": 467.17297959272736
+      },
+      {
+        "phase_deg": 25,
+        "target_V_m": 2.863273376465704,
+        "half_target_volume_cm3": 3009.5280000000002,
+        "equivalent_sphere_diameter_cm": 17.912928345130226,
+        "target_to_max": 0.14747564928044404,
+        "max_sar_W_kg": 7.539021677678521e-05,
+        "target_at_sar_budget_V_m": 466.3589511383752
+      },
+      {
+        "phase_deg": 26,
+        "target_V_m": 2.857624987686754,
+        "half_target_volume_cm3": 3009.5280000000002,
+        "equivalent_sphere_diameter_cm": 17.912928345130226,
+        "target_to_max": 0.14720777105286842,
+        "max_sar_W_kg": 7.536661180431164e-05,
+        "target_at_sar_budget_V_m": 465.5118458036672
+      },
+      {
+        "phase_deg": 27,
+        "target_V_m": 2.851758979701248,
+        "half_target_volume_cm3": 3009.5280000000002,
+        "equivalent_sphere_diameter_cm": 17.912928345130226,
+        "target_to_max": 0.1469294389897337,
+        "max_sar_W_kg": 7.534214672739652e-05,
+        "target_at_sar_budget_V_m": 464.63168253830764
+      },
+      {
+        "phase_deg": 28,
+        "target_V_m": 2.8456757992284034,
+        "half_target_volume_cm3": 3009.96,
+        "equivalent_sphere_diameter_cm": 17.91378540253902,
+        "target_to_max": 0.14664065938603546,
+        "max_sar_W_kg": 7.531682899833926e-05,
+        "target_at_sar_budget_V_m": 463.7184812488206
+      },
+      {
+        "phase_deg": 29,
+        "target_V_m": 2.8393759095259647,
+        "half_target_volume_cm3": 3009.96,
+        "equivalent_sphere_diameter_cm": 17.91378540253902,
+        "target_to_max": 0.14634143884701467,
+        "max_sar_W_kg": 7.52906663291654e-05,
+        "target_at_sar_budget_V_m": 462.77226282281146
+      },
+      {
+        "phase_deg": 30,
+        "target_V_m": 2.832859790354926,
+        "half_target_volume_cm3": 3009.96,
+        "equivalent_sphere_diameter_cm": 17.91378540253902,
+        "target_to_max": 0.14603178429609492,
+        "max_sar_W_kg": 7.526366668927747e-05,
+        "target_at_sar_budget_V_m": 461.79304915406857
+      },
+      {
+        "phase_deg": 31,
+        "target_V_m": 2.826127937942988,
+        "half_target_volume_cm3": 3009.96,
+        "equivalent_sphere_diameter_cm": 17.91378540253902,
+        "target_to_max": 0.1457117029830821,
+        "max_sar_W_kg": 7.523583830302728e-05,
+        "target_at_sar_budget_V_m": 460.78086316849067
+      },
+      {
+        "phase_deg": 32,
+        "target_V_m": 2.8191808649467776,
+        "half_target_volume_cm3": 3009.96,
+        "equivalent_sphere_diameter_cm": 17.91378540253902,
+        "target_to_max": 0.14538120249262307,
+        "max_sar_W_kg": 7.520718964721087e-05,
+        "target_at_sar_budget_V_m": 459.7357288508374
+      },
+      {
+        "phase_deg": 33,
+        "target_V_m": 2.812019100412799,
+        "half_target_volume_cm3": 3009.96,
+        "equivalent_sphere_diameter_cm": 17.91378540253902,
+        "target_to_max": 0.1450402907529208,
+        "max_sar_W_kg": 7.517772944848629e-05,
+        "target_at_sar_budget_V_m": 458.6576712722878
+      },
+      {
+        "phase_deg": 34,
+        "target_V_m": 2.804643189737148,
+        "half_target_volume_cm3": 3009.96,
+        "equivalent_sphere_diameter_cm": 17.91378540253902,
+        "target_to_max": 0.14468897604470157,
+        "max_sar_W_kg": 7.514746668071553e-05,
+        "target_at_sar_budget_V_m": 457.5467166187976
+      },
+      {
+        "phase_deg": 35,
+        "target_V_m": 2.797053694623982,
+        "half_target_volume_cm3": 3009.96,
+        "equivalent_sphere_diameter_cm": 17.91378540253902,
+        "target_to_max": 0.14432726701043244,
+        "max_sar_W_kg": 7.511641056223077e-05,
+        "target_at_sar_budget_V_m": 456.4028922202472
+      },
+      {
+        "phase_deg": 36,
+        "target_V_m": 2.7892511930427366,
+        "half_target_volume_cm3": 3009.96,
+        "equivalent_sphere_diameter_cm": 17.91378540253902,
+        "target_to_max": 0.14395517266378335,
+        "max_sar_W_kg": 7.50845705530266e-05,
+        "target_at_sar_budget_V_m": 455.2262265803638
+      },
+      {
+        "phase_deg": 37,
+        "target_V_m": 2.7812362791841156,
+        "half_target_volume_cm3": 3010.608,
+        "equivalent_sphere_diameter_cm": 17.915070834905844,
+        "target_to_max": 0.14357270239933176,
+        "max_sar_W_kg": 7.505195635187817e-05,
+        "target_at_sar_budget_V_m": 454.0167494074099
+      },
+      {
+        "phase_deg": 38,
+        "target_V_m": 2.773009563414841,
+        "half_target_volume_cm3": 3010.608,
+        "equivalent_sphere_diameter_cm": 17.915070834905844,
+        "target_to_max": 0.14317986600250496,
+        "max_sar_W_kg": 7.501857789338719e-05,
+        "target_at_sar_budget_V_m": 452.7744916456234
+      },
+      {
+        "phase_deg": 39,
+        "target_V_m": 2.764571672231169,
+        "half_target_volume_cm3": 3010.608,
+        "equivalent_sphere_diameter_cm": 17.915070834905844,
+        "target_to_max": 0.14277667365975635,
+        "max_sar_W_kg": 7.498444534495537e-05,
+        "target_at_sar_budget_V_m": 451.49948550739856
+      },
+      {
+        "phase_deg": 40,
+        "target_V_m": 2.7559232482111824,
+        "half_target_volume_cm3": 3010.608,
+        "equivalent_sphere_diameter_cm": 17.915070834905844,
+        "target_to_max": 0.14236313596897132,
+        "max_sar_W_kg": 7.494956910368767e-05,
+        "target_at_sar_budget_V_m": 450.1917645061914
+      },
+      {
+        "phase_deg": 41,
+        "target_V_m": 2.7470649499658535,
+        "half_target_volume_cm3": 3010.824,
+        "equivalent_sphere_diameter_cm": 17.915499271372223,
+        "target_to_max": 0.14193926395009804,
+        "max_sar_W_kg": 7.491395979322503e-05,
+        "target_at_sar_budget_V_m": 448.851363490138
+      },
+      {
+        "phase_deg": 42,
+        "target_V_m": 2.7379974520888903,
+        "half_target_volume_cm3": 3010.824,
+        "equivalent_sphere_diameter_cm": 17.915499271372223,
+        "target_to_max": 0.14150506905599933,
+        "max_sar_W_kg": 7.487762826050838e-05,
+        "target_at_sar_budget_V_m": 447.4783186763705
+      },
+      {
+        "phase_deg": 43,
+        "target_V_m": 2.7287214451053625,
+        "half_target_volume_cm3": 3010.824,
+        "equivalent_sphere_diameter_cm": 17.915499271372223,
+        "target_to_max": 0.1410605631835199,
+        "max_sar_W_kg": 7.484058557247447e-05,
+        "target_at_sar_budget_V_m": 446.0726676860151
+      },
+      {
+        "phase_deg": 44,
+        "target_V_m": 2.7192376354191152,
+        "half_target_volume_cm3": 3010.824,
+        "equivalent_sphere_diameter_cm": 17.915499271372223,
+        "target_to_max": 0.14060575868476444,
+        "max_sar_W_kg": 7.480284301268499e-05,
+        "target_at_sar_budget_V_m": 444.63444957985666
+      },
+      {
+        "phase_deg": 45,
+        "target_V_m": 2.7095467452589745,
+        "half_target_volume_cm3": 3011.256,
+        "equivalent_sphere_diameter_cm": 17.91635608283585,
+        "target_to_max": 0.14014066837858183,
+        "max_sar_W_kg": 7.476441207788929e-05,
+        "target_at_sar_budget_V_m": 443.1637048946545
+      },
+      {
+        "phase_deg": 46,
+        "target_V_m": 2.699649512623745,
+        "half_target_volume_cm3": 3011.256,
+        "equivalent_sphere_diameter_cm": 17.91635608283585,
+        "target_to_max": 0.1396653055622493,
+        "max_sar_W_kg": 7.472530447452231e-05,
+        "target_at_sar_budget_V_m": 441.6604756800914
+      },
+      {
+        "phase_deg": 47,
+        "target_V_m": 2.689546691226012,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.13917968402335182,
+        "max_sar_W_kg": 7.46855321151389e-05,
+        "target_at_sar_budget_V_m": 440.1248055363393
+      },
+      {
+        "phase_deg": 48,
+        "target_V_m": 2.6792390504347376,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.13868381805185032,
+        "max_sar_W_kg": 7.464510711478509e-05,
+        "target_at_sar_budget_V_m": 438.5567396522225
+      },
+      {
+        "phase_deg": 49,
+        "target_V_m": 2.668727375216678,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.1381777224523339,
+        "max_sar_W_kg": 7.460404178730753e-05,
+        "target_at_sar_budget_V_m": 436.95632484396214
+      },
+      {
+        "phase_deg": 50,
+        "target_V_m": 2.658012466076597,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.1376614125564485,
+        "max_sar_W_kg": 7.456234864160277e-05,
+        "target_at_sar_budget_V_m": 435.3236095944799
+      },
+      {
+        "phase_deg": 51,
+        "target_V_m": 2.64709513899631,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.13713490423549682,
+        "max_sar_W_kg": 7.452004037780693e-05,
+        "target_at_sar_budget_V_m": 433.6586440932416
+      },
+      {
+        "phase_deg": 52,
+        "target_V_m": 2.635976225372544,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.1365982139132033,
+        "max_sar_W_kg": 7.447712988342697e-05,
+        "target_at_sar_budget_V_m": 431.9614802766242
+      },
+      {
+        "phase_deg": 53,
+        "target_V_m": 2.624656571953618,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.13605135857863565,
+        "max_sar_W_kg": 7.443363022941516e-05,
+        "target_at_sar_budget_V_m": 430.2321718687771
+      },
+      {
+        "phase_deg": 54,
+        "target_V_m": 2.613137040774967,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.13549435579927868,
+        "max_sar_W_kg": 7.438955466618749e-05,
+        "target_at_sar_budget_V_m": 428.47077442296484
+      },
+      {
+        "phase_deg": 55,
+        "target_V_m": 2.6014185090934894,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.13492722373425067,
+        "max_sar_W_kg": 7.434491661958757e-05,
+        "target_at_sar_budget_V_m": 426.67734536336155
+      },
+      {
+        "phase_deg": 56,
+        "target_V_m": 2.5895018693207437,
+        "half_target_volume_cm3": 3011.4719999999998,
+        "equivalent_sphere_diameter_cm": 17.916784457837995,
+        "target_to_max": 0.13434998114765723,
+        "max_sar_W_kg": 7.429972968679675e-05,
+        "target_at_sar_budget_V_m": 424.8519440272793
+      },
+      {
+        "phase_deg": 57,
+        "target_V_m": 2.5773880289549846,
+        "half_target_volume_cm3": 3011.688,
+        "equivalent_sphere_diameter_cm": 17.917212812356958,
+        "target_to_max": 0.13376264742207328,
+        "max_sar_W_kg": 7.425400763219248e-05,
+        "target_at_sar_budget_V_m": 422.9946317078018
+      },
+      {
+        "phase_deg": 58,
+        "target_V_m": 2.565077910512057,
+        "half_target_volume_cm3": 3011.904,
+        "equivalent_sphere_diameter_cm": 17.917641146395187,
+        "target_to_max": 0.133165242572147,
+        "max_sar_W_kg": 7.420776438315552e-05,
+        "target_at_sar_budget_V_m": 421.1054716968037
+      },
+      {
+        "phase_deg": 59,
+        "target_V_m": 2.552572451455141,
+        "half_target_volume_cm3": 3012.336,
+        "equivalent_sphere_diameter_cm": 17.91849775303924,
+        "target_to_max": 0.13255778725831643,
+        "max_sar_W_kg": 7.416101402582753e-05,
+        "target_at_sar_budget_V_m": 419.1845293283266
+      },
+      {
+        "phase_deg": 60,
+        "target_V_m": 2.539872604123361,
+        "half_target_volume_cm3": 3012.336,
+        "equivalent_sphere_diameter_cm": 17.91849775303924,
+        "target_to_max": 0.13194030280063154,
+        "max_sar_W_kg": 7.411377080082021e-05,
+        "target_at_sar_budget_V_m": 417.2318720222886
+      },
+      {
+        "phase_deg": 61,
+        "target_V_m": 2.52697933565926,
+        "half_target_volume_cm3": 3012.552,
+        "equivalent_sphere_diameter_cm": 17.918926025649963,
+        "target_to_max": 0.13131281119267282,
+        "max_sar_W_kg": 7.406604909887753e-05,
+        "target_at_sar_budget_V_m": 415.24756932849766
+      },
+      {
+        "phase_deg": 62,
+        "target_V_m": 2.51389362793515,
+        "half_target_volume_cm3": 3012.552,
+        "equivalent_sphere_diameter_cm": 17.918926025649963,
+        "target_to_max": 0.1306753351155581,
+        "max_sar_W_kg": 7.401786345649224e-05,
+        "target_at_sar_budget_V_m": 413.2316929709459
+      },
+      {
+        "phase_deg": 63,
+        "target_V_m": 2.500616477478338,
+        "half_target_volume_cm3": 3012.768,
+        "equivalent_sphere_diameter_cm": 17.919354277789736,
+        "target_to_max": 0.1300278979520285,
+        "max_sar_W_kg": 7.396922855147776e-05,
+        "target_at_sar_budget_V_m": 411.1843168923535
+      },
+      {
+        "phase_deg": 64,
+        "target_V_m": 2.487148895395236,
+        "half_target_volume_cm3": 3012.768,
+        "equivalent_sphere_diameter_cm": 17.919354277789736,
+        "target_to_max": 0.1293705238006048,
+        "max_sar_W_kg": 7.392015919849735e-05,
+        "target_at_sar_budget_V_m": 409.10551729893416
+      },
+      {
+        "phase_deg": 65,
+        "target_V_m": 2.473491907294361,
+        "half_target_volume_cm3": 3012.768,
+        "equivalent_sphere_diameter_cm": 17.919354277789736,
+        "target_to_max": 0.1287032374898046,
+        "max_sar_W_kg": 7.387067034455119e-05,
+        "target_at_sar_budget_V_m": 406.99537270535455
+      },
+      {
+        "phase_deg": 66,
+        "target_V_m": 2.459646553208232,
+        "half_target_volume_cm3": 3012.9840000000004,
+        "equivalent_sphere_diameter_cm": 17.919782509461015,
+        "target_to_max": 0.1280260645924111,
+        "max_sar_W_kg": 7.382077706442364e-05,
+        "target_at_sar_budget_V_m": 404.8539639798555
+      },
+      {
+        "phase_deg": 67,
+        "target_V_m": 2.4456138875141678,
+        "half_target_volume_cm3": 3012.9840000000004,
+        "equivalent_sphere_diameter_cm": 17.919782509461015,
+        "target_to_max": 0.12733903143978353,
+        "max_sar_W_kg": 7.377049455609117e-05,
+        "target_at_sar_budget_V_m": 402.6813743895063
+      },
+      {
+        "phase_deg": 68,
+        "target_V_m": 2.43139497885399,
+        "half_target_volume_cm3": 3013.2000000000003,
+        "equivalent_sphere_diameter_cm": 17.92021072066624,
+        "target_to_max": 0.1266421651361997,
+        "max_sar_W_kg": 7.371983813609288e-05,
+        "target_at_sar_budget_V_m": 400.477689645559
+      },
+      {
+        "phase_deg": 69,
+        "target_V_m": 2.416990910052644,
+        "half_target_volume_cm3": 3013.632,
+        "equivalent_sphere_diameter_cm": 17.921067081688317,
+        "target_to_max": 0.12593549357321998,
+        "max_sar_W_kg": 7.366882323486507e-05,
+        "target_at_sar_budget_V_m": 398.2429979488721
+      },
+      {
+        "phase_deg": 70,
+        "target_V_m": 2.402402778035737,
+        "half_target_volume_cm3": 3014.064,
+        "equivalent_sphere_diameter_cm": 17.921923360875518,
+        "target_to_max": 0.1252190454440631,
+        "max_sar_W_kg": 7.361746539204079e-05,
+        "target_at_sar_budget_V_m": 395.97739003536975
+      },
+      {
+        "phase_deg": 71,
+        "target_V_m": 2.3876316937460014,
+        "half_target_volume_cm3": 3014.064,
+        "equivalent_sphere_diameter_cm": 17.921923360875518,
+        "target_to_max": 0.12449285025798221,
+        "max_sar_W_kg": 7.356578025171653e-05,
+        "target_at_sar_budget_V_m": 393.68095922150434
+      },
+      {
+        "phase_deg": 72,
+        "target_V_m": 2.3726787820586956,
+        "half_target_volume_cm3": 3014.2799999999997,
+        "equivalent_sphere_diameter_cm": 17.922351469787152,
+        "target_to_max": 0.12375693835463183,
+        "max_sar_W_kg": 7.351378355768667e-05,
+        "target_at_sar_budget_V_m": 391.3538014496876
+      },
+      {
+        "phase_deg": 73,
+        "target_V_m": 2.3575451816959365,
+        "half_target_volume_cm3": 3014.496,
+        "equivalent_sphere_diameter_cm": 17.922779558247395,
+        "target_to_max": 0.12301134091841316,
+        "max_sar_W_kg": 7.346149114864795e-05,
+        "target_at_sar_budget_V_m": 388.9960153336543
+      },
+      {
+        "phase_deg": 74,
+        "target_V_m": 2.342232045139984,
+        "half_target_volume_cm3": 3014.496,
+        "equivalent_sphere_diameter_cm": 17.922779558247395,
+        "target_to_max": 0.12225608999278766,
+        "max_sar_W_kg": 7.340891895337473e-05,
+        "target_at_sar_budget_V_m": 386.6077022037274
+      },
+      {
+        "phase_deg": 75,
+        "target_V_m": 2.326740538545474,
+        "half_target_volume_cm3": 3014.496,
+        "equivalent_sphere_diameter_cm": 17.922779558247395,
+        "target_to_max": 0.12149121849454746,
+        "max_sar_W_kg": 7.335608298586696e-05,
+        "target_at_sar_budget_V_m": 384.18896615194285
+      },
+      {
+        "phase_deg": 76,
+        "target_V_m": 2.311071841650611,
+        "half_target_volume_cm3": 3014.496,
+        "equivalent_sphere_diameter_cm": 17.922779558247395,
+        "target_to_max": 0.12071676022803025,
+        "max_sar_W_kg": 7.330299934047215e-05,
+        "target_at_sar_budget_V_m": 381.7399140770028
+      },
+      {
+        "phase_deg": 77,
+        "target_V_m": 2.2952271476873287,
+        "half_target_volume_cm3": 3014.496,
+        "equivalent_sphere_diameter_cm": 17.922779558247395,
+        "target_to_max": 0.11993274989926794,
+        "max_sar_W_kg": 7.324968418698296e-05,
+        "target_at_sar_budget_V_m": 379.2606557290165
+      },
+      {
+        "phase_deg": 78,
+        "target_V_m": 2.2792076632904164,
+        "half_target_volume_cm3": 3014.496,
+        "equivalent_sphere_diameter_cm": 17.922779558247395,
+        "target_to_max": 0.11913922313005618,
+        "max_sar_W_kg": 7.319615376571164e-05,
+        "target_at_sar_budget_V_m": 376.75130375399243
+      },
+      {
+        "phase_deg": 79,
+        "target_V_m": 2.263014608405633,
+        "half_target_volume_cm3": 3014.928,
+        "equivalent_sphere_diameter_cm": 17.923635673823487,
+        "target_to_max": 0.11833621647193344,
+        "max_sar_W_kg": 7.314242438254298e-05,
+        "target_at_sar_budget_V_m": 374.21197373804455
+      },
+      {
+        "phase_deg": 80,
+        "target_V_m": 2.2466492161968024,
+        "half_target_volume_cm3": 3015.144,
+        "equivalent_sphere_diameter_cm": 17.92406370094422,
+        "target_to_max": 0.11752376742005684,
+        "max_sar_W_kg": 7.308851240396767e-05,
+        "target_at_sar_budget_V_m": 371.64278425127014
+      },
+      {
+        "phase_deg": 81,
+        "target_V_m": 2.2301127329519024,
+        "half_target_volume_cm3": 3015.144,
+        "equivalent_sphere_diameter_cm": 17.92406370094422,
+        "target_to_max": 0.1167019144269623,
+        "max_sar_W_kg": 7.303443425209661e-05,
+        "target_at_sar_budget_V_m": 369.04385689126474
+      },
+      {
+        "phase_deg": 82,
+        "target_V_m": 2.2134064179881556,
+        "half_target_volume_cm3": 3015.144,
+        "equivalent_sphere_diameter_cm": 17.92406370094422,
+        "target_to_max": 0.11587069691619664,
+        "max_sar_W_kg": 7.298020639965869e-05,
+        "target_at_sar_budget_V_m": 366.41531632622974
+      },
+      {
+        "phase_deg": 83,
+        "target_V_m": 2.1965315435561275,
+        "half_target_volume_cm3": 3015.576,
+        "equivalent_sphere_diameter_cm": 17.92491969386326,
+        "target_to_max": 0.11503015529580861,
+        "max_sar_W_kg": 7.292584536498309e-05,
+        "target_at_sar_budget_V_m": 363.75729033763497
+      },
+      {
+        "phase_deg": 84,
+        "target_V_m": 2.1794893947428395,
+        "half_target_volume_cm3": 3016.0080000000003,
+        "equivalent_sphere_diameter_cm": 17.92577560503533,
+        "target_to_max": 0.11418033097168602,
+        "max_sar_W_kg": 7.287136770696764e-05,
+        "target_at_sar_budget_V_m": 361.0699098623944
+      },
+      {
+        "phase_deg": 85,
+        "target_V_m": 2.1622812693739064,
+        "half_target_volume_cm3": 3016.0080000000003,
+        "equivalent_sphere_diameter_cm": 17.92577560503533,
+        "target_to_max": 0.11332126636072602,
+        "max_sar_W_kg": 7.281679002003472e-05,
+        "target_at_sar_budget_V_m": 358.3533090345144
+      },
+      {
+        "phase_deg": 86,
+        "target_V_m": 2.1449084779146976,
+        "half_target_volume_cm3": 3016.872,
+        "equivalent_sphere_diameter_cm": 17.927487182216623,
+        "target_to_max": 0.11245300490382494,
+        "max_sar_W_kg": 7.276212892907635e-05,
+        "target_at_sar_budget_V_m": 355.60762522617085
+      },
+      {
+        "phase_deg": 87,
+        "target_V_m": 2.127372343370545,
+        "half_target_volume_cm3": 3016.872,
+        "equivalent_sphere_diameter_cm": 17.927487182216623,
+        "target_to_max": 0.1115755910786748,
+        "max_sar_W_kg": 7.270740108439048e-05,
+        "target_at_sar_budget_V_m": 352.8329990881756
+      },
+      {
+        "phase_deg": 88,
+        "target_V_m": 2.1096742011859884,
+        "half_target_volume_cm3": 3016.872,
+        "equivalent_sphere_diameter_cm": 17.927487182216623,
+        "target_to_max": 0.11068907041235293,
+        "max_sar_W_kg": 7.265262315660867e-05,
+        "target_at_sar_budget_V_m": 350.0295745897884
+      },
+      {
+        "phase_deg": 89,
+        "target_V_m": 2.0918153991430746,
+        "half_target_volume_cm3": 3016.872,
+        "equivalent_sphere_diameter_cm": 17.927487182216623,
+        "target_to_max": 0.10979348949369089,
+        "max_sar_W_kg": 7.25978118316184e-05,
+        "target_at_sar_budget_V_m": 347.1974990578304
+      },
+      {
+        "phase_deg": 90,
+        "target_V_m": 2.0737972972587237,
+        "half_target_volume_cm3": 3017.304,
+        "equivalent_sphere_diameter_cm": 17.92834284826485,
+        "target_to_max": 0.10888889598540975,
+        "max_sar_W_kg": 7.254298380548029e-05,
+        "target_at_sar_budget_V_m": 344.3369232150596
+      },
+      {
+        "phase_deg": 91,
+        "target_V_m": 2.055621267681154,
+        "half_target_volume_cm3": 3017.304,
+        "equivalent_sphere_diameter_cm": 17.92834284826485,
+        "target_to_max": 0.10797533863600714,
+        "max_sar_W_kg": 7.248815577934215e-05,
+        "target_at_sar_budget_V_m": 341.44800121776103
+      },
+      {
+        "phase_deg": 92,
+        "target_V_m": 2.0372886945853894,
+        "half_target_volume_cm3": 3017.304,
+        "equivalent_sphere_diameter_cm": 17.92834284826485,
+        "target_to_max": 0.10705286729138293,
+        "max_sar_W_kg": 7.243334445435188e-05,
+        "target_at_sar_budget_V_m": 338.5308906925104
+      },
+      {
+        "phase_deg": 93,
+        "target_V_m": 2.018800974067848,
+        "half_target_volume_cm3": 3018.1679999999997,
+        "equivalent_sphere_diameter_cm": 17.930053935373927,
+        "target_to_max": 0.10612153290618952,
+        "max_sar_W_kg": 7.237856652657011e-05,
+        "target_at_sar_budget_V_m": 335.58575277206666
+      },
+      {
+        "phase_deg": 94,
+        "target_V_m": 2.0001595140400257,
+        "half_target_volume_cm3": 3018.384,
+        "equivalent_sphere_diameter_cm": 17.930481656126364,
+        "target_to_max": 0.10518138755489306,
+        "max_sar_W_kg": 7.232383868188421e-05,
+        "target_at_sar_budget_V_m": 332.6127521303507
+      },
+      {
+        "phase_deg": 95,
+        "target_V_m": 1.981365734121276,
+        "half_target_volume_cm3": 3018.6000000000004,
+        "equivalent_sphere_diameter_cm": 17.93090935647374,
+        "target_to_max": 0.10423248444253112,
+        "max_sar_W_kg": 7.226917759092589e-05,
+        "target_at_sar_budget_V_m": 329.6120570164643
+      },
+      {
+        "phase_deg": 96,
+        "target_V_m": 1.9624210655307042,
+        "half_target_volume_cm3": 3018.8160000000003,
+        "equivalent_sphere_diameter_cm": 17.931337036418483,
+        "target_to_max": 0.10327487791515387,
+        "max_sar_W_kg": 7.221459990399289e-05,
+        "target_at_sar_budget_V_m": 326.5838392877078
+      },
+      {
+        "phase_deg": 97,
+        "target_V_m": 1.9433269509781705,
+        "half_target_volume_cm3": 3019.032,
+        "equivalent_sphere_diameter_cm": 17.931764695963025,
+        "target_to_max": 0.1023086234699337,
+        "max_sar_W_kg": 7.216012224597743e-05,
+        "target_at_sar_budget_V_m": 323.5282744415497
+      },
+      {
+        "phase_deg": 98,
+        "target_V_m": 1.9240848445544232,
+        "half_target_volume_cm3": 3019.248,
+        "equivalent_sphere_diameter_cm": 17.932192335109807,
+        "target_to_max": 0.1013337777649303,
+        "max_sar_W_kg": 7.21057612113019e-05,
+        "target_at_sar_budget_V_m": 320.4455416465063
+      },
+      {
+        "phase_deg": 99,
+        "target_V_m": 1.9046962116203658,
+        "half_target_volume_cm3": 3019.248,
+        "equivalent_sphere_diameter_cm": 17.932192335109807,
+        "target_to_max": 0.10035039862849718,
+        "max_sar_W_kg": 7.205153335886398e-05,
+        "target_at_sar_budget_V_m": 317.3358237718882
+      },
+      {
+        "phase_deg": 100,
+        "target_V_m": 1.885162528695462,
+        "half_target_volume_cm3": 3019.68,
+        "equivalent_sphere_diameter_cm": 17.933047552219797,
+        "target_to_max": 0.09935854506831501,
+        "max_sar_W_kg": 7.199745520699292e-05,
+        "target_at_sar_budget_V_m": 314.1993074163656
+      },
+      {
+        "phase_deg": 101,
+        "target_V_m": 1.8654852833452948,
+        "half_target_volume_cm3": 3019.68,
+        "equivalent_sphere_diameter_cm": 17.933047552219797,
+        "target_to_max": 0.09835827728003918,
+        "max_sar_W_kg": 7.19435432284176e-05,
+        "target_at_sar_budget_V_m": 311.03618293531497
+      },
+      {
+        "phase_deg": 102,
+        "target_V_m": 1.845665974068281,
+        "half_target_volume_cm3": 3019.68,
+        "equivalent_sphere_diameter_cm": 17.933047552219797,
+        "target_to_max": 0.09734965665554703,
+        "max_sar_W_kg": 7.188981384524895e-05,
+        "target_at_sar_budget_V_m": 307.8466444668983
+      },
+      {
+        "phase_deg": 103,
+        "target_V_m": 1.8257061101815555,
+        "half_target_volume_cm3": 3019.896,
+        "equivalent_sphere_diameter_cm": 17.93347513018787,
+        "target_to_max": 0.09633274579077124,
+        "max_sar_W_kg": 7.183628342397761e-05,
+        "target_at_sar_budget_V_m": 304.63088995683535
+      },
+      {
+        "phase_deg": 104,
+        "target_V_m": 1.805607211706031,
+        "half_target_volume_cm3": 3019.896,
+        "equivalent_sphere_diameter_cm": 17.93347513018787,
+        "target_to_max": 0.09530760849310652,
+        "max_sar_W_kg": 7.178296827048842e-05,
+        "target_at_sar_budget_V_m": 301.38912118182475
+      },
+      {
+        "phase_deg": 105,
+        "target_V_m": 1.7853708092506424,
+        "half_target_volume_cm3": 3020.9759999999997,
+        "equivalent_sphere_diameter_cm": 17.935612714256248,
+        "target_to_max": 0.09427430978837507,
+        "max_sar_W_kg": 7.172988462509363e-05,
+        "target_at_sar_budget_V_m": 298.1215437715716
+      },
+      {
+        "phase_deg": 106,
+        "target_V_m": 1.7649984438957855,
+        "half_target_volume_cm3": 3020.9759999999997,
+        "equivalent_sphere_diameter_cm": 17.935612714256248,
+        "target_to_max": 0.09323291592733887,
+        "max_sar_W_kg": 7.167704865758585e-05,
+        "target_at_sar_budget_V_m": 294.8283672293804
+      },
+      {
+        "phase_deg": 107,
+        "target_V_m": 1.7444916670759565,
+        "half_target_volume_cm3": 3020.9759999999997,
+        "equivalent_sphere_diameter_cm": 17.935612714256248,
+        "target_to_max": 0.09218349439174459,
+        "max_sar_W_kg": 7.162447646231264e-05,
+        "target_at_sar_budget_V_m": 291.50980495127095
+      },
+      {
+        "phase_deg": 108,
+        "target_V_m": 1.7238520404616056,
+        "half_target_volume_cm3": 3021.1920000000005,
+        "equivalent_sphere_diameter_cm": 17.936040169932525,
+        "target_to_max": 0.09112611389988896,
+        "max_sar_W_kg": 7.157218405327391e-05,
+        "target_at_sar_budget_V_m": 288.1660742435781
+      },
+      {
+        "phase_deg": 109,
+        "target_V_m": 1.7030811358402087,
+        "half_target_volume_cm3": 3021.1920000000005,
+        "equivalent_sphere_diameter_cm": 17.936040169932525,
+        "target_to_max": 0.09006084441169157,
+        "max_sar_W_kg": 7.152018735924405e-05,
+        "target_at_sar_budget_V_m": 284.7973963389924
+      },
+      {
+        "phase_deg": 110,
+        "target_V_m": 1.6821805349965713,
+        "half_target_volume_cm3": 3021.84,
+        "equivalent_sphere_diameter_cm": 17.937322414730286,
+        "target_to_max": 0.08898775713326257,
+        "max_sar_W_kg": 7.146850221891979e-05,
+        "target_at_sar_budget_V_m": 281.40399641100555
+      },
+      {
+        "phase_deg": 111,
+        "target_V_m": 1.6611518295923668,
+        "half_target_volume_cm3": 3022.272,
+        "equivalent_sphere_diameter_cm": 17.938177142760487,
+        "target_to_max": 0.0879069245209533,
+        "max_sar_W_kg": 7.141714437609555e-05,
+        "target_at_sar_budget_V_m": 277.9861035867185
+      },
+      {
+        "phase_deg": 112,
+        "target_V_m": 1.6399966210449282,
+        "half_target_volume_cm3": 3022.488,
+        "equivalent_sphere_diameter_cm": 17.93860447623238,
+        "target_to_max": 0.08681842028487759,
+        "max_sar_W_kg": 7.136612947486768e-05,
+        "target_at_sar_budget_V_m": 274.54395095797764
+      },
+      {
+        "phase_deg": 113,
+        "target_V_m": 1.6187165204052916,
+        "half_target_volume_cm3": 3022.704,
+        "equivalent_sphere_diameter_cm": 17.939031789345364,
+        "target_to_max": 0.08572231939189177,
+        "max_sar_W_kg": 7.131547305486941e-05,
+        "target_at_sar_budget_V_m": 271.077775590798
+      },
+      {
+        "phase_deg": 114,
+        "target_V_m": 1.5973131482355107,
+        "half_target_volume_cm3": 3022.92,
+        "equivalent_sphere_diameter_cm": 17.939459082101862,
+        "target_to_max": 0.0846186980680228,
+        "max_sar_W_kg": 7.126519054653695e-05,
+        "target_at_sar_budget_V_m": 267.5878185330417
+      },
+      {
+        "phase_deg": 115,
+        "target_V_m": 1.5757881344852425,
+        "half_target_volume_cm3": 3023.352,
+        "equivalent_sphere_diameter_cm": 17.940313606555108,
+        "target_to_max": 0.08350763380033221,
+        "max_sar_W_kg": 7.121529726640938e-05,
+        "target_at_sar_budget_V_m": 264.07432482031237
+      },
+      {
+        "phase_deg": 116,
+        "target_V_m": 1.5541431183676209,
+        "half_target_volume_cm3": 3023.352,
+        "equivalent_sphere_diameter_cm": 17.940313606555108,
+        "target_to_max": 0.08238920533820604,
+        "max_sar_W_kg": 7.116580841246325e-05,
+        "target_at_sar_budget_V_m": 260.53754348003434
+      },
+      {
+        "phase_deg": 117,
+        "target_V_m": 1.5323797482344264,
+        "half_target_volume_cm3": 3023.5679999999998,
+        "equivalent_sphere_diameter_cm": 17.9407408382567,
+        "target_to_max": 0.08126349269405986,
+        "max_sar_W_kg": 7.111673905948278e-05,
+        "target_at_sar_budget_V_m": 256.97772753368184
+      },
+      {
+        "phase_deg": 118,
+        "target_V_m": 1.5104996814505538,
+        "half_target_volume_cm3": 3024.0,
+        "equivalent_sphere_diameter_cm": 17.941595240621947,
+        "target_to_max": 0.08013057714344858,
+        "max_sar_W_kg": 7.106810415446834e-05,
+        "target_at_sar_budget_V_m": 253.39513399712638
+      },
+      {
+        "phase_deg": 119,
+        "target_V_m": 1.488504584267802,
+        "half_target_volume_cm3": 3024.2160000000003,
+        "equivalent_sphere_diameter_cm": 17.94202241129044,
+        "target_to_max": 0.07899054122457204,
+        "max_sar_W_kg": 7.101991851208305e-05,
+        "target_at_sar_budget_V_m": 249.79002387907354
+      },
+      {
+        "phase_deg": 120,
+        "target_V_m": 1.4663961316979783,
+        "half_target_volume_cm3": 3024.2160000000003,
+        "equivalent_sphere_diameter_cm": 17.94202241129044,
+        "target_to_max": 0.07784346873716622,
+        "max_sar_W_kg": 7.097219681014035e-05,
+        "target_at_sar_budget_V_m": 246.16266217755634
+      },
+      {
+        "phase_deg": 121,
+        "target_V_m": 1.444176007385342,
+        "half_target_volume_cm3": 3024.864,
+        "equivalent_sphere_diameter_cm": 17.943303801268463,
+        "target_to_max": 0.07668944474077177,
+        "max_sar_W_kg": 7.092495358513306e-05,
+        "target_at_sar_budget_V_m": 242.51331787445997
+      },
+      {
+        "phase_deg": 122,
+        "target_V_m": 1.421845903478389,
+        "half_target_volume_cm3": 3024.864,
+        "equivalent_sphere_diameter_cm": 17.943303801268463,
+        "target_to_max": 0.07552855555237156,
+        "max_sar_W_kg": 7.087820322780508e-05,
+        "target_at_sar_budget_V_m": 238.84226392805098
+      },
+      {
+        "phase_deg": 123,
+        "target_V_m": 1.3994075205009853,
+        "half_target_volume_cm3": 3025.08,
+        "equivalent_sphere_diameter_cm": 17.94373089059339,
+        "target_to_max": 0.07436088874338836,
+        "max_sar_W_kg": 7.083195997876812e-05,
+        "target_at_sar_budget_V_m": 235.14977726348334
+      },
+      {
+        "phase_deg": 124,
+        "target_V_m": 1.3768625672228694,
+        "half_target_volume_cm3": 3025.512,
+        "equivalent_sphere_diameter_cm": 17.94458500825613,
+        "target_to_max": 0.07318653313603644,
+        "max_sar_W_kg": 7.078623792416387e-05,
+        "target_at_sar_budget_V_m": 231.43613876126088
+      },
+      {
+        "phase_deg": 125,
+        "target_V_m": 1.354212760529519,
+        "half_target_volume_cm3": 3027.0240000000003,
+        "equivalent_sphere_diameter_cm": 17.947573779965005,
+        "target_to_max": 0.07200557879901891,
+        "max_sar_W_kg": 7.0741050991373e-05,
+        "target_at_sar_budget_V_m": 227.70163324363136
+      },
+      {
+        "phase_deg": 126,
+        "target_V_m": 1.3314598252914067,
+        "half_target_volume_cm3": 3027.0240000000003,
+        "equivalent_sphere_diameter_cm": 17.947573779965005,
+        "target_to_max": 0.07081811704256516,
+        "max_sar_W_kg": 7.069641294477308e-05,
+        "target_at_sar_budget_V_m": 223.94654945889337
+      },
+      {
+        "phase_deg": 127,
+        "target_V_m": 1.3086054942326417,
+        "half_target_volume_cm3": 3027.0240000000003,
+        "equivalent_sphere_diameter_cm": 17.947573779965005,
+        "target_to_max": 0.06962424041280206,
+        "max_sar_W_kg": 7.065233738154544e-05,
+        "target_at_sar_budget_V_m": 220.17118006359638
+      },
+      {
+        "phase_deg": 128,
+        "target_V_m": 1.2856515077990194,
+        "half_target_volume_cm3": 3027.2400000000002,
+        "equivalent_sphere_diameter_cm": 17.948000666100313,
+        "target_to_max": 0.06842404268545355,
+        "max_sar_W_kg": 7.060883772753362e-05,
+        "target_at_sar_budget_V_m": 216.37582160261735
+      },
+      {
+        "phase_deg": 129,
+        "target_V_m": 1.2625996140254756,
+        "half_target_volume_cm3": 3027.672,
+        "equivalent_sphere_diameter_cm": 17.94885437745633,
+        "target_to_max": 0.06721761885886368,
+        "max_sar_W_kg": 7.056592723315366e-05,
+        "target_at_sar_budget_V_m": 212.56077448709735
+      },
+      {
+        "phase_deg": 130,
+        "target_V_m": 1.2394515684029705,
+        "half_target_volume_cm3": 3027.888,
+        "equivalent_sphere_diameter_cm": 17.949281202681863,
+        "target_to_max": 0.06600506514633936,
+        "max_sar_W_kg": 7.05236189693578e-05,
+        "target_at_sar_budget_V_m": 208.72634297022745
+      },
+      {
+        "phase_deg": 131,
+        "target_V_m": 1.2162091337448002,
+        "half_target_volume_cm3": 3028.1040000000003,
+        "equivalent_sphere_diameter_cm": 17.949708007608972,
+        "target_to_max": 0.0647864789678084,
+        "max_sar_W_kg": 7.048192582365304e-05,
+        "target_at_sar_budget_V_m": 204.87283512086904
+      },
+      {
+        "phase_deg": 132,
+        "target_V_m": 1.1928740800523492,
+        "half_target_volume_cm3": 3029.1839999999997,
+        "equivalent_sphere_diameter_cm": 17.951841727852504,
+        "target_to_max": 0.06356195894079021,
+        "max_sar_W_kg": 7.044086049617548e-05,
+        "target_at_sar_budget_V_m": 201.00056279500063
+      },
+      {
+        "phase_deg": 133,
+        "target_V_m": 1.169448184380303,
+        "half_target_volume_cm3": 3029.1839999999997,
+        "equivalent_sphere_diameter_cm": 17.951841727852504,
+        "target_to_max": 0.06233160487067709,
+        "max_sar_W_kg": 7.040043549582163e-05,
+        "target_at_sar_budget_V_m": 197.10984160498472
+      },
+      {
+        "phase_deg": 134,
+        "target_V_m": 1.1459332307013135,
+        "half_target_volume_cm3": 3029.616,
+        "equivalent_sphere_diameter_cm": 17.952695073945335,
+        "target_to_max": 0.06109551774032318,
+        "max_sar_W_kg": 7.036066313643828e-05,
+        "target_at_sar_budget_V_m": 193.2009908866449
+      },
+      {
+        "phase_deg": 135,
+        "target_V_m": 1.122331009770145,
+        "half_target_volume_cm3": 3029.616,
+        "equivalent_sphere_diameter_cm": 17.952695073945335,
+        "target_to_max": 0.05985379969894134,
+        "max_sar_W_kg": 7.03215555330713e-05,
+        "target_at_sar_budget_V_m": 189.27433366415505
+      },
+      {
+        "phase_deg": 136,
+        "target_V_m": 1.0986433189873013,
+        "half_target_volume_cm3": 3029.832,
+        "equivalent_sphere_diameter_cm": 17.95312171657184,
+        "target_to_max": 0.05860655405030632,
+        "max_sar_W_kg": 7.028312459827558e-05,
+        "target_at_sar_budget_V_m": 185.3301966127343
+      },
+      {
+        "phase_deg": 137,
+        "target_V_m": 1.0748719622621465,
+        "half_target_volume_cm3": 3029.832,
+        "equivalent_sphere_diameter_cm": 17.95312171657184,
+        "target_to_max": 0.05735388524026511,
+        "max_sar_W_kg": 7.024538203848608e-05,
+        "target_at_sar_budget_V_m": 181.3689100191513
+      },
+      {
+        "phase_deg": 138,
+        "target_V_m": 1.0510187498755295,
+        "half_target_volume_cm3": 3030.48,
+        "equivalent_sphere_diameter_cm": 17.954401522800623,
+        "target_to_max": 0.05609589884355489,
+        "max_sar_W_kg": 7.02083393504522e-05,
+        "target_at_sar_budget_V_m": 177.39080774003887
+      },
+      {
+        "phase_deg": 139,
+        "target_V_m": 1.0270854983419242,
+        "half_target_volume_cm3": 3031.776,
+        "equivalent_sphere_diameter_cm": 17.956960588046623,
+        "target_to_max": 0.054832701549930425,
+        "max_sar_W_kg": 7.017200781773556e-05,
+        "target_at_sar_budget_V_m": 173.39622715802506
+      },
+      {
+        "phase_deg": 140,
+        "target_V_m": 1.0030740302710976,
+        "half_target_volume_cm3": 3031.9919999999997,
+        "equivalent_sphere_diameter_cm": 17.957387028014203,
+        "target_to_max": 0.0535644011496032,
+        "max_sar_W_kg": 7.01363985072729e-05,
+        "target_at_sar_budget_V_m": 169.38550913568764
+      },
+      {
+        "phase_deg": 141,
+        "target_V_m": 0.9789861742293062,
+        "half_target_volume_cm3": 3032.208,
+        "equivalent_sphere_diameter_cm": 17.957813447729126,
+        "target_to_max": 0.05229110651799457,
+        "max_sar_W_kg": 7.01015222660052e-05,
+        "target_at_sar_budget_V_m": 165.35899796733935
+      },
+      {
+        "phase_deg": 142,
+        "target_V_m": 0.9548237646000489,
+        "half_target_volume_cm3": 3032.208,
+        "equivalent_sphere_diameter_cm": 17.957813447729126,
+        "target_to_max": 0.051012927599807835,
+        "max_sar_W_kg": 7.006738971757342e-05,
+        "target_at_sar_budget_V_m": 161.31704132865926
+      },
+      {
+        "phase_deg": 143,
+        "target_V_m": 0.9305886414443661,
+        "half_target_volume_cm3": 3032.424,
+        "equivalent_sphere_diameter_cm": 17.958239847193795,
+        "target_to_max": 0.049729975392422195,
+        "max_sar_W_kg": 7.003401125908239e-05,
+        "target_at_sar_budget_V_m": 157.25999022417994
+      },
+      {
+        "phase_deg": 144,
+        "target_V_m": 0.9062826503607178,
+        "half_target_volume_cm3": 3032.64,
+        "equivalent_sphere_diameter_cm": 17.958666226410614,
+        "target_to_max": 0.048442361928614903,
+        "max_sar_W_kg": 7.000139705793397e-05,
+        "target_at_sar_budget_V_m": 153.18819893265012
+      },
+      {
+        "phase_deg": 145,
+        "target_V_m": 0.8819076423444274,
+        "half_target_volume_cm3": 3033.7200000000003,
+        "equivalent_sphere_diameter_cm": 17.960797818861067,
+        "target_to_max": 0.047150200258616416,
+        "max_sar_W_kg": 6.99695570487298e-05,
+        "target_at_sar_budget_V_m": 149.10202495028804
+      },
+      {
+        "phase_deg": 146,
+        "target_V_m": 0.8574654736467294,
+        "half_target_volume_cm3": 3033.7200000000003,
+        "equivalent_sphere_diameter_cm": 17.960797818861067,
+        "target_to_max": 0.045853604431506205,
+        "max_sar_W_kg": 6.993850093024505e-05,
+        "target_at_sar_budget_V_m": 145.00182893194986
+      },
+      {
+        "phase_deg": 147,
+        "target_V_m": 0.8329580056334003,
+        "half_target_volume_cm3": 3033.936,
+        "equivalent_sphere_diameter_cm": 17.961224076641244,
+        "target_to_max": 0.04455268947595498,
+        "max_sar_W_kg": 6.990823816247426e-05,
+        "target_at_sar_budget_V_m": 140.8879746302313
+      },
+      {
+        "phase_deg": 148,
+        "target_V_m": 0.8083871046430136,
+        "half_target_volume_cm3": 3033.936,
+        "equivalent_sphere_diameter_cm": 17.961224076641244,
+        "target_to_max": 0.04324757138032296,
+        "max_sar_W_kg": 6.98787779637497e-05,
+        "target_at_sar_budget_V_m": 136.76082883253267
+      },
+      {
+        "phase_deg": 149,
+        "target_V_m": 0.783754641844811,
+        "half_target_volume_cm3": 3035.6639999999998,
+        "equivalent_sphere_diameter_cm": 17.964633410767004,
+        "target_to_max": 0.0419383670721218,
+        "max_sar_W_kg": 6.98501293079333e-05,
+        "target_at_sar_budget_V_m": 132.62076129611194
+      },
+      {
+        "phase_deg": 150,
+        "target_V_m": 0.7590624930962019,
+        "half_target_volume_cm3": 3035.88,
+        "equivalent_sphere_diameter_cm": 17.965059486554246,
+        "target_to_max": 0.040625194396849675,
+        "max_sar_W_kg": 6.982230092168309e-05,
+        "target_at_sar_budget_V_m": 128.46814468115534
+      },
+      {
+        "phase_deg": 151,
+        "target_V_m": 0.7343125387999141,
+        "half_target_volume_cm3": 3036.5280000000002,
+        "equivalent_sphere_diameter_cm": 17.96633759266887,
+        "target_to_max": 0.0393081720962104,
+        "max_sar_W_kg": 6.979530128179514e-05,
+        "target_at_sar_budget_V_m": 124.3033544819002
+      },
+      {
+        "phase_deg": 152,
+        "target_V_m": 0.7095066637607896,
+        "half_target_volume_cm3": 3036.5280000000002,
+        "equivalent_sphere_diameter_cm": 17.96633759266887,
+        "target_to_max": 0.037987419785726395,
+        "max_sar_W_kg": 6.976913861262133e-05,
+        "target_at_sar_budget_V_m": 120.12676895584086
+      },
+      {
+        "phase_deg": 153,
+        "target_V_m": 0.6846467570422535,
+        "half_target_volume_cm3": 3037.176,
+        "equivalent_sphere_diameter_cm": 17.96761551696315,
+        "target_to_max": 0.03666305793175805,
+        "max_sar_W_kg": 6.974382088356407e-05,
+        "target_at_sar_budget_V_m": 115.93876905105756
+      },
+      {
+        "phase_deg": 154,
+        "target_V_m": 0.6597347118224504,
+        "half_target_volume_cm3": 3037.824,
+        "equivalent_sphere_diameter_cm": 17.968893259501733,
+        "target_to_max": 0.03533520782794078,
+        "max_sar_W_kg": 6.971935580664896e-05,
+        "target_at_sar_budget_V_m": 111.73973833170398
+      },
+      {
+        "phase_deg": 155,
+        "target_V_m": 0.6347724252500758,
+        "half_target_volume_cm3": 3038.04,
+        "equivalent_sphere_diameter_cm": 17.96931913330227,
+        "target_to_max": 0.03400399157105373,
+        "max_sar_W_kg": 6.969575083417537e-05,
+        "target_at_sar_budget_V_m": 107.53006290169706
+      },
+      {
+        "phase_deg": 156,
+        "target_V_m": 0.609761798299897,
+        "half_target_volume_cm3": 3038.256,
+        "equivalent_sphere_diameter_cm": 17.96974498691731,
+        "target_to_max": 0.032669532036332556,
+        "max_sar_W_kg": 6.967301315644658e-05,
+        "target_at_sar_budget_V_m": 103.31013132664961
+      },
+      {
+        "phase_deg": 157,
+        "target_V_m": 0.5847047356279883,
+        "half_target_volume_cm3": 3039.3360000000002,
+        "equivalent_sphere_diameter_cm": 17.971873952293592,
+        "target_to_max": 0.031331952852241655,
+        "max_sar_W_kg": 6.965114969957957e-05,
+        "target_at_sar_budget_V_m": 99.08033455409272
+      },
+      {
+        "phase_deg": 158,
+        "target_V_m": 0.5596031454266858,
+        "half_target_volume_cm3": 3039.3360000000002,
+        "equivalent_sphere_diameter_cm": 17.971873952293592,
+        "target_to_max": 0.02999137837472021,
+        "max_sar_W_kg": 6.963016712339501e-05,
+        "target_at_sar_budget_V_m": 94.84106583203477
+      },
+      {
+        "phase_deg": 159,
+        "target_V_m": 0.5344589392792666,
+        "half_target_volume_cm3": 3039.768,
+        "equivalent_sphere_diameter_cm": 17.97272539722924,
+        "target_to_max": 0.028647933660917307,
+        "max_sar_W_kg": 6.961007181938892e-05,
+        "target_at_sar_budget_V_m": 90.59272062590453
+      },
+      {
+        "phase_deg": 160,
+        "target_V_m": 0.5092740320143802,
+        "half_target_volume_cm3": 3040.632,
+        "equivalent_sphere_diameter_cm": 17.97442804512302,
+        "target_to_max": 0.027301744442433273,
+        "max_sar_W_kg": 6.959086990878553e-05,
+        "target_at_sar_budget_V_m": 86.33569653393295
+      },
+      {
+        "phase_deg": 161,
+        "target_V_m": 0.48405034156022037,
+        "half_target_volume_cm3": 3040.848,
+        "equivalent_sphere_diameter_cm": 17.974853656698407,
+        "target_to_max": 0.02595293709808277,
+        "max_sar_W_kg": 6.957256724067284e-05,
+        "target_at_sar_budget_V_m": 82.07039320102231
+      },
+      {
+        "phase_deg": 162,
+        "target_V_m": 0.4587897887984744,
+        "half_target_volume_cm3": 3041.496,
+        "equivalent_sphere_diameter_cm": 17.976130370507427,
+        "target_to_max": 0.02460163862619834,
+        "max_sar_W_kg": 6.955516939022085e-05,
+        "target_at_sar_budget_V_m": 77.7972122311625
+      },
+      {
+        "phase_deg": 163,
+        "target_V_m": 0.43349429741803397,
+        "half_target_volume_cm3": 3041.7120000000004,
+        "equivalent_sphere_diameter_cm": 17.976555901479333,
+        "target_to_max": 0.02324797661649102,
+        "max_sar_W_kg": 6.95386816569834e-05,
+        "target_at_sar_budget_V_m": 73.51655709844641
+      },
+      {
+        "phase_deg": 164,
+        "target_V_m": 0.4081657937685043,
+        "half_target_volume_cm3": 3042.36,
+        "equivalent_sphere_diameter_cm": 17.977832373535136,
+        "target_to_max": 0.021892079221487806,
+        "max_sar_W_kg": 6.95231090632837e-05,
+        "target_at_sar_budget_V_m": 69.22883305674725
+      },
+      {
+        "phase_deg": 165,
+        "target_V_m": 0.38280620671350113,
+        "half_target_volume_cm3": 3043.224,
+        "equivalent_sphere_diameter_cm": 17.979534054358716,
+        "target_to_max": 0.020534075127563837,
+        "max_sar_W_kg": 6.950845635268463e-05,
+        "target_at_sar_budget_V_m": 64.93444704811428
+      },
+      {
+        "phase_deg": 166,
+        "target_V_m": 0.3574174674837615,
+        "half_target_volume_cm3": 3043.44,
+        "equivalent_sphere_diameter_cm": 17.979959424238086,
+        "target_to_max": 0.019174093525589693,
+        "max_sar_W_kg": 6.949472798854383e-05,
+        "target_at_sar_budget_V_m": 60.63380760995143
+      },
+      {
+        "phase_deg": 167,
+        "target_V_m": 0.33200150953007573,
+        "half_target_volume_cm3": 3044.5200000000004,
+        "equivalent_sphere_diameter_cm": 17.982085971794785,
+        "target_to_max": 0.017812264081213575,
+        "max_sar_W_kg": 6.948192815265397e-05,
+        "target_at_sar_budget_V_m": 56.32732478104133
+      },
+      {
+        "phase_deg": 168,
+        "target_V_m": 0.30656026837604244,
+        "half_target_volume_cm3": 3044.952,
+        "equivalent_sphere_diameter_cm": 17.98293645000315,
+        "target_to_max": 0.01644871690479838,
+        "max_sar_W_kg": 6.947006074396908e-05,
+        "target_at_sar_budget_V_m": 52.01541000647789
+      },
+      {
+        "phase_deg": 169,
+        "target_V_m": 0.28109568147067665,
+        "half_target_volume_cm3": 3045.168,
+        "equivalent_sphere_diameter_cm": 17.98336165894235,
+        "target_to_max": 0.015083582521035602,
+        "max_sar_W_kg": 6.945912937741683e-05,
+        "target_at_sar_budget_V_m": 47.69847604157712
+      },
+      {
+        "phase_deg": 170,
+        "target_V_m": 0.25560968804086,
+        "half_target_volume_cm3": 3045.8160000000003,
+        "equivalent_sphere_diameter_cm": 17.984637165128554,
+        "target_to_max": 0.0137169918382562,
+        "max_sar_W_kg": 6.944913738279728e-05,
+        "target_at_sar_budget_V_m": 43.37693685482957
+      },
+      {
+        "phase_deg": 171,
+        "target_V_m": 0.23010422894366656,
+        "half_target_volume_cm3": 3046.464,
+        "equivalent_sphere_diameter_cm": 17.98591249041755,
+        "target_to_max": 0.012349076117461374,
+        "max_sar_W_kg": 6.944008780376887e-05,
+        "target_at_sar_budget_V_m": 39.05120752996697
+      },
+      {
+        "phase_deg": 172,
+        "target_V_m": 0.20458124651855367,
+        "half_target_volume_cm3": 3046.68,
+        "equivalent_sphere_diameter_cm": 17.986337558658917,
+        "target_to_max": 0.010979966941094174,
+        "max_sar_W_kg": 6.943198339692103e-05,
+        "target_at_sar_budget_V_m": 34.721704167209445
+      },
+      {
+        "phase_deg": 173,
+        "target_V_m": 0.1790426844394505,
+        "half_target_volume_cm3": 3047.5440000000003,
+        "equivalent_sphere_diameter_cm": 17.988037630746238,
+        "target_to_max": 0.009609796181575507,
+        "max_sar_W_kg": 6.942482663093454e-05,
+        "target_at_sar_budget_V_m": 30.388843783767616
+      },
+      {
+        "phase_deg": 174,
+        "target_V_m": 0.15349048756673536,
+        "half_target_volume_cm3": 3047.976,
+        "equivalent_sphere_diameter_cm": 17.988887546296215,
+        "target_to_max": 0.00823869596962617,
+        "max_sar_W_kg": 6.941861968582971e-05,
+        "target_at_sar_budget_V_m": 26.053044213668098
+      },
+      {
+        "phase_deg": 175,
+        "target_V_m": 0.12792660179912876,
+        "half_target_volume_cm3": 3048.408,
+        "equivalent_sphere_diameter_cm": 17.989737381542373,
+        "target_to_max": 0.006866798662398823,
+        "max_sar_W_kg": 6.941336445230214e-05,
+        "target_at_sar_budget_V_m": 21.714724006977907
+      },
+      {
+        "phase_deg": 176,
+        "target_V_m": 0.10235297392550786,
+        "half_target_volume_cm3": 3048.84,
+        "equivalent_sphere_diameter_cm": 17.990587136503677,
+        "target_to_max": 0.005494236811442778,
+        "max_sar_W_kg": 6.940906253114682e-05,
+        "target_at_sar_budget_V_m": 17.374302328500242
+      },
+      {
+        "phase_deg": 177,
+        "target_V_m": 0.07677155147664622,
+        "half_target_volume_cm3": 3049.272,
+        "equivalent_sphere_diameter_cm": 17.991436811199087,
+        "target_to_max": 0.004121143130524731,
+        "max_sar_W_kg": 6.940571523277062e-05,
+        "target_at_sar_budget_V_m": 13.032198856014736
+      },
+      {
+        "phase_deg": 178,
+        "target_V_m": 0.05118428257690712,
+        "half_target_volume_cm3": 3049.488,
+        "equivalent_sphere_diameter_cm": 17.991861618453004,
+        "target_to_max": 0.002747650463330011,
+        "max_sar_W_kg": 6.94033235767931e-05,
+        "target_at_sar_budget_V_m": 8.68883367813979
+      },
+      {
+        "phase_deg": 179,
+        "target_V_m": 0.025593115795881142,
+        "half_target_volume_cm3": 3049.7039999999997,
+        "equivalent_sphere_diameter_cm": 17.992286405647555,
+        "target_to_max": 0.001373891751067027,
+        "max_sar_W_kg": 6.94018882917358e-05,
+        "target_at_sar_budget_V_m": 4.3446271918888755
+      }
+    ],
+    "heating_examples": {
+      "rf_balanced_envelope_12_sigma1_sar_W_kg": 0.036,
+      "lf_peak_100_pulsed_sar_W_kg": 0.002,
+      "lf_peak_12_pulsed_sar_W_kg": 2.8800000000000002e-05
+    },
+    "ti": {
+      "target_envelope_V_m": 2.9327922633959562,
+      "sqrt_half_target_area_cm": 11.336666176614711,
+      "current_per_coil_for_12_V_m_A": 20458.31910730849,
+      "current_per_coil_for_100_V_m_A": 170485.99256090407,
+      "half_target_volume_cm3": 2252.232,
+      "equivalent_sphere_diameter_cm": 16.263156234140357,
+      "target_to_max": 0.5869256864106,
+      "max_continuous_sar_W_kg": 0.03627149190274014,
+      "target_at_sar_budget_V_m": 21.77777919708195
+    }
+  }
+]

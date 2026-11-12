@@ -115,3 +115,10 @@ rather than assuming it from this log.
 - Brainsight targets now spheres centered at raw MRI-world coordinates. Removed legacy Aim 1 metrics/results HTML and stale review-code references; newer comparison sections retained.
 - Verified focused Python 16 passed, JS 21 passed, actual Chrome acceptance/pixel checks passed, final build passed. An initial browser check found a stale removed-panel reference; corrected and rerun cleanly. Screenshot visually inspected.
 - Updated existing report/usage. All runtime work used tms312; private review/data artifacts ignored. Prior blocked push not retried.
+
+## 2026-11-12 — EMvelop versus bilateral TMS feasibility
+
+- Located Ahsan et al. 2022 JNE paper; reviewed authors' accessible technical disclosure. Thesis fetch unsuccessful, explicitly distinguished source scope.
+- Added src/emvelop_feasibility.py, scripts/run_emvelop.py, four focused tests, docs/emvelop-usage.md, docs/emvelop-tms-report.md and public analysis/emvelop results/plot.
+- Agent ran micromamba tms312 simulation at 6/4/3mm and pytest (4 passed). Axis null verified; 0-degree best phase, off-axis 2.933V/m for 5kA/3kHz single loops. Slice sqrt-area 15.01cm coherent /11.34cm TI. Heating comparison explicitly proxy-only and unmatched focality.
+- No private data used. Commit/push outcome recorded in final handoff; previous viewer work untouched.

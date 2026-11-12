@@ -1,23 +1,20 @@
 # Codex state
 
-Updated: 2026-11-05
+Updated: 2026-11-12
 
 ## Current objective / completed
-- User explicitly accepted current result after inspecting rendering/QC. Recorded exact-surface-hash-bound visual acceptance locally; GUI/export status now REVIEWED. Numerical result and all QC retained; independent clinical accuracy not implied.
-- Replaced Brainsight pyramids with spheres positioned directly at target MRI-world coordinates (sphere center, no offsets).
-- Removed legacy Aim 1 metrics/session-results subsection from right panel, retaining all newer positional, trajectory, surface, registration and review sections. Removed stale references in MRI review code.
-- Updated usage/report with acceptance scope and cleanup.
+- Researched Fatima Ahsan's EMvelop; added source-linked forward/phase-method review and bilateral TMS feasibility report.
+- Added independent synthetic vacuum loop module, runner, tests, usage and public results/plot. No patient pipeline modifications.
 
 ## Verified
-- Current focused Python suite 16 passed, JS 21 passed, actual Chrome acceptance/pixel toggles passed, final production build passed. Browser screenshot inspected: reviewed badge, centered spheres, legacy block absent, QC retained, no browser errors.
-- Prior full suite 96 passed; not repeated for this focused cleanup.
-- Raw positions/geometry/metric unchanged; local report regenerated. Acceptance file and subject artifacts ignored. No private coordinates/results in checkpoints.
+- Agent executed three-grid simulation and four focused tests successfully in micromamba tms312.
+- Central axial null; best equal-current phase 0 degrees; 2.933 V/m at off-axis target with 5kA single loops. Broad exposure; cannot claim matched EMvelop focality or clinical safety.
+- Heating is postprocessed conductivity/duty proxy, not anatomical bioheat. Detailed methods sourced to authors' patent; journal abstract verifies headline, thesis download failed.
 
 ## Decisions / remaining limits
-- Acceptance scope is user visual QC, distinct from independent clinical/anatomical accuracy validation. Changed surface hashes still invalidate acceptance.
-- Separate trajectory endpoint still requires its documented semantics; missing site remains absent.
-- Use micromamba tms312. Prior external push rejection unresolved; no retry/bypass.
+- Keep GHz envelope and TMS peak field distinct. Relative initial phase of different carriers cannot sharpen envelope.
+- No full-wave RF reproduction, neuronal model, hardware or coil heating analysis. Next: noncoaxial/amplitude optimization and matched anatomical thermal constraints.
+- Prior accepted viewer work remains intact; see earlier LOG entries.
 
 ## Uncommitted changes / next actions
-- Task changes delivered in [codex] commit; verify hash in Git. No unrelated changes present at task start.
-- Refresh local viewer and Reload analysis. Independent patient/export validation remains separate.
+- New feasibility files and these checkpoints pending task commit/push. Verify final Git result in session handoff.
