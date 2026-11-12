@@ -2,8 +2,9 @@
 // rerun run_pipeline.py to pick up new or renamed mris in saves/
 import S0_MARKERS from "./data/MNI152/markers.json";
 import S0_MC from "url:./data/MNI152/montecarlo.json";
-import S1_MARKERS from "./data/r-02/markers.json";
-import S2_MARKERS from "./data/synthetic-demo/markers.json";
+import S1_MARKERS from "./data/Ernie/markers.json";
+import S1_MC from "url:./data/Ernie/montecarlo.json";
+import S1_EFIELD from "./data/Ernie/efield/manifest.json";
 
 export const DATASETS = {
   "MNI152": {
@@ -16,25 +17,33 @@ export const DATASETS = {
     monteCarloURL: S0_MC,
     efield: null,
   },
-  "r-02": {
-    label: "r-02 (defaced)",
-    kind: "subject",
-    scalpURL: new URL("./data/r-02/scalp.ply", import.meta.url),
+  "Ernie": {
+    label: "Ernie",
+    kind: "sample",
+    scalpURL: new URL("./data/Ernie/scalp.ply", import.meta.url),
     skullURL: null,
-    coilURL: null,
+    coilURL: new URL("./data/Ernie/coil.ply", import.meta.url),
     markers: S1_MARKERS,
-    monteCarloURL: null,
-    efield: null,
-  },
-  "synthetic-demo": {
-    label: "synthetic-demo",
-    kind: "subject",
-    scalpURL: new URL("./data/synthetic-demo/scalp.ply", import.meta.url),
-    skullURL: new URL("./data/synthetic-demo/skull.ply", import.meta.url),
-    coilURL: null,
-    markers: S2_MARKERS,
-    monteCarloURL: null,
-    efield: null,
+    monteCarloURL: S1_MC,
+    efield: {
+      manifest: S1_EFIELD,
+      files: {
+        "cortex.ply": new URL("./data/Ernie/efield/cortex.ply", import.meta.url),
+        "t1.u8": new URL("./data/Ernie/efield/t1.u8", import.meta.url),
+        "efield_demo_F4_MRI.f32": new URL("./data/Ernie/efield/efield_demo_F4_MRI.f32", import.meta.url),
+        "normal_demo_F4_MRI.f32": new URL("./data/Ernie/efield/normal_demo_F4_MRI.f32", import.meta.url),
+        "field_demo_F4_MRI.u8": new URL("./data/Ernie/efield/field_demo_F4_MRI.u8", import.meta.url),
+        "efield_demo_SMA_MRI.f32": new URL("./data/Ernie/efield/efield_demo_SMA_MRI.f32", import.meta.url),
+        "normal_demo_SMA_MRI.f32": new URL("./data/Ernie/efield/normal_demo_SMA_MRI.f32", import.meta.url),
+        "field_demo_SMA_MRI.u8": new URL("./data/Ernie/efield/field_demo_SMA_MRI.u8", import.meta.url),
+        "efield_demo_F4_RECON.f32": new URL("./data/Ernie/efield/efield_demo_F4_RECON.f32", import.meta.url),
+        "normal_demo_F4_RECON.f32": new URL("./data/Ernie/efield/normal_demo_F4_RECON.f32", import.meta.url),
+        "field_demo_F4_RECON.u8": new URL("./data/Ernie/efield/field_demo_F4_RECON.u8", import.meta.url),
+        "efield_demo_SMA_RECON.f32": new URL("./data/Ernie/efield/efield_demo_SMA_RECON.f32", import.meta.url),
+        "normal_demo_SMA_RECON.f32": new URL("./data/Ernie/efield/normal_demo_SMA_RECON.f32", import.meta.url),
+        "field_demo_SMA_RECON.u8": new URL("./data/Ernie/efield/field_demo_SMA_RECON.u8", import.meta.url),
+      },
+    },
   },
 };
 

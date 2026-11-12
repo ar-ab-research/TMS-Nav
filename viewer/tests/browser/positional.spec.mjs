@@ -8,6 +8,7 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   const report=JSON.parse(readFileSync(reportPath,'utf8'));
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/');
+  await page.locator('#subject-select').selectOption('MNI152');
   await expect(page.locator('#stage')).toHaveAttribute('data-subject','MNI152');
   await page.locator('#subject-select').selectOption('r-02');
   await expect(page.locator('#stage')).toHaveAttribute('data-subject','r-02');
@@ -73,4 +74,14 @@ test('local r-02 CLI report loads automatically in existing right sidebar',async
   await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
   await page.screenshot({path:'test-results/positional-layers.png'});
   expect(errors).toEqual([]);
+  // Reload starts asynchronous mesh loads. Switching must invalidate all of them.
+  await panel.getByRole('button',{name:'Reload analysis'}).click();
+  await page.locator('#subject-select').selectOption('MNI152');
+  await expect(page.locator('#stage')).toHaveAttribute('data-subject','MNI152');
+  await expect(panel.getByRole('status')).toContainText('Select an individual subject');
+  await expect(panel).not.toHaveAttribute('data-common-skin',/.+/);
+  await expect(panel).not.toHaveAttribute('data-brainsight-rendered',/.+/);
+  await expect(page.locator('#toggle-common-skin')).toBeDisabled();
+  await expect(page.locator('#toggle-scalp')).toBeChecked();
+  await expect(page.locator('#brainsight-target-layers')).toBeEmpty();
 });
