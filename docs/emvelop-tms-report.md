@@ -208,3 +208,22 @@ The temperature maps use the same scale. The field maps have separate scales bec
 The heat solves have relative residuals below $10^{-10}$ and relative integrated energy-balance errors below $10^{-11}$. Tests include exact uniform-heating equilibrium, positive localized heating and scaling, complex optimization derivatives, target constraints, source quadrature, loop symmetry and vector polarization. Fixed-current evaluation-grid checks do not establish convergence of the nonconvex optimization itself; the RF method report separately records optimization-grid sensitivity.
 
 Math is written as Markdown LaTeX ($...$ and standalone $$ blocks), rather than code spans. The equation figure provides a rendered fallback for viewers that do not support LaTeX. Figures are generated locally by Python and included as standalone artifacts.
+
+## Does the TMS version offer an advantage?
+
+**Yes, for external access and low-duty tissue heating; the tested design offers no focality advantage for a compact deep target.** The following distinguishes calculated benefits from practical properties of the modalities.
+
+| Potential advantage | What supports it | What limits the conclusion |
+|---|---|---|
+| External coils avoid the endocranial implantation used by EMvelop | Difference in source placement; EMvelop's published setup is minimally invasive | Our model does not assess surgical outcomes, comfort or clinical efficacy |
+| Low-duty pulses have substantial tissue-heating headroom | Common steady 1 K model permits 1229 V/m TMS peak versus 36.98/5.40 V/m RF envelope proxies | TMS duty is only 0.002; RF is continuous. These are different waveforms and spatial patterns, not equal-effect or equal-focality doses |
+| Direct induction can drive neural polarization without GHz-envelope demodulation | Established TMS mechanism; see [experimental TMS study](https://pmc.ncbi.nlm.nih.gov/articles/PMC6866442/) | Neural recruitment was not simulated; this particular coil pair has not demonstrated useful deep stimulation |
+| Simpler source control | Two coil weights versus 24 prescribed RF antenna currents in this comparison | High-current pulse drivers, coil cooling and mechanical/acoustic loads were not modelled |
+
+The tissue-heating headroom can be expressed without the unrealistic 1229 V/m operating point. Because temperature rise scales quadratically with amplitude, a **100 V/m central target** would give approximately **0.00662 K maximum steady tissue rise** in this TMS model at duty 0.002. At duty 1, the same field pattern gives approximately **3.31 K**: most of the apparent benefit depends on sparse pulsing. These are model estimates obtained by rescaling the saved heat solution, excluding coil-to-head heat transfer. They do not establish safe operation.
+
+The practical obstacle is reaching that field: the selected single-turn pair would require approximately **26.3 and 212.1 kA** for 100 V/m centrally. At a 5 kA per-coil cap it provides only **2.357 V/m**. Additional turns exchange current for inductance and drive-voltage demands; they do not change the field pattern's relative focality.
+
+The spatial disadvantage is substantial. The TMS half-target cube-root volume is **10.93 cm**, versus **3.61/2.82 cm** for the RF patterns. Cubing these ratios gives approximately **28/58 times as much suprathreshold volume**. This is a comparison within our surrogate models, not proof of the same ratio in an anatomical head. It also measures all exposed regions, rather than neural activation.
+
+**Design implication:** pursue this TMS direction if avoiding an implant or delivering intermittent, broader stimulation is the priority. For a compact deep focus, the current two-loop design has not demonstrated a compelling advantage. The next meaningful TMS improvement is more spatial control—different windings or additional independently driven coils—with realistic current/voltage, coil heating and anatomical field constraints. Initial phase between two slightly different carrier frequencies alone cannot supply that missing spatial control.

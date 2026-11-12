@@ -132,3 +132,9 @@ rather than assuming it from this log.
 - Verified combined focused physics tests15 passed. RF extra validation independent Maxwell residual and radiation asymptote, analytic gradient finite differences. Reoptimization4mm evaluated3mm changes focality .040% and amplitude .99%; distinct local starts retained. Heat conservation residuals verified; figures inspected.
 - Python executed through micromamba tms312. Source downloads unavailable beyond indexed text; original anatomical assets absent, explicitly documented. No patient data. Pending commit/push recorded below.
 - Extension committed as61f570f and pushed successfully to origin/main_ab. Final focused suite15 passed; diff check clean. Exact anatomical reproduction remains explicitly incomplete pending original inputs.
+
+## 2026-11-12 — Interpretation of TMS advantages
+
+- Appended evidence/limits assessment to comparison and TMS reports: external placement, sparse-pulse tissue heating and direct induction versus broad exposure and impractical single-turn currents.
+- Derived from saved outputs: 100V/m TMS target gives .00662K at duty.002 versus3.31K continuous; TMS half-target volume approximately28/58 times RF baseline/MFT. No new simulation or neural-efficacy claim.
+- Documentation-only change; diff check used, no simulation rerun required.

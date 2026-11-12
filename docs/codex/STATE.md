@@ -22,3 +22,6 @@ Updated: 2026-11-12
 ## Git / next actions
 - Extension61f570f committed and pushed to origin main_ab; focused tests15 passed and diff check clean. No implementation blockers beyond exact-reproduction inputs listed above.
 - Next research step: original anatomical transfer matrices or complete reconstruction inputs, finite-duration thermal and hardware-constrained design; do not present thermal-only extrapolation as feasible current prescription.
+
+## Latest interpretation update
+- Added TMS advantage assessment to both reports: external coils and sparse-pulse heating are advantages; compact deep focality and feasible current delivery remain unproven. Derived temperature/duty and volume ratios from existing verified results. Documentation-only update, no new simulation; diff check pending final commit.
