@@ -122,3 +122,4 @@ rather than assuming it from this log.
 - Added src/emvelop_feasibility.py, scripts/run_emvelop.py, four focused tests, docs/emvelop-usage.md, docs/emvelop-tms-report.md and public analysis/emvelop results/plot.
 - Agent ran micromamba tms312 simulation at 6/4/3mm and pytest (4 passed). Axis null verified; 0-degree best phase, off-axis 2.933V/m for 5kA/3kHz single loops. Slice sqrt-area 15.01cm coherent /11.34cm TI. Heating comparison explicitly proxy-only and unmatched focality.
 - No private data used. Commit/push outcome recorded in final handoff; previous viewer work untouched.
+- Parent independently reran focused tests: 4 passed; diff check clean. Implementation commit 3b8af2d pushed successfully to origin/main_ab (GitHub reports repository relocation to ar-ab-research/TMS-Nav; remote left unchanged).
