@@ -123,3 +123,11 @@ rather than assuming it from this log.
 - Agent ran micromamba tms312 simulation at 6/4/3mm and pytest (4 passed). Axis null verified; 0-degree best phase, off-axis 2.933V/m for 5kA/3kHz single loops. Slice sqrt-area 15.01cm coherent /11.34cm TI. Heating comparison explicitly proxy-only and unmatched focality.
 - No private data used. Commit/push outcome recorded in final handoff; previous viewer work untouched.
 - Parent independently reran focused tests: 4 passed; diff check clean. Implementation commit 3b8af2d pushed successfully to origin/main_ab (GitHub reports repository relocation to ar-ab-research/TMS-Nav; remote left unchanged).
+
+## 2026-11-12 — Full-wave RF reconstruction and extended phase design
+
+- Added emvelop_rf, tms_phase_design, emvelop_thermal modules, runners/tests and synthetic field artifacts. Rewrote comparison report; added RF and TMS mathematical methods reports with proper LaTeX and figures; extended usage.
+- Corrected prior summary: published3D focality=cube-root volume; actual MFT objective=min carrier powers. Homogeneous RF with finite lines and vector target constraints reproduces spatial trend, not exact anatomical/intensity results.
+- RF baseline/MFT L50=3.613/2.824cm; approximate cube-average10W/kg targets37.70/5.73V/m. Common1K heat targets36.98/5.40V/m. TMS extended L50=10.932cm,5kA cap target2.357V/m; thermal-only ceiling1229V/m is hardware-infeasible for this single-turn setup.
+- Verified combined focused physics tests15 passed. RF extra validation independent Maxwell residual and radiation asymptote, analytic gradient finite differences. Reoptimization4mm evaluated3mm changes focality .040% and amplitude .99%; distinct local starts retained. Heat conservation residuals verified; figures inspected.
+- Python executed through micromamba tms312. Source downloads unavailable beyond indexed text; original anatomical assets absent, explicitly documented. No patient data. Pending commit/push recorded below.

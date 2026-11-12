@@ -1,87 +1,210 @@
-# EMvelop and bilateral TMS feasibility
+# EMvelop reproduction attempt and extended TMS comparison
 
-Date: 2026-11-12. Scope: public literature review and synthetic physics calculation; no subject data.
+Updated 2026-11-12. Public synthetic simulations only; run instructions are in [the usage guide](emvelop-usage.md).
 
-## Identification and forward modelling
+## Scope and corrections
 
-The work is **EMvelop stimulation: minimally invasive deep brain stimulation using temporally interfering electromagnetic waves**, Fatima Ahsan, Taiyun Chi, Raymond Cho, Sameer A. Sheth, Wayne Goodman and Behnaam Aazhang, *Journal of Neural Engineering* 19 (2022), 046005, [DOI](https://doi.org/10.1088/1741-2552/ac7894), [abstract](https://pubmed.ncbi.nlm.nih.gov/35700717/). Its representative computational result is a **12 V/m envelope and 3.6 cm focality**, using two **4.2 × 4.7 cm endocranial arrays**. These are implanted arrays, not external TMS coils. This is a proof of principle, not demonstration of equivalent neuronal recruitment by GHz fields and TMS.
+The initial study was a vacuum TMS feasibility test, **not an EMvelop reproduction**. This extension adds a lossy full-wave RF forward operator, per-antenna complex optimization, an extended two-coil search, and a shared steady bioheat model. It distinguishes the published results from the outputs of our simplified models. Matching one number by adjusting conductivity or source scale would not establish reproduction.
 
-The authors' [technical patent disclosure](https://patents.google.com/patent/US12478788B2/en) supplies the following methodological detail (distinguished from independent reproduction of the journal article):
+Two corrections matter:
 
-- MRI-derived, eleven-tissue anatomy; tissue-dependent electromagnetic and thermal properties.
-- Frequency-domain FEM of line-current antennas; absorbing outer EM boundaries.
-- Per-element complex field responses assembled into a linear transfer matrix; complex currents control amplitude and phase.
-- Two carriers, illustrated at 1.5 GHz and 1.5 GHz + 100 Hz.
-- Maximum-intensity transmission balances the target contributions from the two arrays. Maximum-focality transmission minimizes off-target field power while constraining target contributions. Excitations are scaled to satisfy thermal limits.
-- One-way EM-to-bioheat coupling includes perfusion, with insulating thermal boundaries. Examples constrain temperature rise below 1 °C and inspect 10-g averaged SAR.
-- The 2D focality measure is square root of area above half the target envelope; it is not necessarily FWHM diameter. Three-dimensional values must not be compared to this area metric without checking their definition.
+1. The published **3D focality is cube root of volume**, not an equivalent sphere diameter. The old diameter remains a labelled diagnostic; it cannot be compared directly with 3.59 cm.
+2. The EMvelop focality objective penalizes the **minimum carrier power at each location**, not the sum of carrier powers. These objectives are different. The RF implementation now optimizes the former; the TMS quadratic objective is described separately.
 
-The thesis was located but could not be downloaded in this session. The detailed account above is attributed to the authors' accessible disclosure; the journal abstract independently verifies the headline result.
+![Computation workflow](../analysis/emvelop/methods_workflow.svg)
 
-## What the phase variables do
+## Published reference and reproducibility boundary
 
-The following equations explain the mechanism independently. With peak phasors and a consistent exp(iωt) convention, a frequency-domain forward model has the form
+Ahsan et al., *EMvelop stimulation: minimally invasive deep brain stimulation using temporally interfering electromagnetic waves*, JNE 19 (2022), 046005: [paper](https://doi.org/10.1088/1741-2552/ac7894), [abstract](https://pubmed.ncbi.nlm.nih.gov/35700717/). The [author's research page](https://fatimaahsan.rice.edu/projects/) reports these distinct central-target results:
 
-`curl(mu^-1 curl E) - (omega² epsilon - i omega sigma) E = -i omega J`.
-
-If `G_i(r,m)` is the complex unit-current response of antenna m, then `E_i(r) = sum_m G_i(r,m) w_i,m`. For a scalar target projection and a fixed excitation norm, phase conjugation `w_m ∝ conj(G(target,m))` aligns contributions at the target. This is a useful baseline, not a claim that unconstrained conjugation solves the authors' full thermal optimization. Penalizing off-target energy replaces this with a constrained quadratic problem involving the transfer matrix outside the target. Full-wave propagation supplies spatially varying complex phases across centimetres.
-
-For two scalar carriers of amplitudes a and b, envelope excursion is `2 min(a,b)`. Their initial relative phase translates the beat in time; it does not change that excursion. Vector fields require an orientation-specific or vector-envelope definition. The heating is set by the carriers, not by squaring the envelope: averaged over beat cycles, `SAR = (sigma1 |E1|² + sigma2 |E2|²)/(2 rho)`.
-
-A linear membrane low-pass filter cannot manufacture a difference-frequency electrical component from two GHz sinusoids. Biological demodulation requires a nonlinear mechanism. Consequently, 12 V/m of GHz envelope is not an established equivalent to 12 V/m of directly applied low-frequency field.
-
-## Bilateral coil model and design implications
-
-For a closed thin loop in vacuum, the primary induction field is
-
-`E(r,t) = -mu0/(4 pi) integral_loop dl/|r-r'| × dI/dt`,
-
-where × here denotes scalar multiplication, not a cross product. The code evaluates the vector line integral directly. Two coils provide only two spatial basis fields. At the same carrier frequency their complex weights can interfere; at distinct frequencies relative phase alone cannot reshape the full-beat envelope. Quasistatic fields do not acquire the useful propagation delays of GHz array beamforming.
-
-Opposed coaxial circular loops have an exact induction-field null along their common axis, including the brain centre. No choice of their currents or phases removes that null in this model. Off-axis stimulation is possible but rotational symmetry produces ring-like exposure rather than a unique deep spot. Coil tilt, displacement, figure-eight windings or additional independently controlled coils would change the design space and require a new optimization.
-
-The implementation and generated numerical results below test these statements without introducing artificial tissue boundaries. Conductivity is applied only afterwards as a heating proxy: vacuum itself does not absorb heat. Secondary electric fields, heterogeneous conductivity, coil losses and thermal transport are outside the field solution.
-
-## Heat comparison: what can and cannot be matched
-
-Typical TMS fields are of order **100 V/m**, with submillisecond pulses ([primary experimental paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC6866442/)). This is an indicative field scale, not a universal threshold or a guarantee at depth.
-
-For balanced, collinear RF carriers and envelope excursion M, each carrier has peak M/2. Thus continuous RF target SAR is `sigma_RF M²/(4 rho)`. A sinusoidal TMS burst with peak field E and duty D gives `sigma_LF D E²/(2 rho)`. For illustrative values rho=1000 kg/m³, sigma_RF=1 S/m and sigma_LF=0.2 S/m, M=12 V/m gives 0.036 W/kg; a 100 V/m TMS burst at D=0.002 gives 0.002 W/kg. These assumed conductivities are sensitivity parameters, not tissue measurements. Comparing identical numeric 12 V/m amplitudes gives 0.0000288 W/kg for that pulsed TMS scenario, 1250 times below the continuous balanced-RF target proxy. Continuous TMS changes this ratio drastically.
-
-This arithmetic compares local heating only. It does **not** establish equal focality or equal neural effect. Off-target hotspots can dominate, and coil copper heating is omitted. Adiabatic `deltaT = SAR × duration / heat_capacity` is a finite-duration proxy, not the perfused equilibrium bioheat calculation used in EMvelop. A thermal ceiling alone also does not address peripheral stimulation, auditory exposure or other TMS constraints.
-
-At fixed relative half-target focality, scaling current changes amplitude and heating but not focality. Therefore a thermal budget cannot make the two-loop pattern attain an unattainable focality. A defensible equal-safety comparison needs the same anatomy, target, focality definition, duration, waveform, thermal model and neural response criterion. The present model can reject this symmetric two-loop geometry as a focused central-target design, and quantify its off-axis tradeoffs; it cannot rank clinical safety against EMvelop. A full-wave EMvelop rerun is not included.
-
-## Executed experiment and results
-
-Configuration: 9 cm spherical observation region; two 5 cm radius, single-turn loops at x=±10 cm; equal 5 kA peak currents at 3 kHz; target (0,3 cm,0). Sweep 0–180° in 1° increments, minimizing total volume above half the target field with null targets rejected; ties favor target/maximum field. Both loop normals are +x, so 0° means matched circulation in global coordinates. Reversing one winding reverses the phase convention. The complex-vector norm equals instantaneous peak here because the two basis fields are collinear at each point.
-
-| Quantity, finest 3 mm grid | Coherent two-loop burst | Two-loop continuous TI |
+| Published design | Target envelope | Cube-root half-target volume |
 |---|---:|---:|
-| Selected relative phase | 0° | Envelope independent of initial phase |
-| Target field / envelope excursion | 2.933 V/m | 2.933 V/m |
-| Half-target volume | approximately 3008 cm³ | 2252 cm³ |
-| Equivalent sphere diameter of that volume | 17.91 cm | 16.26 cm |
-| sqrt(half-target area), z=0 slice | 15.01 cm | 11.34 cm |
-| Maximum tissue SAR proxy | 0.0000757 W/kg | 0.03627 W/kg |
-| Target value at illustrative 2 W/kg maximum proxy | 476.75 V/m | 21.78 V/m |
+| Maximum intensity (MIT) | 11.98 V/m | 3.59 cm |
+| Maximum focality (MFT) | 3.04 V/m | 2.78 cm |
 
-The last row is thermal-only scaling, **not attainable hardware performance or a safe operating prescription**. The burst has duty 0.002; TI is continuous. The centre remains numerical zero (~5×10⁻¹⁵ V/m). Coherent maximum field is 19.45 V/m, 6.63 times the target value. Reaching 12 or 100 V/m at this off-axis target needs respectively **20.46 or 170.49 kA per single turn** at 3 kHz. Extra turns reduce the required current for the same ampere-turns, but increase inductance and voltage/energy requirements; they do not fix focality.
+The authors' [technical disclosure](https://patents.google.com/patent/US12478788B2/en), equations 8–9 and its 3D modelling section, specifies twelve line antennas per endocranial array, a 4.2 × 4.7 cm footprint, opposed placement, heterogeneous anatomical FEM, and subsequent thermal/SAR scaling. It uses norm-balanced target constraints and an off-target minimum-power objective; reported 3D scaling uses 10 W/kg averaged over 10 g. This is a description of their study criterion, not current medical advice. Its 2D analysis instead uses square-root area and a temperature-rise limit.
 
-The 15.01/11.34 cm slice metrics use the same mathematical area construction described for EMvelop's 2D studies, but different geometry/anatomy. The abstract's 3.6 cm result is not enough to establish a matched 3D comparison. On the present geometry the exposure covers much of the observation region, rather than an isolated target. Equal currents and phase-only control were tested; this is not a global search over coil orientations, placements or amplitudes.
+The original anatomy, COMSOL model, exact source implementation and original optimization outputs are **not available in this checkout**. Direct thesis and author-page downloads failed in this environment; indexed source text was accessible. Therefore the new computation is a **method-level reproduction attempt in a homogeneous surrogate**, not a verified reproduction of the 11.98/3.59 and 3.04/2.78 results. Numerical differences are retained rather than tuned away.
 
-**Answers to the two matching questions:**
+## Explicit forward model
 
-- **Same focality:** this model does not reach a compact 3.6 cm deep focus, so no equal-focality thermal winner can be calculated. At a hypothetical identical spatial field pattern, low-duty TMS has lower tissue heating in the illustrative arithmetic, but this does not establish the missing geometry or equivalent neural action.
-- **Same thermal constraint:** rescaling either pattern to a shared pointwise SAR ceiling preserves its relative focality. The two-loop patterns remain broad. EMvelop provides evidence of narrower simulated targeting, but its anatomical equilibrium-temperature constraint is not identical to this pointwise finite-duty proxy. A quantitative matched-safety superiority claim would exceed the calculations.
+We use peak phasors with time convention $e^{i\omega t}$. The general driven Maxwell problem is
 
-![Synthetic field slices](../analysis/emvelop/fields.png)
+$$
+\nabla\times\mu^{-1}\nabla\times\mathbf E
+-\left(\omega^2\epsilon-i\omega\sigma\right)\mathbf E
+=-i\omega\mathbf J_s.
+$$
 
-## Verification, artifacts and next steps
+In homogeneous infinite tissue this has a dyadic Green-function solution:
 
-- Modular implementation: `src/emvelop_feasibility.py`; runner: `scripts/run_emvelop.py`; [usage](emvelop-usage.md).
-- Public synthetic results: `analysis/emvelop/results.json`, including complete phase sweeps, 6/4/3 mm grid checks and RF/LF heating arithmetic.
-- Four focused tests passed: symmetry/null/cancellation, quadrature convergence and linearity, peak/RMS/duty arithmetic, beat-phase invariance.
-- Volume changes under 0.3% between 4 and 3 mm; sampled maximum SAR differs by roughly 3–4%. Surface maxima are less converged than global exposure volume.
-- No anatomical FEM, full-wave RF reproduction, neuronal recruitment or coil thermal model was run. No existing patient pipeline behavior was modified.
-- Next useful experiment: allow noncoaxial placements and independent current amplitudes, optimize a fixed target orientation against off-target field and driver constraints, then evaluate the candidates with the existing anatomical forward workflow and a shared thermal model.
+$$
+k^2=\omega^2\mu\epsilon-i\omega\mu\sigma,
+\qquad g(R)=\frac{e^{-ikR}}{4\pi R},\quad \operatorname{Im}k<0,
+$$
+
+$$
+\mathbf E(\mathbf r)=-i\omega\mu\int
+\left(\mathbf I+\frac{\nabla\nabla}{k^2}\right)
+ g(|\mathbf r-\mathbf r'|)\,\mathbf J_s(\mathbf r')\,dV'.
+$$
+
+The branch makes outward waves attenuate. Finite line currents are integrated numerically; this retains propagation, attenuation and near-field terms. It is not an anatomical FEM and contains no tissue-interface reflections. Stacking unit-source fields gives
+
+$$
+\mathbf E_i(\mathbf r_n)=\mathbf G_{i,n}\mathbf w_i,
+\qquad w_{im}=a_{im}e^{i\phi_{im}}.
+$$
+
+The RF method report gives the chosen dimensions, tissue assumptions, quadrature, code mapping, solver diagnostics and deviations from the original study. The two carriers are close enough that their field operators can be approximated as equal-frequency operators; their powers still add after averaging a complete beat.
+
+For TMS the quasistatic primary field is instead
+
+$$
+\mathbf E(\mathbf r,t)=-\frac{\mu_0}{4\pi}
+\sum_j\frac{dI_j}{dt}\oint_{C_j}\frac{d\boldsymbol\ell'}{|\mathbf r-\mathbf r'|}.
+$$
+
+The updated TMS study integrates arbitrary tilted/translated loops and optimizes their amplitudes and phases. It still omits conductivity-interface secondary fields. See [TMS forward model and optimization report](tms-phase-report.md).
+
+## Envelope definition and actual optimization
+
+For scalar or collinear carriers the envelope excursion is
+
+$$
+M_n=2\min\left(|E_{1n}|,|E_{2n}|\right).
+$$
+
+For comparison with the source methodology we also compute its orientation-free norm metric
+
+$$
+M_n^{\mathrm{norm}}=2\min\left(\|\mathbf G_{1n}\mathbf w_1\|_2,
+\|\mathbf G_{2n}\mathbf w_2\|_2\right).
+$$
+
+For nonparallel vector fields this is not generally the modulation along a neuron. It must not be interpreted as a validated neural stimulus. Initial phase between distinct frequencies moves beat timing, whereas phases **within** an antenna array change spatial interference.
+
+The original target-fit formulation alone is underdetermined: many excitation vectors can produce the requested balanced target. Our intensity baseline selects the minimum-current-norm solution at a fixed target orientation. It is not a global maximum of target intensity under a thermal constraint.
+
+Our RF focality optimization uses the minimum-power objective with explicit vector target constraints:
+
+$$
+\min_{\mathbf w_1,\mathbf w_2}
+\sum_{n\ne T}\min\left(
+\|\mathbf G_{1n}\mathbf w_1\|_2^2,
+\|\mathbf G_{2n}\mathbf w_2\|_2^2\right),
+\qquad
+\mathbf G_{iT}\mathbf w_i=\frac12\mathbf e_z.
+$$
+
+Fixing the target vector is stricter than fixing its norm. Let $\mathbf w_{i0}$ satisfy that constraint and $\mathbf N_i$ span the nullspace of $\mathbf G_{iT}$. Then
+
+$$
+\mathbf w_i=\mathbf w_{i0}+\mathbf N_i\mathbf z_i
+$$
+
+satisfies the constraint for every iterate. Optimization operates on real and imaginary parts of $\mathbf z_i$. Each active minimum branch has a quadratic derivative; ties are nonsmooth. Multiple starts reduce sensitivity but do not prove a global optimum. Solver status, objective change and target residuals are saved.
+
+The TMS objective is a different, explicitly quadratic surrogate:
+
+$$
+\min_{\mathbf w}\ \mathbf w^H(\mathbf B_O^H\mathbf B_O+\lambda\mathbf I)\mathbf w,
+\qquad \mathbf c\mathbf w=1.
+$$
+
+It penalizes off-target induction-field energy, with ridge regularization of current. For positive-definite $\mathbf Q$ its solution is
+
+$$
+\mathbf w=\frac{\mathbf Q^{-1}\mathbf c^H}
+{\mathbf c\mathbf Q^{-1}\mathbf c^H}.
+$$
+
+An outer discrete geometry search evaluates these solutions; it is not an exhaustive search over all coil arrangements or direct minimization of thresholded focal volume.
+
+## Shared thermal calculation and focality
+
+RF carrier heating and coherent TMS burst heating are, respectively,
+
+$$
+q_{\mathrm{RF}}=\frac{\sigma_{\mathrm{RF}}}{2}
+\left(\|\mathbf E_1\|^2+\|\mathbf E_2\|^2\right),
+\qquad
+q_{\mathrm{TMS}}=\frac{D\sigma_{\mathrm{LF}}}{2}\|\mathbf E\|^2.
+$$
+
+Here $q$ is W/m³, and local SAR is $q/\rho$. The complex-vector norm gives mean-square heating correctly even for elliptical polarization; it is not generally the instantaneous peak vector magnitude.
+
+The new shared model solves the temperature rise above a fixed blood-temperature baseline:
+
+$$
+(-\kappa\nabla^2+b)\Delta T=q,
+\quad \partial_n\Delta T=0,
+\quad b=\rho_b c_b\omega_b.
+$$
+
+Assumed values are $\kappa=0.5$ W/(m K) and $b=10000$ W/(m³ K), constant in both domains. These are illustrative homogeneous parameters, not a reconstruction of Fatima's tissue table. Baseline metabolic heat cancels in the temperature-rise equation. The code uses conservative nearest-neighbour voxel fluxes, omits flux across missing boundary faces, and solves the positive-definite system by conjugate gradients. Uniform heating has the exact solution $\Delta T=q/b$, used as a test; total source equals total perfusion removal at equilibrium.
+
+For a 1 K ceiling, post-solve current scaling is
+
+$$
+\alpha=\sqrt{\frac{1\ \mathrm K}{\max_n\Delta T_n}},
+\quad \mathbf E\mapsto\alpha\mathbf E,
+\quad q\mapsto\alpha^2q.
+$$
+
+This rescales a previously optimized pattern; it does not optimize the pattern jointly with thermal constraints. It also omits coil copper loss and hardware limits. A common heat model enables a controlled model comparison, not a clinical safety ranking.
+
+For voxel volume $v$, the primary 3D metric is
+
+$$
+L_{50}=\left(v\sum_n\mathbf1[M_n\ge M_T/2]\right)^{1/3}.
+$$
+
+All disconnected off-target regions count. This is not FWHM or a connected focus diameter. Scaling current does not change it. A corresponding slice metric uses square root of area. Both waveform, duty and neural response must also be specified before any equal-focality comparison is interpreted biologically.
+
+![Rendered equations for viewers without LaTeX support](../analysis/emvelop/methods_equations.svg)
+
+## Numerical results and figures
+
+The detailed run reports and generated comparison below contain actual solver results, convergence checks and field maps. No published result is substituted for a computed value.
+
+| Computed model, 3 mm evaluation | $L_{50}$ | Target at common 1 K ceiling | Interpretation |
+|---|---:|---:|---|
+| RF minimum-current baseline | 3.613 cm | 36.98 V/m envelope proxy | Same pattern family, different intensity from published MIT |
+| RF local MFT solution | 2.824 cm | 5.40 V/m envelope proxy | Narrower exposure, stronger carrier heating hotspots |
+| Extended two-loop TMS | 10.932 cm | 1228.98 V/m peak | Thermal-only extrapolation; hardware constraints excluded |
+
+The RF focalities happen to approach 3.59 and 2.78 cm, but the original 3D SAR-scaled intensities are **not reproduced**: our approximate cube-averaged SAR scaling gives 37.70 and 5.73 V/m, versus published 11.98 and 3.04 V/m. Our finest averaging cube has 9.261 g when fully occupied and less at boundaries; it is not the original exact 10-g procedure. This discrepancy, the homogeneous geometry and the altered target constraints rule out a claim of quantitative reproduction.
+
+The TMS thermal ceiling would require roughly 323 and 2607 kA in the two single-turn loops. At an illustrative 5 kA per-coil cap the optimized central field is only **2.357 V/m**. Its maximum field is about seven times the central target field. This is why the thermal-only 1229 V/m number must not be presented as feasible stimulation performance. The source strengths and waveform differ from continuous RF; neither field norm predicts equivalent neural recruitment.
+
+![RF fields, carrier heating and antenna phase](../analysis/emvelop/rf_fields.png)
+
+![RF intensity–focality comparison and antenna currents](../analysis/emvelop/rf_tradeoff.png)
+
+![TMS geometry, field pattern and search outcomes](../analysis/emvelop/tms_extended.png)
+
+![Shared temperature ceiling and spatial hotspots](../analysis/emvelop/thermal_comparison.png)
+
+The temperature maps use the same scale. The field maps have separate scales because the thermal-only amplitudes differ greatly. Heating peaks near the sources rather than at the intended RF envelope focus. The temperature result is steady state; a finite-duration protocol requires the transient heat equation.
+
+### What the extended comparison answers
+
+- **At the same model temperature ceiling:** the RF patterns have substantially smaller relative suprathreshold volumes. Low-duty TMS permits higher peak fields thermally, but the two-coil patterns remain broad and the required currents exceed the illustrative current cap.
+- **At the same compact focality:** none of the tested two-coil configurations reaches the RF focality, so there is no computed equal-focality pair to rank by heating. This is a result about the tested geometry family, not a theorem about all TMS coil designs.
+- **Compared with the original study:** the spatial trend is reconstructed; the anatomical, thermal and intensity results are not fully reproduced. An original transfer matrix or complete anatomical simulation specification is needed to resolve those differences.
+
+## Verification and code map
+
+| Operation | Source / generated record |
+|---|---|
+| RF Maxwell operator, nullspace constraints, MFT derivatives | `src/emvelop_rf.py`, [RF method report](emvelop-rf-methods.md) |
+| Arbitrary loop operator and quadratic optimization | `src/tms_phase_design.py`, [TMS report](tms-phase-report.md) |
+| Conservative heat solver | `src/emvelop_thermal.py` |
+| Temperature comparisons and residuals | `analysis/emvelop/thermal_comparison.json` |
+| RF weights, phases, objectives and grid checks | `analysis/emvelop/rf_results.json` |
+| TMS geometry candidates and grid checks | `analysis/emvelop/tms_extended.json` |
+
+The heat solves have relative residuals below $10^{-10}$ and relative integrated energy-balance errors below $10^{-11}$. Tests include exact uniform-heating equilibrium, positive localized heating and scaling, complex optimization derivatives, target constraints, source quadrature, loop symmetry and vector polarization. Fixed-current evaluation-grid checks do not establish convergence of the nonconvex optimization itself; the RF method report separately records optimization-grid sensitivity.
+
+Math is written as Markdown LaTeX ($...$ and standalone $$ blocks), rather than code spans. The equation figure provides a rendered fallback for viewers that do not support LaTeX. Figures are generated locally by Python and included as standalone artifacts.

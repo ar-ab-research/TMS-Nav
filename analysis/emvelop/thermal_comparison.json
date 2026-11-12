@@ -1,0 +1,47 @@
+{
+  "assumptions": {
+    "thermal_conductivity_W_m_K": 0.5,
+    "perfusion_sink_W_m3_K": 10000,
+    "rho_kg_m3": 1000,
+    "RF_sigma_S_m": 1,
+    "TMS_sigma_S_m": 0.2,
+    "TMS_duty": 0.002,
+    "outer_boundary": "insulating",
+    "temperature_ceiling_K": 1
+  },
+  "results": [
+    {
+      "name": "MIT_like",
+      "target_unscaled_V_m": 1.0000000000000004,
+      "max_deltaT_unscaled_K": 0.000731333472144305,
+      "scale_to_1K": 36.97790262920681,
+      "target_at_1K_V_m": 36.977902629206824,
+      "cube_root_half_volume_cm": 3.613146378433015,
+      "max_pointwise_sar_at_1K_W_kg": 18.391212304301373,
+      "relative_residual": 8.664844479750972e-11,
+      "energy_balance_relative": 2.0479835950017848e-14
+    },
+    {
+      "name": "MFT",
+      "target_unscaled_V_m": 1.0000000000000007,
+      "max_deltaT_unscaled_K": 0.0343065592481631,
+      "scale_to_1K": 5.39897626846563,
+      "target_at_1K_V_m": 5.398976268465634,
+      "cube_root_half_volume_cm": 2.8238607148010146,
+      "max_pointwise_sar_at_1K_W_kg": 27.094804346123038,
+      "relative_residual": 8.76533300823599e-11,
+      "energy_balance_relative": 8.156547228770042e-12
+    },
+    {
+      "name": "TMS",
+      "target_unscaled_V_m": 1.0000000000000004,
+      "max_deltaT_unscaled_K": 6.620812452556916e-07,
+      "scale_to_1K": 1228.9787031110343,
+      "target_at_1K_V_m": 1228.9787031110347,
+      "cube_root_half_volume_cm": 10.932172153433955,
+      "max_pointwise_sar_at_1K_W_kg": 14.924122164522249,
+      "relative_residual": 9.807408942583722e-11,
+      "energy_balance_relative": 7.271916212915376e-13
+    }
+  ]
+}

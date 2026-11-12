@@ -31,3 +31,30 @@ micromamba run -n tms312 python -m pytest tests/test_emvelop_feasibility.py -q
 - Results additionally provide `sqrt_half_target_area_cm` on the exact z=0 disk (square root of total half-target area), maximum field, and single-turn current needed for 12/100 V/m. The optimized objective remains total 3D volume; this 2D diagnostic permits a closer metric comparison but does not reproduce anatomical RF modeling.
 - Complex vector norm here equals peak amplitude because coaxial-loop basis vectors are collinear at every observation point. For nonparallel coil fields it would instead represent the square root of twice the cycle-mean |E|², and must not be labeled instantaneous peak without solving the polarization ellipse.
 - Exported heating arithmetic examples compare balanced continuous RF envelope 12 V/m at σ=1 S/m (each carrier peak 6 V/m) against single-carrier low-frequency peak amplitudes at configured σ and duty. These are local heating examples, not equivalent neural doses or matched spatial distributions.
+
+## Extended RF, TMS and common thermal experiments
+
+The [updated comparison report](emvelop-tms-report.md) links the explicit [RF model](emvelop-rf-methods.md) and [TMS optimization](tms-phase-report.md). Run these commands in order; the heat runner consumes field arrays written by both electromagnetic runners:
+
+```bash
+OPENBLAS_NUM_THREADS=1 micromamba run -n tms312 python scripts/run_emvelop_rf.py
+OPENBLAS_NUM_THREADS=1 micromamba run -n tms312 python scripts/run_tms_phase_design.py
+OPENBLAS_NUM_THREADS=1 micromamba run -n tms312 python scripts/run_emvelop_thermal.py
+micromamba run -n tms312 python scripts/plot_emvelop_methods.py
+micromamba run -n tms312 python -m pytest tests/test_emvelop_feasibility.py tests/test_emvelop_rf.py tests/test_emvelop_thermal.py tests/test_tms_phase_design.py -q
+```
+
+- RF parameters live in `RFConfig`; TMS candidate geometry in `geometries()`; shared heat parameters in `steady_temperature()` and the thermal runner.
+- `rf_results.json` records solver statuses, complex weights and evaluation resolutions; `tms_extended.json` records the geometry search. The compressed NPZ files preserve complex fields and coordinates for independent postprocessing.
+- `thermal_comparison.json` records assumptions, thermal scaling and solver/energy residuals. PNG/SVG figures are regenerated alongside the data.
+- The RF computation is a homogeneous full-wave reconstruction, not the original anatomical model. MFT is nonconvex: a successful local solver status is not global optimality.
+- Primary 3D focality is cube-root volume. The baseline `run_emvelop.py` retains its explicitly labelled equivalent-sphere-diameter diagnostic for continuity.
+- All arrays are synthetic/public. No existing subject data or navigation state is used.
+
+For the separate optimization-grid sensitivity experiment (preserves the primary RF fields):
+
+```bash
+OPENBLAS_NUM_THREADS=1 micromamba run -n tms312 python scripts/check_emvelop_rf_refinement.py
+```
+
+This writes `rf_refinement.json` and `rf_refinement.png`; it reoptimizes at 4 mm and evaluates at the same 3 mm resolution as the main run.
