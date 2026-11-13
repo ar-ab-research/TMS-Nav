@@ -578,7 +578,7 @@ input[type="range"] {
 }
 
 .sw-target {
-  background: #111111;
+  background: #ff9f43;
   border-color: rgba(255, 255, 255, 0.55);
 }
 
@@ -1571,3 +1571,30 @@ input[type="range"] {
     align-self: center;
   }
 }
+
+/* Positional comparison extends the existing metrics sidebar. */
+.positional-panel { margin-top: 22px; padding-top: 20px; border-top: 1px solid #3a3d46; }
+.positional-panel h2 { line-height: 1.35 !important; }
+.positional-actions { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.positional-actions button { background: #2a303c; color: #eee; border: 1px solid #515a6b; border-radius: 5px; padding: 6px 9px; cursor: pointer; font: inherit; font-size: 12px; }
+.positional-actions button:hover { background: #3a3d46; border-color: #758195; }
+.positional-actions button:focus-visible { outline: 2px solid #78a6dc; outline-offset: 2px; }
+.positional-layer input { accent-color: #78a6dc; }
+.positional-panel details { margin-top: 12px; font-size: 12px; }
+.positional-panel summary { cursor: pointer; color: #c7cbd4; font-weight: 600; padding: 5px 0; }
+.positional-panel ul { padding-left: 17px; color: #a9afbb; line-height: 1.5; }
+.positional-panel li + li { margin-top: 7px; }
+.positional-layer { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 12px; color: #a9afbb; }
+.positional-swatch { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.positional-table { margin-top: 8px; width: 100%; }
+.positional-table th { text-align: left; color: #8f95a0; font-weight: 500; }
+.positional-table td, .positional-table th { padding: 7px 4px; border-bottom: 1px solid #30343d; }
+.positional-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.positional-panel input[type="file"] { width: 100%; font-size: 11px; margin-top: 6px; }
+.brainsight-point-label { background: #302237e8; border: 1px solid #ad5bba; border-radius: 4px; padding: 3px 6px; color: #ffbaff; font-size: 11px; }
+.brainsight-frame-label { background: #1c2029ee; border: 1px solid #515a6b; border-radius: 6px; padding: 6px 9px; color: #dce4f0; font-size: 12px; }
+#brainsight-layers details { margin: 5px 0 5px 12px; }
+#brainsight-layers summary { cursor: pointer; font-size: 12px; }
+.sma-projection-result { border: 1px solid #987a40; border-radius: 6px; padding: 10px; margin: 10px 0; }
+.sma-projection-result strong { color: #f2cf88; font-size: 16px; }
+.projection-line-label { background: #182029dd; color: #eee; padding: 2px 4px; border-radius: 3px; font-size: 10px; }

@@ -1,3 +1,4 @@
+import { positionalViewer } from "./positional.js";
 // tms-nav viewer. loads the scalp, drops the 5 stimulation targets and the eeg
 // landmarks on the head, plus one demo coil on the side. all in RAS mm with z up.
 // same vanilla three.js setup as fmriviz
@@ -6,7 +7,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { PLYLoader } from "three/examples/jsm/loaders/PLYLoader.js";
 import { CSS2DRenderer, CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
-import { DATASETS, AIM1 } from "./datasetRegistry.js";
+import { DATASETS, AIM1 } from "./datasetRegistry.local.js";
 import { defaultDatasetKey, isDemoDataset, isTemplateDataset, loadDatasetAssets } from "./datasetAssets.mjs";
 import { createAim2View } from "./aim2.js";
 import { createLandmarkEditor } from "./landmarkEditor.js";
@@ -20,7 +21,7 @@ let review = null, currentMarkers = null, currentKey = "";
 
 const SCALP_COLOR = 0xcccccc;
 const COIL_COLOR = 0x1f77b4;
-const TARGET_COLOR = 0x111111;
+const TARGET_COLOR = 0xff9f43;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x15171c);
@@ -92,6 +93,7 @@ const arcGroup = new THREE.Group();
 const aim1Root = new THREE.Group();
 aim1Root.add(skullGroup, fiducialGroup, scalpGroup, coilGroup, targetGroup, landmarkGroup, mcGroup, eegGroup, arcGroup);
 scene.add(aim1Root);
+const resetPositional = positionalViewer(aim1Root, () => currentMarkers, {onCommonSkin:()=>{scalpGroup.visible=false;document.getElementById('toggle-scalp').checked=false;layerState['toggle-scalp']=false;}});
 
 // which layers are on. choices survive a reload via localStorage, and on start the
 // same state is pushed onto both the checkbox and the layer, so the two cannot
@@ -159,7 +161,6 @@ function saveOpenState() {
 // the subject on screen, shown in the metrics column head
 let currentSubject = "";
 let currentCoordinateLabel = "Subject RAS";
-let eegStale = false;
 let currentIsTemplate = true;
 
 // aim 1 metrics panel. the monte carlo payload of the loaded subject, and which of
@@ -211,9 +212,9 @@ const plyLoader = new PLYLoader();
 const landmarkEditor = createLandmarkEditor({
   onChange: (marker) => {
     showInfo(marker);
+    if(marker?.category==='fiducial'){currentMarkers=pointData();resetPositional();}
     if (currentIsTemplate) {
-      eegStale = true; eegGroup.visible = false; arcGroup.visible = false;
-      document.getElementById("eeg-status").textContent = "Edits to a demo head need it rebuilt with run_pipeline.py.";
+      document.getElementById("eeg-status").textContent = "Showing original demo electrodes and arcs. Edited landmarks are saved in this browser; demo simulation and metrics retain their original calculation.";
     } else review?.changed(marker);
   },
   onSelect: (marker) => { if (marker) showInfo(marker); },
@@ -246,6 +247,7 @@ review = createSubjectReview({
   getBaseline:()=>DATASETS[currentKey].markers,
   replaceMarkers:markers=>{
     currentMarkers=structuredClone(markers);
+    resetPositional();
     clearGroup(landmarkGroup);clearGroup(fiducialGroup);
     addLandmarks(currentMarkers.landmarks||[],[]);addFiducials(currentMarkers.fiducials||[]);
     landmarkEditor.load(currentKey,currentMarkers,[...landmarkGroup.children,...fiducialGroup.children],scalpGroup.children[0].geometry);
@@ -254,6 +256,7 @@ review = createSubjectReview({
   select:name=>{const mesh=[...landmarkGroup.children,...fiducialGroup.children].find(m=>m.userData.marker.name===name);if(mesh){landmarkEditor.select(mesh);showInfo(mesh.userData.marker);}},
   replaceFiducials:(fiducials,patch)=>{
     currentMarkers={...pointData(),...patch,fiducials};
+    resetPositional();
     clearGroup(fiducialGroup);addFiducials(fiducials);
     landmarkEditor.load(currentKey,currentMarkers,[...landmarkGroup.children,...fiducialGroup.children],scalpGroup.children[0].geometry);
   },
@@ -262,8 +265,8 @@ review = createSubjectReview({
     currentMarkers={...currentMarkers,...result};addEeg(currentMarkers);
     document.getElementById("eeg-status").dataset.revision=String(Date.now());
   },
-  previewPending:()=>{eegStale=true;eegGroup.visible=false;arcGroup.visible=false;document.getElementById("eeg-status").textContent="Recomputing EEG from edited landmarks…";},
-  previewError:message=>{eegGroup.visible=false;arcGroup.visible=false;document.getElementById("eeg-status").textContent="EEG preview unavailable: "+message;},
+  previewPending:()=>{document.getElementById("eeg-status").textContent="Recomputing EEG from edited landmarks… Showing previous electrodes and arcs until the preview is ready.";},
+  previewError:message=>{document.getElementById("eeg-status").textContent="EEG preview unavailable: "+message+" Showing previous electrodes and arcs; these do not reflect the latest edits.";},
 });
 let pointerStart = null;
 
@@ -302,6 +305,7 @@ async function loadDataset(key) {
   if (!ds) throw new Error(`unknown subject ${key}`);
 
   const token = ++loadToken;
+  resetPositional.clear();
   document.getElementById("fatal").hidden = true;
 
   // the monte carlo json is fetched per subject rather than bundled, so the first
@@ -339,6 +343,11 @@ async function loadDataset(key) {
      "Landmarks require confirmation. Cyan spheres: estimated EEG. Click points for coordinates and confidence."].join(" · ");
   const markers = structuredClone(ds.markers);
   currentMarkers = markers;
+  // Positional surfaces and requests belong to this subject only.
+  resetPositional();
+  scalpGroup.visible = true;
+  document.getElementById('toggle-scalp').checked = true;
+  layerState['toggle-scalp'] = true;
   document.getElementById("toggle-fiducials").closest("label").hidden=demo;
   currentCoordinateLabel = markers.coordinate_frame?.template || "Subject RAS";
   addScalp(scalpGeo);
@@ -349,7 +358,6 @@ async function loadDataset(key) {
   if (!demo) addFiducials(markers.fiducials || []);
   addLandmarks(markers.landmarks || [], demo ? markers.targets : []);
   addEeg(markers);
-  landmarkEditor.load(key, markers, [...landmarkGroup.children, ...fiducialGroup.children], scalpGeo);
   if (demo && monteCarlo) addMonteCarlo(monteCarlo);
   else renderDistances();
   // both tabs open on the whole head, framed the same way
@@ -360,6 +368,7 @@ async function loadDataset(key) {
   stage.dataset.subject = key;
   // a demo head was never ingested, so there is no cap marker review to load for it
   review.load(key,demo);
+  landmarkEditor.load(key, markers, [...landmarkGroup.children, ...fiducialGroup.children], scalpGeo);
   // the review load picks the right panel by subject kind, the aim 1 view decides it
   syncAim1Panel();
 
@@ -432,7 +441,6 @@ function buildSubjectPicker() {
 }
 
 function addEeg(markers) {
-  eegStale = false;
   for (const id of ["toggle-eeg", "toggle-arcs"]) document.getElementById(id).disabled = false;
   eegGroup.visible = layerState["toggle-eeg"];
   arcGroup.visible = layerState["toggle-arcs"];
@@ -457,7 +465,7 @@ function addEeg(markers) {
 
 function addFiducials(markers) {
   for (const marker of markers) {
-    const mesh = new THREE.Mesh(unitDiamond, new THREE.MeshStandardMaterial({color: 0xef75c6}));
+    const mesh = new THREE.Mesh(unitDiamond, new THREE.MeshStandardMaterial({color: 0xef5350}));
     mesh.position.fromArray(marker.position); mesh.scale.setScalar(3.5);
     mesh.userData.marker = marker; fiducialGroup.add(mesh);
     addLabel(mesh, marker.anatomical_label || marker.label);
@@ -500,7 +508,7 @@ function setCoilOpacity(v) {
 }
 
 function addTargets(targets) {
-  // small black dots at the protocol markers, size driven by the slider. an
+  // Orange dots at the protocol markers, size driven by the slider. an
   // optional marker, cz, is drawn see-through and says so on its label
   for (const t of targets) {
     const mesh = new THREE.Mesh(
@@ -1075,12 +1083,11 @@ function setAim(n, { focus = false } = {}) {
   }
 }
 
-// inside aim 1 the right panel follows the view: the 3D head shows the statistics,
-// the anatomical MRI shows the cap marker review that is done on it
+// Cap marker review follows the anatomical MRI tab; positional results stay available.
 function syncAim1Panel() {
   const mri = !document.getElementById("mri-panel").hidden;
   document.getElementById("review-panel").hidden = !mri;
-  document.getElementById("metrics-panel").hidden = mri;
+
 }
 
 function bindAimTabs() {
@@ -1338,8 +1345,8 @@ function bindUI() {
   toggle("toggle-targets", targetGroup);
   toggle("toggle-landmarks", landmarkGroup);
   remember("toggle-mc", (on) => { mcGroup.visible = on && currentIsTemplate; });
-  remember("toggle-eeg", (on) => { eegGroup.visible = on && !eegStale; });
-  remember("toggle-arcs", (on) => { arcGroup.visible = on && !eegStale; });
+  toggle("toggle-eeg", eegGroup);
+  toggle("toggle-arcs", arcGroup);
 
   document.getElementById("coil-opacity").addEventListener("input", (e) => {
     setCoilOpacity(e.target.value / 100);

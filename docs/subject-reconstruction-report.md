@@ -62,3 +62,10 @@ Coverage includes:
 - The local API is required for MRI/live operations. Static viewing remains available without it.
 - Initial software-WebGL shader compilation can be slower than GPU-backed viewing; hidden 3D rendering pauses in the MRI tab.
 - Existing `gh-pages` dependency audit findings remain outside this change.
+
+## Launcher repair — 2026-11-05
+
+- Reproduced `python run_viewer.py` failure: persisted Parcel graph requested missing `./sources.js`, absent from current imports.
+- Launcher now isolates Parcel cache per session, removes it on exit, and propagates npm exit status.
+- Verified actual launcher build (1.09 s), viewer HTTP 200 and API health HTTP 200; stopped verification servers afterward.
+- Regression: `micromamba run -n tms312 python -m pytest tests/test_run_viewer.py -q` — **1 passed** (fresh cache, cleanup, child status, API shutdown). Full suite not repeated for this launcher-only change.

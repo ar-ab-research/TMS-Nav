@@ -20,15 +20,25 @@
         <div id="aim1-controls" class="aim-pane" role="tabpanel" aria-labelledby="tab-aim1">
         <fieldset>
           <legend>layers</legend>
-          <label><input type="checkbox" id="toggle-skull" checked /> skull (when available)</label>
-          <label><input type="checkbox" id="toggle-fiducials" checked /> MRI fiducials ◆ pink</label>
+          <label><input type="checkbox" id="toggle-skull" checked /> skull (when available) <span class="swatch" style="background:#e9d7b3" aria-hidden="true"></span></label>
+          <label><input type="checkbox" id="toggle-fiducials" checked /> MRI fiducials ◆ <span class="swatch" style="background:#ef5350" aria-hidden="true"></span> red</label>
+          <details id="brainsight-layers" open><summary><input type="checkbox" id="toggle-brainsight-parent" checked aria-label="Show Brainsight layers" /> Brainsight layers</summary>
+          <label><input type="checkbox" id="toggle-brainsight-surface" checked /> Brainsight MRI surface (scalp) <span class="swatch" style="background:#b49cdb" aria-hidden="true"></span></label>
+          <label><input type="checkbox" id="toggle-brainsight-targets" checked /> Raw Brainsight targets ● <span class="swatch" style="background:#43d17a" aria-hidden="true"></span></label>
+          <div id="brainsight-target-layers"></div></details>
+          <label><input type="checkbox" id="toggle-common-skin" checked /> <span id="common-skin-label">Common skin candidate</span></label>
+          <label><input type="checkbox" id="toggle-projection-lines" /> Raw → projection lines (labeled)</label>
+          <label><input type="checkbox" id="toggle-scalp-projections" checked /> Scalp projections ● <span class="swatch" style="background:linear-gradient(90deg,#ef535080 50%,#43d17a80 50%)" aria-hidden="true"></span></label>
+          <div class="hint">Red: fiducials. Green: Brainsight. Faded dots: closest-triangle projections. SMA uses its confirmed pair; SMA Skin is diagnostic. Unreviewed surfaces give provisional results.</div>
+          <label><input type="checkbox" id="toggle-scalp-entries" checked /> Verified scalp entries <span class="swatch" style="background:#43d17a" aria-hidden="true"></span></label>
+          <label><input type="checkbox" id="toggle-comparison-lines" checked /> Comparison lines <span class="swatch" style="background:#fff" aria-hidden="true"></span></label>
           <div class="hint" id="subject-qc" role="status"></div>
-          <label><input type="checkbox" id="toggle-scalp" autocomplete="off" checked /> scalp <span class="swatch sw-scalp" aria-hidden="true"></span></label>
+          <label><input type="checkbox" id="toggle-scalp" autocomplete="off" checked /> Original cap surface (QC) <span class="swatch sw-scalp" aria-hidden="true"></span></label>
           <label><input type="checkbox" id="toggle-coil" autocomplete="off" checked /> coil <span class="swatch sw-coil" aria-hidden="true"></span></label>
           <label><input type="checkbox" id="toggle-targets" autocomplete="off" checked /> targets <span class="swatch sw-target" aria-hidden="true"></span></label>
           <label><input type="checkbox" id="toggle-landmarks" autocomplete="off" checked /> landmarks ■ yellow</label>
-          <label><input type="checkbox" id="toggle-eeg" autocomplete="off" checked /> 10–20 electrodes</label>
-          <label><input type="checkbox" id="toggle-arcs" autocomplete="off" checked /> 10–20 dashed arcs</label>
+          <label><input type="checkbox" id="toggle-eeg" autocomplete="off" checked /> 10–20 electrodes <span class="swatch" style="background:#44d6d6" aria-hidden="true"></span></label>
+          <label><input type="checkbox" id="toggle-arcs" autocomplete="off" checked /> 10–20 dashed arcs <span class="swatch" style="background:#44d6d6" aria-hidden="true"></span></label>
           <div class="hint" id="eeg-status"></div>
           <label><input type="checkbox" id="toggle-mc" autocomplete="off" checked /> monte carlo <span class="swatch sw-mc" aria-hidden="true"><i></i><i></i><i></i></span></label>
         </fieldset>
@@ -234,25 +244,7 @@
           <button id="review-save">Save reviewed changes</button>
           <p class="hint">Save writes corrections and rebuilds derivatives. Live landmark previews reuse the cached scalp.</p>
         </section>
-        <div id="metrics-panel"><h2>Aim 1 Metrics</h2>
-        <div class="seg">
-          <button type="button" data-metric="miss" class="on" title="distance from a placement to the MRI target">displacement</button>
-          <button type="button" data-metric="pair" title="distance between two placements of the same target">repeat</button>
-          <button type="button" data-metric="tilt" title="tilt of the coil face that follows from the mark being off">tilt</button>
-          <button type="button" data-metric="orient" title="total coil orientation difference, tilt plus handle yaw">orientation</button>
-        </div>
 
-        <div class="col-head">
-          <span id="subject-label">this head</span>
-          <span class="c-num">mean</span>
-          <span class="c-num">p95</span>
-        </div>
-        <div id="dist-charts"></div>
-
-        <button class="disclose section" id="group-head" type="button" aria-expanded="false" aria-controls="group">
-          <span class="chev" aria-hidden="true"></span><span id="group-title">Brainsight results</span>
-        </button>
-        <div id="group" hidden></div></div>
         </div>
 
         <div id="aim2-metrics" class="aim-pane" role="tabpanel" aria-labelledby="tab-aim2" hidden>

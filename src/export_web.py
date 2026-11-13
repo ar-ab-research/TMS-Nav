@@ -102,7 +102,7 @@ def sample_subjects(public_list):
         return set(json.load(f).get("subjects", {})) - {"MNI152"}
 
 
-def write_registry(data_dir, registry_path, public_list=None):
+def write_registry(data_dir, registry_path, public_list=None, *, public_only=False):
     """Regenerate datasetRegistry.js from whatever subject folders actually exist.
 
     each head gets a kind: "template" for MNI152, "sample" for the other public
@@ -129,9 +129,10 @@ def write_registry(data_dir, registry_path, public_list=None):
 
     subjects = sorted(
         (d.name for d in data_dir.iterdir()
-        if d.is_dir() and (d / "markers.json").exists()),
+        if d.is_dir() and (d / "markers.json").exists()
+        and (not public_only or d.name == "MNI152" or d.name in samples)),
         key=lambda name: (name != "MNI152", name))
-    if not subjects:
+    if not subjects and not public_only:
         raise ValueError(f"no processed subjects found under {data_dir}")
 
     imports = []
@@ -196,6 +197,13 @@ def write_registry(data_dir, registry_path, public_list=None):
         # the real aim 1 numbers, written by analysis/aim1_stats.py off brainsight
         + f"export const AIM1 = {aim1};\n"
     )
+    # The tracked registry contains public heads only. Parcel uses the ignored
+    # local registry, regenerated on launch, for individual subject work.
+    if registry_path.name == "datasetRegistry.js" and not public_only:
+        local_path = registry_path.with_name("datasetRegistry.local.js")
+        local_path.write_text(text, encoding="utf-8")
+        write_registry(data_dir, registry_path, public_list, public_only=True)
+        return registry_path, subjects
     if not registry_path.exists() or registry_path.read_text(encoding="utf-8") != text:
         # Parcel should observe a complete registry, including on cache re-export.
         with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", suffix=".js",

@@ -31,6 +31,7 @@ python run_viewer.py
 
 - Open <http://127.0.0.1:1234>; select the subject.
 - `run_viewer.py` starts Parcel and a loopback-only API on port **8765**. Ctrl-C stops both.
+- Each launch uses a temporary Parcel cache to avoid stale imports after source updates; the cache is removed on exit.
 - `python run_viewer.py --api-only` supports an already-running Parcel viewer.
 - `npm --prefix viewer run dev` alone retains static 3D viewing; MRI/live previews/save require the API.
 - On launch, saved derivatives refresh the static viewer exports. Nothing is deployed automatically.

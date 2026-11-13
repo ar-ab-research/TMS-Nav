@@ -158,8 +158,11 @@ Characters outside letters, digits, `_`, `-` and `.` become underscores.
 Resulting name collisions are rejected before processing. Explicit inputs outside
 `saves/` use their filenames as dataset names.
 
-`viewer/src/datasetRegistry.js` is regenerated from **all existing processed
-dataset folders**, giving Parcel static imports. Reruns overwrite matching outputs
+`viewer/src/datasetRegistry.local.js` is Git-ignored and regenerated from **all existing processed
+dataset folders** before `npm run dev` or `npm run build`, giving Parcel static imports.
+The tracked `datasetRegistry.js` lists only heads on `viewer/public-subjects.json`.
+`npm run deploy` refuses local data folders outside that allowlist.
+Reruns overwrite matching outputs
 and keep other datasets. Removing or renaming an input does not delete old viewer
 output: remove its generated dataset folder, then rerun to update the dropdown.
 
@@ -168,6 +171,12 @@ stay local. Cohort discovery currently applies to `run_pipeline.py`; the separat
 statistics and electric-field drivers retain their documented input layouts.
 
 ## Editing registration landmarks
+
+Landmark picks are saved per dataset in this browser and restored when you return.
+Export JSON to keep a separate copy. Checked electrode and arc layers remain visible
+while editing. On demo heads they retain their original calculation; the EEG status
+labels this explicitly. For individual subjects, the previous layers remain visible
+while a live preview is pending or unavailable, with their status shown beside them.
 
 Select Nasion, Inion, LPA or RPA in the viewer's **edit landmarks** panel, or click
 its yellow cube. MRI fiducial diamonds are editable too. Enter X/Y/Z in millimeters and **Apply coordinates**. Entries

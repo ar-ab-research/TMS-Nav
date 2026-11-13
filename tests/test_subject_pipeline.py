@@ -112,7 +112,7 @@ def test_end_to_end_cache_corrections_skull_and_export(tmp_path):
     assert payload['eeg_qc']['status'] == 'estimated_from_confirmed_anchors'
     assert (output / 'skull.ply').exists()
     assert (output / 'corrections_applied.json').exists()
-    registry = (tmp_path / 'viewer' / 'datasetRegistry.js').read_text()
+    registry = (tmp_path / 'viewer' / 'datasetRegistry.local.js').read_text()
     assert 'monteCarloURL: null' in registry and 'coilURL: null' in registry
     assert file_hash(path) == original_hash
     # Corrupt output must invalidate the cache, rather than serving damaged derivatives.

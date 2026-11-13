@@ -63,6 +63,18 @@ old `saves/efield/demo_ernie/sim/` moved or deleted first; SimNIBS refuses to ov
 
 ## 3. View it
 
+To restore the already published Ernie demo (Aim 1 and all four Aim 2 fields)
+from the pinned public deployment snapshot in Git, without SimNIBS or a new simulation:
+
+```bash
+micromamba run -n tms312 node scripts/restore_public_ernie.mjs
+micromamba run -n tms312 python run_viewer.py
+```
+
+The script requires public deployment commit `04263d28d0cd3e4e549e5bd9bb57a7fee0e3a5c8`
+in the local Git objects (`origin/gh-pages` contains it). Generated assets stay ignored.
+This restores the published demo outputs; it does not install the FEM model for new simulations.
+
 ```bash
 python run_viewer.py                         # viewer and local API together
 # or just the viewer:
@@ -93,8 +105,9 @@ python -m efield.export_web saves/efield/<job> <ViewerSubject>
 python -c "from src.export_web import write_registry; from src.subject_ingest import VIEWER_ROOT; write_registry(VIEWER_ROOT, VIEWER_ROOT.parent / 'datasetRegistry.js')"
 ```
 
-The second line refreshes `viewer/src/datasetRegistry.js` so the new files are bundled;
-`run_pipeline.py` rewrites it too.
+The second line refreshes both registries. The tracked `datasetRegistry.js` includes
+public heads only; the ignored `datasetRegistry.local.js` includes local subjects.
+`run_pipeline.py` and the npm dev/build launch commands refresh them too.
 
 ## 5. Study data
 

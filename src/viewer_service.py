@@ -158,6 +158,21 @@ def make_server(port=8765, workspace=None):
             with workspace.lock:
                 entry = workspace.load(subject)
                 if self.command=='GET':
+                    if action=='common-skin.ply':
+                        return self.send(200,(workspace.derivatives/subject/'common-skin/common-skin.ply').read_bytes(),'application/octet-stream')
+                    if action=='skin-qc.png':
+                        return self.send(200,(workspace.derivatives/subject/'common-skin/skin-qc.png').read_bytes(),'image/png')
+                    if action=='registration-qc.png':
+                        return self.send(200,(workspace.derivatives/subject/'brainsight/registration/registration-qc.png').read_bytes(),'image/png')
+                    if action=='brainsight-overlay.ply':
+                        return self.send(200,(workspace.derivatives/subject/'brainsight/registered-scalp.ply').read_bytes(),'application/octet-stream')
+                    if action=='brainsight-scalp.ply':
+                        return self.send(200,(workspace.derivatives/subject/'brainsight/scalp.ply').read_bytes(),'application/octet-stream')
+                    if action=='positional':
+                        report=workspace.derivatives/subject/'positional.json'
+                        if not report.exists():
+                            return self.send(200,dict(status='not_run',subject=subject))
+                        return self.send(200,json.loads(report.read_text()))
                     if action=='meta':
                         return self.send(200, dict(**entry['metadata'],
                             intensity_range=np.percentile(entry['volume'], [1,99.8]).tolist(),
