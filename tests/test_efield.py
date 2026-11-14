@@ -593,6 +593,24 @@ def test_registry_has_efield_only_with_a_manifest():
 
 
 
+def test_private_registry_is_local_only(tmp_path):
+    import json
+    from src.export_web import write_registry
+    data = tmp_path / 'data'
+    for name in ['MNI152', 'Ernie', 'private-test']:
+        folder = data / name
+        folder.mkdir(parents=True)
+        (folder / 'markers.json').write_text(json.dumps({'subject': name}))
+    public = tmp_path / 'public.json'
+    public.write_text(json.dumps({'subjects': {'MNI152': '', 'Ernie': ''}}))
+    registry = tmp_path / 'datasetRegistry.js'
+    _, subjects = write_registry(data, registry, public_list=public)
+    assert 'private-test' in subjects
+    assert 'private-test' not in registry.read_text()
+    assert 'private-test' in registry.with_name('datasetRegistry.local.js').read_text()
+    assert 'Ernie' in registry.read_text()
+
+
 def test_registry_gives_sample_heads_the_demo_layers():
     """Heads on the public list are sample data: coil and monte carlo like the template."""
 

@@ -10,6 +10,9 @@ Maintain repository-level continuity across Codex sessions.
 - Use these files to reconstruct context, but verify claims
   against the actual repository before relying on them.
 
+### Runtime
+- Run Python and Node/npm work in micromamba environment `tms312` (use `micromamba run -n tms312 ...`).
+
 ### During work
 - Update docs/codex/STATE.md after meaningful milestones.
 - Keep the state concise and relevant to future sessions.

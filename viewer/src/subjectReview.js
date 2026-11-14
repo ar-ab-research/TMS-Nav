@@ -128,7 +128,7 @@ export function createSubjectReview(hooks) {
       const initialEdits=editRevision;
       key=subject;template=isTemplate;revision++;clearTimeout(timer);available=false;excluded=[];undo=null;undoButton.hidden=true;
       el('detect-run').disabled=true;el('review-save').disabled=true;
-      el('review-panel').hidden=template;el('metrics-panel').hidden=!template;
+      el('review-panel').hidden=template;
       mri.load(subject,hooks.getData());
       if(template)return;
       const data=hooks.getData();detectorOptions=data.detection_qc?.parameters||{};

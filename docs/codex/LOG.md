@@ -82,3 +82,88 @@ rather than assuming it from this log.
 - User found Ernie and T1–T5 showed no Aim 1 targets, coil or Monte Carlo. Cause: since 07fe146 only MNI152 counted as a demo; every other head was treated as a patient scan. `write_registry` now marks heads on `public-subjects.json` (other than MNI152) as kind `sample`; the viewer's `isDemoDataset` gives them the demo layers and skips the cap-review API (removes the public-site 404).
 - Aim 2 for MNI152 and T1–T5 left as "no e-field yet" at the user's choice; no simulations run for them.
 - Verified: pytest 87 passed, npm test 27 passed, build passed, local viewer Ernie/T3/MNI152 Aim 1 metrics and layers.
+
+## 2026-11-04 — Aim 1 positional comparison
+
+- Implemented src/positional.py, compare_positions.py, viewer/src/positional.js, preparation/demo scripts and positional guide/report. Gray outer mesh verified as scalp in extraction and viewer code. Preserved unrelated datasetRegistry.js modification.
+- Planned Targets only; text fallback records project/source/version/frame provenance; unresolved MRI identities/registration or trajectory semantics fail closed. Explicit SMA and right DLPFC/F4 mappings required.
+- Public Rogue network/manual and SimNIBS material investigated; vendor protocol/examples and licensed runtime still needed to verify direct project/metadata retrieval. No guessed transport commands or binary parsing.
+- Verified new tests (5), JS (21), production build and synthetic 5 mm demo. Initial full Python suite: 84 passed, HTTP socket test sandbox-blocked; authorized rerun pending. Patient anatomical/registration accuracy and new browser overlay interaction remain unvalidated.
+- Generated only ignored local preparation/output artifacts. Supplied originals preserved. Usage and exact remaining inputs documented in docs/positional-comparison.md.
+
+- Final verification: authorized full Python suite **85 passed**; subsequent nonidentity target-import/Samples-separation regression included in **6 positional tests passed**. Final viewer build passed.
+
+- Implementation committed as 37e8dcc. Push to origin/main_ab rejected by automatic approval review because external destination/payload publication authorization was considered insufficient; no bypass attempted. Existing registry edit remains uncommitted.
+
+## 2026-11-04 — Sidebar integration and local CLI-to-viewer flow
+
+- Moved positional component into existing right Aim 1 sidebar with dark controls and tables. Added local report API and automatic loading/reload.
+- Implemented --subject runner: actual cap triangle projections and explicit missing-data QC; reviewed manifests retain full comparison path. Filled known pending-manifest paths/hashes locally without inferring labels or registration.
+- Read-only project inventory verified unresolved export/target/label/frame evidence; no binary coordinates decoded and no synthetic measurements substituted. Supplied files explicitly authorized by current user.
+- Verified Python 88 passed, JS 21 passed, production build passed. Actual local browser workflow passed using installed Chrome; default Playwright Chromium absent. Final native-marker guard/style checks recorded below.
+- Simplified docs/positional-comparison.md; updated report. Private outputs/screenshots ignored. Unrelated registry edit preserved. Prior rejected push not retried.
+
+- Final checks: positional suite 8 passed after native-frame/unique-marker guards; actual local browser acceptance passed including dark-button style; final production build and git diff --check passed.
+
+## 2026-11-04 — Supplied export rendered
+
+- Imported newly supplied target export and added conservative autonomous site-name assignment with variant preservation and missing-site exclusion.
+- Verified legacy scanner header codes; generated source-native scalp and rendered raw targets beside cap MRI with explicit independent frames. No undocumented trajectory interpretation or unverified cross-MRI overlay.
+- Actual CLI and Chrome acceptance passed: target labels visible, source scalp loaded, rendered count correct, reload/toggles/export pass. Positional suite 10 passed; production build passed. Full suite result follows.
+- Local API/viewer started (8765/1234) without registry regeneration. Existing staged registry edit preserved. Private artifacts ignored; prior blocked push not retried.
+
+- Final full Python suite: **90 passed** (2 existing PyVista deprecation warnings). Browser and production build passed. Primary distances remain deliberately unavailable pending registration and semantics review.
+
+## 2026-11-04 — Registered common-frame overlay and measurement gates
+
+- Added src/brainsight_registration.py: rigid source-to-cap MI registration, explicit fixed-to-moving LPS inversion/conjugation, numerical QC and anatomical QC montage. Visually inspected technical alignment locally; patient accuracy remains unvalidated.
+- Replaced side-by-side display with registered physical overlay. Six controls include source surface; sidebar QC resource and measurement table label added.
+- Confirmed mapping/semantic gates and transformed segment intersection path implemented. Export metadata does not establish scalp contact or an inward trajectory; unresolved primary differences remain unavailable, never snapped/projected as a substitute.
+- Persisted tms312 runtime requirement. Generated data/QC/review artifacts ignored; unrelated staged registry preserved; prior blocked push not retried.
+- Verified: full Python 93 passed; final positional 13 passed; updated endpoint test passed; JS 21 passed; production build passed; actual Chrome overlay/toggle/QC/reload/export acceptance passed and screenshot inspected.
+
+## 2026-11-05 — Unified LAYERS and unavailable-result audit
+
+- Moved positional controls into existing LAYERS. Added green pyramid targets, red fiducials, single translucent red/green projection layer and lavender source scalp; removed annotation-only target display and duplicate right controls.
+- Exploratory target projections explicitly labeled/exported; test confirms they cannot produce primary measurements. Expanded QC issue lists expose all input blockers, not only first exception; missing targets remain explicit.
+- Verified real browser/pixel target-toggle check and inspected final screenshot. Build and JS 21 passed; full Python 93 passed before added regression, final focused 14 passed.
+- Regenerated local data only; existing staged registry unchanged/excluded. Updated concise positional report/guide. tms312 used throughout. Prior blocked push not retried.
+
+## 2026-11-05 — Confirmed pairing, projection endpoint and skin audit
+
+- Persisted explicit user-confirmed pairing locally without changing raw points. Added documented CLI confirmation flag and separate projection endpoint; retained trajectory endpoint/gates and diagnostic variant.
+- Provisional common-skin reconstruction from registered anatomical scan: no erosion/cosmetic smoothing, image-supported component/plane-hole filling. Rejected initial internal-interface candidate. Anatomical skin/hair/artifact review remains outstanding; no fabricated verification.
+- Independent exhaustive triangle math confirms locator behavior; rigid separation/transform-once checks pass. Original projection discrepancy reflects competing near-equal surface regions. Audited display decimation and FOV edges. Generated per-fiducial anatomical slices and before/after mesh QC locally.
+- Viewer shows provisional single-subject endpoint, raw/projected coordinates and offsets, separate trajectory results; expandable persistent parent/variant controls and labeled optional lines. Marker edits invalidate stale metrics. Added projection CSV and JSON provenance.
+- Verification: Python full 96 passed; final focused 17 passed; JS 21 passed; production build and actual Chrome acceptance/pixel checks passed. All runtime work in tms312. Private artifacts ignored, unrelated staged registry preserved; prior blocked push not retried.
+
+## 2026-11-05 — Accepted visual QC and GUI cleanup
+
+- User accepted the result after reviewing rendering/QC. Saved acceptance against exact local surface hash, scoped to visual QC, and changed current result display/export to REVIEWED. Clinical accuracy remains a separate limitation; plots and numerical results retained.
+- Brainsight targets now spheres centered at raw MRI-world coordinates. Removed legacy Aim 1 metrics/results HTML and stale review-code references; newer comparison sections retained.
+- Verified focused Python 16 passed, JS 21 passed, actual Chrome acceptance/pixel checks passed, final build passed. An initial browser check found a stale removed-panel reference; corrected and rerun cleanly. Screenshot visually inspected.
+- Updated existing report/usage. All runtime work used tms312; private review/data artifacts ignored. Prior blocked push not retried.
+
+## 2026-11-05 — Viewer launcher cache repair
+
+- Clean main_ab at task start. Reproduced actual Parcel failure resolving obsolete ./sources.js; no current source import exists. Fresh cache built successfully.
+- run_viewer.py now uses a temporary per-session Parcel cache and propagates npm status; usage/report updated. Added tests/test_run_viewer.py covering cache isolation/removal, status and API shutdown.
+- Verified tms312 launcher regression: 1 passed; actual launcher build 1.09 s, viewer HTTP 200, API /api/health HTTP 200. Verification servers stopped. Full suite not repeated.
+- Initial sandbox run could not bind loopback; authorized local verification completed. No private artifacts added.
+- Delivery commit: c7ab497. Automatic approval review rejected combined commit/push because the remote destination was unverified and could expose private code. Local-only commit succeeded separately; push was not retried.
+
+## 2026-11-12 — Merged branch viewer/privacy repair
+
+- User explicitly requested no commit/push; neither performed. Started on main_ab with staged remote/manual merge changes and an unstaged registry edit.
+- Restored ignored public Ernie Aim 1 and four Aim 2 fields from local Git-held deployment snapshot 04263d28d0cd3e4e549e5bd9bb57a7fee0e3a5c8. Added reproducible restoration script; no new simulations/downloads.
+- Subject switching now invalidates/clears positional analysis callbacks/meshes/metadata and resets the selected scalp visibility. Chrome regression verified analysis reload then private-to-MNI switch.
+- Tracked registry now public only; ignored local registry retains full local subject access. npm dev/build regenerate both. Updated only the already-staged registry to remove private references; other staged merge changes preserved.
+- Verified tms312 Python: 104 passed, one sandbox socket failure then isolated permitted rerun passed (105 total). JS 27 passed; permitted production build passed. Chrome positional and Ernie Aim 2 browser specs both passed. Public deployment guard correctly rejected mixed local heads. Ignored paths, manifest completeness, public registry and staged/working whitespace checked.
+- Updated README.md, docs/efield.md, docs/subject-rendering-report.md and STATE.md. Local dist contains private heads and remains ignored; never manually publish it. Historical private identifier references are not rewritten.
+
+## 2026-11-12 — Landmark-edit layer visibility follow-up
+
+- User requests retaining four Ernie picks, fixing checked layers, then committing all changes locally without pushing. Existing browser edits and ignored assets left untouched.
+- Removed forced EEG/arc hiding and stale visibility gate after demo edits and during failed/pending individual previews. Status explicitly labels previous/original calculations. Moved editor restoration after EEG setup and review initialization so restored-edit status survives reload and subject preview uses the correct key.
+- tms312 verification: JS 27 passed; production build passed; three Chrome tests passed together, including four landmark edits, saved storage reload identity, actual electrode/arc canvas pixel toggle checks, public Aim 2 and positional cleanup. Prior Python 105-test verification remains applicable; no Python changes in this follow-up.
+- Updated README, subject-rendering report and STATE. Preparing one [codex] commit with existing merged changes and both viewer repairs, excluding ignored data/local registry/dist. No push.

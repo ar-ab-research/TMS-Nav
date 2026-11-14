@@ -77,6 +77,23 @@ def test_http_volume_identity_and_restricted_access(workspace):
     thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
     base=f'http://127.0.0.1:{server.server_port}'
     try:
+        missing=json.load(urlopen(base+'/api/subjects/review-test/positional'))
+        assert missing['status']=='not_run'
+        report=dict(frame='native_RAS_mm',rows=[],summary={})
+        (work.derivatives/'review-test/positional.json').write_text(json.dumps(report))
+        assert json.load(urlopen(base+'/api/subjects/review-test/positional'))==report
+        source_dir=work.derivatives/'review-test/brainsight';source_dir.mkdir(exist_ok=True)
+        (source_dir/'scalp.ply').write_bytes(b'ply\nsynthetic geometry resource')
+        assert urlopen(base+'/api/subjects/review-test/brainsight-scalp.ply').read()==b'ply\nsynthetic geometry resource'
+        (source_dir/'registered-scalp.ply').write_bytes(b'ply\nregistered geometry')
+        assert urlopen(base+'/api/subjects/review-test/brainsight-overlay.ply').read()==b'ply\nregistered geometry'
+        (source_dir/'registration').mkdir(exist_ok=True)
+        (source_dir/'registration/registration-qc.png').write_bytes(b'qc fixture')
+        assert urlopen(base+'/api/subjects/review-test/registration-qc.png').read()==b'qc fixture'
+        skin_dir=work.derivatives/'review-test/common-skin';skin_dir.mkdir(exist_ok=True)
+        (skin_dir/'common-skin.ply').write_bytes(b'candidate mesh');(skin_dir/'skin-qc.png').write_bytes(b'skin qc')
+        assert urlopen(base+'/api/subjects/review-test/common-skin.ply').read()==b'candidate mesh'
+        assert urlopen(base+'/api/subjects/review-test/skin-qc.png').read()==b'skin qc'
         raw=urlopen(base+'/api/subjects/review-test/volume.nii').read()
         image=nib.Nifti1Image.from_bytes(raw)
         entry=work.load('review-test')
